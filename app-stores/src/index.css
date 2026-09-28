@@ -109,3 +109,29 @@ body {
   overflow-x: auto;
   padding-bottom: 24px;
 }
+
+/* Lets asset styles size themselves with cqmin, relative to the format. */
+[data-canvas] {
+  container-type: size;
+}
+
+.title {
+  font-family: 'Merriweather', serif;
+  font-size: 8cqmin;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.02em;
+  white-space: pre-line;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 6cqmin;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.logo {
+  display: block;
+  width: 35cqmin;
+}
