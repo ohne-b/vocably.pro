@@ -2,12 +2,14 @@
 
 // Uploads the screenshots exported by app-stores/ to Google Play.
 //
-//   ./scripts/play-store-upload-screenshots.mts play-phone [--dry-run]
+//   ./scripts/play-store-upload-screenshots.mts [--dry-run]
 //
-// Takes tmp/<format>.zip (one folder per interface language: en/01.png, …),
-// unpacks it into tmp/<format>/, and for every language replaces the images
-// of that type on the store listing. All changes go into one edit, which is
-// committed at the end, so a failure leaves the store listing untouched.
+// Expects tmp/play-phone.zip, tmp/play-tablet-10.zip and
+// tmp/play-feature-graphic.zip (one folder per interface language:
+// en/01.png, …). Unpacks each into tmp/<format>/, and for every language
+// deletes the images of that type on the store listing and uploads the new
+// ones. All changes go into one edit, which is committed at the end, so a
+// failure leaves the store listing untouched.
 //
 // Needs a Google Cloud service account that has access to the app in Play
 // Console with the "Manage store presence" permission. Its JSON key (raw or
@@ -59,26 +61,23 @@ const localeMap: Record<string, string[]> = {
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
-const formatId = basename(
-  args.find((arg) => !arg.startsWith('--')) ?? '',
-  '.zip'
-);
 
-if (!imageTypes[formatId]) {
+const unknownArgs = args.filter((arg) => arg !== '--dry-run');
+if (unknownArgs.length > 0) {
   console.error(
-    `Usage: ./scripts/play-store-upload-screenshots.mts <${Object.keys(
-      imageTypes
-    ).join('|')}> [--dry-run]`
+    `Unknown argument(s): ${unknownArgs.join(' ')}\n` +
+      'Usage: ./scripts/play-store-upload-screenshots.mts [--dry-run]'
   );
   process.exit(1);
 }
 
-const imageType = imageTypes[formatId];
-const zipPath = `${rootDir}/tmp/${formatId}.zip`;
-const unpackedDir = `${rootDir}/tmp/${formatId}`;
+const formatIds = Object.keys(imageTypes);
+const zipPath = (formatId: string) => `${rootDir}/tmp/${formatId}.zip`;
+const unpackedDir = (formatId: string) => `${rootDir}/tmp/${formatId}`;
 
-if (!existsSync(zipPath)) {
-  console.error(`${zipPath} does not exist.`);
+const missingZips = formatIds.map(zipPath).filter((path) => !existsSync(path));
+if (missingZips.length > 0) {
+  console.error(`Missing ${missingZips.map((path) => `\n  ${path}`).join('')}`);
   process.exit(1);
 }
 
@@ -181,15 +180,18 @@ const api = async <T = any,>(
   return (text ? JSON.parse(text) : undefined) as T;
 };
 
-console.log(`Unpacking ${zipPath}...`);
-rmSync(unpackedDir, { recursive: true, force: true });
-mkdirSync(unpackedDir, { recursive: true });
-execFileSync('unzip', ['-q', zipPath, '-d', unpackedDir], { stdio: 'inherit' });
-
-const languageDirs = readdirSync(unpackedDir, { withFileTypes: true })
-  .filter((entry) => entry.isDirectory() && !entry.name.startsWith('__'))
-  .map((entry) => entry.name)
-  .sort();
+for (const formatId of formatIds) {
+  console.log(`Unpacking ${zipPath(formatId)}...`);
+  rmSync(unpackedDir(formatId), { recursive: true, force: true });
+  mkdirSync(unpackedDir(formatId), { recursive: true });
+  execFileSync(
+    'unzip',
+    ['-q', zipPath(formatId), '-d', unpackedDir(formatId)],
+    {
+      stdio: 'inherit',
+    }
+  );
+}
 
 const { id: editId } = await api<{ id: string }>('POST', `${apiBase}/edits`);
 const editBase = `${apiBase}/edits/${editId}`;
@@ -200,56 +202,72 @@ try {
     'GET',
     `${editBase}/listings`
   );
-  console.log(`${packageName}, ${imageType}`);
+  console.log(packageName);
 
   // Resolve everything up front, so nothing is deleted when the mapping is off.
-  const jobs: { locale: string; files: string[] }[] = [];
+  const jobs: { imageType: string; locale: string; files: string[] }[] = [];
 
-  for (const language of languageDirs) {
-    const locales = localeMap[language];
-    if (!locales) {
-      console.warn(`⚠️  No Google Play language for "${language}", skipping.`);
-      continue;
+  for (const formatId of formatIds) {
+    const imageType = imageTypes[formatId];
+    const formatDir = unpackedDir(formatId);
+
+    const languageDirs = readdirSync(formatDir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && !entry.name.startsWith('__'))
+      .map((entry) => entry.name)
+      .sort();
+
+    if (languageDirs.length === 0) {
+      throw new Error(`${zipPath(formatId)} has no language folders.`);
     }
 
-    let files = readdirSync(join(unpackedDir, language))
-      .filter((name) => name.toLowerCase().endsWith('.png'))
-      .sort()
-      .map((name) => join(unpackedDir, language, name));
-
-    if (files.length === 0) {
-      console.warn(`⚠️  No screenshots in ${language}/, skipping.`);
-      continue;
-    }
-
-    if (singleImageTypes.includes(imageType) && files.length > 1) {
-      console.warn(
-        `⚠️  ${imageType} holds one image, uploading only ${language}/${basename(
-          files[0]
-        )}.`
-      );
-      files = files.slice(0, 1);
-    }
-
-    for (const locale of locales) {
-      if (!listings.some((l) => l.language === locale)) {
+    for (const language of languageDirs) {
+      const locales = localeMap[language];
+      if (!locales) {
         console.warn(
-          `⚠️  The store listing has no ${locale} translation, skipping ${language}/.`
+          `⚠️  No Google Play language for ${formatId}/${language}, skipping.`
         );
         continue;
       }
-      jobs.push({ locale, files });
+
+      let files = readdirSync(join(formatDir, language))
+        .filter((name) => name.toLowerCase().endsWith('.png'))
+        .sort()
+        .map((name) => join(formatDir, language, name));
+
+      if (files.length === 0) {
+        console.warn(`⚠️  No images in ${formatId}/${language}/, skipping.`);
+        continue;
+      }
+
+      if (singleImageTypes.includes(imageType) && files.length > 1) {
+        console.warn(
+          `⚠️  ${imageType} holds one image, uploading only ${formatId}/${language}/${basename(
+            files[0]
+          )}.`
+        );
+        files = files.slice(0, 1);
+      }
+
+      for (const locale of locales) {
+        if (!listings.some((l) => l.language === locale)) {
+          console.warn(
+            `⚠️  The store listing has no ${locale} translation, skipping ${formatId}/${language}/.`
+          );
+          continue;
+        }
+        jobs.push({ imageType, locale, files });
+      }
     }
   }
 
-  for (const { locale, files } of jobs) {
+  for (const { imageType, locale, files } of jobs) {
     const { images: existing = [] } = await api<{ images?: object[] }>(
       'GET',
       `${editBase}/listings/${locale}/${imageType}`
     );
 
     console.log(
-      `${locale}: replacing ${existing.length} image(s) with ${files.length}`
+      `${locale} ${imageType}: replacing ${existing.length} image(s) with ${files.length}`
     );
     if (dryRun) continue;
 
