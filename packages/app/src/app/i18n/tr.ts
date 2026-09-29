@@ -408,7 +408,9 @@ export const tr = {
 
   // Preview Study Step
   'preview_step.loading': 'Çalışma oturumu...',
-  'preview_step.completed': 'Adım tamamlandı.',
+  'preview_step.completed': 'Adım tamamlandı',
+  'preview_step.completed_hint':
+    'Bu adım, çalışma oturumlarınızda böyle görünecek.',
   'preview_step.try_again': 'Tekrar Dene',
   'preview_step.back_to_settings': 'Ayarlara Geri Dön',
 

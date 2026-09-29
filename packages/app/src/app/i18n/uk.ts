@@ -405,7 +405,9 @@ export const uk = {
 
   // Preview Study Step
   'preview_step.loading': 'Навчальна сесія...',
-  'preview_step.completed': 'Етап завершено.',
+  'preview_step.completed': 'Етап завершено',
+  'preview_step.completed_hint':
+    'Так цей етап виглядатиме під час ваших занять.',
   'preview_step.try_again': 'Спробувати знову',
   'preview_step.back_to_settings': 'Повернутися до налаштувань',
 

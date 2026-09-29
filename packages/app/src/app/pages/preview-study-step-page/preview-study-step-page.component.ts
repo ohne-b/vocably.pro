@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CardItem, GoogleLanguage, isGoogleLanguage } from '@vocably/model';
 import { publicPredefinedOptions } from '@vocably/api';
 import {
@@ -32,7 +32,6 @@ const stepLabelKeys: Record<StepId, string> = {
   templateUrl: './preview-study-step-page.component.html',
   styleUrls: ['./preview-study-step-page.component.scss'],
   imports: [
-    RouterLink,
     MatIcon,
     CardSfComponent,
     CardSbComponent,
@@ -56,6 +55,7 @@ export class PreviewStudyStepPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private transloco: TranslocoService
   ) {}
 
@@ -135,5 +135,28 @@ export class PreviewStudyStepPageComponent implements OnInit {
 
   retry() {
     this.completed = false;
+  }
+
+  backToSettings(event: MouseEvent) {
+    // Let modified clicks (new tab/window) behave like a regular link
+    if (
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+
+    // The preview is usually opened in a new tab from the settings page.
+    // Closing it brings the user back to the settings tab. Browsers only
+    // allow this when the tab has no history, otherwise it's a no-op.
+    if (window.history.length === 1) {
+      window.close();
+    }
+
+    this.router.navigate(['/settings']);
   }
 }

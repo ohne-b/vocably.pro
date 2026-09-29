@@ -407,7 +407,9 @@ export const es = {
 
   // Preview Study Step
   'preview_step.loading': 'Sesión de estudio...',
-  'preview_step.completed': 'Paso completado.',
+  'preview_step.completed': 'Paso completado',
+  'preview_step.completed_hint':
+    'Así es como aparecerá este paso durante tus sesiones de estudio.',
   'preview_step.try_again': 'Intentar de nuevo',
   'preview_step.back_to_settings': 'Volver a la configuración',
 

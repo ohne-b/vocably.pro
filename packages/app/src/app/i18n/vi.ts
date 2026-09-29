@@ -394,7 +394,9 @@ export const vi = {
 
   // Preview Study Step
   'preview_step.loading': 'Phiên học...',
-  'preview_step.completed': 'Bước hoàn thành.',
+  'preview_step.completed': 'Bước hoàn thành',
+  'preview_step.completed_hint':
+    'Đây là cách bước này sẽ hiển thị trong các buổi học của bạn.',
   'preview_step.try_again': 'Thử lại',
   'preview_step.back_to_settings': 'Quay lại cài đặt',
 

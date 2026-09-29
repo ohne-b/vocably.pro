@@ -406,7 +406,9 @@ export const ru = {
 
   // Preview Study Step
   'preview_step.loading': 'Учебная сессия...',
-  'preview_step.completed': 'Этап завершён.',
+  'preview_step.completed': 'Этап завершён',
+  'preview_step.completed_hint':
+    'Так этот этап будет выглядеть во время ваших занятий.',
   'preview_step.try_again': 'Попробовать снова',
   'preview_step.back_to_settings': 'Вернуться к настройкам',
 

@@ -402,7 +402,9 @@ export const pt = {
 
   // Preview Study Step
   'preview_step.loading': 'Sessão de estudo...',
-  'preview_step.completed': 'Etapa concluída.',
+  'preview_step.completed': 'Etapa concluída',
+  'preview_step.completed_hint':
+    'É assim que esta etapa aparecerá durante suas sessões de estudo.',
   'preview_step.try_again': 'Tentar novamente',
   'preview_step.back_to_settings': 'Voltar para as configurações',
 

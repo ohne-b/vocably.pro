@@ -400,7 +400,9 @@ export const en = {
 
   // Preview Study Step
   'preview_step.loading': 'Study session...',
-  'preview_step.completed': 'Step completed.',
+  'preview_step.completed': 'Step completed',
+  'preview_step.completed_hint':
+    'This is how the step will appear during your study sessions.',
   'preview_step.try_again': 'Try Again',
   'preview_step.back_to_settings': 'Back to Settings',
 

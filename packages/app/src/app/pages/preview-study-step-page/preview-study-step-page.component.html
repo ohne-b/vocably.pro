@@ -1,18 +1,53 @@
 <div class="study-container">
-  <div class="content">
+  <header class="study-header">
+    <a
+      href="settings"
+      (click)="backToSettings($event)"
+      class="back"
+      [attr.aria-label]="'preview_step.back_to_settings' | transloco"
+      [attr.title]="'preview_step.back_to_settings' | transloco"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <div class="heading">
+      <span class="eyebrow">{{
+        'settings.study_steps.preview' | transloco
+      }}</span>
+      <h1 class="title">{{ stepLabel }}</h1>
+    </div>
+    <span class="spacer" aria-hidden="true"></span>
+  </header>
+  <main class="study-body">
     @if (loading) {
-      <div>
+      <div class="state">
         <ion-spinner name="dots" class="mr-1"></ion-spinner
         >{{ 'preview_step.loading' | transloco }}
       </div>
     } @else if (error) {
-      <p class="error">{{ error }}</p>
+      <div class="state">
+        <mat-icon class="state-icon error-icon">error_outline</mat-icon>
+        <p class="error">{{ error }}</p>
+      </div>
     } @else if (completed) {
-      <div class="completed">
-        <p>{{ 'preview_step.completed' | transloco }}</p>
-        <button class="button outline" (click)="retry()">
-          {{ 'preview_step.try_again' | transloco }}
-        </button>
+      <div class="success" role="status">
+        <div class="success-badge" aria-hidden="true">
+          <mat-icon>check</mat-icon>
+        </div>
+        <h2 class="success-title">
+          {{ 'preview_step.completed' | transloco }}
+        </h2>
+        <p class="success-hint">
+          {{ 'preview_step.completed_hint' | transloco }}
+        </p>
+        <div class="success-actions">
+          <button class="button outline" (click)="retry()">
+            <mat-icon>replay</mat-icon>
+            {{ 'preview_step.try_again' | transloco }}
+          </button>
+          <a class="button" href="settings" (click)="backToSettings($event)">
+            {{ 'preview_step.back_to_settings' | transloco }}
+          </a>
+        </div>
       </div>
     } @else if (card) {
       <div class="card-container">
@@ -52,12 +87,5 @@
         }
       </div>
     }
-  </div>
-  <div class="nav">
-    <a [routerLink]="['/settings']" class="back-link">
-      <mat-icon>arrow_back</mat-icon>
-      {{ 'preview_step.back_to_settings' | transloco }}
-    </a>
-    <h2>{{ stepLabel }}</h2>
-  </div>
+  </main>
 </div>
