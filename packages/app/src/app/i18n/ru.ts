@@ -278,6 +278,11 @@ export const ru = {
   'membership_selector.cancel': 'Отмена в любое время.',
   'membership_selector.cards_stay':
     'Все сохранённые карточки останутся в вашей коллекции, если вы решите отменить подписку.',
+  'membership_selector.best_value': 'Выгоднее всего',
+  'membership_selector.save': 'Экономия {{percent}}%',
+  'membership_selector.free': 'Бесплатно',
+  'membership_selector.premium': 'Премиум',
+  'membership_selector.features_title': 'Учите слова там, где их встречаете',
 
   // Settings
   'settings.title': 'Настройки',

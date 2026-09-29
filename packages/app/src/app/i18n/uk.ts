@@ -278,6 +278,11 @@ export const uk = {
   'membership_selector.cancel': 'Скасування будь-коли.',
   'membership_selector.cards_stay':
     'Усі збережені картки залишаться у вашій колекції, якщо ви вирішите скасувати підписку.',
+  'membership_selector.best_value': 'Найвигідніше',
+  'membership_selector.save': 'Економія {{percent}}%',
+  'membership_selector.free': 'Безкоштовно',
+  'membership_selector.premium': 'Преміум',
+  'membership_selector.features_title': 'Вивчайте слова там, де їх зустрічаєте',
 
   // Settings
   'settings.title': 'Налаштування',

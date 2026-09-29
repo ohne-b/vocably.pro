@@ -274,6 +274,11 @@ export const en = {
   'membership_selector.cancel': 'Cancel any time.',
   'membership_selector.cards_stay':
     'All your saved cards will stay in your collection if you decide to cancel your subscription.',
+  'membership_selector.best_value': 'Best value',
+  'membership_selector.save': 'Save {{percent}}%',
+  'membership_selector.free': 'Free',
+  'membership_selector.premium': 'Premium',
+  'membership_selector.features_title': 'Learn words wherever you meet them',
 
   // Settings
   'settings.title': 'Settings',

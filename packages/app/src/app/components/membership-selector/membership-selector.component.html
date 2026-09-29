@@ -1,271 +1,220 @@
-<div class="container-l text-center">
-  <h1 class="text-center" style="margin-bottom: 0">
-    {{ 'membership_selector.title' | transloco }}
-  </h1>
-  <div class="mb-2">{{ 'membership_selector.subtitle' | transloco }}</div>
-  <div class="features mb-2">
-    <div class="feature">
-      <div class="feature-icon">
-        <mat-icon>computer</mat-icon>
-      </div>
-      <div class="feature-explanation">
-        <div class="feature-title">
-          {{ 'membership_selector.feature1.title' | transloco }}
-        </div>
-        <div class="feature-description">
-          <div class="mb-0_5">
-            {{ 'membership_selector.feature1.desc1' | transloco }}
-          </div>
-          <div>
-            {{ 'membership_selector.feature1.desc2' | transloco }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">
-        <mat-icon>visibility</mat-icon>
-      </div>
-      <div class="feature-explanation">
-        <div class="feature-title">
-          {{ 'membership_selector.feature3.title' | transloco }}
-        </div>
-        <div class="feature-description">
-          <div class="mb-0_5">
-            {{ 'membership_selector.feature3.desc' | transloco }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">
-        <mat-icon>translate</mat-icon>
-      </div>
-      <div class="feature-explanation">
-        <div class="feature-title">
-          {{ 'membership_selector.feature4.title' | transloco }}
-        </div>
-        <div class="feature-description">
-          <div class="mb-0_5">
-            {{ 'membership_selector.feature4.desc' | transloco }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">
-        <mat-icon>mobile_text_2</mat-icon>
-      </div>
-      <div class="feature-explanation">
-        <div class="feature-title">
-          {{ 'membership_selector.feature2.title' | transloco }}
-        </div>
-        <div class="feature-description">
-          <div class="mb-0_5">
-            {{ 'membership_selector.feature2.desc1' | transloco }}
-          </div>
-          <div>
-            {{ 'membership_selector.feature2.desc2' | transloco }}
-            <mat-icon class="middle">more_vert</mat-icon>
-            <mat-icon class="middle" style="font-size: 1rem; margin-top: 0.3rem"
-              >arrow_right_alt</mat-icon
-            >
-            <strong>Translate with Vocably</strong>.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">
-        <mat-icon>import_contacts</mat-icon>
-      </div>
-      <div class="feature-explanation">
-        <div class="feature-title">
-          {{ 'membership_selector.feature5.title' | transloco }}
-        </div>
-        <div class="feature-description">
-          <div class="mb-0_5">
-            {{ 'membership_selector.feature5.desc' | transloco }}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="feature">
-      <div class="feature-icon">
-        <mat-icon>cloud</mat-icon>
-      </div>
-      <div class="feature-explanation">
-        <div class="feature-title">
-          {{ 'membership_selector.feature6.title' | transloco }}
-        </div>
-        <div class="feature-description">
-          <div class="mb-0_5">
-            {{ 'membership_selector.feature6.desc' | transloco }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <h2 style="margin-bottom: 0.5rem">
-    {{ 'membership_selector.comparison_title' | transloco }}
-  </h2>
-  <div class="comparison mb-2">
-    <table>
-      <tr>
-        <th>&nbsp;</th>
-        <th class="text-center">Free</th>
-        <th class="text-center">Premium</th>
-      </tr>
-      <tr>
-        <td class="text-left">
-          {{ 'membership_selector.unlimited_translations' | transloco }}
-        </td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          {{ 'membership_selector.unlimited_collections' | transloco }}
-        </td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          {{ 'membership_selector.unlimited_sessions' | transloco }}
-        </td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          {{ 'membership_selector.unlimited_decks' | transloco }}
-        </td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-      </tr>
-      <tr>
-        <td class="text-left">
-          {{ 'membership_selector.cloud_storage' | transloco }}
-        </td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-        <td class="text-center text-primary"><mat-icon>check</mat-icon></td>
-      </tr>
-      @if (staticMetadata) {
-        <tr>
-          <td class="text-left">
-            {{
-              'membership_selector.card_saving'
-                | transloco: { count: staticMetadata.max_cards }
-            }}
-          </td>
-          <td class="text-center">
-            {{
-              'membership_selector.cards_per_day'
-                | transloco: { count: staticMetadata.cards_per_day }
-            }}
-          </td>
-          <td class="text-center">
-            {{ 'membership_selector.unlimited' | transloco }}
-          </td>
-        </tr>
-      }
-    </table>
-  </div>
-  <div class="social-proof mb-2">
-    <div class="stars-container">
-      <div class="stars">
-        <div class="background">
-          <mat-icon fontSet="material-icons">star</mat-icon>
-          <mat-icon fontSet="material-icons">star</mat-icon>
-          <mat-icon fontSet="material-icons">star</mat-icon>
-          <mat-icon fontSet="material-icons">star</mat-icon>
-          <mat-icon fontSet="material-icons">star</mat-icon>
-        </div>
-        <div class="foreground">
-          <div>
-            <mat-icon fontSet="material-icons">star</mat-icon>
-            <mat-icon fontSet="material-icons">star</mat-icon>
-            <mat-icon fontSet="material-icons">star</mat-icon>
-            <mat-icon fontSet="material-icons">star</mat-icon>
-            <mat-icon fontSet="material-icons">star</mat-icon>
-          </div>
-        </div>
-      </div>
-      <div style="font-size: 1.6rem; margin: 0" class="text-emphasize mat-h1">
-        4.9
-      </div>
-    </div>
-    <div>
-      {{ 'membership_selector.social_proof' | transloco }}
-    </div>
-  </div>
-  <div class="cards mb-2" *ngIf="subscriptionProducts">
+<div class="membership container-l">
+  <header class="intro">
+    <h1 class="intro-title">{{ 'membership_selector.title' | transloco }}</h1>
+    <p class="intro-subtitle">
+      {{ 'membership_selector.subtitle' | transloco }}
+    </p>
+  </header>
+
+  <section class="plans" *ngIf="subscriptionProducts">
     <button
-      class="card flex-1"
-      *ngFor="let product of subscriptionProducts"
+      type="button"
+      class="plan"
+      *ngFor="let product of subscriptionProducts; let i = index"
+      [class.featured]="i === featuredIndex"
       (click)="onSelect(product)"
     >
-      <div class="break-word text-center mb-1">
-        <span class="text-emphasize text-x200">{{ product.duration }}</span
-        ><br class="hide-when-needed" />
-        <span class="text-x150 text-emphasize"
-          >&nbsp;{{ product.durationUnit }}</span
-        >
-      </div>
-      <div
-        class="display-flex justify-content-center align-items-center border-bottom mb-1 pb-1"
-      >
+      <span class="plan-badge" *ngIf="i === featuredIndex">
+        {{ 'membership_selector.best_value' | transloco }}
+      </span>
+
+      <span class="plan-name">
+        {{ product.duration }} {{ product.durationUnit }}
+      </span>
+
+      <span class="plan-price">
         <ng-container *ngIf="product.perMonth">
-          <div class="text-emphasize flex-1 nowrap">
-            {{ 'membership_selector.per_month' | transloco }}
-          </div>
-          <div class="text-primary text-x150 flex-1 text-right">
-            {{ product.perMonth }}
-          </div>
+          <span class="plan-amount">{{ product.perMonth }}</span>
+          <span class="plan-period">{{
+            'membership_selector.per_month' | transloco
+          }}</span>
         </ng-container>
         <ng-container *ngIf="!product.perMonth">
-          <div
-            class="text-emphasize flex-1 nowrap text-x150-line-height text-center"
-          >
-            {{ 'membership_selector.pay_once' | transloco }}
-          </div>
+          <span class="plan-amount">{{ product.total }}</span>
+          <span class="plan-period">{{
+            'membership_selector.pay_once' | transloco
+          }}</span>
         </ng-container>
-      </div>
-      <div class="display-flex justify-content-center align-items-center mb-2">
-        <div class="text-emphasize flex-0">
-          {{ 'membership_selector.total' | transloco }}
-        </div>
-        <del
-          *ngIf="product.maxTotal"
-          class="flex-1 ml-1 text-x150 text-center"
-          >{{ product.maxTotal }}</del
-        >
-        <div class="text-primary text-x150 flex-1 text-right">
-          {{ product.total }}
-        </div>
-      </div>
-      <div class="text-center" style="margin-bottom: 0.5rem">
-        <div class="select-button">
-          {{ 'membership_selector.select' | transloco }}
-        </div>
-      </div>
-      <div class="text-center small">
-        <ng-container *ngIf="product.trialDays > 0"
-          ><div>
-            {{
-              `membership_selector.trial_${product.trialDays}_days` | transloco
-            }}
-          </div>
-          <div>
-            {{ `membership_selector.cancel` | transloco }}
-          </div>
-        </ng-container>
-      </div>
-    </button>
-  </div>
+      </span>
 
-  <div class="text-center">
-    {{ 'membership_selector.cards_stay' | transloco }}
-  </div>
+      <span class="plan-total">
+        <ng-container *ngIf="product.perMonth">
+          {{ 'membership_selector.total' | transloco }}:
+          <del *ngIf="product.maxTotal">{{ product.maxTotal }}</del>
+          <strong>{{ product.total }}</strong>
+          <span class="plan-save" *ngIf="savePercent(product) as percent">
+            {{ 'membership_selector.save' | transloco: { percent: percent } }}
+          </span>
+        </ng-container>
+      </span>
+
+      <span class="plan-button">
+        {{ 'membership_selector.select' | transloco }}
+      </span>
+
+      <span class="plan-note">
+        <ng-container *ngIf="product.trialDays > 0">
+          {{
+            `membership_selector.trial_${product.trialDays}_days` | transloco
+          }}
+          {{ 'membership_selector.cancel' | transloco }}
+        </ng-container>
+      </span>
+    </button>
+  </section>
+
+  <p class="reassurance">
+    <mat-icon>verified_user</mat-icon>
+    <span>{{ 'membership_selector.cards_stay' | transloco }}</span>
+  </p>
+
+  <section class="rating">
+    <div class="rating-score">
+      <div class="stars" aria-hidden="true">
+        <mat-icon fontSet="material-icons" *ngFor="let _ of [1, 2, 3, 4, 5]"
+          >star</mat-icon
+        >
+      </div>
+      <span class="rating-value">4.9</span>
+    </div>
+    <p class="rating-text">
+      {{ 'membership_selector.social_proof' | transloco }}
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">
+      {{ 'membership_selector.features_title' | transloco }}
+    </h2>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon"><mat-icon>computer</mat-icon></div>
+        <div>
+          <h3 class="feature-title">
+            {{ 'membership_selector.feature1.title' | transloco }}
+          </h3>
+          <p class="feature-description">
+            {{ 'membership_selector.feature1.desc1' | transloco }}
+            {{ 'membership_selector.feature1.desc2' | transloco }}
+          </p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><mat-icon>visibility</mat-icon></div>
+        <div>
+          <h3 class="feature-title">
+            {{ 'membership_selector.feature3.title' | transloco }}
+          </h3>
+          <p class="feature-description">
+            {{ 'membership_selector.feature3.desc' | transloco }}
+          </p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><mat-icon>translate</mat-icon></div>
+        <div>
+          <h3 class="feature-title">
+            {{ 'membership_selector.feature4.title' | transloco }}
+          </h3>
+          <p class="feature-description">
+            {{ 'membership_selector.feature4.desc' | transloco }}
+          </p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><mat-icon>mobile_text_2</mat-icon></div>
+        <div>
+          <h3 class="feature-title">
+            {{ 'membership_selector.feature2.title' | transloco }}
+          </h3>
+          <p class="feature-description">
+            {{ 'membership_selector.feature2.desc1' | transloco }}
+          </p>
+          <p class="feature-description feature-hint">
+            {{ 'membership_selector.feature2.desc2' | transloco }}
+            <mat-icon>more_vert</mat-icon>
+            <mat-icon>arrow_right_alt</mat-icon>
+            <strong>Translate with Vocably</strong>
+          </p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><mat-icon>import_contacts</mat-icon></div>
+        <div>
+          <h3 class="feature-title">
+            {{ 'membership_selector.feature5.title' | transloco }}
+          </h3>
+          <p class="feature-description">
+            {{ 'membership_selector.feature5.desc' | transloco }}
+          </p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><mat-icon>cloud</mat-icon></div>
+        <div>
+          <h3 class="feature-title">
+            {{ 'membership_selector.feature6.title' | transloco }}
+          </h3>
+          <p class="feature-description">
+            {{ 'membership_selector.feature6.desc' | transloco }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">
+      {{ 'membership_selector.comparison_title' | transloco }}
+    </h2>
+    <div class="comparison">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>{{ 'membership_selector.free' | transloco }}</th>
+            <th class="premium">
+              {{ 'membership_selector.premium' | transloco }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let key of [
+                'unlimited_translations',
+                'unlimited_collections',
+                'unlimited_sessions',
+                'unlimited_decks',
+                'cloud_storage',
+              ]
+            "
+          >
+            <td>{{ 'membership_selector.' + key | transloco }}</td>
+            <td class="check"><mat-icon>check</mat-icon></td>
+            <td class="check premium"><mat-icon>check</mat-icon></td>
+          </tr>
+          @if (staticMetadata) {
+            <tr class="highlight">
+              <td>
+                {{
+                  'membership_selector.card_saving'
+                    | transloco: { count: staticMetadata.max_cards }
+                }}
+              </td>
+              <td>
+                {{
+                  'membership_selector.cards_per_day'
+                    | transloco: { count: staticMetadata.cards_per_day }
+                }}
+              </td>
+              <td class="premium">
+                {{ 'membership_selector.unlimited' | transloco }}
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
 </div>

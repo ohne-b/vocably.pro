@@ -274,6 +274,12 @@ export const pt = {
   'membership_selector.cancel': 'Cancele a qualquer momento.',
   'membership_selector.cards_stay':
     'Todos os seus cartões salvos permanecerão em sua coleção se você decidir cancelar sua assinatura.',
+  'membership_selector.best_value': 'Melhor valor',
+  'membership_selector.save': 'Economize {{percent}}%',
+  'membership_selector.free': 'Grátis',
+  'membership_selector.premium': 'Premium',
+  'membership_selector.features_title':
+    'Aprenda palavras onde quer que as encontre',
 
   // Settings
   'settings.title': 'Configurações',

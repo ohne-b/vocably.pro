@@ -268,6 +268,11 @@ export const vi = {
   'membership_selector.cancel': 'Hủy bất cứ lúc nào.',
   'membership_selector.cards_stay':
     'Tất cả thẻ đã lưu sẽ ở lại trong bộ sưu tập nếu bạn hủy gói đăng ký.',
+  'membership_selector.best_value': 'Tiết kiệm nhất',
+  'membership_selector.save': 'Tiết kiệm {{percent}}%',
+  'membership_selector.free': 'Miễn phí',
+  'membership_selector.premium': 'Premium',
+  'membership_selector.features_title': 'Học từ ở bất cứ nơi nào bạn gặp chúng',
 
   // Settings
   'settings.title': 'Cài đặt',

@@ -279,6 +279,12 @@ export const tr = {
   'membership_selector.cancel': 'İstediğiniz zaman iptal edin.',
   'membership_selector.cards_stay':
     'Aboneliğinizi iptal etmeye karar verirseniz, tüm kaydettiğiniz kartlar koleksiyonunuzda kalacak.',
+  'membership_selector.best_value': 'En avantajlı',
+  'membership_selector.save': '%{{percent}} tasarruf',
+  'membership_selector.free': 'Ücretsiz',
+  'membership_selector.premium': 'Premium',
+  'membership_selector.features_title':
+    'Kelimeleri karşılaştığınız her yerde öğrenin',
 
   // Settings
   'settings.title': 'Ayarlar',

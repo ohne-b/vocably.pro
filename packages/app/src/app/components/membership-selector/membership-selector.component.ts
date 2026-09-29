@@ -13,6 +13,9 @@ import { UserStaticMetadata } from '@vocably/model';
 import { getUserStaticMetadata } from '@vocably/api';
 import { appBaseUrl } from '../../../app-base-url';
 
+const parsePrice = (price: string): number =>
+  parseFloat(price.replace(/[^0-9.]/g, '')) || 0;
+
 @Component({
   selector: 'app-membership-selector',
   templateUrl: './membership-selector.component.html',
@@ -24,12 +27,14 @@ export class MembershipSelectorComponent implements OnInit, OnDestroy {
 
   subscriptionProducts: SubscriptionProduct[] | null = null;
   staticMetadata: UserStaticMetadata | null = null;
+  featuredIndex = -1;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     getSubscriptionProducts().then((products) => {
       this.subscriptionProducts = products;
+      this.featuredIndex = products.findIndex((product) => product.maxTotal);
     });
 
     getUserStaticMetadata().then((result) => {
@@ -37,6 +42,16 @@ export class MembershipSelectorComponent implements OnInit, OnDestroy {
         this.staticMetadata = result.value;
       }
     });
+  }
+
+  savePercent(product: SubscriptionProduct): number {
+    const total = parsePrice(product.total);
+    const maxTotal = parsePrice(product.maxTotal);
+    if (!total || !maxTotal || total >= maxTotal) {
+      return 0;
+    }
+
+    return Math.round((1 - total / maxTotal) * 100);
   }
 
   onSelect(product: SubscriptionProduct) {
