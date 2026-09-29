@@ -1,0 +1,207 @@
+@import '../../../../styles/variables';
+
+$card-border: var(--border-color-muted, rgba(128, 128, 128, 0.25));
+$card-radius: 0.75rem;
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 6rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.state-icon {
+  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.membership {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+.card {
+  border: 1px solid $card-border;
+  border-radius: $card-radius;
+  background: var(--card-bg);
+}
+
+// Plan
+
+.plan {
+  border: 1px solid rgba(var(--primary-rgb), 0.35);
+  border-radius: $card-radius;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(var(--primary-rgb), 0.1),
+      rgba(var(--primary-rgb), 0) 60%
+    ),
+    var(--card-bg);
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.1);
+  overflow: hidden;
+}
+
+.plan-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.plan-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.plan-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.plan-title-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
+
+.plan-title {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.plan-subtitle {
+  color: var(--text-muted);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(34, 160, 90, 0.12);
+  color: rgb(28, 135, 75);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pill-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.rows:empty {
+  display: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid $card-border;
+
+  @media (max-width: $sm) {
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+}
+
+.row-label {
+  color: var(--text-muted);
+}
+
+.row-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-weight: 500;
+  text-align: right;
+
+  .link {
+    font-weight: 400;
+  }
+}
+
+.plan-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid $card-border;
+}
+
+.inline-icon {
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.35rem;
+  vertical-align: -0.15em;
+}
+
+// Benefits
+
+.section-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem 2rem;
+  padding: 1.25rem 1.5rem;
+  list-style: none;
+
+  @media (min-width: $md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.45;
+}
+
+.benefit-icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--primary-color);
+}

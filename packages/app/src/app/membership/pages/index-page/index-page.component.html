@@ -1,48 +1,122 @@
 <div class="container-xl top">
-  <app-header></app-header>
+  <app-header [title]="'membership.title' | transloco"></app-header>
 </div>
-<div class="container-xl bottom">
-  <div class="hero">
-    <div class="text-center">
-      <ng-container *ngIf="membershipStatus.type === 'loading'">
-        <ion-spinner name="dots" class="mr-1"></ion-spinner
-        >{{ 'membership.loading' | transloco }}
-      </ng-container>
-      <ng-container *ngIf="membershipStatus.type === 'paid_group'">
-        <h1>{{ 'membership.premium_user' | transloco }}</h1>
-        <div>
-          <button class="unstyled link" (click)="showWhyPaid()">
-            {{ 'membership.why' | transloco }}
-          </button>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="membershipStatus.type === 'free'">
-        <app-membership-selector></app-membership-selector>
-      </ng-container>
-      <ng-container *ngIf="membershipStatus.type === 'revenue_cat'">
-        <h1>{{ 'membership.premium_user' | transloco }}</h1>
-        <p *ngIf="membershipStatus.endDate">
-          {{ 'membership.ends_at' | transloco }}
-          {{ membershipStatus.endDate.toLocaleDateString() }}
-        </p>
-        <p *ngIf="membershipStatus.nextPaymentDate">
-          {{ 'membership.next_payment' | transloco }}
-          {{ membershipStatus.nextPaymentDate.toLocaleDateString() }}
-        </p>
-        <div
-          *ngIf="
-            membershipStatus.entitlementInfo.willRenew &&
-            membershipStatus.managementUrl
-          "
-        >
-          <a [href]="membershipStatus.managementUrl">{{
-            'membership.manage' | transloco
-          }}</a>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="membershipStatus.type === 'error'">
-        <div>{{ 'membership.error' | transloco }}</div>
-      </ng-container>
+
+@switch (membershipStatus.type) {
+  @case ('loading') {
+    <div class="container bottom state">
+      <ion-spinner name="dots"></ion-spinner>
+      <span>{{ 'membership.loading' | transloco }}</span>
     </div>
-  </div>
-</div>
+  }
+
+  @case ('free') {
+    <div class="container-xl bottom">
+      <app-membership-selector></app-membership-selector>
+    </div>
+  }
+
+  @case ('error') {
+    <div class="container bottom state">
+      <mat-icon class="state-icon">cloud_off</mat-icon>
+      <span>{{ 'membership.error' | transloco }}</span>
+      <button class="button" (click)="reload$.next('with_loader')">
+        {{ 'membership.retry' | transloco }}
+      </button>
+    </div>
+  }
+
+  @default {
+    <div class="container bottom membership">
+      <section class="plan">
+        <div class="plan-head">
+          <div class="plan-icon"><mat-icon>crown</mat-icon></div>
+          <div class="plan-text">
+            <div class="plan-title-row">
+              <h1 class="plan-title">
+                {{ 'membership.plan_name' | transloco }}
+              </h1>
+              <span class="pill">
+                <span class="pill-dot"></span>
+                {{ 'membership.active' | transloco }}
+              </span>
+            </div>
+            <p class="plan-subtitle">
+              {{ 'membership.plan_desc' | transloco }}
+            </p>
+          </div>
+        </div>
+
+        <div class="rows">
+          @if (membershipStatus.type === 'paid_group') {
+            <div class="row">
+              <div class="row-label">{{ 'membership.access' | transloco }}</div>
+              <div class="row-value">
+                {{ 'membership.complimentary' | transloco }}
+                <button class="unstyled link" (click)="showWhyPaid()">
+                  {{ 'membership.why' | transloco }}
+                </button>
+              </div>
+            </div>
+          }
+
+          @if (membershipStatus.type === 'revenue_cat') {
+            @if (membershipStatus.nextPaymentDate) {
+              <div class="row">
+                <div class="row-label">
+                  {{ 'membership.renews_on' | transloco }}
+                </div>
+                <div class="row-value">
+                  {{ formatDate(membershipStatus.nextPaymentDate) }}
+                </div>
+              </div>
+            }
+            @if (membershipStatus.endDate) {
+              <div class="row">
+                <div class="row-label">
+                  {{ 'membership.ends_on' | transloco }}
+                </div>
+                <div class="row-value">
+                  {{ formatDate(membershipStatus.endDate) }}
+                </div>
+              </div>
+            }
+            @if (storeName(membershipStatus.entitlementInfo.store); as store) {
+              <div class="row">
+                <div class="row-label">
+                  {{ 'membership.billed_through' | transloco }}
+                </div>
+                <div class="row-value">{{ store }}</div>
+              </div>
+            }
+          }
+        </div>
+
+        @if (
+          membershipStatus.type === 'revenue_cat' &&
+          membershipStatus.entitlementInfo.willRenew &&
+          membershipStatus.managementUrl
+        ) {
+          <div class="plan-actions">
+            <a class="button" [href]="membershipStatus.managementUrl">
+              {{ 'membership.manage' | transloco }}
+              <mat-icon class="inline-icon">open_in_new</mat-icon>
+            </a>
+          </div>
+        }
+      </section>
+
+      <section>
+        <h2 class="section-title">{{ 'membership.included' | transloco }}</h2>
+        <ul class="card benefits">
+          @for (key of benefits; track key) {
+            <li class="benefit">
+              <mat-icon class="benefit-icon">check_circle</mat-icon>
+              <span>{{ key | transloco }}</span>
+            </li>
+          }
+        </ul>
+      </section>
+    </div>
+  }
+}

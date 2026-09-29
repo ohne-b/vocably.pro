@@ -1,9 +1,9 @@
-import { NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatIcon } from '@angular/material/icon';
 import { TranslocoModule } from '@jsverse/transloco';
 import { IonicModule } from '@ionic/angular';
-import { EntitlementInfo, Purchases } from '@revenuecat/purchases-js';
+import { EntitlementInfo, Purchases, Store } from '@revenuecat/purchases-js';
 import { getUserStaticMetadata } from '@vocably/api';
 import { startWith, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { AuthService } from '../../../auth/auth.service';
@@ -32,14 +32,24 @@ type MembershipStatus =
       type: 'error';
     };
 
+const storeNames: Partial<Record<Store, string>> = {
+  app_store: 'App Store',
+  mac_app_store: 'Mac App Store',
+  play_store: 'Google Play',
+  amazon: 'Amazon Appstore',
+  paddle: 'Paddle',
+  stripe: 'Stripe',
+  rc_billing: 'Web',
+};
+
 @Component({
   selector: 'app-index-page',
   templateUrl: './index-page.component.html',
   styleUrls: ['./index-page.component.scss'],
   imports: [
     HeaderComponent,
-    NgIf,
     IonicModule,
+    MatIcon,
     MembershipSelectorComponent,
     TranslocoModule,
   ],
@@ -52,6 +62,15 @@ export class IndexPageComponent implements OnInit, OnDestroy {
   };
 
   public reload$ = new Subject<'with_loader' | 'without_loader'>();
+
+  public benefits = [
+    'membership_selector.unlimited_translations',
+    'membership_selector.unlimited_collections',
+    'membership_selector.unlimited_sessions',
+    'membership_selector.unlimited_decks',
+    'membership.unlimited_cards',
+    'membership_selector.cloud_storage',
+  ];
 
   constructor(
     private authService: AuthService,
@@ -126,6 +145,14 @@ export class IndexPageComponent implements OnInit, OnDestroy {
           };
         },
       });
+  }
+
+  formatDate(date: Date): string {
+    return date.toLocaleDateString(undefined, { dateStyle: 'long' });
+  }
+
+  storeName(store: Store): string | null {
+    return storeNames[store] ?? null;
   }
 
   showWhyPaid() {
