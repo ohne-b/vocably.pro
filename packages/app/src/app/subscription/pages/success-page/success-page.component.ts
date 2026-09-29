@@ -1,7 +1,7 @@
-import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 import { TranslocoModule } from '@jsverse/transloco';
 import {
   getSubscriptionProducts,
@@ -26,10 +26,18 @@ type ProductResult =
   selector: 'app-success-page',
   templateUrl: './success-page.component.html',
   styleUrls: ['./success-page.component.scss'],
-  imports: [MatIcon, NgIf, TranslocoModule],
+  imports: [IonicModule, MatIcon, RouterLink, TranslocoModule],
 })
 export class SuccessPageComponent implements OnInit {
   public productResult: ProductResult = { status: 'loading' };
+
+  public benefits = [
+    'membership_selector.unlimited_translations',
+    'membership_selector.unlimited_collections',
+    'membership_selector.unlimited_sessions',
+    'membership.unlimited_cards',
+    'membership_selector.cloud_storage',
+  ];
 
   constructor(private route: ActivatedRoute) {}
 

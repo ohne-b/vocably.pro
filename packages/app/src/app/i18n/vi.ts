@@ -398,8 +398,16 @@ export const vi = {
   'android_translate.try_it': 'Thử với văn bản này',
 
   // Subscription
-  'subscription.purchased': 'đã được mua thành công.',
-  'subscription.go_back': 'Quay lại trang thành viên.',
+  'subscription.title': 'Hoàn tất!',
+  'subscription.subtitle':
+    'Cảm ơn bạn đã ủng hộ Vocably. Premium đã được mở khóa trên mọi thiết bị của bạn.',
+  'subscription.plan': 'Gói',
+  'subscription.free_trial': 'Dùng thử miễn phí',
+  'subscription.trial_days': '{{days}} ngày',
+  'subscription.status': 'Trạng thái',
+  'subscription.view_membership': 'Xem gói thành viên',
+  'subscription.start_learning': 'Bắt đầu học',
+  'subscription.receipt': 'Biên lai đã được gửi đến email của bạn.',
 
   // SRS
   'srs.card.space_hint': 'Dấu cách trên bàn phím',

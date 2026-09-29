@@ -412,8 +412,16 @@ export const tr = {
   'android_translate.try_it': 'Bu metinde deneyin',
 
   // Subscription
-  'subscription.purchased': 'başarıyla satın alındı.',
-  'subscription.go_back': 'Üyelik sayfasına geri dön.',
+  'subscription.title': 'Her şey hazır!',
+  'subscription.subtitle':
+    "Vocably'yi desteklediğiniz için teşekkürler. Premium artık tüm cihazlarınızda etkin.",
+  'subscription.plan': 'Plan',
+  'subscription.free_trial': 'Ücretsiz deneme',
+  'subscription.trial_days': '{{days}} gün',
+  'subscription.status': 'Durum',
+  'subscription.view_membership': 'Üyeliği görüntüle',
+  'subscription.start_learning': 'Öğrenmeye başla',
+  'subscription.receipt': 'Makbuzunuz e-posta adresinize gönderildi.',
 
   // SRS
   'srs.card.space_hint': 'Klavyede boşluk tuşu',

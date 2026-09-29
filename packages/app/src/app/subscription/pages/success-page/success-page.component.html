@@ -1,16 +1,74 @@
-<div class="text-center">
-  <div style="margin-bottom: 1rem">
-    <mat-icon
-      class="text-primary"
-      style="font-size: 10rem; width: 10rem; height: 10rem"
-      >priority</mat-icon
-    >
+@if (productResult.status === 'loading') {
+  <div class="state">
+    <ion-spinner name="dots"></ion-spinner>
   </div>
-  <div *ngIf="productResult.status === 'product'">
-    <div>
-      <div class="mat-h1">{{ productResult.product.title }}</div>
-      <div class="mat-h2">{{ 'subscription.purchased' | transloco }}</div>
-    </div>
-    <a [href]="'membership'">{{ 'subscription.go_back' | transloco }}</a>
+} @else {
+  <div class="success">
+    <section class="card">
+      <div class="head">
+        <div class="badge">
+          <mat-icon>check</mat-icon>
+        </div>
+        <h1 class="title">{{ 'subscription.title' | transloco }}</h1>
+        <p class="subtitle">{{ 'subscription.subtitle' | transloco }}</p>
+      </div>
+
+      @if (productResult.status === 'product') {
+        <div class="rows">
+          <div class="row">
+            <div class="row-label">{{ 'subscription.plan' | transloco }}</div>
+            <div class="row-value">{{ productResult.product.title }}</div>
+          </div>
+          @if (productResult.product.trialDays > 0) {
+            <div class="row">
+              <div class="row-label">
+                {{ 'subscription.free_trial' | transloco }}
+              </div>
+              <div class="row-value">
+                {{
+                  'subscription.trial_days'
+                    | transloco: { days: productResult.product.trialDays }
+                }}
+              </div>
+            </div>
+          }
+          <div class="row">
+            <div class="row-label">{{ 'subscription.status' | transloco }}</div>
+            <div class="row-value">
+              <span class="pill">
+                <span class="pill-dot"></span>
+                {{ 'membership.active' | transloco }}
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+
+      <div class="included">
+        <h2 class="section-title">{{ 'membership.included' | transloco }}</h2>
+        <ul class="benefits">
+          @for (key of benefits; track key) {
+            <li class="benefit">
+              <mat-icon class="benefit-icon">check_circle</mat-icon>
+              <span>{{ key | transloco }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <div class="actions">
+        <a class="button outline" [routerLink]="['/membership']">
+          {{ 'subscription.view_membership' | transloco }}
+        </a>
+        <a class="button" [routerLink]="['/']">
+          {{ 'subscription.start_learning' | transloco }}
+        </a>
+      </div>
+    </section>
+
+    <p class="receipt">
+      <mat-icon class="receipt-icon">mail</mat-icon>
+      {{ 'subscription.receipt' | transloco }}
+    </p>
   </div>
-</div>
+}

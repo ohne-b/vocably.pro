@@ -409,8 +409,16 @@ export const uk = {
   'android_translate.try_it': 'Спробуйте на цьому тексті',
 
   // Subscription
-  'subscription.purchased': 'успішно придбано.',
-  'subscription.go_back': 'Повернутися на сторінку підписки.',
+  'subscription.title': 'Усе готово!',
+  'subscription.subtitle':
+    'Дякуємо, що підтримуєте Vocably. Premium уже доступний на всіх ваших пристроях.',
+  'subscription.plan': 'Тариф',
+  'subscription.free_trial': 'Безкоштовний період',
+  'subscription.trial_days': 'Днів: {{days}}',
+  'subscription.status': 'Статус',
+  'subscription.view_membership': 'Відкрити підписку',
+  'subscription.start_learning': 'Почати навчання',
+  'subscription.receipt': 'Квитанцію надіслано на вашу пошту.',
 
   // SRS
   'srs.card.space_hint': 'Пробіл на клавіатурі',

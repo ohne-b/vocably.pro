@@ -403,8 +403,16 @@ export const en = {
   'android_translate.try_it': 'Try it on this text',
 
   // Subscription
-  'subscription.purchased': 'is successfully purchased.',
-  'subscription.go_back': 'Go back to the membership page.',
+  'subscription.title': "You're all set!",
+  'subscription.subtitle':
+    'Thank you for supporting Vocably. Premium is now unlocked on all your devices.',
+  'subscription.plan': 'Plan',
+  'subscription.free_trial': 'Free trial',
+  'subscription.trial_days': '{{days}} days',
+  'subscription.status': 'Status',
+  'subscription.view_membership': 'View membership',
+  'subscription.start_learning': 'Start learning',
+  'subscription.receipt': 'A receipt has been sent to your email.',
 
   // SRS
   'srs.card.space_hint': 'Space on the keyboard',

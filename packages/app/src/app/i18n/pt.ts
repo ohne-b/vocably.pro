@@ -406,8 +406,16 @@ export const pt = {
   'android_translate.try_it': 'Experimente neste texto',
 
   // Subscription
-  'subscription.purchased': 'foi adquirido com sucesso.',
-  'subscription.go_back': 'Voltar para a página de membro.',
+  'subscription.title': 'Tudo pronto!',
+  'subscription.subtitle':
+    'Obrigado por apoiar o Vocably. O Premium já está ativo em todos os seus dispositivos.',
+  'subscription.plan': 'Plano',
+  'subscription.free_trial': 'Teste gratuito',
+  'subscription.trial_days': '{{days}} dias',
+  'subscription.status': 'Status',
+  'subscription.view_membership': 'Ver assinatura',
+  'subscription.start_learning': 'Começar a aprender',
+  'subscription.receipt': 'Enviamos o recibo para o seu e-mail.',
 
   // SRS
   'srs.card.space_hint': 'Espaço no teclado',

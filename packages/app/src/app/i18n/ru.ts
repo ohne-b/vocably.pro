@@ -410,8 +410,16 @@ export const ru = {
   'android_translate.try_it': 'Попробуйте на этом тексте',
 
   // Subscription
-  'subscription.purchased': 'успешно куплен.',
-  'subscription.go_back': 'Вернуться на страницу подписки.',
+  'subscription.title': 'Всё готово!',
+  'subscription.subtitle':
+    'Спасибо, что поддерживаете Vocably. Premium уже доступен на всех ваших устройствах.',
+  'subscription.plan': 'Тариф',
+  'subscription.free_trial': 'Бесплатный период',
+  'subscription.trial_days': 'Дней: {{days}}',
+  'subscription.status': 'Статус',
+  'subscription.view_membership': 'Открыть подписку',
+  'subscription.start_learning': 'Начать учиться',
+  'subscription.receipt': 'Квитанция отправлена на вашу почту.',
 
   // SRS
   'srs.card.space_hint': 'Пробел на клавиатуре',
