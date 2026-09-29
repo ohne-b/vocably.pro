@@ -32,7 +32,10 @@
           >
         </button>
         <mat-menu #menu="matMenu">
-          <a mat-menu-item [routerLink]="['/welcome']"
+          <a
+            mat-menu-item
+            [routerLink]="['/welcome']"
+            *ngIf="extensionCanBeInstalled"
             ><mat-icon>person_raised_hand</mat-icon
             >{{ 'header.setup' | transloco }}</a
           >

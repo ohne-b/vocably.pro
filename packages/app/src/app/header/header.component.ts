@@ -7,6 +7,7 @@ import { RouterLink } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { IonicModule } from '@ionic/angular';
 import { Subject, takeUntil } from 'rxjs';
+import { canExtensionBeInstalled } from '../../extension';
 import { AuthService } from '../auth/auth.service';
 import { LogoComponent } from './logo/logo.component';
 
@@ -34,6 +35,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Input() dense = false;
 
   isLoggedIn: boolean | null = null;
+  extensionCanBeInstalled = canExtensionBeInstalled;
 
   constructor(public auth: AuthService) {}
 
