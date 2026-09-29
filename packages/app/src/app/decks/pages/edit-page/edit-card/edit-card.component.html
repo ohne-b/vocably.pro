@@ -7,12 +7,17 @@
   (save)="onSave($event)"
   (cancel)="isEdit = false"
 ></app-card-form>
-<div data-test="card-item" class="card" [@card]="isEdit ? 'hidden' : 'shown'">
+<div
+  data-test="card-item"
+  class="card"
+  [class.deleted]="isDeleted"
+  [@card]="isEdit ? 'hidden' : 'shown'"
+>
   <div class="actions" data-test="card-actions" *ngIf="!isEdit">
     <button
       *ngIf="!isDeleted"
       data-test="card-action-edit"
-      class="action mr-0_5"
+      class="action"
       (click)="isEdit = true"
     >
       <mat-icon
@@ -26,7 +31,7 @@
     <button
       *ngIf="!isDeleted"
       data-test="card-action-delete"
-      class="action"
+      class="action action-danger"
       (click)="delete.emit()"
     >
       <mat-icon
@@ -34,15 +39,16 @@
         [attr.aria-label]="'decks.edit_card.delete' | transloco"
         class="middle"
         inline="true"
-        >delete</mat-icon
+        >delete_outline</mat-icon
       >
     </button>
     <button
-      class="unstyled link"
+      class="restore"
       data-test="card-action-restore"
       *ngIf="isDeleted"
       (click)="restore.emit()"
     >
+      <mat-icon class="restore-icon" aria-hidden="true">undo</mat-icon>
       {{ 'decks.edit_card.restore' | transloco }}
     </button>
   </div>

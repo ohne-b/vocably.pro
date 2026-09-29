@@ -1,26 +1,47 @@
-<nav class="text-center mb-2 deck-menu">
-  <app-back-button></app-back-button>
-  <button class="unstyled link" [routerLink]="['./export']">
-    {{ 'decks.edit.export_deck' | transloco }}
-  </button>
-</nav>
-<ul class="separated unstyled mb-2">
-  <li *ngFor="let card of cards">
-    <app-edit-card
-      [attr.data-test-card-id]="card.id"
-      [item]="updating[card.id] || card"
-      [isDeleted]="deleted.includes(card)"
-      (delete)="deleteCard(card)"
-      (restore)="restoreCard(card)"
-      (save)="saveCard($event)"
-    ></app-edit-card>
-  </li>
-</ul>
+<div class="edit">
+  <nav class="toolbar">
+    <app-back-button></app-back-button>
+    <a class="pill" [routerLink]="['./export']">
+      <mat-icon class="pill-icon">download</mat-icon>
+      {{ 'decks.edit.export_deck' | transloco }}
+    </a>
+  </nav>
 
-<button
-  class="button outline block"
-  (click)="deleteDeck()"
-  data-test="delete-button"
->
-  {{ 'decks.edit.delete_deck' | transloco }}
-</button>
+  <section>
+    <div class="section-head">
+      <h2 class="section-title">{{ 'decks.dashboard.total' | transloco }}</h2>
+      <span class="section-count">{{ cards.length - deleted.length }}</span>
+    </div>
+
+    <ul class="cards">
+      <li
+        *ngFor="let card of cards"
+        class="card-row"
+        [class.deleted]="deleted.includes(card)"
+      >
+        <app-edit-card
+          [attr.data-test-card-id]="card.id"
+          [item]="updating[card.id] || card"
+          [isDeleted]="deleted.includes(card)"
+          (delete)="deleteCard(card)"
+          (restore)="restoreCard(card)"
+          (save)="saveCard($event)"
+        ></app-edit-card>
+      </li>
+    </ul>
+  </section>
+
+  <section class="danger-zone">
+    <p class="danger-text">
+      {{ 'decks.delete_dialog.cannot_undo' | transloco }}
+    </p>
+    <button
+      class="danger-button"
+      (click)="deleteDeck()"
+      data-test="delete-button"
+    >
+      <mat-icon class="pill-icon">delete_outline</mat-icon>
+      {{ 'decks.edit.delete_deck' | transloco }}
+    </button>
+  </section>
+</div>
