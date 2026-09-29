@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
-import { TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { getPaddleInstance } from '@paddle/paddle-js';
 import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
@@ -29,7 +29,10 @@ export class MembershipSelectorComponent implements OnInit, OnDestroy {
   staticMetadata: UserStaticMetadata | null = null;
   featuredIndex = -1;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private transloco: TranslocoService
+  ) {}
 
   ngOnInit(): void {
     getSubscriptionProducts().then((products) => {
@@ -76,6 +79,7 @@ export class MembershipSelectorComponent implements OnInit, OnDestroy {
             revenue_cat_id: userData.sub,
           },
           settings: {
+            locale: this.transloco.getActiveLang(),
             successUrl: appBaseUrl + `/subscribe/success/${product.priceId}`,
           },
         });
