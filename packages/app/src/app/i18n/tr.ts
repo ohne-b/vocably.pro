@@ -389,6 +389,7 @@ export const tr = {
   'import.trouble': 'İçe aktarmayla ilgili sorun mu yaşıyorsunuz?',
   'import.let_me_know': 'Bana bildirin',
   'import.help_best': '— elimden geleni yapacağım.',
+  'import.preview': 'Önizleme',
   'import.add_tags': 'Etiket ekle',
   'import.analysing': 'Analiz ediliyor',
   'import.import_cards': 'Kartları İçe Aktar',

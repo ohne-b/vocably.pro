@@ -386,6 +386,7 @@ export const uk = {
   'import.trouble': 'Проблеми з імпортом?',
   'import.let_me_know': 'Дайте знати',
   'import.help_best': '— постараюсь допомогти.',
+  'import.preview': 'Попередній перегляд',
   'import.add_tags': 'Додати теги',
   'import.analysing': 'Аналіз',
   'import.import_cards': 'Імпортувати картки',

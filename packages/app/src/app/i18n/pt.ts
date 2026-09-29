@@ -383,6 +383,7 @@ export const pt = {
   'import.trouble': 'Tendo problemas com a importação?',
   'import.let_me_know': 'Me avise',
   'import.help_best': '— farei o meu melhor para ajudar.',
+  'import.preview': 'Pré-visualização',
   'import.add_tags': 'Adicionar etiquetas',
   'import.analysing': 'Analisando',
   'import.import_cards': 'Importar cartões',

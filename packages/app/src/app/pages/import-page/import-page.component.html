@@ -1,231 +1,219 @@
 <div class="container-xl top">
   <app-header [title]="'import.title' | transloco"></app-header>
 </div>
-<style>
-  .hero-sticky-container {
-    overflow: visible;
-  }
+<div class="container-xl bottom import">
+  <div *ngIf="loadingDecks" class="loading">
+    <ion-spinner name="dots"></ion-spinner>
+    {{ 'import.loading_decks' | transloco }}
+  </div>
 
-  .import-table {
-    top: 0;
-    border-collapse: collapse;
+  <ng-container *ngIf="!loadingDecks">
+    <ng-container *ngIf="selectedDeck$ | async as selectedDeck">
+      <section *ngIf="selectedDeck === 'none'" class="card language-picker">
+        <h2 class="language-picker-title">
+          {{ 'import.what_language' | transloco }}
+        </h2>
+        <app-language-input
+          value=""
+          (onChange)="selectedDeck$.next($event)"
+        ></app-language-input>
+      </section>
 
-    td {
-      padding: 3px 6px;
-    }
+      <ng-container *ngIf="selectedDeck !== 'none'">
+        <section class="card">
+          <div class="row">
+            <span class="row-label">{{
+              'import.import_cards_for' | transloco
+            }}</span>
+            <app-deck-selector
+              [disabled]="isImporting"
+              [value]="selectedDeck"
+              [languages]="languages"
+              (change)="selectedDeck$.next($event)"
+            ></app-deck-selector>
+          </div>
+        </section>
 
-    th {
-      padding: 6px;
-      backdrop-filter: blur(3px);
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-
-    tbody tr:hover,
-    tbody tr:has(input:focus) {
-      background: var(--contrast-bg);
-    }
-
-    input {
-      width: 100%;
-      border: 0.5px solid var(--border-color);
-      border-radius: 4px;
-    }
-  }
-</style>
-<div class="container-xl">
-  <div class="hero hero-sticky-container">
-    <div>
-      <div *ngIf="loadingDecks" class="text-center">
-        <ion-spinner name="dots" class="mr-1"></ion-spinner
-        >{{ 'import.loading_decks' | transloco }}
-      </div>
-      <ng-container *ngIf="!loadingDecks">
-        <ng-container *ngIf="selectedDeck$ | async as selectedDeck">
-          <ng-container *ngIf="selectedDeck === 'none'">
-            <div class="lead-2 text-center text-emphasize mb-2">
-              {{ 'import.what_language' | transloco }}
-            </div>
-            <app-language-input
-              value=""
-              (onChange)="selectedDeck$.next($event)"
-            ></app-language-input>
-          </ng-container>
-          <div style="margin-bottom: 4rem" *ngIf="selectedDeck !== 'none'">
-            <div class="mb-1">
-              {{ 'import.import_cards_for' | transloco }}
-
-              <app-deck-selector
-                style="
-                  display: inline-flex;
-                  margin-top: -6px;
-                  margin-left: 0.5rem;
-                "
-                [disabled]="isImporting"
-                [value]="selectedDeck"
-                [languages]="languages"
-                (change)="selectedDeck$.next($event)"
-              ></app-deck-selector>
-            </div>
-            <div class="mb-1">
-              {{ 'import.csv_two_columns' | transloco }}
-              <mat-icon class="middle ml-0_5">keyboard_tab</mat-icon>.
-            </div>
-            <div class="mb-1">
-              <input
-                hidden
-                #fileInput
-                type="file"
-                (change)="onFileChange($event.target)"
-                accept=".csv,.txt"
-              />
-              {{ 'import.copy_paste' | transloco }}
-              <button
-                mat-button
-                color="accent"
-                class="mr-0_5"
-                (click)="fileInput.click()"
-                style="padding-left: 4px; padding-right: 8px"
-                [disabled]="isImporting"
-              >
-                <mat-icon class="middle mr-0_5" style="margin-left: 0"
-                  >upload</mat-icon
-                ><span class="middle">{{
-                  'import.upload_csv' | transloco
-                }}</span>
-              </button>
-            </div>
-
-            <p>
-              <textarea
-                #contents
-                [(ngModel)]="csv"
-                (input)="onCsvChange()"
-                (keydown)="onKeyDown($event)"
-                [readOnly]="isImporting"
-                class="csv-textarea"
-                wrap="off"
-                [placeholder]="'import.placeholder' | transloco"
-              ></textarea>
-            </p>
-
-            <p>
-              {{ 'import.dont_know' | transloco }}
-              <a target="_blank" href="assets/example.csv">{{
-                'import.download_example' | transloco
-              }}</a
-              >.
-            </p>
-
-            <ng-container *ngIf="csvData$ | async as csvData">
-              <ng-container *ngIf="csvData.length === 0">
-                <p class="text-danger">
-                  {{ 'import.csv_error' | transloco }}
-                  <mat-icon class="middle ml-0_5">keyboard_tab</mat-icon>
-                </p>
-                <p class="text-danger">
-                  {{ 'import.trouble' | transloco }}
-                  <a href="feedback">{{ 'import.let_me_know' | transloco }}</a>
-                  {{ 'import.help_best' | transloco }}
-                </p>
-              </ng-container>
-              <ng-container *ngIf="csvData.length > 0">
-                <table
-                  *ngIf="csvData.length > 0"
-                  class="mt-1 mb-1 import-table"
+        <section class="card">
+          <div class="card-head">
+            <div class="instructions">
+              <p class="instruction">
+                {{ 'import.copy_paste' | transloco }}
+                <button
+                  class="pill"
+                  (click)="fileInput.click()"
+                  [disabled]="isImporting"
                 >
+                  <mat-icon class="pill-icon" aria-hidden="true"
+                    >upload</mat-icon
+                  >
+                  {{ 'import.upload_csv' | transloco }}
+                </button>
+              </p>
+              <p class="instruction muted">
+                {{ 'import.csv_two_columns' | transloco }}
+                <mat-icon class="inline-icon" aria-hidden="true"
+                  >keyboard_tab</mat-icon
+                >
+              </p>
+            </div>
+            <input
+              hidden
+              #fileInput
+              type="file"
+              (change)="onFileChange($event.target)"
+              accept=".csv,.txt"
+            />
+          </div>
+          <textarea
+            [(ngModel)]="csv"
+            (input)="onCsvChange()"
+            (keydown)="onKeyDown($event)"
+            [readOnly]="isImporting"
+            class="csv-textarea"
+            wrap="off"
+            [placeholder]="'import.placeholder' | transloco"
+          ></textarea>
+          <div class="card-foot">
+            <mat-icon class="inline-icon" aria-hidden="true"
+              >help_outline</mat-icon
+            >
+            <span>
+              {{ 'import.dont_know' | transloco }}
+              <a class="link" target="_blank" href="assets/example.csv">{{
+                'import.download_example' | transloco
+              }}</a>
+            </span>
+          </div>
+        </section>
+
+        <ng-container *ngIf="csvData$ | async as csvData">
+          <div *ngIf="csvData.length === 0" class="callout callout-danger">
+            <mat-icon class="callout-icon" aria-hidden="true"
+              >error_outline</mat-icon
+            >
+            <div class="callout-text">
+              <p>
+                {{ 'import.csv_error' | transloco }}
+                <mat-icon class="inline-icon" aria-hidden="true"
+                  >keyboard_tab</mat-icon
+                >
+              </p>
+              <p>
+                {{ 'import.trouble' | transloco }}
+                <a class="link" href="feedback">{{
+                  'import.let_me_know' | transloco
+                }}</a>
+                {{ 'import.help_best' | transloco }}
+              </p>
+            </div>
+          </div>
+
+          <section *ngIf="csvData.length > 0" class="card">
+            <div class="card-head">
+              <h2 class="section-title">
+                {{ 'import.preview' | transloco }}
+                <span class="count">{{ csvData.length }}</span>
+              </h2>
+              <span *ngIf="isAnalyzing" class="analyzing">
+                <ion-spinner name="dots"></ion-spinner>
+                {{ 'import.analysing' | transloco }}
+              </span>
+            </div>
+
+            <div class="table-scroll">
+              <table class="import-table">
+                <thead>
                   <tr>
-                    <th class="text-left"></th>
-                    <th class="text-left">{{ columnLabels.source }}</th>
-                    <th class="text-left">{{ columnLabels.translation }}</th>
-                    <th class="text-left">{{ columnLabels.partOfSpeech }}</th>
-                    <th
-                      class="text-left"
-                      *ngFor="let column of extraCsvColumns"
-                    >
+                    <th class="index-cell"></th>
+                    <th>{{ columnLabels.source }}</th>
+                    <th>{{ columnLabels.translation }}</th>
+                    <th>{{ columnLabels.partOfSpeech }}</th>
+                    <th *ngFor="let column of extraCsvColumns">
                       {{ columnLabels[column] }}
                     </th>
                   </tr>
-                  <tbody>
-                    <tr *ngFor="let cardRow of csvData; let i = index">
-                      <td>{{ i + 1 }}.</td>
-                      <td>{{ cardRow.source }}</td>
-                      <td>{{ cardRow.translation }}</td>
-                      <td>
-                        <ng-container *ngIf="csvPos[i] || !isAnalyzing">
-                          <input type="text" [(ngModel)]="csvPos[i]" />
-                        </ng-container>
-                        <ion-spinner
-                          name="dots"
-                          *ngIf="!csvPos[i] && isAnalyzing"
-                        ></ion-spinner>
-                      </td>
-                      <!-- prettier-ignore -->
-                      <td class="pre" *ngFor="let column of extraCsvColumns">{{ cardRow[column] }}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let cardRow of csvData; let i = index">
+                    <td class="index-cell">{{ i + 1 }}</td>
+                    <td class="source-cell">{{ cardRow.source }}</td>
+                    <td>{{ cardRow.translation }}</td>
+                    <td class="pos-cell">
+                      <input
+                        *ngIf="csvPos[i] || !isAnalyzing"
+                        type="text"
+                        class="pos-input"
+                        [attr.aria-label]="columnLabels.partOfSpeech"
+                        [(ngModel)]="csvPos[i]"
+                      />
+                      <ion-spinner
+                        name="dots"
+                        *ngIf="!csvPos[i] && isAnalyzing"
+                      ></ion-spinner>
+                    </td>
+                    <!-- prettier-ignore -->
+                    <td class="pre" *ngFor="let column of extraCsvColumns">{{ cardRow[column] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-                <div
-                  class="display-flex"
-                  style="align-items: center; gap: 1rem"
-                >
-                  <app-tags-selector
-                    [selected]="selectedTags"
-                    [tags]="allTags"
-                    (onDeleteTag)="deleteTag(selectedDeck, $event)"
-                    (onSaveTag)="saveTag(selectedDeck, $event)"
-                    (onAddNewTag)="addNewTag($event)"
-                    (onSelect)="selectTag($event)"
-                    ><button mat-button color="accent" [disabled]="isImporting">
-                      <mat-icon class="middle mr-0_5" style="margin-left: 0"
-                        >sell</mat-icon
-                      >
-                      {{ 'import.add_tags' | transloco }}
-                    </button></app-tags-selector
-                  >
-                  <mat-chip-set>
-                    <mat-chip
-                      *ngFor="let tag of selectedTags"
-                      [disableRipple]="true"
+            <div class="card-foot actions">
+              <div class="tags">
+                <app-tags-selector
+                  [selected]="selectedTags"
+                  [tags]="allTags"
+                  (onDeleteTag)="deleteTag(selectedDeck, $event)"
+                  (onSaveTag)="saveTag(selectedDeck, $event)"
+                  (onAddNewTag)="addNewTag($event)"
+                  (onSelect)="selectTag($event)"
+                  ><button class="pill" [disabled]="isImporting">
+                    <mat-icon class="pill-icon" aria-hidden="true"
+                      >sell</mat-icon
                     >
-                      {{ tag.data.title }}
-                      <button
-                        matChipRemove
-                        (click)="selectTag(tag)"
-                        [disabled]="isImporting"
-                      >
-                        <mat-icon>cancel</mat-icon>
-                      </button>
-                    </mat-chip>
-                  </mat-chip-set>
-                </div>
-                <div class="mt-1 text-center">
-                  <span *ngIf="isAnalyzing"
-                    >{{ 'import.analysing' | transloco }}
-                    <ion-spinner name="dots"></ion-spinner
-                  ></span>
-                  <button
-                    *ngIf="!isAnalyzing"
-                    class="button block"
-                    (click)="import(selectedDeck, csvData)"
+                    {{ 'import.add_tags' | transloco }}
+                  </button></app-tags-selector
+                >
+                <mat-chip-set *ngIf="selectedTags.length > 0">
+                  <mat-chip
+                    *ngFor="let tag of selectedTags"
+                    [disableRipple]="true"
                   >
-                    {{ 'import.import_cards' | transloco }}
-                    <ion-spinner
-                      [style]="{
-                        visibility: isImporting ? 'visible' : 'hidden',
-                      }"
-                      name="dots"
-                      style="margin-right: -28px"
-                    ></ion-spinner>
-                  </button>
-                </div>
-              </ng-container>
-            </ng-container>
-          </div>
+                    {{ tag.data.title }}
+                    <button
+                      matChipRemove
+                      (click)="selectTag(tag)"
+                      [disabled]="isImporting"
+                    >
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                </mat-chip-set>
+              </div>
+
+              <button
+                class="button import-button"
+                [disabled]="isAnalyzing || isImporting"
+                (click)="import(selectedDeck, csvData)"
+              >
+                <ion-spinner
+                  *ngIf="isImporting"
+                  name="dots"
+                  class="button-spinner"
+                ></ion-spinner>
+                <mat-icon
+                  *ngIf="!isImporting"
+                  class="pill-icon"
+                  aria-hidden="true"
+                  >file_download_done</mat-icon
+                >
+                {{ 'import.import_cards' | transloco }}
+              </button>
+            </div>
+          </section>
         </ng-container>
       </ng-container>
-    </div>
-  </div>
+    </ng-container>
+  </ng-container>
 </div>

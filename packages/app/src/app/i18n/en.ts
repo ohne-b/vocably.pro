@@ -381,6 +381,7 @@ export const en = {
   'import.trouble': 'Having trouble with the import?',
   'import.let_me_know': 'Let me know',
   'import.help_best': "— I'll do my best to help.",
+  'import.preview': 'Preview',
   'import.add_tags': 'Add tags',
   'import.analysing': 'Analysing',
   'import.import_cards': 'Import Cards',

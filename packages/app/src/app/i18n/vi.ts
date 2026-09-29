@@ -375,6 +375,7 @@ export const vi = {
   'import.trouble': 'Gặp khó khăn với việc nhập?',
   'import.let_me_know': 'Cho tôi biết',
   'import.help_best': '— tôi sẽ cố gắng giúp đỡ.',
+  'import.preview': 'Xem trước',
   'import.add_tags': 'Thêm tag',
   'import.analysing': 'Đang phân tích',
   'import.import_cards': 'Nhập thẻ',

@@ -388,6 +388,7 @@ export const es = {
   'import.trouble': '¿Tienes problemas con la importación?',
   'import.let_me_know': 'Avísame',
   'import.help_best': '— haré todo lo posible para ayudar.',
+  'import.preview': 'Vista previa',
   'import.add_tags': 'Agregar etiquetas',
   'import.analysing': 'Analizando',
   'import.import_cards': 'Importar tarjetas',

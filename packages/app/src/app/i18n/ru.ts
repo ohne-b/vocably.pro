@@ -387,6 +387,7 @@ export const ru = {
   'import.trouble': 'Проблемы с импортом?',
   'import.let_me_know': 'Дайте знать',
   'import.help_best': '— постараюсь помочь.',
+  'import.preview': 'Предпросмотр',
   'import.add_tags': 'Добавить теги',
   'import.analysing': 'Анализ',
   'import.import_cards': 'Импортировать карточки',
