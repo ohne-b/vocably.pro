@@ -3,13 +3,20 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { isChrome, isEdge, isIOSSafari, isMacSafari } from '../../browser';
+import {
+  isChrome,
+  isDesktop,
+  isEdge,
+  isIOSSafari,
+  isMacSafari,
+} from '../../browser';
 import {
   canExtensionBeInstalled,
   chromeExtensionInstallationUrl,
   edgeExtensionInstallationUrl,
   extensionInstallationUrl,
 } from '../../extension';
+import { AppQrCodeComponent } from '../components/app-qr-code/app-qr-code.component';
 import { HeaderComponent } from '../header/header.component';
 import { isExtensionInstalled$ } from '../isExtensionInstalled';
 import { TranslocoModule } from '@jsverse/transloco';
@@ -72,6 +79,7 @@ const getInstallOptions = (): InstallOption[] => {
     MatIconModule,
     RouterOutlet,
     TranslocoModule,
+    AppQrCodeComponent,
   ],
 })
 export class WelcomeComponent implements OnInit, OnDestroy {
@@ -81,6 +89,8 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   public extensionIsInstalled: boolean | undefined = undefined;
   public extensionInstallUrl = extensionInstallationUrl;
   public installOptions = getInstallOptions();
+  public mobileAppUrl = 'https://vocably.pro/app.html';
+  public isDesktop = isDesktop;
   public size: 'normal' | 'large' = 'normal';
 
   constructor(private containerService: ContainerService) {}

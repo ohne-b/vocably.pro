@@ -54,6 +54,34 @@
         {{ 'welcome.install_note' | transloco }}
       </p>
     </div>
+    <div class="install" *ngIf="!extensionCanBeInstalled">
+      <div class="install-icon" aria-hidden="true">
+        <mat-icon>devices</mat-icon>
+      </div>
+      <h1 class="install-title">
+        {{ 'welcome.unsupported_title' | transloco }}
+      </h1>
+      <p class="install-lead">
+        {{ 'welcome.unsupported_lead' | transloco }}
+      </p>
+
+      <div class="install-actions">
+        <a
+          class="install-extension-button"
+          [href]="mobileAppUrl"
+          target="_blank"
+        >
+          {{ 'welcome.get_mobile_app' | transloco }}
+        </a>
+      </div>
+
+      <ng-container *ngIf="isDesktop">
+        <p class="install-note">
+          {{ 'welcome.scan_qr' | transloco }}
+        </p>
+        <app-app-qr-code class="install-qr-code"></app-app-qr-code>
+      </ng-container>
+    </div>
     <router-outlet *ngIf="extensionIsInstalled === true"></router-outlet>
   </div>
 </div>

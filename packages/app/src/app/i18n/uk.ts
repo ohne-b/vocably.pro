@@ -8,6 +8,11 @@ export const uk = {
   'welcome.add_to': 'Додати до {{browser}}',
   'welcome.install_note':
     'Вже встановили? Переконайтеся, що розширення увімкнене.',
+  'welcome.unsupported_title': 'Цей браузер поки не підтримується',
+  'welcome.unsupported_lead':
+    'Розширення Vocably працює в Chrome, Edge і Safari. Відкрийте цю сторінку в одному з них або продовжуйте навчання в мобільному застосунку Vocably.',
+  'welcome.get_mobile_app': 'Завантажити мобільний застосунок',
+  'welcome.scan_qr': 'Або відскануйте QR-код телефоном:',
   'welcome.index.mother_tongue': 'Моя рідна мова',
   'welcome.index.i_study': 'Мова, яку я вивчаю',
   'welcome.index.show_more': 'Показати більше мов',

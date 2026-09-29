@@ -7,6 +7,11 @@ export const ru = {
     'Добавьте Vocably в браузер, чтобы переводить слова и фразы на любом сайте и превращать их в карточки.',
   'welcome.add_to': 'Добавить в {{browser}}',
   'welcome.install_note': 'Уже установили? Убедитесь, что расширение включено.',
+  'welcome.unsupported_title': 'Этот браузер пока не поддерживается',
+  'welcome.unsupported_lead':
+    'Расширение Vocably работает в Chrome, Edge и Safari. Откройте эту страницу в одном из них или продолжайте учиться в мобильном приложении Vocably.',
+  'welcome.get_mobile_app': 'Скачать мобильное приложение',
+  'welcome.scan_qr': 'Или отсканируйте QR-код телефоном:',
   'welcome.index.mother_tongue': 'Мой родной язык',
   'welcome.index.i_study': 'Я изучаю',
   'welcome.index.show_more': 'Показать больше языков',

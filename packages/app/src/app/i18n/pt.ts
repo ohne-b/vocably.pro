@@ -7,6 +7,11 @@ export const pt = {
     'Adicione o Vocably ao seu navegador para traduzir palavras e frases em qualquer site e transformá-las em flashcards.',
   'welcome.add_to': 'Adicionar ao {{browser}}',
   'welcome.install_note': 'Já instalou? Verifique se a extensão está ativada.',
+  'welcome.unsupported_title': 'Este navegador ainda não é compatível',
+  'welcome.unsupported_lead':
+    'A extensão do Vocably funciona no Chrome, Edge e Safari. Abra esta página em um deles ou continue aprendendo em qualquer lugar com o aplicativo móvel do Vocably.',
+  'welcome.get_mobile_app': 'Baixar o aplicativo móvel',
+  'welcome.scan_qr': 'Ou escaneie o código QR com seu celular:',
   'welcome.index.mother_tongue': 'Minha língua materna é',
   'welcome.index.i_study': 'Estudo',
   'welcome.index.show_more': 'Mostrar mais idiomas',

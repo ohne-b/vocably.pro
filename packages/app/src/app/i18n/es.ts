@@ -8,6 +8,11 @@ export const es = {
   'welcome.add_to': 'Añadir a {{browser}}',
   'welcome.install_note':
     '¿Ya la tienes instalada? Asegúrate de que la extensión esté activada.',
+  'welcome.unsupported_title': 'Este navegador aún no es compatible',
+  'welcome.unsupported_lead':
+    'La extensión de Vocably funciona en Chrome, Edge y Safari. Abre esta página en uno de ellos o sigue aprendiendo donde estés con la aplicación móvil de Vocably.',
+  'welcome.get_mobile_app': 'Obtener la aplicación móvil',
+  'welcome.scan_qr': 'O escanea el código QR con tu teléfono:',
   'welcome.index.mother_tongue': 'Mi lengua materna es',
   'welcome.index.i_study': 'Estudio',
   'welcome.index.show_more': 'Mostrar más idiomas',

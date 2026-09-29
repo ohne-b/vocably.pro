@@ -8,6 +8,11 @@ export const tr = {
   'welcome.add_to': '{{browser}} tarayıcısına ekle',
   'welcome.install_note':
     'Zaten yüklü mü? Uzantının etkin olduğundan emin olun.',
+  'welcome.unsupported_title': 'Bu tarayıcı henüz desteklenmiyor',
+  'welcome.unsupported_lead':
+    "Vocably uzantısı Chrome, Edge ve Safari'de çalışır. Bu sayfayı bunlardan birinde açın ya da Vocably mobil uygulamasıyla her yerde öğrenmeye devam edin.",
+  'welcome.get_mobile_app': 'Mobil uygulamayı edinin',
+  'welcome.scan_qr': 'Ya da QR kodunu telefonunuzla tarayın:',
   'welcome.index.mother_tongue': 'Anadilim',
   'welcome.index.i_study': 'Öğreniyorum',
   'welcome.index.show_more': 'Daha fazla dil göster',

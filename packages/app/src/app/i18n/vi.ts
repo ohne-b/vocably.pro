@@ -7,6 +7,11 @@ export const vi = {
     'Thêm Vocably vào trình duyệt để dịch từ và cụm từ trên mọi trang web và biến chúng thành thẻ ghi nhớ.',
   'welcome.add_to': 'Thêm vào {{browser}}',
   'welcome.install_note': 'Đã cài đặt? Hãy đảm bảo tiện ích đã được bật.',
+  'welcome.unsupported_title': 'Trình duyệt này chưa được hỗ trợ',
+  'welcome.unsupported_lead':
+    'Tiện ích Vocably hoạt động trên Chrome, Edge và Safari. Hãy mở trang này bằng một trong số đó, hoặc tiếp tục học mọi lúc mọi nơi với ứng dụng di động Vocably.',
+  'welcome.get_mobile_app': 'Tải ứng dụng di động',
+  'welcome.scan_qr': 'Hoặc quét mã QR bằng điện thoại của bạn:',
   'welcome.index.mother_tongue': 'Tiếng mẹ đẻ của tôi là',
   'welcome.index.i_study': 'Tôi học',
   'welcome.index.show_more': 'Hiển thị thêm ngôn ngữ',
