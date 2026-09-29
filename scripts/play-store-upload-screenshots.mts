@@ -38,11 +38,11 @@ const rootDir = dirname(scriptsDir);
 dotenv.config({ path: `${scriptsDir}/.env.local`, quiet: true });
 dotenv.config({ path: `${scriptsDir}/.env`, quiet: true });
 
-// app-stores format id → Google Play image type.
-const imageTypes: Record<string, string> = {
-  'play-phone': 'phoneScreenshots',
-  'play-tablet-10': 'tenInchScreenshots',
-  'play-feature-graphic': 'featureGraphic',
+// app-stores format id → Google Play image types it is uploaded to.
+const imageTypes: Record<string, string[]> = {
+  'play-phone': ['phoneScreenshots'],
+  'play-tablet-10': ['tenInchScreenshots', 'sevenInchScreenshots'],
+  'play-feature-graphic': ['featureGraphic'],
 };
 
 // Image types that hold a single image rather than a list of screenshots.
@@ -207,8 +207,9 @@ try {
   // Resolve everything up front, so nothing is deleted when the mapping is off.
   const jobs: { imageType: string; locale: string; files: string[] }[] = [];
 
-  for (const formatId of formatIds) {
-    const imageType = imageTypes[formatId];
+  for (const [formatId, imageType] of formatIds.flatMap((formatId) =>
+    imageTypes[formatId].map((imageType) => [formatId, imageType] as const)
+  )) {
     const formatDir = unpackedDir(formatId);
 
     const languageDirs = readdirSync(formatDir, { withFileTypes: true })
