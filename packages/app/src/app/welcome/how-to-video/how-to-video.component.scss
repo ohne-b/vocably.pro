@@ -4,8 +4,9 @@
   display: block;
   line-height: 0;
 
-  border: 1px solid var(--contrast-bg);
-  border-radius: $border-radius;
+  overflow: hidden;
+  border: 1px solid var(--border-color-muted, rgba(128, 128, 128, 0.25));
+  border-radius: 0.75rem;
 }
 
 video::-webkit-media-controls-panel {
