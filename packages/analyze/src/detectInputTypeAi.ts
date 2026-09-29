@@ -44,7 +44,7 @@ export const detectInputTypeAi = async (
       detectInputTypeChatGpt(payload)
     );
 
-  if (payload.language === 'en') {
+  if (payload.language === 'en' || payload.language === 'en-GB') {
     return fallback(
       detectInputTypeJev({ ...payload, language: payload.language }),
       detectWithGemini

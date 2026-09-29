@@ -90,4 +90,68 @@ describe('detectInputTypeJev', () => {
     expect(responseResult.value.type).toEqual('word');
     expect(responseResult.value.isDirect).toEqual(false);
   });
+
+  it('en-GB word', async () => {
+    const responseResult = await detectInputTypeJev({
+      language: 'en-GB',
+      source: 'fortnight',
+    });
+
+    console.log(inspect(responseResult));
+
+    expect(responseResult.success).toEqual(true);
+    if (responseResult.success === false) {
+      return;
+    }
+    expect(responseResult.value.type).toEqual('word');
+    expect(responseResult.value.isDirect).toEqual(true);
+  });
+
+  it('en-GB idiom', async () => {
+    const responseResult = await detectInputTypeJev({
+      language: 'en-GB',
+      source: "bob's your uncle",
+    });
+
+    console.log(inspect(responseResult));
+
+    expect(responseResult.success).toEqual(true);
+    if (responseResult.success === false) {
+      return;
+    }
+    expect(responseResult.value.type).toEqual('idiom');
+    expect(responseResult.value.isDirect).toEqual(true);
+  });
+
+  it('en-GB sentence', async () => {
+    const responseResult = await detectInputTypeJev({
+      language: 'en-GB',
+      source: 'I queued for the lift in the flat',
+    });
+
+    console.log(inspect(responseResult));
+
+    expect(responseResult.success).toEqual(true);
+    if (responseResult.success === false) {
+      return;
+    }
+    expect(responseResult.value.type).toEqual('sentence');
+    expect(responseResult.value.isDirect).toEqual(true);
+  });
+
+  it('en-GB is not direct', async () => {
+    const responseResult = await detectInputTypeJev({
+      language: 'en-GB',
+      source: 'собака',
+    });
+
+    console.log(inspect(responseResult));
+
+    expect(responseResult.success).toEqual(true);
+    if (responseResult.success === false) {
+      return;
+    }
+    expect(responseResult.value.type).toEqual('word');
+    expect(responseResult.value.isDirect).toEqual(false);
+  });
 });

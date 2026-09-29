@@ -34,7 +34,7 @@ const candidateLanguages: GoogleLanguage[] = [
 const isDirectThreshold = 0.3;
 
 export type DetectInputTypeJevPayload = DetectInputTypeAiPayload & {
-  language: 'en';
+  language: 'en' | 'en-GB';
 };
 
 type JevResponse = {
@@ -51,7 +51,13 @@ export const detectInputTypeJev = async ({
   const abortController = new AbortController();
   const abortSignal = abortController.signal;
 
-  const languages = Array.from(new Set([language, ...candidateLanguages]));
+  // Drop other variants of the requested language (e.g. 'en' for 'en-GB'),
+  // otherwise they split the probability and the input is not considered direct.
+  const baseLanguage = language.split('-')[0];
+  const languages = [
+    language,
+    ...candidateLanguages.filter((code) => code.split('-')[0] !== baseLanguage),
+  ];
 
   const result = await resultify(
     timeout(
