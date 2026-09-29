@@ -53,6 +53,7 @@ export class StudyPageComponent implements OnInit, OnDestroy {
   public cards: CardItem[] = [];
   public total = 0;
   public pendingSaves = signal(0);
+  public answered = signal(0);
 
   public studyStreak: StudyStreak | null = null;
 
@@ -155,9 +156,12 @@ export class StudyPageComponent implements OnInit, OnDestroy {
     }
 
     this.total = this.cards.length;
+    this.answered.set(0);
   }
 
   onGrade(gradeResult: GradeResult) {
+    this.answered.update((count) => count + 1);
+
     if (!this.necessaryData.hasValue()) {
       return;
     }

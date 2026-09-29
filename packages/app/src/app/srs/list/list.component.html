@@ -8,7 +8,6 @@
       (grade)="onAnswer($event)"
     ></app-srs-grade>
   </div>
-  <div class="grade-nav">{{ total - cards.length + 1 }} / {{ total }}</div>
 </div>
 <app-srs-success
   *ngIf="cards.length === 0 && !saving"
