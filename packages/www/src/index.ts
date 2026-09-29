@@ -15,6 +15,7 @@ const isAndroid = browser.is('android');
 const isIos = browser.is('ios');
 const isChrome = browser.is('chrome') && !isAndroid && !isIos;
 const isSafari = browser.is('safari') && !isAndroid && !isIos;
+const isEdge = browser.is('microsoft edge') && !isAndroid && !isIos;
 
 const applyCssVariables = async ({ isLoggedIn }: { isLoggedIn: boolean }) => {
   if (isLoggedIn) {
@@ -36,7 +37,7 @@ onSignedIn(() => applyCssVariables({ isLoggedIn: true }));
 window.trackEvent = track;
 
 document.querySelectorAll('.show-other').forEach((el) => {
-  if (isChrome || isSafari || isAndroid || isIos) {
+  if (isChrome || isEdge || isSafari || isAndroid || isIos) {
     el.remove();
   } else {
     el.classList.remove('show-other');
@@ -44,7 +45,7 @@ document.querySelectorAll('.show-other').forEach((el) => {
 });
 
 document.querySelectorAll('.show-any').forEach((el) => {
-  if (!(isChrome || isSafari || isAndroid || isIos)) {
+  if (!(isChrome || isEdge || isSafari || isAndroid || isIos)) {
     el.remove();
   } else {
     el.classList.remove('show-any');
@@ -64,6 +65,22 @@ document.querySelectorAll('.show-safari').forEach((el) => {
     el.remove();
   } else {
     el.classList.remove('show-safari');
+  }
+});
+
+document.querySelectorAll('.show-edge').forEach((el) => {
+  if (!isEdge) {
+    el.remove();
+  } else {
+    el.classList.remove('show-edge');
+  }
+});
+
+document.querySelectorAll('.hide-edge').forEach((el) => {
+  if (isEdge) {
+    el.remove();
+  } else {
+    el.classList.remove('hide-edge');
   }
 });
 
@@ -108,7 +125,7 @@ document.querySelectorAll('.hide-android').forEach((el) => {
 });
 
 document.querySelectorAll('.hide-other').forEach((el) => {
-  if (!(isChrome || isSafari || isAndroid || isIos)) {
+  if (!(isChrome || isEdge || isSafari || isAndroid || isIos)) {
     el.remove();
   } else {
     el.classList.remove('hide-other');
