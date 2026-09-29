@@ -1,13 +1,11 @@
 import { NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButton } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
-import { MatInput } from '@angular/material/input';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { CardItem, languageList } from '@vocably/model';
 import { cardsToCsv } from '@vocably/model-operations';
@@ -27,10 +25,7 @@ import { LexicalaExplanationDialogComponent } from './lexicala-explanation-dialo
     FormsModule,
     MatRadioButton,
     MatIcon,
-    MatFormField,
-    MatLabel,
-    MatInput,
-    MatButton,
+    RouterLink,
     NgIf,
     TranslocoModule,
   ],
@@ -47,6 +42,7 @@ export class ExportPageComponent implements OnInit, OnDestroy {
 
   public languageName: string = '';
   public hasLexicalaItems = false;
+  public copied = false;
 
   private destroy$ = new Subject();
 
@@ -92,7 +88,10 @@ export class ExportPageComponent implements OnInit, OnDestroy {
 
   copyToClipboard(textArea: HTMLTextAreaElement): void {
     textArea.select();
-    navigator.clipboard.writeText(textArea.value).then();
+    navigator.clipboard.writeText(textArea.value).then(() => {
+      this.copied = true;
+      setTimeout(() => (this.copied = false), 2000);
+    });
   }
 
   getContents(): string {

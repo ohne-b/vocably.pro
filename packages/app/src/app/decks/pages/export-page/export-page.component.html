@@ -1,97 +1,117 @@
-<div
-  class="display-flex mb-2"
-  style="justify-content: flex-start; flex-wrap: wrap; gap: 1rem"
->
-  <div style="margin-right: 5rem">
-    <div class="mb-2 strong">
-      {{ 'decks.export.between_columns' | transloco }}
+<div class="export">
+  <nav class="toolbar">
+    <a class="link text-decoration-none back" [routerLink]="['..']">
+      <mat-icon aria-hidden="true">arrow_back</mat-icon>
+      <span class="underline">{{ 'back_button.back' | transloco }}</span>
+    </a>
+  </nav>
+
+  <section class="options">
+    <div class="option-group">
+      <h2 class="group-title">
+        {{ 'decks.export.between_columns' | transloco }}
+      </h2>
+
+      <mat-radio-group
+        aria-label="Select column delimiter"
+        class="radio-list"
+        [(ngModel)]="colDelimiter"
+      >
+        <mat-radio-button value="tab">
+          <span class="option-label">
+            {{ 'decks.export.tab' | transloco }}
+            <mat-icon class="option-icon" aria-hidden="true"
+              >keyboard_tab</mat-icon
+            >
+          </span>
+        </mat-radio-button>
+        <mat-radio-button value="comma">{{
+          'decks.export.comma' | transloco
+        }}</mat-radio-button>
+        <mat-radio-button value="custom">
+          <span class="option-label">
+            {{ 'decks.export.custom' | transloco }}
+            <input
+              class="custom-input"
+              [attr.aria-label]="'decks.export.custom' | transloco"
+              (focus)="colDelimiter = 'custom'"
+              [(ngModel)]="customColDelimiter"
+            />
+          </span>
+        </mat-radio-button>
+      </mat-radio-group>
     </div>
 
-    <mat-radio-group
-      aria-label="Select column delimiter"
-      class="display-flex flex-direction-column"
-      [(ngModel)]="colDelimiter"
-    >
-      <mat-radio-button value="tab" class="mb-1">
-        <span class="mr-0_5">{{ 'decks.export.tab' | transloco }}</span>
-        <mat-icon aria-hidden="false" class="middle">keyboard_tab</mat-icon>
-      </mat-radio-button>
-      <mat-radio-button value="comma" class="mb-1">{{
-        'decks.export.comma' | transloco
-      }}</mat-radio-button>
-      <mat-radio-button value="custom" class="mb-1">
-        <mat-form-field>
-          <mat-label>{{ 'decks.export.custom' | transloco }}</mat-label>
-          <input
-            matInput
-            value="-"
-            (focus)="colDelimiter = 'custom'"
-            [(ngModel)]="customColDelimiter"
-          />
-        </mat-form-field>
-      </mat-radio-button>
-    </mat-radio-group>
+    <div class="option-group">
+      <h2 class="group-title">
+        {{ 'decks.export.between_cards' | transloco }}
+      </h2>
+
+      <mat-radio-group
+        aria-label="Select row delimiter"
+        class="radio-list"
+        [(ngModel)]="rowDelimiter"
+      >
+        <mat-radio-button value="new_line">
+          <span class="option-label">
+            {{ 'decks.export.new_line' | transloco }}
+            <mat-icon class="option-icon" aria-hidden="true"
+              >keyboard_return</mat-icon
+            >
+          </span>
+        </mat-radio-button>
+        <mat-radio-button value="semicolon">{{
+          'decks.export.semicolon' | transloco
+        }}</mat-radio-button>
+        <mat-radio-button value="custom">
+          <span class="option-label">
+            {{ 'decks.export.custom' | transloco }}
+            <input
+              class="custom-input"
+              [attr.aria-label]="'decks.export.custom' | transloco"
+              (focus)="rowDelimiter = 'custom'"
+              [(ngModel)]="customRowDelimiter"
+            />
+          </span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </section>
+
+  <div class="callout">
+    <mat-icon class="callout-icon" aria-hidden="true">info_outline</mat-icon>
+    <span class="callout-text">
+      {{ 'decks.export.old_cards_warning' | transloco }}
+      <button class="callout-link" (click)="whyCantExportLexicala()">
+        {{ 'decks.export.why' | transloco }}
+      </button>
+    </span>
   </div>
-  <div>
-    <div class="mb-2 strong">
-      {{ 'decks.export.between_cards' | transloco }}
+
+  <section class="preview" *ngIf="getContents() as textContents">
+    <div class="preview-head">
+      <span class="preview-title">{{
+        'decks.export.copy_csv' | transloco
+      }}</span>
+      <button class="pill" (click)="copyToClipboard(contents)">
+        <mat-icon class="pill-icon" aria-hidden="true">{{
+          copied ? 'check' : 'content_copy'
+        }}</mat-icon>
+        {{ 'decks.export.copy_all' | transloco }}
+      </button>
     </div>
-
-    <mat-radio-group
-      aria-label="Select column delimiter"
-      class="display-flex flex-direction-column"
-      [(ngModel)]="rowDelimiter"
-    >
-      <mat-radio-button value="new_line" class="mb-1">
-        <span class="mr-0_5">{{ 'decks.export.new_line' | transloco }}</span>
-        <mat-icon aria-hidden="false" class="middle">keyboard_return</mat-icon>
-      </mat-radio-button>
-      <mat-radio-button value="semicolon" class="mb-1">{{
-        'decks.export.semicolon' | transloco
-      }}</mat-radio-button>
-      <mat-radio-button value="custom" class="mb-1">
-        <mat-form-field>
-          <mat-label>{{ 'decks.export.custom' | transloco }}</mat-label>
-          <input
-            matInput
-            value="\n\n"
-            (focus)="rowDelimiter = 'custom'"
-            [(ngModel)]="customRowDelimiter"
-          />
-        </mat-form-field>
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-</div>
-
-<div class="mb-1">
-  {{ 'decks.export.old_cards_warning' | transloco }}
-  <button mat-button color="accent" (click)="whyCantExportLexicala()">
-    {{ 'decks.export.why' | transloco }}
-  </button>
-</div>
-
-<ng-container *ngIf="getContents() as textContents">
-  <div class="mb-1">
-    <div
-      class="display-flex"
-      style="margin-bottom: 0.5rem; align-items: center"
-    >
-      <div class="flex-1">{{ 'decks.export.copy_csv' | transloco }}</div>
-      <div>
-        <button mat-button color="accent" (click)="copyToClipboard(contents)">
-          {{ 'decks.export.copy_all' | transloco }}
-        </button>
-      </div>
-    </div>
-    <textarea #contents class="csv-textarea" wrap="off">{{
+    <textarea #contents class="preview-textarea" wrap="off" readonly>{{
       textContents
     }}</textarea>
-  </div>
-  <div>
-    <a [href]="getContentsLink(textContents)" [download]="fileName"
-      ><mat-icon aria-hidden="false" class="middle mr-0_5">download</mat-icon
-      >{{ 'decks.export.download' | transloco: { fileName: fileName } }}</a
-    >
-  </div>
-</ng-container>
+    <div class="preview-foot">
+      <a
+        class="button download-button"
+        [href]="getContentsLink(textContents)"
+        [download]="fileName"
+      >
+        <mat-icon class="pill-icon" aria-hidden="true">download</mat-icon>
+        {{ 'decks.export.download' | transloco: { fileName: fileName } }}
+      </a>
+    </div>
+  </section>
+</div>
