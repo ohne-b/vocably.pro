@@ -13,9 +13,13 @@ export const uk = {
     'Розширення Vocably працює в Chrome, Edge і Safari. Відкрийте цю сторінку в одному з них або продовжуйте навчання в мобільному застосунку Vocably.',
   'welcome.get_mobile_app': 'Завантажити мобільний застосунок',
   'welcome.scan_qr': 'Або відскануйте QR-код телефоном:',
+  'welcome.index.title': 'Ласкаво просимо до Vocably',
+  'welcome.index.lead':
+    'Оберіть мову, яку ви вивчаєте, і спробуйте Vocably на короткому прикладі тексту.',
   'welcome.index.mother_tongue': 'Моя рідна мова',
   'welcome.index.i_study': 'Мова, яку я вивчаю',
   'welcome.index.show_more': 'Показати більше мов',
+  'welcome.index.show_less': 'Показати менше мов',
   'welcome.index.multilang': 'Я хочу вивчати кілька мов.',
   'welcome.second.loading': 'Завантаження прикладу тексту...',
   'welcome.second.study_sentence':

@@ -13,9 +13,13 @@ export const tr = {
     "Vocably uzantısı Chrome, Edge ve Safari'de çalışır. Bu sayfayı bunlardan birinde açın ya da Vocably mobil uygulamasıyla her yerde öğrenmeye devam edin.",
   'welcome.get_mobile_app': 'Mobil uygulamayı edinin',
   'welcome.scan_qr': 'Ya da QR kodunu telefonunuzla tarayın:',
+  'welcome.index.title': "Vocably'ye hoş geldiniz",
+  'welcome.index.lead':
+    "Öğrendiğiniz dili seçin ve Vocably'yi kısa bir örnek metinde deneyin.",
   'welcome.index.mother_tongue': 'Anadilim',
   'welcome.index.i_study': 'Öğreniyorum',
   'welcome.index.show_more': 'Daha fazla dil göster',
+  'welcome.index.show_less': 'Daha az dil göster',
   'welcome.index.multilang': 'Birden fazla dil öğrenmek istiyorum.',
   'welcome.second.loading': 'Örnek metin yükleniyor...',
   'welcome.second.study_sentence':

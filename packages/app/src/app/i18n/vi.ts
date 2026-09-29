@@ -12,9 +12,13 @@ export const vi = {
     'Tiện ích Vocably hoạt động trên Chrome, Edge và Safari. Hãy mở trang này bằng một trong số đó, hoặc tiếp tục học mọi lúc mọi nơi với ứng dụng di động Vocably.',
   'welcome.get_mobile_app': 'Tải ứng dụng di động',
   'welcome.scan_qr': 'Hoặc quét mã QR bằng điện thoại của bạn:',
+  'welcome.index.title': 'Chào mừng bạn đến với Vocably',
+  'welcome.index.lead':
+    'Chọn ngôn ngữ bạn đang học, rồi dùng thử Vocably với một đoạn văn bản mẫu ngắn.',
   'welcome.index.mother_tongue': 'Tiếng mẹ đẻ của tôi là',
   'welcome.index.i_study': 'Tôi học',
   'welcome.index.show_more': 'Hiển thị thêm ngôn ngữ',
+  'welcome.index.show_less': 'Hiển thị ít ngôn ngữ hơn',
   'welcome.index.multilang': 'Tôi muốn học nhiều ngôn ngữ.',
   'welcome.second.loading': 'Đang tải văn bản mẫu...',
   'welcome.second.study_sentence':

@@ -13,9 +13,13 @@ export const es = {
     'La extensión de Vocably funciona en Chrome, Edge y Safari. Abre esta página en uno de ellos o sigue aprendiendo donde estés con la aplicación móvil de Vocably.',
   'welcome.get_mobile_app': 'Obtener la aplicación móvil',
   'welcome.scan_qr': 'O escanea el código QR con tu teléfono:',
+  'welcome.index.title': 'Te damos la bienvenida a Vocably',
+  'welcome.index.lead':
+    'Elige el idioma que estás aprendiendo y prueba Vocably con un breve texto de ejemplo.',
   'welcome.index.mother_tongue': 'Mi lengua materna es',
   'welcome.index.i_study': 'Estudio',
   'welcome.index.show_more': 'Mostrar más idiomas',
+  'welcome.index.show_less': 'Mostrar menos idiomas',
   'welcome.index.multilang': 'Me gustaría aprender varios idiomas.',
   'welcome.second.loading': 'Cargando texto de ejemplo...',
   'welcome.second.study_sentence':

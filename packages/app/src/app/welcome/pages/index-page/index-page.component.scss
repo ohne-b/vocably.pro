@@ -1,30 +1,83 @@
 @import '../../../../styles/variables';
 
-.grid-container {
+.onboarding {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding-top: 1rem;
+}
+
+.intro-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--emphasize-color);
+}
+
+.intro-lead {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.section-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+
+  @media (min-width: $lg) {
+    .collapsable & {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
 }
 
 .grid-item {
-  width: calc(50% - 8px);
+  min-width: 0;
+}
 
-  @media (min-width: $lg) {
-    &:not(.two-columns) {
-      width: calc(33.333% - 8px);
-    }
-  }
+.language-flag {
+  flex-shrink: 0;
+}
 
-  box-sizing: border-box;
+.language-name {
   overflow: hidden;
-  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.95rem;
 }
 
 .expand-icon {
   transition: transform 0.3s;
 
   &.down {
-    transform: rotate(90deg);
+    transform: rotate(180deg);
   }
 }
 
@@ -37,33 +90,4 @@
 .collapsable.expanded {
   max-height: 155rem;
   transition: max-height 0.8s ease-out;
-}
-
-.select-button {
-  --backround: var(--form-background-color);
-  --hover-background: var(--form-background-color-focus);
-  --color: var(--emphasize-color);
-  --border-color: var(--form-border-color);
-
-  &.checked {
-    --backround: var(--button-bg);
-    --hover-background: var(--button-bg-hover);
-    --color: var(--emphasize-color);
-    --border-color: transparent;
-  }
-
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-  display: block !important;
-  background: var(--backround);
-  width: 100%;
-  color: var(--color);
-  border-radius: $border-radius;
-  text-align: left;
-  cursor: pointer;
-
-  &:hover,
-  &:focus {
-    background: var(--hover-background);
-  }
 }

@@ -1,74 +1,81 @@
-<div
-  class="display-flex flex-direction-column align-items-stretch flex-gap-1 mb-2"
-  *ngIf="targetLanguage"
->
-  <div class="strong">
-    {{ 'welcome.index.mother_tongue' | transloco }}
-  </div>
-  <div>
+<div class="onboarding">
+  <header class="intro">
+    <h1 class="intro-title">{{ 'welcome.index.title' | transloco }}</h1>
+    <p class="intro-lead">{{ 'welcome.index.lead' | transloco }}</p>
+  </header>
+
+  <section class="section" *ngIf="targetLanguage">
+    <h2 class="section-title">
+      {{ 'welcome.index.mother_tongue' | transloco }}
+    </h2>
     <app-language-input
       [value]="targetLanguage"
       (onChange)="targetLanguage = $event; saveProxyLanguage($event)"
     ></app-language-input>
-  </div>
-</div>
+  </section>
 
-<div class="text-left">
-  <div class="mt-1 mb-1 strong">
-    {{ 'welcome.index.i_study' | transloco }}
-  </div>
-</div>
-<div class="grid-container mb-2">
-  <div
-    class="grid-item two-columns"
-    *ngFor="let language of languages.slice(0, this.showTop)"
-  >
-    <app-language-button
-      (click)="onClick(language)"
-      [selected]="language === selected"
-    >
-      <app-language-icon
-        [language]="language"
-        class="middle mr-0_5"
-      ></app-language-icon
-      >{{ language | language }}
-    </app-language-button>
-  </div>
-</div>
-
-<div class="display-flex">
-  <div class="text-left">
-    <button class="unstyled link" type="button" (click)="expanded = !expanded">
-      {{ 'welcome.index.show_more' | transloco
-      }}<mat-icon
-        aria-hidden="true"
-        class="middle expand-icon"
-        [class]="{ down: expanded }"
-        >arrow_right</mat-icon
+  <section class="section">
+    <h2 class="section-title">
+      {{ 'welcome.index.i_study' | transloco }}
+    </h2>
+    <div class="grid-container">
+      <div
+        class="grid-item two-columns"
+        *ngFor="let language of languages.slice(0, this.showTop)"
       >
-    </button>
-  </div>
-  <div class="flex-1">
-    <div class="text-right">
-      <button class="unstyled link" (click)="showHowToMultilang()">
+        <app-language-button
+          (click)="onClick(language)"
+          [selected]="language === selected"
+        >
+          <app-language-icon
+            [language]="language"
+            class="language-flag"
+          ></app-language-icon>
+          <span class="language-name">{{ language | language }}</span>
+        </app-language-button>
+      </div>
+    </div>
+
+    <div class="collapsable" [class]="{ expanded: expanded }">
+      <div class="grid-container pt-1">
+        <div
+          class="grid-item"
+          *ngFor="let language of languages.slice(this.showTop)"
+        >
+          <app-language-button
+            (click)="onClick(language)"
+            [selected]="language === selected"
+          >
+            <span class="language-name">{{ language | language }}</span>
+          </app-language-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button
+        class="unstyled link action"
+        type="button"
+        [attr.aria-expanded]="expanded"
+        (click)="expanded = !expanded"
+      >
+        {{
+          (expanded ? 'welcome.index.show_less' : 'welcome.index.show_more')
+            | transloco
+        }}<mat-icon
+          aria-hidden="true"
+          class="expand-icon"
+          [class]="{ down: expanded }"
+          >expand_more</mat-icon
+        >
+      </button>
+      <button
+        class="unstyled link action"
+        type="button"
+        (click)="showHowToMultilang()"
+      >
         {{ 'welcome.index.multilang' | transloco }}
       </button>
     </div>
-  </div>
-</div>
-
-<div class="collapsable" [class]="{ expanded: expanded }">
-  <div class="grid-container pt-2">
-    <div
-      class="grid-item"
-      *ngFor="let language of languages.slice(this.showTop)"
-    >
-      <app-language-button
-        (click)="onClick(language)"
-        [selected]="language === selected"
-      >
-        {{ language | language }}
-      </app-language-button>
-    </div>
-  </div>
+  </section>
 </div>
