@@ -1,9 +1,9 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 import { IonicModule } from '@ionic/angular';
 import { byDate, CardItem, TagItem } from '@vocably/model';
+import { studyPlan } from '@vocably/srs';
 import { BehaviorSubject, combineLatest, Subject, takeUntil } from 'rxjs';
 import { isDesktop } from '../../../../browser';
 import { CardComponent } from '../../card/card.component';
@@ -22,8 +22,6 @@ import { filterByTags } from '../../../../filterByTags';
   templateUrl: './dashboard-page.component.html',
   styleUrls: ['./dashboard-page.component.scss'],
   imports: [
-    NgIf,
-    NgFor,
     CardComponent,
     IonicModule,
     RouterLink,
@@ -47,6 +45,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   public noTags$ = new BehaviorSubject<boolean>(false);
 
   public cardItems: CardItem[] = [];
+  public stats = { due: 0, new: 0 };
 
   public isDesktop = isDesktop;
 
@@ -87,6 +86,12 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
           noTags,
           tagIds: selectedTags.map((tag) => tag.id),
         });
+
+        const plan = studyPlan(new Date(), this.cardItems);
+        this.stats = {
+          due: plan.today.length + plan.expired.length,
+          new: plan.notStarted.length,
+        };
       });
   }
 

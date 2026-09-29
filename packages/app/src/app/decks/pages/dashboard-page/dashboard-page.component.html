@@ -1,69 +1,109 @@
-<div class="gradient">
-  <div *ngIf="isDesktop" class="mb-1">
-    <div class="study-button-container">
-      <a
-        class="button study-button track-click"
-        id="practice-button"
-        [routerLink]="['study']"
-      >
-        {{ 'decks.dashboard.study' | transloco }}
-      </a>
-      @if (tags.length > 0) {
-        <app-tags-dropdown
-          [tags]="tags"
-          [noTags]="noTags$.value"
-          [selectedTags]="selectedTags$.value"
-          (onSelect)="onSelectTags($event)"
-          (onNoTags)="onNoTags($event)"
-        >
-          <button class="button tags-button"><mat-icon>sell</mat-icon></button>
-        </app-tags-dropdown>
-      }
+<div class="dashboard">
+  <section class="study">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value accent">{{ stats.due }}</div>
+        <div class="stat-label">{{ 'decks.dashboard.due' | transloco }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">{{ stats.new }}</div>
+        <div class="stat-label">{{ 'decks.dashboard.new' | transloco }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">{{ cardItems.length }}</div>
+        <div class="stat-label">{{ 'decks.dashboard.total' | transloco }}</div>
+      </div>
     </div>
-    @if (noTags$.value || selectedTags$.value.length > 0) {
-      <div class="selected-tags">
-        <span class="selected-tags-label">
-          {{ 'decks.dashboard.tags' | transloco }}:
-        </span>
-        <mat-chip-set>
-          @if (noTags$.value) {
-            <mat-chip [disableRipple]="true">
-              {{ 'decks.dashboard.cards_without_tags' | transloco }}
-              <button matChipRemove (click)="noTags$.next(false)">
-                <mat-icon>cancel</mat-icon>
-              </button>
-            </mat-chip>
-          } @else {
-            <mat-chip
-              *ngFor="let tag of selectedTags$.value"
-              [disableRipple]="true"
+
+    @if (isDesktop) {
+      <div class="study-actions">
+        <a
+          class="button study-button track-click"
+          id="practice-button"
+          [routerLink]="['study']"
+        >
+          <mat-icon class="button-icon">school</mat-icon>
+          {{ 'decks.dashboard.study' | transloco }}
+        </a>
+        @if (tags.length > 0) {
+          <app-tags-dropdown
+            [tags]="tags"
+            [noTags]="noTags$.value"
+            [selectedTags]="selectedTags$.value"
+            (onSelect)="onSelectTags($event)"
+            (onNoTags)="onNoTags($event)"
+          >
+            <button
+              class="button outline tags-button"
+              [attr.aria-label]="'decks.dashboard.tags' | transloco"
             >
-              {{ tag.data.title }}
-              <button matChipRemove (click)="removeTag(tag)">
-                <mat-icon>cancel</mat-icon>
-              </button>
-            </mat-chip>
-          }
-        </mat-chip-set>
+              <mat-icon>sell</mat-icon>
+            </button>
+          </app-tags-dropdown>
+        }
+      </div>
+
+      @if (noTags$.value || selectedTags$.value.length > 0) {
+        <div class="selected-tags">
+          <span class="selected-tags-label">
+            {{ 'decks.dashboard.tags' | transloco }}
+          </span>
+          <mat-chip-set>
+            @if (noTags$.value) {
+              <mat-chip [disableRipple]="true">
+                {{ 'decks.dashboard.cards_without_tags' | transloco }}
+                <button matChipRemove (click)="noTags$.next(false)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+            } @else {
+              @for (tag of selectedTags$.value; track tag.id) {
+                <mat-chip [disableRipple]="true">
+                  {{ tag.data.title }}
+                  <button matChipRemove (click)="removeTag(tag)">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip>
+              }
+            }
+          </mat-chip-set>
+        </div>
+      }
+    }
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2 class="section-title">
+        {{ 'decks.dashboard.recently_added' | transloco }}
+      </h2>
+      <a
+        [routerLink]="['edit']"
+        data-test="edit-button"
+        id="edit-deck"
+        class="track-click section-link"
+      >
+        {{ 'decks.dashboard.edit_deck' | transloco }}
+        <mat-icon class="inline-icon">arrow_forward</mat-icon>
+      </a>
+    </div>
+
+    <ul class="cards" data-test="dashboard-cards">
+      @for (item of cardItems.slice(0, 7); track item.id) {
+        <li class="card-row">
+          <app-card [item]="item"></app-card>
+        </li>
+      }
+    </ul>
+
+    @if (cardItems.length > 7) {
+      <div class="more">
+        <a [routerLink]="['edit']" class="button outline">
+          {{
+            'decks.dashboard.view_all' | transloco: { count: cardItems.length }
+          }}
+        </a>
       </div>
     }
-  </div>
-  <ul class="unstyled separated mb-1" data-test="dashboard-cards">
-    <li *ngFor="let item of cardItems.slice(0, 7)">
-      <app-card [item]="item"></app-card>
-    </li>
-  </ul>
-</div>
-
-<div class="text-center deck-options">
-  <a
-    [routerLink]="['edit']"
-    data-test="edit-button"
-    id="edit-deck"
-    class="lead-0_5 track-click inline-block"
-    >{{ 'decks.dashboard.edit_deck' | transloco
-    }}<span class="text-decoration-none ml-0_5 inline-block"
-      >({{ cardItems.length }})</span
-    ></a
-  >
+  </section>
 </div>
