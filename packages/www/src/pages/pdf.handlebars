@@ -7,7 +7,7 @@
   nonStickyNavbar=true
 }}
   <style>
-
+    /* ---------- Landing ---------- */
     .pdf-upload-btn {
       display: flex;
       flex-direction: column;
@@ -16,35 +16,46 @@
       gap: 0.3rem;
       width: 100%;
       padding: 3rem 1.5rem;
-      border: 1px dashed var(--bs-primary);
-      border-radius: 1rem;
+      border: 1.5px dashed rgba(var(--bs-primary-rgb), 0.5);
+      border-radius: 1.25rem;
       background: rgba(var(--bs-primary-rgb), 0.04);
       color: var(--bs-primary);
       font-size: 1.4rem;
-      font-weight: 400;
       cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+
+      .bi {
+        font-size: 2.6rem;
+        height: 2.7rem;
+      }
 
       .big-text {
         letter-spacing: -0.04rem;
       }
-    }
 
-    .pdf-upload-btn:hover,
-    .pdf-upload-btn.is-dragover {
-      background: rgba(var(--bs-primary-rgb), 0.1);
-    }
+      .small-text {
+        font-size: 0.9rem;
+      }
 
-    .pdf-upload-btn .bi {
-      font-size: 2.6rem;
-      height: 2.7rem;
+      &:hover,
+      &.is-dragover {
+        border-color: var(--bs-primary);
+        background: rgba(var(--bs-primary-rgb), 0.09);
+      }
+
+      &.is-dragover {
+        transform: scale(1.01);
+      }
     }
 
     .pdf-last-doc {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      width: 100%;
+
+      &[hidden] {
+        display: none;
+      }
     }
 
     .pdf-last-doc__open {
@@ -52,8 +63,8 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      min-width: 0;
       text-align: left;
-      overflow: hidden;
     }
 
     .pdf-last-doc__name {
@@ -62,14 +73,72 @@
       white-space: nowrap;
     }
 
-    /* Reader */
+    .pdf-about {
+      background: #f9f9f9;
+      font-size: 80%;
+
+      h2 {
+        color: var(--bs-body-color);
+        font-size: 140%;
+      }
+    }
+
+    .extensions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .install-extension-button {
+      --bg-color: #2c2c2c;
+      --bg-hover-color: #000;
+
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1rem 0.65rem 3rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      font-weight: 200;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: background-color 0.2s ease-in-out;
+
+      &.chrome {
+        background: var(--bg-color) url('assets/chrome.svg') 0.5rem center no-repeat;
+        background-size: 1.8rem;
+      }
+
+      &.edge {
+        background: var(--bg-color) url('assets/edge.svg') 0.55rem center no-repeat;
+        background-size: 1.7rem;
+      }
+
+      &.safari {
+        background: var(--bg-color) url('assets/safari.svg') 0.5rem calc(50% + 0.05rem) no-repeat;
+        background-size: 1.9rem;
+      }
+
+      &:hover {
+        color: #fff;
+        background-color: var(--bg-hover-color);
+      }
+    }
+
+    /* ---------- Reader ---------- */
     .pdf-reader {
       position: fixed;
       inset: 0;
       z-index: 2000;
       display: flex;
       flex-direction: column;
-      background: #525659;
+      background: #3a3d41;
+      color: #fff;
+
+      &[hidden] {
+        display: none;
+      }
     }
 
     .pdf-reader__toolbar {
@@ -78,29 +147,106 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 0.75rem;
-      background: #333639;
-      color: #fff;
-    }
-
-    .pdf-reader__toolbar .btn {
-      --bs-btn-color: #fff;
-      --bs-btn-border-color: rgba(255, 255, 255, 0.25);
-      --bs-btn-hover-color: #fff;
-      --bs-btn-hover-bg: rgba(255, 255, 255, 0.12);
-      --bs-btn-hover-border-color: rgba(255, 255, 255, 0.4);
+      background: rgba(28, 29, 32, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
     }
 
     .pdf-reader__title {
       flex: 1 1 auto;
+      min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       font-size: 0.95rem;
+      font-weight: 500;
+      padding-inline: 0.25rem;
     }
 
-    .pdf-reader__page-input {
-      width: 3.5rem;
+    /* Pill that groups related controls. */
+    .pdf-group {
+      display: flex;
+      align-items: center;
+      gap: 0.125rem;
+      padding: 0.2rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pdf-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.125rem;
+      height: 2.125rem;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      &:active {
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      &:focus-visible {
+        outline: 2px solid rgba(var(--bs-primary-rgb), 0.9);
+        outline-offset: 1px;
+      }
+
+      &:disabled {
+        opacity: 0.35;
+        pointer-events: none;
+      }
+    }
+
+    .pdf-zoom-level {
+      min-width: 3.25rem;
       text-align: center;
+    }
+
+    .pdf-page-input {
+      width: 2.75rem;
+      height: 1.75rem;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: inherit;
+      text-align: center;
+      font: inherit;
+      appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      &:focus {
+        outline: 2px solid rgba(var(--bs-primary-rgb), 0.9);
+      }
+    }
+
+    .pdf-page-count {
+      padding-inline: 0.35rem 0.1rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 575.98px) {
+      .pdf-zoom-level {
+        display: none;
+      }
     }
 
     .pdf-reader__pages {
@@ -113,23 +259,24 @@
       gap: 1rem;
     }
 
+    .pdf-reader__spinner {
+      margin: 3rem auto;
+    }
+
     /* A page = canvas (visual) + .textLayer (selectable text) stacked. */
     .pdf-reader__page {
       position: relative;
       flex: 0 0 auto;
+      overflow: hidden;
+      border-radius: 0.375rem;
       background: #fff;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       --scale-round-x: 1px;
       --scale-round-y: 1px;
-    }
 
-    .pdf-reader__canvas {
-      display: block;
-    }
-
-    .pdf-reader__spinner {
-      color: #fff;
-      margin: 3rem auto;
+      canvas {
+        display: block;
+      }
     }
 
     /* --- Official PDF.js text-layer styles (v6) --- */
@@ -214,80 +361,34 @@
 
   <div id="pdfLanding">
     <div class="container-md py-5">
-      <div class="pdf-landing mx-auto">
-        <h1 class="h3 mb-4">Online PDF Reader</h1>
+      <h1 class="h3 mb-4">Online PDF Reader</h1>
 
-        <input type="file" id="pdfFileInput" accept="application/pdf,.pdf" class="d-none" />
+      <input type="file" id="pdfFileInput" accept="application/pdf,.pdf" hidden />
 
-        <button type="button" id="pdfUploadButton" class="pdf-upload-btn mb-4">
-          <i class="bi bi-cloud-arrow-up"></i>
-          <span class="big-text">Click to open a PDF file.</span>
-          <span class="text-muted" style="font-size: 0.9rem;">Or drop a file here.</span>
+      <button type="button" id="pdfUploadButton" class="pdf-upload-btn mb-4">
+        <i class="bi bi-cloud-arrow-up"></i>
+        <span class="big-text">Click to open a PDF file.</span>
+        <span class="small-text text-muted">Or drop a file here.</span>
+      </button>
+
+      <div id="pdfLastDoc" class="pdf-last-doc" hidden>
+        <button type="button" id="pdfOpenLast" class="btn btn-outline-primary rounded-pill pdf-last-doc__open">
+          <i class="bi bi-file-earmark-pdf-fill flex-shrink-0"></i>
+          <span id="pdfLastDocName" class="pdf-last-doc__name"></span>
         </button>
-
-        <div id="pdfLastDoc" class="pdf-last-doc d-none">
-          <button type="button" id="pdfOpenLast" class="btn btn-outline-primary rounded-pill pdf-last-doc__open">
-            <i class="bi bi-file-earmark-pdf-fill flex-shrink-0"></i>
-            <span id="pdfLastDocName" class="pdf-last-doc__name"></span>
-          </button>
-          <button type="button" id="pdfDeleteLast" class="btn btn-outline-danger rounded-circle flex-shrink-0" aria-label="Delete document" title="Delete">
-            <i class="bi bi-trash" style="position:relative; top: 0.1rem;"></i>
-          </button>
-        </div>
+        <button type="button" id="pdfDeleteLast" class="btn btn-outline-danger rounded-circle flex-shrink-0" aria-label="Delete document" title="Delete">
+          <i class="bi bi-trash"></i>
+        </button>
       </div>
     </div>
-    <div style="background: #f9f9f9;">
-      <div class="container-md py-5" style="font-size: 80%">
-        <h2 class="h5" style="color: var(--bs-body-color); font-size: 140%">A secure, extension-friendly PDF reader.</h2>
-        <div class="mb-4">
+
+    <div class="pdf-about">
+      <div class="container-md py-5">
+        <h2 class="h5">A secure, extension-friendly PDF reader.</h2>
+        <p class="mb-4">
           Read PDF files, highlight text, translate sentences, and learn new words directly through Vocably. Your files are never uploaded to a server—they stay entirely in your browser and remain available for future reading sessions.
-        </div>
-        <div class="mb-4">
-          Don't have the Vocably extension yet? Install it here:
-        </div>
-        <style>
-          .extensions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-          }
-
-          .install-extension-button {
-            --bg-color: #2c2c2c;
-            --bg-hover-color: #000;
-
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.65rem 1rem 0.65rem 3rem;
-            border-radius: 2rem;
-            font-size: 0.9rem;
-            font-weight: 200;
-            color: #fff;
-            text-decoration: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: background-color 0.2s ease-in-out;
-
-            &.chrome {
-              background: var(--bg-color) url('assets/chrome.svg') 0.5rem center no-repeat;
-              background-size: 1.8rem;
-            }
-
-            &.edge {
-              background: var(--bg-color) url('assets/edge.svg') 0.55rem center no-repeat;
-              background-size: 1.7rem;
-            }
-
-            &.safari {
-              background: var(--bg-color) url('assets/safari.svg') 0.5rem calc(50% + 0.05rem) no-repeat;
-              background-size: 1.9rem;
-            }
-
-            &:hover {
-              background-color: var(--bg-hover-color);
-            }
-          }
-        </style>
+        </p>
+        <p class="mb-4">Don't have the Vocably extension yet? Install it here:</p>
         <div class="mb-4 extensions">
           <a class="install-extension-button chrome" href="https://chrome.google.com/webstore/detail/vocably/baocigmmhhdemijfjnjdidbkfgpgogmb">
             Chrome Extension
@@ -304,31 +405,33 @@
   </div>
 
   <!-- Reader (hidden until a document is opened) -->
-  <div id="pdfReader" class="pdf-reader d-none">
-    <style>
-      .btn-sm {
-        box-shadow: none;
-      }
-    </style>
+  <div id="pdfReader" class="pdf-reader" hidden>
     <div class="pdf-reader__toolbar">
-      <button type="button" id="pdfBack" class="btn btn-sm" title="Back">
+      <button type="button" id="pdfBack" class="pdf-icon-btn" title="Back" aria-label="Back">
         <i class="bi bi-arrow-left"></i>
       </button>
       <span id="pdfReaderTitle" class="pdf-reader__title"></span>
-      <button type="button" id="pdfZoomOut" class="btn btn-sm" title="Zoom out">
-        <i class="bi bi-zoom-out"></i>
-      </button>
-      <button type="button" id="pdfZoomIn" class="btn btn-sm" title="Zoom in">
-        <i class="bi bi-zoom-in"></i>
-      </button>
-      <button type="button" id="pdfPrev" class="btn btn-sm" title="Previous page">
-        <i class="bi bi-chevron-up"></i>
-      </button>
-      <input type="number" id="pdfPageInput" class="form-control form-control-sm pdf-reader__page-input" min="1" value="1" />
-      <span class="text-white-50" style="font-size: 0.9rem;">/&nbsp;<span id="pdfPageCount">?</span></span>
-      <button type="button" id="pdfNext" class="btn btn-sm" title="Next page">
-        <i class="bi bi-chevron-down"></i>
-      </button>
+
+      <div class="pdf-group" role="group" aria-label="Zoom">
+        <button type="button" id="pdfZoomOut" class="pdf-icon-btn" title="Zoom out" aria-label="Zoom out">
+          <i class="bi bi-dash-lg"></i>
+        </button>
+        <span id="pdfZoomLevel" class="pdf-zoom-level">100%</span>
+        <button type="button" id="pdfZoomIn" class="pdf-icon-btn" title="Zoom in" aria-label="Zoom in">
+          <i class="bi bi-plus-lg"></i>
+        </button>
+      </div>
+
+      <div class="pdf-group" role="group" aria-label="Pages">
+        <button type="button" id="pdfPrev" class="pdf-icon-btn" title="Previous page" aria-label="Previous page">
+          <i class="bi bi-chevron-up"></i>
+        </button>
+        <input type="number" id="pdfPageInput" class="pdf-page-input" min="1" value="1" aria-label="Page number" />
+        <span class="pdf-page-count">/&nbsp;<span id="pdfPageCount">?</span></span>
+        <button type="button" id="pdfNext" class="pdf-icon-btn" title="Next page" aria-label="Next page">
+          <i class="bi bi-chevron-down"></i>
+        </button>
+      </div>
     </div>
     <div id="pdfPages" class="pdf-reader__pages"></div>
   </div>
@@ -339,485 +442,410 @@
   <script type="module">
     import * as PDFJS from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.1.200/pdf.min.mjs';
 
-    (function () {
-      PDFJS.GlobalWorkerOptions.workerSrc =
-        'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.1.200/pdf.worker.min.mjs';
+    PDFJS.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/6.1.200/pdf.worker.min.mjs';
 
-      // ---- IndexedDB helpers (single stored document) ----
-      var DB_NAME = 'vocably-pdf-reader';
-      var STORE = 'documents';
-      var DOC_ID = 'current';
+    const MIN_SCALE = 0.4;
+    const MAX_SCALE = 4;
+    const ZOOM_STEP = 0.2;
+    const PAGE_GAP = 16;
 
-      function openDb() {
-        return new Promise(function (resolve, reject) {
-          var request = indexedDB.open(DB_NAME, 1);
-          request.onupgradeneeded = function () {
-            var db = request.result;
-            if (!db.objectStoreNames.contains(STORE)) {
-              db.createObjectStore(STORE, { keyPath: 'id' });
+    // ---- Storage: a single document kept in IndexedDB ----
+    const storage = (() => {
+      const DB_NAME = 'vocably-pdf-reader';
+      const STORE = 'documents';
+      const DOC_ID = 'current';
+
+      let dbPromise;
+      const openDb = () =>
+        (dbPromise ??= new Promise((resolve, reject) => {
+          const request = indexedDB.open(DB_NAME, 1);
+          request.onupgradeneeded = () => {
+            if (!request.result.objectStoreNames.contains(STORE)) {
+              request.result.createObjectStore(STORE, { keyPath: 'id' });
             }
           };
-          request.onsuccess = function () {
-            resolve(request.result);
-          };
-          request.onerror = function () {
-            reject(request.error);
-          };
-        });
-      }
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () => reject(request.error);
+        }));
 
-      function dbGet() {
-        return openDb().then(function (db) {
-          return new Promise(function (resolve, reject) {
-            var tx = db.transaction(STORE, 'readonly');
-            var req = tx.objectStore(STORE).get(DOC_ID);
-            req.onsuccess = function () {
-              resolve(req.result || null);
-            };
-            req.onerror = function () {
-              reject(req.error);
-            };
-          });
+      // Runs `fn` against the store and resolves with its request's result
+      // once the transaction commits.
+      const withStore = async (mode, fn) => {
+        const db = await openDb();
+        return new Promise((resolve, reject) => {
+          const tx = db.transaction(STORE, mode);
+          const request = fn(tx.objectStore(STORE));
+          tx.oncomplete = () => resolve(request?.result);
+          tx.onerror = () => reject(tx.error);
         });
-      }
+      };
 
-      function dbPut(doc) {
-        return openDb().then(function (db) {
-          return new Promise(function (resolve, reject) {
-            var tx = db.transaction(STORE, 'readwrite');
-            tx.objectStore(STORE).put(doc);
-            tx.oncomplete = function () {
-              resolve();
-            };
-            tx.onerror = function () {
-              reject(tx.error);
-            };
-          });
-        });
-      }
-
-      function dbDelete() {
-        return openDb().then(function (db) {
-          return new Promise(function (resolve, reject) {
-            var tx = db.transaction(STORE, 'readwrite');
-            tx.objectStore(STORE).delete(DOC_ID);
-            tx.oncomplete = function () {
-              resolve();
-            };
-            tx.onerror = function () {
-              reject(tx.error);
-            };
-          });
-        });
-      }
-
-      // Merge a partial update into the stored document (page, scale, ...).
-      function updateDoc(patch) {
-        return openDb().then(function (db) {
-          return new Promise(function (resolve, reject) {
-            var tx = db.transaction(STORE, 'readwrite');
-            var store = tx.objectStore(STORE);
-            var req = store.get(DOC_ID);
-            req.onsuccess = function () {
-              var doc = req.result;
-              if (doc) {
-                Object.assign(doc, patch);
-                store.put(doc);
+      return {
+        get: async () => (await withStore('readonly', (store) => store.get(DOC_ID))) ?? null,
+        save: (doc) => withStore('readwrite', (store) => store.put({ ...doc, id: DOC_ID })),
+        remove: () => withStore('readwrite', (store) => store.delete(DOC_ID)),
+        // Merges a partial update (page, scale, ...) into the stored document.
+        update: (patch) =>
+          withStore('readwrite', (store) => {
+            const request = store.get(DOC_ID);
+            request.onsuccess = () => {
+              if (request.result) {
+                store.put({ ...request.result, ...patch });
               }
             };
-            tx.oncomplete = function () {
-              resolve();
-            };
-            tx.onerror = function () {
-              reject(tx.error);
-            };
-          });
-        });
-      }
-
-      function savePage(page) {
-        return updateDoc({ page: page });
-      }
-
-      function saveScale(scale) {
-        return updateDoc({ scale: scale });
-      }
-
-      // ---- Elements ----
-      var landing = document.getElementById('pdfLanding');
-      var fileInput = document.getElementById('pdfFileInput');
-      var uploadButton = document.getElementById('pdfUploadButton');
-      var lastDoc = document.getElementById('pdfLastDoc');
-      var openLast = document.getElementById('pdfOpenLast');
-      var deleteLast = document.getElementById('pdfDeleteLast');
-      var lastDocName = document.getElementById('pdfLastDocName');
-
-      var reader = document.getElementById('pdfReader');
-      var readerTitle = document.getElementById('pdfReaderTitle');
-      var pagesContainer = document.getElementById('pdfPages');
-      var backButton = document.getElementById('pdfBack');
-      var prevButton = document.getElementById('pdfPrev');
-      var nextButton = document.getElementById('pdfNext');
-      var pageInput = document.getElementById('pdfPageInput');
-      var pageCount = document.getElementById('pdfPageCount');
-      var zoomInButton = document.getElementById('pdfZoomIn');
-      var zoomOutButton = document.getElementById('pdfZoomOut');
-
-      // ---- Reader state ----
-      var pdfDoc = null;
-      var renderedPages = {}; // pageNumber -> rendered <svg> element
-      var pageRenders = {}; // pageNumber -> in-flight render promise (dedupe)
-      var currentPage = 1;
-      var scale = 1.2;
-      var scrollDebounce = null;
-      var suppressScrollTracking = false;
-
-      function showLastDoc(doc) {
-        if (doc) {
-          lastDocName.textContent = doc.name;
-          lastDoc.classList.remove('d-none');
-        } else {
-          lastDoc.classList.add('d-none');
-        }
-      }
-
-      function refreshLanding() {
-        return dbGet().then(showLastDoc);
-      }
-
-      // ---- Rendering (canvas image + HTML text layer for selection) ----
-      function renderPage(pageNumber) {
-        if (pageRenders[pageNumber]) {
-          return pageRenders[pageNumber];
-        }
-        var promise = pdfDoc.getPage(pageNumber).then(function (page) {
-          var viewport = page.getViewport({ scale: scale });
-          var cssWidth = Math.floor(viewport.width);
-          var cssHeight = Math.floor(viewport.height);
-
-          var wrapper = document.createElement('div');
-          wrapper.className = 'pdf-reader__page';
-          wrapper.dataset.page = String(pageNumber);
-          wrapper.style.width = cssWidth + 'px';
-          wrapper.style.height = cssHeight + 'px';
-          // Drives the text layer's font sizing / positioning math.
-          wrapper.style.setProperty('--total-scale-factor', String(scale));
-
-          // Visual layer: canvas rendered at device pixel ratio for crispness.
-          var canvas = document.createElement('canvas');
-          canvas.className = 'pdf-reader__canvas';
-          var ratio = window.devicePixelRatio || 1;
-          canvas.width = Math.floor(viewport.width * ratio);
-          canvas.height = Math.floor(viewport.height * ratio);
-          canvas.style.width = cssWidth + 'px';
-          canvas.style.height = cssHeight + 'px';
-          wrapper.appendChild(canvas);
-
-          // Text layer: transparent, selectable HTML on top of the canvas.
-          var textLayerDiv = document.createElement('div');
-          textLayerDiv.className = 'textLayer';
-          wrapper.appendChild(textLayerDiv);
-
-          var canvasTask = page.render({
-            canvasContext: canvas.getContext('2d'),
-            viewport: viewport,
-            transform: ratio !== 1 ? [ratio, 0, 0, ratio, 0, 0] : undefined,
-          }).promise;
-
-          var textTask = page.getTextContent().then(function (textContent) {
-            var textLayer = new PDFJS.TextLayer({
-              textContentSource: textContent,
-              container: textLayerDiv,
-              viewport: viewport,
-            });
-            return textLayer.render();
-          });
-
-          return Promise.all([canvasTask, textTask]).then(function () {
-            renderedPages[pageNumber] = wrapper;
-            return wrapper;
-          });
-        });
-        pageRenders[pageNumber] = promise;
-        return promise;
-      }
-
-      // Render all page placeholders in order, then fill visible ones lazily.
-      function buildPages() {
-        pagesContainer.innerHTML = '';
-        renderedPages = {};
-        pageRenders = {};
-        var frag = document.createDocumentFragment();
-        var estWidth = Math.max(200, pagesContainer.clientWidth - 24);
-        for (var i = 1; i <= pdfDoc.numPages; i++) {
-          var placeholder = document.createElement('div');
-          placeholder.className = 'pdf-reader__page';
-          placeholder.dataset.page = String(i);
-          placeholder.style.width = estWidth + 'px';
-          placeholder.style.aspectRatio = '1 / 1.414';
-          frag.appendChild(placeholder);
-        }
-        pagesContainer.appendChild(frag);
-        renderVisiblePages();
-      }
-
-      function renderVisiblePages() {
-        var containerRect = pagesContainer.getBoundingClientRect();
-        var nodes = pagesContainer.children;
-        var tasks = [];
-        for (var i = 0; i < nodes.length; i++) {
-          var node = nodes[i];
-          var pageNumber = parseInt(node.dataset.page, 10);
-          if (pageRenders[pageNumber]) {
-            continue;
-          }
-          var rect = node.getBoundingClientRect();
-          var visible =
-            rect.bottom >= containerRect.top - containerRect.height &&
-            rect.top <= containerRect.bottom + containerRect.height;
-          if (visible) {
-            tasks.push(replaceWithPage(node, pageNumber));
-          }
-        }
-        return Promise.all(tasks);
-      }
-
-      function replaceWithPage(node, pageNumber) {
-        return renderPage(pageNumber).then(function (svg) {
-          if (node.parentNode) {
-            node.parentNode.replaceChild(svg, node);
-          }
-        });
-      }
-
-      function goToPage(pageNumber, persist) {
-        pageNumber = Math.max(1, Math.min(pdfDoc.numPages, pageNumber));
-        currentPage = pageNumber;
-        pageInput.value = String(pageNumber);
-        var target = pagesContainer.querySelector('[data-page="' + pageNumber + '"]');
-
-        function scrollToTarget() {
-          var el = pagesContainer.querySelector('[data-page="' + pageNumber + '"]');
-          if (!el) {
-            return;
-          }
-          suppressScrollTracking = true;
-          var top =
-            el.offsetTop - pagesContainer.offsetTop - 16;
-          pagesContainer.scrollTop = top;
-          setTimeout(function () {
-            suppressScrollTracking = false;
-          }, 100);
-        }
-
-        if (target && !renderedPages[pageNumber]) {
-          replaceWithPage(target, pageNumber).then(scrollToTarget);
-        } else {
-          scrollToTarget();
-        }
-
-        if (persist !== false) {
-          savePage(pageNumber);
-        }
-      }
-
-      function updateCurrentPageFromScroll() {
-        var nodes = pagesContainer.children;
-        var containerMiddle =
-          pagesContainer.getBoundingClientRect().top +
-          pagesContainer.clientHeight / 2;
-        var closest = currentPage;
-        var closestDistance = Infinity;
-        for (var i = 0; i < nodes.length; i++) {
-          var node = nodes[i];
-          var rect = node.getBoundingClientRect();
-          var center = rect.top + rect.height / 2;
-          var distance = Math.abs(center - containerMiddle);
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closest = parseInt(node.dataset.page, 10);
-          }
-        }
-        if (closest !== currentPage) {
-          currentPage = closest;
-          pageInput.value = String(closest);
-          savePage(closest);
-        }
-      }
-
-      pagesContainer.addEventListener('scroll', function () {
-        renderVisiblePages();
-        if (suppressScrollTracking) {
-          return;
-        }
-        if (scrollDebounce) {
-          clearTimeout(scrollDebounce);
-        }
-        scrollDebounce = setTimeout(updateCurrentPageFromScroll, 150);
-      });
-
-      function reRenderAll() {
-        var page = currentPage;
-        renderedPages = {};
-        buildPages();
-        goToPage(page, false);
-      }
-
-      // ---- Open / close reader ----
-      function openReader(doc) {
-        readerTitle.textContent = doc.name;
-        pageInput.value = String(doc.page || 1);
-        pageCount.textContent = '?';
-        reader.classList.remove('d-none');
-        document.body.style.overflow = 'hidden';
-
-        var data = doc.data.slice(0); // pdf.js transfers/detaches the buffer
-        PDFJS.getDocument({ data: data }).promise.then(function (loaded) {
-          pdfDoc = loaded;
-          pageCount.textContent = String(pdfDoc.numPages);
-          pageInput.max = String(pdfDoc.numPages);
-          return pdfDoc.getPage(1).then(function (firstPage) {
-            if (doc.scale) {
-              // Restore the last zoom the user picked for this document.
-              scale = doc.scale;
-            } else {
-              // Fit the page width to the reader, so canvas and text stay aligned.
-              var unscaled = firstPage.getViewport({ scale: 1 });
-              var available = pagesContainer.clientWidth - 24;
-              scale = Math.max(0.4, Math.min(3, available / unscaled.width));
-            }
-            buildPages();
-            goToPage(doc.page || 1, false);
-          });
-        });
-      }
-
-      function closeReader() {
-        reader.classList.add('d-none');
-        document.body.style.overflow = '';
-        pagesContainer.innerHTML = '';
-        renderedPages = {};
-        pageRenders = {};
-        if (pdfDoc) {
-          pdfDoc.destroy();
-          pdfDoc = null;
-        }
-        refreshLanding();
-      }
-
-      // ---- File handling ----
-      function handleFile(file) {
-        if (!file || file.type !== 'application/pdf') {
-          if (file && !/\.pdf$/i.test(file.name)) {
-            alert('Please choose a PDF file.');
-            return;
-          }
-        }
-        var fileReader = new FileReader();
-        fileReader.onload = function () {
-          var arrayBuffer = fileReader.result;
-          var doc = {
-            id: DOC_ID,
-            name: file.name,
-            data: arrayBuffer,
-            page: 1,
-            updatedAt: Date.now(),
-          };
-          dbPut(doc).then(function () {
-            refreshLanding();
-            openReader(doc);
-          });
-        };
-        fileReader.readAsArrayBuffer(file);
-      }
-
-      // ---- Wire up UI ----
-      uploadButton.addEventListener('click', function () {
-        fileInput.click();
-      });
-
-      fileInput.addEventListener('change', function () {
-        if (fileInput.files && fileInput.files[0]) {
-          handleFile(fileInput.files[0]);
-          fileInput.value = '';
-        }
-      });
-
-      ['dragenter', 'dragover'].forEach(function (name) {
-        uploadButton.addEventListener(name, function (e) {
-          e.preventDefault();
-          uploadButton.classList.add('is-dragover');
-        });
-      });
-      ['dragleave', 'drop'].forEach(function (name) {
-        uploadButton.addEventListener(name, function (e) {
-          e.preventDefault();
-          uploadButton.classList.remove('is-dragover');
-        });
-      });
-      uploadButton.addEventListener('drop', function (e) {
-        if (e.dataTransfer && e.dataTransfer.files[0]) {
-          handleFile(e.dataTransfer.files[0]);
-        }
-      });
-
-      openLast.addEventListener('click', function () {
-        dbGet().then(function (doc) {
-          if (doc) {
-            openReader(doc);
-          }
-        });
-      });
-
-      deleteLast.addEventListener('click', function () {
-        if (!confirm('Delete the uploaded document?')) {
-          return;
-        }
-        dbDelete().then(function () {
-          showLastDoc(null);
-        });
-      });
-
-      backButton.addEventListener('click', closeReader);
-      prevButton.addEventListener('click', function () {
-        goToPage(currentPage - 1);
-      });
-      nextButton.addEventListener('click', function () {
-        goToPage(currentPage + 1);
-      });
-      pageInput.addEventListener('change', function () {
-        var value = parseInt(pageInput.value, 10);
-        if (!isNaN(value)) {
-          goToPage(value);
-        }
-      });
-
-      zoomInButton.addEventListener('click', function () {
-        scale = Math.min(4, scale + 0.2);
-        reRenderAll();
-        saveScale(scale);
-      });
-      zoomOutButton.addEventListener('click', function () {
-        scale = Math.max(0.4, scale - 0.2);
-        reRenderAll();
-        saveScale(scale);
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (reader.classList.contains('d-none')) {
-          return;
-        }
-        if (e.key === 'Escape') {
-          closeReader();
-        } else if (e.key === 'ArrowRight' || e.key === 'PageDown') {
-          goToPage(currentPage + 1);
-        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-          goToPage(currentPage - 1);
-        }
-      });
-
-      // ---- Init ----
-      refreshLanding();
+          }),
+      };
     })();
+
+    // ---- Elements ----
+    const $ = (id) => document.getElementById(id);
+    const ui = {
+      fileInput: $('pdfFileInput'),
+      uploadButton: $('pdfUploadButton'),
+      lastDoc: $('pdfLastDoc'),
+      lastDocName: $('pdfLastDocName'),
+      openLast: $('pdfOpenLast'),
+      deleteLast: $('pdfDeleteLast'),
+      reader: $('pdfReader'),
+      title: $('pdfReaderTitle'),
+      pages: $('pdfPages'),
+      back: $('pdfBack'),
+      prev: $('pdfPrev'),
+      next: $('pdfNext'),
+      pageInput: $('pdfPageInput'),
+      pageCount: $('pdfPageCount'),
+      zoomIn: $('pdfZoomIn'),
+      zoomOut: $('pdfZoomOut'),
+      zoomLevel: $('pdfZoomLevel'),
+    };
+
+    // ---- Reader state ----
+    const state = {
+      pdf: null,
+      loadingTask: null, // owns the worker-side document; destroyed on close
+      scale: 1,
+      currentPage: 1,
+      renders: new Map(), // pageNumber -> in-flight/finished render promise
+      observer: null, // lazily renders pages as they approach the viewport
+      suppressScrollTracking: false,
+    };
+
+    const isReaderOpen = () => !ui.reader.hidden;
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const pageElement = (pageNumber) => ui.pages.querySelector(`[data-page="${pageNumber}"]`);
+
+    // ---- Landing ----
+    const showLastDoc = (doc) => {
+      ui.lastDoc.hidden = !doc;
+      ui.lastDocName.textContent = doc?.name ?? '';
+    };
+
+    const refreshLanding = async () => showLastDoc(await storage.get());
+
+    // ---- Rendering (canvas image + HTML text layer for selection) ----
+    const renderPage = (pageNumber) => {
+      if (!state.renders.has(pageNumber)) {
+        const { renders } = state;
+        const promise = drawPage(pageNumber).catch((error) => {
+          // Allow a retry, unless the reader has been rebuilt meanwhile.
+          renders.delete(pageNumber);
+          console.error(error);
+        });
+        renders.set(pageNumber, promise);
+      }
+      return state.renders.get(pageNumber);
+    };
+
+    const drawPage = async (pageNumber) => {
+      const { pdf, scale } = state;
+      const page = await pdf.getPage(pageNumber);
+      const viewport = page.getViewport({ scale });
+      const ratio = window.devicePixelRatio || 1;
+
+      // Visual layer: canvas rendered at device pixel ratio for crispness.
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.floor(viewport.width * ratio);
+      canvas.height = Math.floor(viewport.height * ratio);
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+
+      // Text layer: transparent, selectable HTML on top of the canvas.
+      const textLayerDiv = document.createElement('div');
+      textLayerDiv.className = 'textLayer';
+
+      await Promise.all([
+        page.render({
+          canvas,
+          viewport,
+          transform: ratio !== 1 ? [ratio, 0, 0, ratio, 0, 0] : undefined,
+        }).promise,
+        new PDFJS.TextLayer({
+          textContentSource: page.streamTextContent(),
+          container: textLayerDiv,
+          viewport,
+        }).render(),
+      ]);
+
+      // The reader may have been zoomed or closed while this page was rendering.
+      if (state.pdf !== pdf || state.scale !== scale) {
+        return;
+      }
+
+      const el = pageElement(pageNumber);
+      sizePage(el, viewport);
+      el.replaceChildren(canvas, textLayerDiv);
+    };
+
+    const sizePage = (el, viewport) => {
+      el.style.width = `${Math.floor(viewport.width)}px`;
+      el.style.height = `${Math.floor(viewport.height)}px`;
+      // Drives the text layer's font sizing / positioning math.
+      el.style.setProperty('--total-scale-factor', String(state.scale));
+    };
+
+    // Creates a correctly-sized placeholder per page; the observer renders
+    // them lazily as they scroll into (or near) view.
+    const buildPages = async () => {
+      // Size placeholders after page 1 — close enough for most documents,
+      // and each page snaps to its real size once rendered.
+      const firstPage = await state.pdf.getPage(1);
+      const viewport = firstPage.getViewport({ scale: state.scale });
+
+      state.observer?.disconnect();
+      state.renders = new Map();
+
+      const placeholders = Array.from({ length: state.pdf.numPages }, (_, i) => {
+        const el = document.createElement('div');
+        el.className = 'pdf-reader__page';
+        el.dataset.page = String(i + 1);
+        sizePage(el, viewport);
+        return el;
+      });
+      ui.pages.replaceChildren(...placeholders);
+
+      state.observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              renderPage(Number(entry.target.dataset.page));
+            }
+          }
+        },
+        { root: ui.pages, rootMargin: '100% 0px' },
+      );
+      placeholders.forEach((el) => state.observer.observe(el));
+    };
+
+    const setCurrentPage = (pageNumber, { persist = true } = {}) => {
+      state.currentPage = pageNumber;
+      ui.pageInput.value = String(pageNumber);
+      ui.prev.disabled = pageNumber <= 1;
+      ui.next.disabled = pageNumber >= state.pdf.numPages;
+      if (persist) {
+        storage.update({ page: pageNumber });
+      }
+    };
+
+    const goToPage = async (pageNumber, options) => {
+      pageNumber = clamp(pageNumber, 1, state.pdf.numPages);
+      setCurrentPage(pageNumber, options);
+
+      // Render the target first so the scroll lands on its real size.
+      await renderPage(pageNumber);
+      const el = pageElement(pageNumber);
+      if (!el) {
+        return;
+      }
+      state.suppressScrollTracking = true;
+      ui.pages.scrollTop = el.offsetTop - ui.pages.offsetTop - PAGE_GAP;
+      setTimeout(() => (state.suppressScrollTracking = false), 100);
+    };
+
+    // The page closest to the middle of the viewport is the current one.
+    const updateCurrentPageFromScroll = () => {
+      const containerRect = ui.pages.getBoundingClientRect();
+      const middle = containerRect.top + containerRect.height / 2;
+
+      let closest = state.currentPage;
+      let closestDistance = Infinity;
+      for (const el of ui.pages.children) {
+        const rect = el.getBoundingClientRect();
+        const distance = Math.abs(rect.top + rect.height / 2 - middle);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closest = Number(el.dataset.page);
+        }
+      }
+
+      if (closest !== state.currentPage) {
+        setCurrentPage(closest);
+      }
+    };
+
+    const debounce = (fn, ms) => {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), ms);
+      };
+    };
+
+    // ---- Zoom ----
+    const updateZoomUi = () => {
+      ui.zoomLevel.textContent = `${Math.round(state.scale * 100)}%`;
+      ui.zoomOut.disabled = state.scale <= MIN_SCALE;
+      ui.zoomIn.disabled = state.scale >= MAX_SCALE;
+    };
+
+    const setScale = async (scale) => {
+      state.scale = clamp(scale, MIN_SCALE, MAX_SCALE);
+      updateZoomUi();
+      storage.update({ scale: state.scale });
+      await buildPages();
+      await goToPage(state.currentPage, { persist: false });
+    };
+
+    // Fits the page width to the reader, so canvas and text stay aligned.
+    const fitWidthScale = async () => {
+      const firstPage = await state.pdf.getPage(1);
+      const { width } = firstPage.getViewport({ scale: 1 });
+      return clamp((ui.pages.clientWidth - 24) / width, MIN_SCALE, 3);
+    };
+
+    // ---- Open / close reader ----
+    const openReader = async (doc) => {
+      ui.title.textContent = doc.name;
+      ui.pageCount.textContent = '?';
+      ui.pages.innerHTML =
+        '<div class="spinner-border text-light pdf-reader__spinner" role="status"><span class="visually-hidden">Loading…</span></div>';
+      ui.reader.hidden = false;
+      document.body.style.overflow = 'hidden';
+
+      // pdf.js transfers (detaches) the buffer, so hand it a copy.
+      state.loadingTask = PDFJS.getDocument({ data: doc.data.slice(0) });
+      state.pdf = await state.loadingTask.promise;
+      ui.pageCount.textContent = String(state.pdf.numPages);
+      ui.pageInput.max = String(state.pdf.numPages);
+
+      state.scale = doc.scale ?? (await fitWidthScale());
+      updateZoomUi();
+      await buildPages();
+      await goToPage(doc.page ?? 1, { persist: false });
+    };
+
+    const closeReader = () => {
+      ui.reader.hidden = true;
+      document.body.style.overflow = '';
+      state.observer?.disconnect();
+      state.observer = null;
+      state.renders = new Map();
+      ui.pages.replaceChildren();
+      state.loadingTask?.destroy();
+      state.loadingTask = null;
+      state.pdf = null;
+      refreshLanding();
+    };
+
+    // ---- File handling ----
+    const isPdf = (file) => file.type === 'application/pdf' || /\.pdf$/i.test(file.name);
+
+    const handleFile = async (file) => {
+      if (!file) {
+        return;
+      }
+      if (!isPdf(file)) {
+        alert('Please choose a PDF file.');
+        return;
+      }
+      const doc = {
+        name: file.name,
+        data: await file.arrayBuffer(),
+        page: 1,
+        updatedAt: Date.now(),
+      };
+      await storage.save(doc);
+      showLastDoc(doc);
+      await openReader(doc);
+    };
+
+    // ---- Wire up UI ----
+    ui.uploadButton.addEventListener('click', () => ui.fileInput.click());
+
+    ui.fileInput.addEventListener('change', () => {
+      handleFile(ui.fileInput.files?.[0]);
+      ui.fileInput.value = '';
+    });
+
+    for (const type of ['dragenter', 'dragover', 'dragleave', 'drop']) {
+      ui.uploadButton.addEventListener(type, (event) => {
+        event.preventDefault();
+        const isOver = type === 'dragenter' || type === 'dragover';
+        ui.uploadButton.classList.toggle('is-dragover', isOver);
+        if (type === 'drop') {
+          handleFile(event.dataTransfer?.files[0]);
+        }
+      });
+    }
+
+    ui.openLast.addEventListener('click', async () => {
+      const doc = await storage.get();
+      if (doc) {
+        await openReader(doc);
+      }
+    });
+
+    ui.deleteLast.addEventListener('click', async () => {
+      if (confirm('Delete the uploaded document?')) {
+        await storage.remove();
+        showLastDoc(null);
+      }
+    });
+
+    ui.back.addEventListener('click', closeReader);
+    ui.prev.addEventListener('click', () => goToPage(state.currentPage - 1));
+    ui.next.addEventListener('click', () => goToPage(state.currentPage + 1));
+    ui.pageInput.addEventListener('change', () => {
+      const value = parseInt(ui.pageInput.value, 10);
+      if (Number.isNaN(value)) {
+        ui.pageInput.value = String(state.currentPage);
+      } else {
+        goToPage(value);
+      }
+    });
+
+    ui.zoomIn.addEventListener('click', () => setScale(state.scale + ZOOM_STEP));
+    ui.zoomOut.addEventListener('click', () => setScale(state.scale - ZOOM_STEP));
+
+    ui.pages.addEventListener(
+      'scroll',
+      debounce(() => {
+        if (!state.suppressScrollTracking) {
+          updateCurrentPageFromScroll();
+        }
+      }, 150),
+    );
+
+    document.addEventListener('keydown', (event) => {
+      if (!isReaderOpen() || !state.pdf || event.target === ui.pageInput) {
+        return;
+      }
+      switch (event.key) {
+        case 'Escape':
+          closeReader();
+          break;
+        case 'ArrowRight':
+        case 'PageDown':
+          goToPage(state.currentPage + 1);
+          break;
+        case 'ArrowLeft':
+        case 'PageUp':
+          goToPage(state.currentPage - 1);
+          break;
+      }
+    });
+
+    // ---- Init ----
+    refreshLanding();
   </script>
 {{/layout}}
