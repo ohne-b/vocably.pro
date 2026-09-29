@@ -277,10 +277,19 @@ export const pt = {
 
   // Settings
   'settings.title': 'Configurações',
-  'settings.not_sure': 'Não sabe por onde começar? Apenas',
-  'settings.click_link': 'clique neste link',
+  'settings.account': 'Conta',
+  'settings.email': 'E-mail',
+  'settings.help': 'Ajuda e suporte',
+  'settings.getting_started': 'Primeiros passos',
+  'settings.getting_started_desc': 'Um guia rápido para configurar o Vocably.',
+  'settings.open_guide': 'Abrir guia',
+  'settings.mobile_app': 'Aplicativo móvel',
+  'settings.danger_zone': 'Zona de perigo',
+  'settings.delete_account_desc':
+    'Exclua permanentemente sua conta e todos os seus cartões. Esta ação não pode ser desfeita.',
+  'settings.delete': 'Excluir',
   'settings.need_help': 'Precisa de ajuda?',
-  'settings.contact': 'Entre em contato com o autor do Vocably',
+  'settings.contact': 'Contato',
   'settings.respond_everyone': 'Respondo a todos.',
   'settings.study_settings': 'Configurações de estudo',
   'settings.max_cards': 'Máximo de cartões por sessão de estudo',

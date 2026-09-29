@@ -281,10 +281,19 @@ export const ru = {
 
   // Settings
   'settings.title': 'Настройки',
-  'settings.not_sure': 'Не знаете, с чего начать? Просто',
-  'settings.click_link': 'нажмите на эту ссылку',
+  'settings.account': 'Аккаунт',
+  'settings.email': 'Эл. почта',
+  'settings.help': 'Помощь и поддержка',
+  'settings.getting_started': 'С чего начать',
+  'settings.getting_started_desc': 'Краткое руководство по настройке Vocably.',
+  'settings.open_guide': 'Открыть',
+  'settings.mobile_app': 'Мобильное приложение',
+  'settings.danger_zone': 'Опасная зона',
+  'settings.delete_account_desc':
+    'Аккаунт и все ваши карточки будут удалены навсегда. Это действие нельзя отменить.',
+  'settings.delete': 'Удалить',
   'settings.need_help': 'Нужна помощь?',
-  'settings.contact': 'Связаться с автором Vocably',
+  'settings.contact': 'Написать',
   'settings.respond_everyone': 'Я отвечаю всем.',
   'settings.study_settings': 'Настройки учёбы',
   'settings.max_cards': 'Максимум карточек за учебную сессию',

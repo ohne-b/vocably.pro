@@ -1,152 +1,175 @@
 <div class="container-xl top">
   <app-header [title]="'settings.title' | transloco"></app-header>
 </div>
-<div class="container bottom">
-  <div class="flex-direction-column align-items-center">
-    @if (email$ | async; as email) {
-      <p class="small text-center">
-        {{ 'settings.signed_in_as' | transloco: { email } }}
-      </p>
-    }
-    <mat-divider style="margin: 4rem 0"></mat-divider>
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      "
-    >
-      <div style="margin: 0">
-        {{ 'settings.interface_language' | transloco }}:
-      </div>
-      <mat-form-field appearance="outline" nolabel>
-        <mat-select
-          [(ngModel)]="interfaceLanguage"
-          (ngModelChange)="onInterfaceLanguageChange($event)"
+<div class="container bottom settings">
+  <section class="section">
+    <h2 class="section-title">{{ 'settings.account' | transloco }}</h2>
+    <div class="card">
+      @if (email$ | async; as email) {
+        <div class="row">
+          <div class="row-text">
+            <div class="row-label">{{ 'settings.email' | transloco }}</div>
+          </div>
+          <div class="row-value">{{ email }}</div>
+        </div>
+      }
+      <div class="row">
+        <div class="row-text">
+          <div class="row-label">
+            {{ 'settings.interface_language' | transloco }}
+          </div>
+        </div>
+        <mat-form-field
+          appearance="outline"
+          subscriptSizing="dynamic"
+          class="language-select"
         >
-          @for (lang of languages; track lang.value) {
-            <mat-option [value]="lang.value">{{ lang.label }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <mat-divider style="margin: 4rem 0"></mat-divider>
-    <div class="text-center mb-2">
-      {{ 'settings.not_sure' | transloco }}
-      <a [routerLink]="['/welcome']">{{ 'settings.click_link' | transloco }}</a
-      >.
-    </div>
-    <mat-divider style="margin: 4rem 0"></mat-divider>
-    <div>
-      <p class="text-center">{{ 'settings.need_help' | transloco }}</p>
-      <p>
-        <a class="button block outline" [routerLink]="['/feedback']">{{
-          'settings.contact' | transloco
-        }}</a>
-      </p>
-      <div class="text-center small">
-        {{ 'settings.respond_everyone' | transloco }}
+          <mat-select
+            [(ngModel)]="interfaceLanguage"
+            (ngModelChange)="onInterfaceLanguageChange($event)"
+          >
+            @for (lang of languages; track lang.value) {
+              <mat-option [value]="lang.value">{{ lang.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
-    <mat-divider style="margin: 4rem 0"></mat-divider>
-    <div>
-      <h2>{{ 'settings.study_settings' | transloco }}</h2>
+  </section>
 
-      <div>
-        <p style="margin-top: 0; margin-bottom: 8px">
-          {{ 'settings.max_cards' | transloco }}
-        </p>
-        <div style="display: flex; align-items: center; gap: 12px">
-          <mat-slider min="5" max="40" step="1" style="flex: 1" color="accent">
+  <section class="section">
+    <h2 class="section-title">{{ 'settings.study_settings' | transloco }}</h2>
+    <div class="card">
+      <div class="row row-stacked">
+        <div class="row-label">{{ 'settings.max_cards' | transloco }}</div>
+        <div class="slider">
+          <mat-slider min="5" max="40" step="1" color="accent">
             <input
               matSliderThumb
               [(ngModel)]="studySettings.cardsPerSession"
               (ngModelChange)="onStudySettingsChange()"
             />
           </mat-slider>
-          <strong style="font-size: 1rem; width: 24px">{{
-            studySettings.cardsPerSession
-          }}</strong>
+          <span class="slider-value">{{ studySettings.cardsPerSession }}</span>
         </div>
       </div>
-
-      <div>
-        <mat-checkbox
-          [(ngModel)]="studySettings.random"
-          (ngModelChange)="onStudySettingsChange()"
-          color="accent"
-        >
-          {{ 'settings.random_select' | transloco }}
-        </mat-checkbox>
-        <div style="padding-left: 0.75rem; padding-top: 8px">
-          <p class="small">
-            <mat-icon
-              style="
-                font-size: 1.1rem;
-                width: 1.1rem;
-                height: 1.1rem;
-                vertical-align: text-bottom;
-                margin-right: 0.25rem;
-              "
-              >error_outline</mat-icon
-            >
+      <div class="row row-stacked">
+        <div class="row-inline">
+          <div class="row-label">
+            {{ 'settings.random_select' | transloco }}
+          </div>
+          <mat-slide-toggle
+            [(ngModel)]="studySettings.random"
+            (ngModelChange)="onStudySettingsChange()"
+            color="accent"
+          ></mat-slide-toggle>
+        </div>
+        <div class="notice" [class.notice-active]="studySettings.random">
+          <mat-icon class="notice-icon">error_outline</mat-icon>
+          <div>
             <span [innerHTML]="'settings.random_warning' | transloco"></span>
             <a href="https://vocably.pro/srs.html" target="_blank">
-              {{ 'settings.read_how' | transloco }}</a
+              {{ 'settings.read_how' | transloco }}
+              <mat-icon class="inline-icon">open_in_new</mat-icon></a
             >
-            <mat-icon
-              style="
-                font-size: 1.1rem;
-                width: 1.1rem;
-                height: 1.1rem;
-                vertical-align: text-bottom;
-                margin-left: 0.25rem;
-              "
-              >open_in_new</mat-icon
-            >
-          </p>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <app-study-steps style="display: block; margin: 2rem 0"></app-study-steps>
+  <section class="section">
+    <h2 class="section-title">
+      {{ 'settings.study_steps.title' | transloco }}
+    </h2>
+    <p class="section-description">
+      {{ 'settings.study_steps.drag_to_reorder' | transloco }}
+    </p>
+    <div class="card">
+      <app-study-steps></app-study-steps>
+    </div>
+  </section>
 
-    <mat-divider style="margin: 4rem 0"></mat-divider>
-
-    <div class="mobile">
-      <div>
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          style="width: 184px; height: 400px"
-        >
-          <source src="assets/study/mobile.mov" type="video/quicktime" />
-          <source src="assets/study/mobile.webm" type="video/webm" />
-          The video is not supported by your browser.
-        </video>
-      </div>
-      <div>
-        <h3>{{ 'settings.sync_cards' | transloco }}</h3>
-        <p>{{ 'settings.mobile_features' | transloco }}</p>
-        <ul class="mb-1">
-          <li>{{ 'settings.feature_tags' | transloco }}</li>
-          <li>{{ 'settings.feature_ai_dict' | transloco }}</li>
-          <li>{{ 'settings.feature_prompts' | transloco }}</li>
+  <section class="section">
+    <h2 class="section-title">{{ 'settings.mobile_app' | transloco }}</h2>
+    <div class="card mobile">
+      <video autoplay loop muted playsinline class="mobile-video">
+        <source src="assets/study/mobile.mov" type="video/quicktime" />
+        <source src="assets/study/mobile.webm" type="video/webm" />
+      </video>
+      <div class="mobile-text">
+        <div class="row-label">{{ 'settings.sync_cards' | transloco }}</div>
+        <p class="muted">{{ 'settings.mobile_features' | transloco }}</p>
+        <ul class="features">
+          <li>
+            <mat-icon>check</mat-icon>{{ 'settings.feature_tags' | transloco }}
+          </li>
+          <li>
+            <mat-icon>check</mat-icon
+            >{{ 'settings.feature_ai_dict' | transloco }}
+          </li>
+          <li>
+            <mat-icon>check</mat-icon
+            >{{ 'settings.feature_prompts' | transloco }}
+          </li>
         </ul>
-        <p>{{ 'settings.scan_qr' | transloco }}</p>
-        <app-app-qr-code style="width: 160px"></app-app-qr-code>
+        <p class="muted">{{ 'settings.scan_qr' | transloco }}</p>
+        <app-app-qr-code class="qr"></app-app-qr-code>
       </div>
     </div>
-  </div>
-  <mat-divider style="margin: 4rem 0"></mat-divider>
-  <div class="text-center">
-    <button class="link unstyled" (click)="deleteAccount()">
-      <mat-icon class="middle">delete-outline</mat-icon
-      >{{ 'settings.delete_account' | transloco }}
-    </button>
-  </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">{{ 'settings.help' | transloco }}</h2>
+    <div class="card">
+      <div class="row">
+        <div class="row-text">
+          <div class="row-label">
+            {{ 'settings.getting_started' | transloco }}
+          </div>
+          <div class="row-description">
+            {{ 'settings.getting_started_desc' | transloco }}
+          </div>
+        </div>
+        <a class="button outline small-button" [routerLink]="['/welcome']">{{
+          'settings.open_guide' | transloco
+        }}</a>
+      </div>
+      <div class="row">
+        <div class="row-text">
+          <div class="row-label">{{ 'settings.need_help' | transloco }}</div>
+          <div class="row-description">
+            {{ 'settings.respond_everyone' | transloco }}
+          </div>
+        </div>
+        <a class="button outline small-button" [routerLink]="['/feedback']">{{
+          'settings.contact' | transloco
+        }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title danger">
+      {{ 'settings.danger_zone' | transloco }}
+    </h2>
+    <div class="card card-danger">
+      <div class="row">
+        <div class="row-text">
+          <div class="row-label">
+            {{ 'settings.delete_account' | transloco }}
+          </div>
+          <div class="row-description">
+            {{ 'settings.delete_account_desc' | transloco }}
+          </div>
+        </div>
+        <button
+          class="button outline small-button danger-button"
+          (click)="deleteAccount()"
+        >
+          {{ 'settings.delete' | transloco }}
+        </button>
+      </div>
+    </div>
+  </section>
 </div>

@@ -282,10 +282,19 @@ export const tr = {
 
   // Settings
   'settings.title': 'Ayarlar',
-  'settings.not_sure': 'Nereden başlayacağınızdan emin değil misiniz? Sadece',
-  'settings.click_link': 'bu bağlantıya tıklayın',
+  'settings.account': 'Hesap',
+  'settings.email': 'E-posta',
+  'settings.help': 'Yardım ve destek',
+  'settings.getting_started': 'Başlarken',
+  'settings.getting_started_desc': 'Vocably’yi kurmak için kısa bir rehber.',
+  'settings.open_guide': 'Rehberi aç',
+  'settings.mobile_app': 'Mobil uygulama',
+  'settings.danger_zone': 'Tehlikeli bölge',
+  'settings.delete_account_desc':
+    'Hesabınızı ve tüm kartlarınızı kalıcı olarak silin. Bu işlem geri alınamaz.',
+  'settings.delete': 'Sil',
   'settings.need_help': 'Yardıma mı ihtiyacınız var?',
-  'settings.contact': "Vocably'nin yazarıyla iletişime geçin",
+  'settings.contact': 'İletişim',
   'settings.respond_everyone': 'Herkese yanıt veriyorum.',
   'settings.study_settings': 'Çalışma ayarları',
   'settings.max_cards': 'Çalışma oturumu başına maksimum kart sayısı',

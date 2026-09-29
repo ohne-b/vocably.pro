@@ -1,15 +1,8 @@
 @if (loaded) {
-  <h3>{{ 'settings.study_steps.title' | transloco }}</h3>
   <div cdkDropList (cdkDropListDropped)="onDrop($event)" class="step-list">
     @for (step of steps; track step.id; let i = $index) {
       <div class="step-item" cdkDrag>
         <mat-icon class="drag-handle" cdkDragHandle>drag_indicator</mat-icon>
-        <mat-slide-toggle
-          [checked]="step.enabled"
-          (change)="onToggle(i)"
-          [disabled]="step.id === 'ab' && !isPaid"
-          color="accent"
-        ></mat-slide-toggle>
         <div class="step-label">
           <span>{{ getLabel(step.id) }}</span>
           @if (step.id === 'ab' && !isPaid) {
@@ -24,10 +17,13 @@
         <a class="preview-link" [href]="getPreviewUrl(step)" target="_blank">
           {{ 'settings.study_steps.preview' | transloco }}
         </a>
+        <mat-slide-toggle
+          [checked]="step.enabled"
+          (change)="onToggle(i)"
+          [disabled]="step.id === 'ab' && !isPaid"
+          color="accent"
+        ></mat-slide-toggle>
       </div>
     }
   </div>
-  <p class="description">
-    {{ 'settings.study_steps.drag_to_reorder' | transloco }}
-  </p>
 }

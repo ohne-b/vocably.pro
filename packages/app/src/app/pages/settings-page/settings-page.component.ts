@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { deleteUser } from 'aws-amplify/auth';
@@ -37,10 +36,9 @@ import { StudyStepsComponent } from './study-steps/study-steps.component';
     HeaderComponent,
     IonicModule,
     RouterLink,
-    MatDivider,
     MatIcon,
     MatSliderModule,
-    MatCheckboxModule,
+    MatSlideToggle,
     MatSelectModule,
     FormsModule,
     AppQrCodeComponent,

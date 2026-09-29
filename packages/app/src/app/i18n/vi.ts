@@ -271,10 +271,19 @@ export const vi = {
 
   // Settings
   'settings.title': 'Cài đặt',
-  'settings.not_sure': 'Không biết bắt đầu từ đâu? Chỉ cần',
-  'settings.click_link': 'nhấp vào liên kết này',
+  'settings.account': 'Tài khoản',
+  'settings.email': 'Email',
+  'settings.help': 'Trợ giúp và hỗ trợ',
+  'settings.getting_started': 'Bắt đầu',
+  'settings.getting_started_desc': 'Hướng dẫn nhanh để thiết lập Vocably.',
+  'settings.open_guide': 'Mở hướng dẫn',
+  'settings.mobile_app': 'Ứng dụng di động',
+  'settings.danger_zone': 'Vùng nguy hiểm',
+  'settings.delete_account_desc':
+    'Xóa vĩnh viễn tài khoản và tất cả thẻ của bạn. Hành động này không thể hoàn tác.',
+  'settings.delete': 'Xóa',
   'settings.need_help': 'Cần giúp đỡ?',
-  'settings.contact': 'Liên hệ tác giả Vocably',
+  'settings.contact': 'Liên hệ',
   'settings.respond_everyone': 'Tôi trả lời tất cả mọi người.',
   'settings.study_settings': 'Cài đặt học tập',
   'settings.max_cards': 'Số thẻ tối đa mỗi phiên học',

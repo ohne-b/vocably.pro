@@ -281,10 +281,19 @@ export const uk = {
 
   // Settings
   'settings.title': 'Налаштування',
-  'settings.not_sure': 'Не знаєте, з чого почати? Просто',
-  'settings.click_link': 'натисніть на це посилання',
+  'settings.account': 'Обліковий запис',
+  'settings.email': 'Ел. пошта',
+  'settings.help': 'Допомога та підтримка',
+  'settings.getting_started': 'З чого почати',
+  'settings.getting_started_desc': 'Короткий посібник із налаштування Vocably.',
+  'settings.open_guide': 'Відкрити',
+  'settings.mobile_app': 'Мобільний застосунок',
+  'settings.danger_zone': 'Небезпечна зона',
+  'settings.delete_account_desc':
+    'Обліковий запис і всі ваші картки буде видалено назавжди. Цю дію неможливо скасувати.',
+  'settings.delete': 'Видалити',
   'settings.need_help': 'Потрібна допомога?',
-  'settings.contact': "Зв'язатися з автором Vocably",
+  'settings.contact': 'Написати',
   'settings.respond_everyone': 'Я відповідаю всім.',
   'settings.study_settings': 'Налаштування навчання',
   'settings.max_cards': 'Максимум карток за навчальну сесію',

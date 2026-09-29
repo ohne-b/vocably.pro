@@ -277,10 +277,19 @@ export const en = {
 
   // Settings
   'settings.title': 'Settings',
-  'settings.not_sure': 'Not sure where to start? Just',
-  'settings.click_link': 'click this link',
+  'settings.account': 'Account',
+  'settings.email': 'Email',
+  'settings.help': 'Help & support',
+  'settings.getting_started': 'Getting started',
+  'settings.getting_started_desc': 'A quick walkthrough to set up Vocably.',
+  'settings.open_guide': 'Open guide',
+  'settings.mobile_app': 'Mobile app',
+  'settings.danger_zone': 'Danger zone',
+  'settings.delete_account_desc':
+    'Permanently delete your account and all your cards. This action cannot be undone.',
+  'settings.delete': 'Delete',
   'settings.need_help': 'Need help?',
-  'settings.contact': 'Contact the author of Vocably',
+  'settings.contact': 'Contact',
   'settings.respond_everyone': 'I respond to everyone.',
   'settings.study_settings': 'Study settings',
   'settings.max_cards': 'Maximum cards per study session',
