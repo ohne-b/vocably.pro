@@ -2,49 +2,69 @@
   <app-header [title]="'feedback.title' | transloco"></app-header>
 </div>
 <div class="container bottom">
-  <form (ngSubmit)="submitFeedback()" *ngIf="userData$ | async as useData">
-    <p>
-      {{ 'feedback.p1' | transloco }}
-    </p>
-    <p>
-      {{ 'feedback.p2' | transloco }}
-    </p>
-    <p>
-      {{ 'feedback.p3' | transloco }}
-      <strong>{{ useData.email }}</strong
-      >.
-      <ng-container *ngIf="useData.email.includes('privaterelay')">
-        {{ 'feedback.apple_email' | transloco }}
-      </ng-container>
-    </p>
-    <textarea
-      class="form-control mb-1"
-      name="feedback"
-      style="height: 6rem"
-      [placeholder]="'feedback.placeholder' | transloco"
-      [(ngModel)]="feedback"
-    ></textarea>
-    <div class="mb-1">
-      <button
-        data-test="submit"
-        type="submit"
-        class="button"
-        [disabled]="feedback.trim() === '' || isSubmitting"
-      >
-        {{ 'feedback.submit' | transloco }}
-      </button>
-      <ion-spinner *ngIf="isSubmitting" name="dots"></ion-spinner>
-    </div>
-    <div class="success" [class.expanded]="success">
-      <div class="success-content">
-        {{ 'feedback.success' | transloco }}
-        <pre style="margin: 1rem 0 0 0; white-space: pre-wrap">{{
-          lastFeedback
-        }}</pre>
+  <form
+    class="feedback"
+    (ngSubmit)="submitFeedback()"
+    *ngIf="userData$ | async as useData"
+  >
+    <p class="intro">{{ 'feedback.p1' | transloco }}</p>
+
+    <ul class="facts">
+      <li class="fact">
+        <mat-icon class="fact-icon" aria-hidden="true">schedule</mat-icon>
+        <span>{{ 'feedback.p2' | transloco }}</span>
+      </li>
+      <li class="fact">
+        <mat-icon class="fact-icon" aria-hidden="true">mail_outline</mat-icon>
+        <span>
+          {{ 'feedback.p3' | transloco }}
+          <strong class="email">{{ useData.email }}</strong
+          >.
+          <span class="muted" *ngIf="useData.email.includes('privaterelay')">
+            {{ 'feedback.apple_email' | transloco }}
+          </span>
+        </span>
+      </li>
+    </ul>
+
+    <section class="card">
+      <textarea
+        class="message"
+        name="feedback"
+        [attr.aria-label]="'feedback.title' | transloco"
+        [placeholder]="'feedback.placeholder' | transloco"
+        [readonly]="isSubmitting"
+        [(ngModel)]="feedback"
+      ></textarea>
+      <div class="card-foot">
+        <ion-spinner *ngIf="isSubmitting" name="dots"></ion-spinner>
+        <button
+          data-test="submit"
+          type="submit"
+          class="button submit"
+          [disabled]="feedback.trim() === '' || isSubmitting"
+        >
+          <mat-icon class="button-icon" aria-hidden="true">send</mat-icon>
+          {{ 'feedback.submit' | transloco }}
+        </button>
+      </div>
+    </section>
+
+    <div class="success" [class.expanded]="success" aria-live="polite">
+      <div class="callout">
+        <mat-icon class="callout-icon" aria-hidden="true"
+          >check_circle_outline</mat-icon
+        >
+        <div class="callout-body">
+          {{ 'feedback.success' | transloco }}
+          <blockquote class="sent-message">{{ lastFeedback }}</blockquote>
+        </div>
       </div>
     </div>
-    <div *ngIf="error" class="text-danger">
-      {{ 'feedback.error' | transloco }}
+
+    <div *ngIf="error" class="callout callout-error" role="alert">
+      <mat-icon class="callout-icon" aria-hidden="true">error_outline</mat-icon>
+      <span>{{ 'feedback.error' | transloco }}</span>
     </div>
   </form>
 </div>
