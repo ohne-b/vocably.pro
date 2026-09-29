@@ -1,13 +1,13 @@
 import { languageTranslations } from '@vocably/i18n';
 
 export const tr = {
-  'welcome.no_extension':
-    'Tarayıcı uzantısının yüklü veya etkin olmadığı görünüyor.',
   'welcome.install_extension': 'Uzantıyı yükle veya etkinleştir',
-  'welcome.no_install': 'Uzantıyı yüklemek istemiyorum',
-  'welcome.use_mobile': 'Mobil uygulamayı kullanabilirsiniz.',
-  'welcome.scan_qr': 'Aşağıdaki QR kodunu tarayın:',
-  'welcome.open_mobile_link': 'Veya bu bağlantıyı mobil cihazınızda açın:',
+  'welcome.install_title': 'Neredeyse hazırsınız',
+  'welcome.install_lead':
+    "Herhangi bir web sitesindeki kelime ve ifadeleri çevirmek ve bunları kartlara dönüştürmek için Vocably'yi tarayıcınıza ekleyin.",
+  'welcome.add_to': '{{browser}} tarayıcısına ekle',
+  'welcome.install_note':
+    'Zaten yüklü mü? Uzantının etkin olduğundan emin olun.',
   'welcome.index.mother_tongue': 'Anadilim',
   'welcome.index.i_study': 'Öğreniyorum',
   'welcome.index.show_more': 'Daha fazla dil göster',

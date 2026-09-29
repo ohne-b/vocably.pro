@@ -10,6 +10,9 @@ const edgeExtensionId = 'dahphaiflimmafjchchidjmgidlkajho';
 
 export const edgeExtensionInstallationUrl = `https://microsoftedge.microsoft.com/addons/detail/${edgeExtensionId}`;
 
+export const chromeExtensionInstallationUrl =
+  'https://chrome.google.com/webstore/detail/vocably/baocigmmhhdemijfjnjdidbkfgpgogmb';
+
 const iosSafariExtensionId =
   localStorage.getItem('ios-extension-id') ?? environment.iosSafariExtensionId;
 
@@ -64,4 +67,4 @@ export const extensionInstallationUrl = isIOSSafari
     ? 'https://apps.apple.com/app/id6464076425'
     : isEdge
       ? edgeExtensionInstallationUrl
-      : 'https://chrome.google.com/webstore/detail/vocably/baocigmmhhdemijfjnjdidbkfgpgogmb';
+      : chromeExtensionInstallationUrl;

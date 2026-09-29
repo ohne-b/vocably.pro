@@ -1,14 +1,12 @@
 import { languageTranslations } from '@vocably/i18n';
 
 export const ru = {
-  'welcome.no_extension':
-    'Похоже, у вас не установлено или не включено расширение браузера.',
   'welcome.install_extension': 'Установить или включить расширение',
-  'welcome.no_install': 'Я не хочу устанавливать расширение',
-  'welcome.use_mobile': 'Вы можете использовать мобильное приложение.',
-  'welcome.scan_qr': 'Отсканируйте QR-код ниже:',
-  'welcome.open_mobile_link':
-    'Или откройте эту ссылку на мобильном устройстве:',
+  'welcome.install_title': 'Почти готово',
+  'welcome.install_lead':
+    'Добавьте Vocably в браузер, чтобы переводить слова и фразы на любом сайте и превращать их в карточки.',
+  'welcome.add_to': 'Добавить в {{browser}}',
+  'welcome.install_note': 'Уже установили? Убедитесь, что расширение включено.',
   'welcome.index.mother_tongue': 'Мой родной язык',
   'welcome.index.i_study': 'Я изучаю',
   'welcome.index.show_more': 'Показать больше языков',

@@ -1,14 +1,13 @@
 import { languageTranslations } from '@vocably/i18n';
 
 export const uk = {
-  'welcome.no_extension':
-    'Схоже, у вас не встановлено або не увімкнено розширення браузера.',
   'welcome.install_extension': 'Встановити або увімкнути розширення',
-  'welcome.no_install': 'Я не хочу встановлювати розширення',
-  'welcome.use_mobile': 'Ви можете використовувати мобільний додаток.',
-  'welcome.scan_qr': 'Відскануйте QR-код нижче:',
-  'welcome.open_mobile_link':
-    'Або відкрийте це посилання на мобільному пристрої:',
+  'welcome.install_title': 'Майже готово',
+  'welcome.install_lead':
+    'Додайте Vocably до браузера, щоб перекладати слова та фрази на будь-якому сайті й перетворювати їх на картки.',
+  'welcome.add_to': 'Додати до {{browser}}',
+  'welcome.install_note':
+    'Вже встановили? Переконайтеся, що розширення увімкнене.',
   'welcome.index.mother_tongue': 'Моя рідна мова',
   'welcome.index.i_study': 'Мова, яку я вивчаю',
   'welcome.index.show_more': 'Показати більше мов',

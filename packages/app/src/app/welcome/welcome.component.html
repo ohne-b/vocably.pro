@@ -11,35 +11,48 @@
   [class.container-l]="size === 'large'"
 >
   <div class="hero">
-    <div *ngIf="extensionCanBeInstalled && extensionIsInstalled === false">
-      <p>
-        {{ 'welcome.no_extension' | transloco }}
+    <div
+      class="install"
+      *ngIf="extensionCanBeInstalled && extensionIsInstalled === false"
+    >
+      <div class="install-icon" aria-hidden="true">
+        <mat-icon>extension</mat-icon>
+      </div>
+      <h1 class="install-title">
+        {{ 'welcome.install_title' | transloco }}
+      </h1>
+      <p class="install-lead">
+        {{ 'welcome.install_lead' | transloco }}
       </p>
-      <p>
-        <a class="button mr-1" [href]="extensionInstallUrl" target="_blank">{{
-          'welcome.install_extension' | transloco
-        }}</a>
-        <app-expansion
-          [label]="'welcome.no_install' | transloco"
-          panelStyle="padding-top: 1rem;"
+
+      <div class="install-actions">
+        <a
+          *ngFor="let option of installOptions"
+          class="install-extension-button with-icon"
+          [attr.data-browser]="option.browser"
+          [href]="option.url"
+          target="_blank"
         >
-          <p>{{ 'welcome.use_mobile' | transloco }}</p>
-          <p>{{ 'welcome.scan_qr' | transloco }}</p>
-          <p>
-            <app-app-qr-code style="width: 300px"></app-app-qr-code>
-          </p>
-          <p>{{ 'welcome.open_mobile_link' | transloco }}</p>
-          <div>
-            <a
-              style="font-size: 160%"
-              href="https://vocably.pro/app.html"
-              target="_blank"
-              >https://vocably.pro/app.html</a
-            >
-          </div>
-        </app-expansion>
+          <img
+            class="install-extension-button-icon"
+            [src]="option.icon"
+            alt=""
+          />
+          {{ 'welcome.add_to' | transloco: { browser: option.browser } }}
+        </a>
+        <a
+          *ngIf="installOptions.length === 0"
+          class="install-extension-button"
+          [href]="extensionInstallUrl"
+          target="_blank"
+        >
+          {{ 'welcome.install_extension' | transloco }}
+        </a>
+      </div>
+
+      <p class="install-note">
+        {{ 'welcome.install_note' | transloco }}
       </p>
-      <p></p>
     </div>
     <router-outlet *ngIf="extensionIsInstalled === true"></router-outlet>
   </div>

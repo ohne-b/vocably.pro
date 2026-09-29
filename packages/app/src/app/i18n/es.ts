@@ -1,13 +1,13 @@
 import { languageTranslations } from '@vocably/i18n';
 
 export const es = {
-  'welcome.no_extension':
-    'Parece que no tienes la extensión del navegador instalada o activada.',
   'welcome.install_extension': 'Instalar o activar la extensión',
-  'welcome.no_install': 'No quiero instalar la extensión',
-  'welcome.use_mobile': 'Puedes usar la aplicación móvil.',
-  'welcome.scan_qr': 'Escanea el código QR a continuación:',
-  'welcome.open_mobile_link': 'O abre este enlace en tu dispositivo móvil:',
+  'welcome.install_title': 'Ya casi está',
+  'welcome.install_lead':
+    'Añade Vocably a tu navegador para traducir palabras y frases en cualquier sitio web y convertirlas en tarjetas de estudio.',
+  'welcome.add_to': 'Añadir a {{browser}}',
+  'welcome.install_note':
+    '¿Ya la tienes instalada? Asegúrate de que la extensión esté activada.',
   'welcome.index.mother_tongue': 'Mi lengua materna es',
   'welcome.index.i_study': 'Estudio',
   'welcome.index.show_more': 'Mostrar más idiomas',

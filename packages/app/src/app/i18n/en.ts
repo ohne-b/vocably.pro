@@ -1,13 +1,13 @@
 import { languageTranslations } from '@vocably/i18n';
 
 export const en = {
-  'welcome.no_extension':
-    "It looks like you don't have the browser extension installed or enabled.",
   'welcome.install_extension': 'Install or enable the extension',
-  'welcome.no_install': "I don't want to install the extension",
-  'welcome.use_mobile': 'You can use the mobile app.',
-  'welcome.scan_qr': 'Scan the QR code below:',
-  'welcome.open_mobile_link': 'Or open this link on your mobile device:',
+  'welcome.install_title': "You're almost there",
+  'welcome.install_lead':
+    'Add Vocably to your browser to translate words and phrases on any website and turn them into flashcards.',
+  'welcome.add_to': 'Add to {{browser}}',
+  'welcome.install_note':
+    'Already installed? Make sure the extension is enabled.',
   'welcome.index.mother_tongue': 'My mother tongue is',
   'welcome.index.i_study': 'I study',
   'welcome.index.show_more': 'Show more languages',

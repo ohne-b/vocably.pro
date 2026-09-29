@@ -1,14 +1,12 @@
 import { languageTranslations } from '@vocably/i18n';
 
 export const vi = {
-  'welcome.no_extension':
-    'Có vẻ như bạn chưa cài đặt hoặc bật tiện ích mở rộng trình duyệt.',
   'welcome.install_extension': 'Cài đặt hoặc bật tiện ích mở rộng',
-  'welcome.no_install': 'Tôi không muốn cài đặt tiện ích mở rộng',
-  'welcome.use_mobile': 'Bạn có thể sử dụng ứng dụng di động.',
-  'welcome.scan_qr': 'Quét mã QR bên dưới:',
-  'welcome.open_mobile_link':
-    'Hoặc mở liên kết này trên thiết bị di động của bạn:',
+  'welcome.install_title': 'Sắp xong rồi',
+  'welcome.install_lead':
+    'Thêm Vocably vào trình duyệt để dịch từ và cụm từ trên mọi trang web và biến chúng thành thẻ ghi nhớ.',
+  'welcome.add_to': 'Thêm vào {{browser}}',
+  'welcome.install_note': 'Đã cài đặt? Hãy đảm bảo tiện ích đã được bật.',
   'welcome.index.mother_tongue': 'Tiếng mẹ đẻ của tôi là',
   'welcome.index.i_study': 'Tôi học',
   'welcome.index.show_more': 'Hiển thị thêm ngôn ngữ',

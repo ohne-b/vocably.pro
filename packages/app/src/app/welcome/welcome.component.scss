@@ -1,0 +1,115 @@
+.install {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding-block: 2rem;
+  text-align: center;
+}
+
+.install-icon {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  background: rgba(var(--primary-rgb), 0.12);
+  color: var(--primary-color);
+
+  mat-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 2rem;
+  }
+}
+
+.install-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--emphasize-color);
+}
+
+.install-lead {
+  margin: 0 0 2rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.install-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+// Mirrors `.install-extension-button` on www/pdf.html
+.install-extension-button {
+  --bg-color: #2c2c2c;
+  --bg-hover-color: #000;
+  --color: #fff;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 2rem;
+  background: var(--bg-color);
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--color);
+  text-decoration: none;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.2s ease-in-out;
+
+  // A dark pill would vanish on the dark background, so it is inverted
+  @media (prefers-color-scheme: dark) {
+    --bg-color: #ededed;
+    --bg-hover-color: #fff;
+    --color: #141414;
+  }
+
+  &.with-icon {
+    padding-left: 3rem;
+  }
+
+  &:hover {
+    color: var(--color);
+    background-color: var(--bg-hover-color);
+  }
+}
+
+.install-extension-button-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  transform: translateY(-50%);
+
+  [data-browser='Edge'] & {
+    left: 0.55rem;
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  [data-browser='Safari'] & {
+    width: 1.9rem;
+    height: 1.9rem;
+    transform: translateY(calc(-50% + 0.05rem));
+  }
+}
+
+.install-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}

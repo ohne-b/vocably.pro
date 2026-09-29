@@ -1,18 +1,65 @@
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterOutlet } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { isChrome, isEdge, isIOSSafari, isMacSafari } from '../../browser';
 import {
   canExtensionBeInstalled,
+  chromeExtensionInstallationUrl,
+  edgeExtensionInstallationUrl,
   extensionInstallationUrl,
 } from '../../extension';
-import { AppQrCodeComponent } from '../components/app-qr-code/app-qr-code.component';
-import { ExpansionComponent } from '../components/expansion/expansion.component';
 import { HeaderComponent } from '../header/header.component';
 import { isExtensionInstalled$ } from '../isExtensionInstalled';
 import { TranslocoModule } from '@jsverse/transloco';
 import { ContainerService } from './container-service';
 import { setStats } from '../stats';
+
+type InstallOption = {
+  browser: string;
+  icon: string;
+  url: string;
+};
+
+/**
+ * Only the stores that fit the current browser. Edge runs the Chrome Web
+ * Store build as well, so both stores are offered there.
+ */
+const getInstallOptions = (): InstallOption[] => {
+  const chrome: InstallOption = {
+    browser: 'Chrome',
+    icon: 'assets/browsers/chrome.svg',
+    url: chromeExtensionInstallationUrl,
+  };
+
+  if (isIOSSafari || isMacSafari) {
+    return [
+      {
+        browser: 'Safari',
+        icon: 'assets/browsers/safari.svg',
+        url: extensionInstallationUrl,
+      },
+    ];
+  }
+
+  if (isEdge) {
+    return [
+      {
+        browser: 'Edge',
+        icon: 'assets/browsers/edge.svg',
+        url: edgeExtensionInstallationUrl,
+      },
+      chrome,
+    ];
+  }
+
+  if (isChrome) {
+    return [chrome];
+  }
+
+  return [];
+};
 
 @Component({
   selector: 'app-welcome',
@@ -21,8 +68,8 @@ import { setStats } from '../stats';
   imports: [
     HeaderComponent,
     NgIf,
-    ExpansionComponent,
-    AppQrCodeComponent,
+    NgFor,
+    MatIconModule,
     RouterOutlet,
     TranslocoModule,
   ],
@@ -33,6 +80,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   public extensionCanBeInstalled = canExtensionBeInstalled;
   public extensionIsInstalled: boolean | undefined = undefined;
   public extensionInstallUrl = extensionInstallationUrl;
+  public installOptions = getInstallOptions();
   public size: 'normal' | 'large' = 'normal';
 
   constructor(private containerService: ContainerService) {}
