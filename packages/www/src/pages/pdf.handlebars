@@ -8,79 +8,313 @@
 }}
   <style>
     /* ---------- Landing ---------- */
-    .pdf-upload-btn {
+    .pdf-hero {
+      padding-block: 3rem 3.5rem;
+    }
+
+    .pdf-hero__title {
+      margin-bottom: 0.75rem;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    .pdf-hero__lead {
+      max-width: 38rem;
+      margin-bottom: 2rem;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      color: var(--bs-secondary-color);
+    }
+
+    .pdf-dropzone {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 0.3rem;
+      gap: 0.25rem;
       width: 100%;
-      padding: 3rem 1.5rem;
-      border: 1.5px dashed rgba(var(--bs-primary-rgb), 0.5);
+      padding: 2.75rem 1.5rem 2.25rem;
+      border: 2px dashed rgba(var(--bs-primary-rgb), 0.28);
       border-radius: 1.25rem;
-      background: rgba(var(--bs-primary-rgb), 0.04);
-      color: var(--bs-primary);
-      font-size: 1.4rem;
+      background:
+        radial-gradient(ellipse at top, rgba(var(--bs-primary-rgb), 0.07), transparent 70%),
+        #fff;
+      color: var(--bs-body-color);
       cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
-
-      .bi {
-        font-size: 2.6rem;
-        height: 2.7rem;
-      }
-
-      .big-text {
-        letter-spacing: -0.04rem;
-      }
-
-      .small-text {
-        font-size: 0.9rem;
-      }
+      transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 
       &:hover,
+      &:focus-visible,
       &.is-dragover {
-        border-color: var(--bs-primary);
-        background: rgba(var(--bs-primary-rgb), 0.09);
+        border-color: rgba(var(--bs-primary-rgb), 0.7);
+        box-shadow: 0 10px 30px -12px rgba(var(--bs-primary-rgb), 0.35);
+        outline: none;
       }
 
       &.is-dragover {
-        transform: scale(1.01);
+        background-color: rgba(var(--bs-primary-rgb), 0.06);
+      }
+
+      &:hover .pdf-dropzone__button {
+        background: var(--bs-primary);
+        color: #fff;
       }
     }
 
-    .pdf-last-doc {
-      display: flex;
+    .pdf-dropzone__icon {
+      display: grid;
+      place-items: center;
+      width: 4rem;
+      height: 4rem;
+      margin-bottom: 0.75rem;
+      border-radius: 1rem;
+      background: rgba(var(--bs-primary-rgb), 0.1);
+      color: var(--bs-primary);
+      font-size: 1.9rem;
+      transition: transform 0.2s ease;
+
+      .is-dragover & {
+        transform: translateY(-4px);
+      }
+    }
+
+    .pdf-dropzone__title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--bs-emphasis-color);
+    }
+
+    .pdf-dropzone__hint {
+      font-size: 0.95rem;
+      color: var(--bs-secondary-color);
+    }
+
+    .pdf-dropzone__button {
+      margin-top: 1.25rem;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid var(--bs-primary);
+      border-radius: 999px;
+      color: var(--bs-primary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .pdf-dropzone__note {
+      display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.4rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--bs-secondary-color);
+    }
+
+    /* "Continue reading" card */
+    .pdf-recent {
+      margin-top: 2rem;
 
       &[hidden] {
         display: none;
       }
     }
 
-    .pdf-last-doc__open {
+    .pdf-recent__label {
+      margin-bottom: 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bs-secondary-color);
+    }
+
+    .pdf-recent__item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+      border: 1px solid var(--bs-border-color);
+      border-radius: 1rem;
+      background: #fff;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+      &:hover {
+        border-color: rgba(var(--bs-primary-rgb), 0.4);
+        box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .pdf-recent__open {
       flex: 1 1 auto;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
       min-width: 0;
+      padding: 0.25rem;
+      border: 0;
+      border-radius: 0.75rem;
+      background: transparent;
+      color: inherit;
       text-align: left;
+
+      &:focus-visible {
+        outline: 2px solid rgba(var(--bs-primary-rgb), 0.6);
+      }
+
+      &:hover .pdf-recent__cta {
+        background: var(--bs-primary);
+        color: #fff;
+      }
     }
 
-    .pdf-last-doc__name {
+    .pdf-recent__thumb {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 3rem;
+      height: 3.75rem;
+      overflow: hidden;
+      border: 1px solid var(--bs-border-color);
+      border-radius: 0.375rem;
+      background: #fff;
+      color: #d93b3b;
+      font-size: 1.5rem;
+
+      canvas {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+    }
+
+    .pdf-recent__text {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    .pdf-recent__name {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--bs-emphasis-color);
     }
 
-    .pdf-about {
-      background: #f9f9f9;
-      font-size: 80%;
+    .pdf-recent__meta {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      color: var(--bs-secondary-color);
+    }
 
-      h2 {
-        color: var(--bs-body-color);
-        font-size: 140%;
+    .pdf-recent__cta {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      background: rgba(var(--bs-primary-rgb), 0.1);
+      color: var(--bs-primary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .pdf-recent__delete {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--bs-secondary-color);
+      font-size: 1rem;
+      transition: background-color 0.15s ease, color 0.15s ease;
+
+      &:hover,
+      &:focus-visible {
+        background: rgba(var(--bs-danger-rgb), 0.1);
+        color: var(--bs-danger);
       }
+    }
+
+    @media (max-width: 575.98px) {
+      .pdf-recent__cta span {
+        display: none;
+      }
+    }
+
+    /* About */
+    .pdf-about {
+      padding-block: 3.5rem;
+      border-top: 1px solid var(--bs-border-color);
+      background: #f8f9fb;
+    }
+
+    .pdf-about__title {
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .pdf-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .pdf-feature {
+      padding: 1.25rem;
+      border: 1px solid var(--bs-border-color);
+      border-radius: 1rem;
+      background: #fff;
+
+      h3 {
+        margin: 0.9rem 0 0.4rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--bs-emphasis-color);
+        letter-spacing: -1px;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        color: var(--bs-secondary-color);
+      }
+    }
+
+    .pdf-feature__icon {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.75rem;
+      background: rgba(var(--bs-primary-rgb), 0.1);
+      color: var(--bs-primary);
+      font-size: 1.15rem;
+    }
+
+    .pdf-install__text {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: var(--bs-secondary-color);
     }
 
     .extensions {
@@ -99,7 +333,7 @@
       padding: 0.65rem 1rem 0.65rem 3rem;
       border-radius: 2rem;
       font-size: 0.9rem;
-      font-weight: 200;
+      font-weight: 300;
       color: #fff;
       text-decoration: none;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -360,36 +594,71 @@
   </style>
 
   <div id="pdfLanding">
-    <div class="container-md py-5">
-      <h1 class="h3 mb-4">Online PDF Reader</h1>
-
-      <input type="file" id="pdfFileInput" accept="application/pdf,.pdf" hidden />
-
-      <button type="button" id="pdfUploadButton" class="pdf-upload-btn mb-4">
-        <i class="bi bi-cloud-arrow-up"></i>
-        <span class="big-text">Click to open a PDF file.</span>
-        <span class="small-text text-muted">Or drop a file here.</span>
-      </button>
-
-      <div id="pdfLastDoc" class="pdf-last-doc" hidden>
-        <button type="button" id="pdfOpenLast" class="btn btn-outline-primary rounded-pill pdf-last-doc__open">
-          <i class="bi bi-file-earmark-pdf-fill flex-shrink-0"></i>
-          <span id="pdfLastDocName" class="pdf-last-doc__name"></span>
-        </button>
-        <button type="button" id="pdfDeleteLast" class="btn btn-outline-danger rounded-circle flex-shrink-0" aria-label="Delete document" title="Delete">
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="pdf-about">
-      <div class="container-md py-5">
-        <h2 class="h5">A secure, extension-friendly PDF reader.</h2>
-        <p class="mb-4">
-          Read PDF files, highlight text, translate sentences, and learn new words directly through Vocably. Your files are never uploaded to a server—they stay entirely in your browser and remain available for future reading sessions.
+    <section class="pdf-hero">
+      <div class="container-md">
+        <h1 class="pdf-hero__title">Online PDF Reader</h1>
+        <p class="pdf-hero__lead">
+          Open any PDF and read it right in your browser. Translate words and sentences with Vocably as you go.
         </p>
-        <p class="mb-4">Don't have the Vocably extension yet? Install it here:</p>
-        <div class="mb-4 extensions">
+
+        <input type="file" id="pdfFileInput" accept="application/pdf,.pdf" hidden />
+
+        <button type="button" id="pdfUploadButton" class="pdf-dropzone">
+          <span class="pdf-dropzone__icon"><i class="bi bi-file-earmark-arrow-up"></i></span>
+          <span class="pdf-dropzone__title">Drop a PDF file here</span>
+          <span class="pdf-dropzone__hint">or click anywhere in this area</span>
+          <span class="pdf-dropzone__button">Choose file</span>
+          <span class="pdf-dropzone__note">
+            <i class="bi bi-shield-lock"></i>
+            Your file stays on your device and is never uploaded
+          </span>
+        </button>
+
+        <div id="pdfLastDoc" class="pdf-recent" hidden>
+          <div class="pdf-recent__label">Continue reading</div>
+          <div class="pdf-recent__item">
+            <button type="button" id="pdfOpenLast" class="pdf-recent__open">
+              <span id="pdfLastDocThumb" class="pdf-recent__thumb">
+                <i class="bi bi-file-earmark-pdf-fill"></i>
+              </span>
+              <span class="pdf-recent__text">
+                <span id="pdfLastDocName" class="pdf-recent__name"></span>
+                <span id="pdfLastDocMeta" class="pdf-recent__meta"></span>
+              </span>
+              <span class="pdf-recent__cta"><span>Open</span><i class="bi bi-arrow-right"></i></span>
+            </button>
+            <button type="button" id="pdfDeleteLast" class="pdf-recent__delete" aria-label="Remove document" title="Remove document">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pdf-about">
+      <div class="container-md">
+        <h2 class="pdf-about__title">A private, extension-friendly PDF reader</h2>
+
+        <div class="pdf-features">
+          <div class="pdf-feature">
+            <span class="pdf-feature__icon"><i class="bi bi-shield-lock"></i></span>
+            <h3>Private by design</h3>
+            <p>Files are never uploaded to a server. They stay entirely in your browser.</p>
+          </div>
+          <div class="pdf-feature">
+            <span class="pdf-feature__icon"><i class="bi bi-translate"></i></span>
+            <h3>Translate as you read</h3>
+            <p>Select text to translate sentences and save new words with Vocably.</p>
+          </div>
+          <div class="pdf-feature">
+            <span class="pdf-feature__icon"><i class="bi bi-bookmark-check"></i></span>
+            <h3>Resume anytime</h3>
+            <p>Your document, page and zoom level are remembered for the next session.</p>
+          </div>
+        </div>
+
+        <p class="pdf-install__text">Don't have the Vocably extension yet? Install it here:</p>
+        <div class="extensions">
           <a class="install-extension-button chrome" href="https://chrome.google.com/webstore/detail/vocably/baocigmmhhdemijfjnjdidbkfgpgogmb">
             Chrome Extension
           </a>
@@ -401,7 +670,7 @@
           </a>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 
   <!-- Reader (hidden until a document is opened) -->
@@ -505,6 +774,8 @@
       uploadButton: $('pdfUploadButton'),
       lastDoc: $('pdfLastDoc'),
       lastDocName: $('pdfLastDocName'),
+      lastDocMeta: $('pdfLastDocMeta'),
+      lastDocThumb: $('pdfLastDocThumb'),
       openLast: $('pdfOpenLast'),
       deleteLast: $('pdfDeleteLast'),
       reader: $('pdfReader'),
@@ -536,9 +807,75 @@
     const pageElement = (pageNumber) => ui.pages.querySelector(`[data-page="${pageNumber}"]`);
 
     // ---- Landing ----
+    const formatSize = (bytes) =>
+      bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+
+    const formatRelativeTime = (timestamp) => {
+      const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
+      const seconds = (timestamp - Date.now()) / 1000;
+      const units = [
+        ['year', 31536000],
+        ['month', 2592000],
+        ['week', 604800],
+        ['day', 86400],
+        ['hour', 3600],
+        ['minute', 60],
+      ];
+      for (const [unit, size] of units) {
+        if (Math.abs(seconds) >= size) {
+          return rtf.format(Math.round(seconds / size), unit);
+        }
+      }
+      return 'just now';
+    };
+
+    const describeDoc = (doc) =>
+      [
+        doc.numPages ? `Page ${doc.page ?? 1} of ${doc.numPages}` : `Page ${doc.page ?? 1}`,
+        formatSize(doc.data.byteLength),
+        doc.updatedAt && `Opened ${formatRelativeTime(doc.updatedAt)}`,
+      ]
+        .filter(Boolean)
+        .join(' · ');
+
+    const THUMB_ICON = '<i class="bi bi-file-earmark-pdf-fill"></i>';
+    let thumbToken = 0;
+
+    // Renders the first page into the "Continue reading" card.
+    const renderThumbnail = async (doc) => {
+      const token = ++thumbToken;
+      ui.lastDocThumb.innerHTML = THUMB_ICON;
+      const loadingTask = PDFJS.getDocument({ data: doc.data.slice(0) });
+      try {
+        const pdf = await loadingTask.promise;
+        const page = await pdf.getPage(1);
+        const { width } = page.getViewport({ scale: 1 });
+        const scale = (ui.lastDocThumb.clientWidth * (window.devicePixelRatio || 1) * 1.5) / width;
+        const viewport = page.getViewport({ scale });
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.floor(viewport.width);
+        canvas.height = Math.floor(viewport.height);
+        await page.render({ canvas, viewport }).promise;
+        if (token === thumbToken) {
+          ui.lastDocThumb.replaceChildren(canvas);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        loadingTask.destroy();
+      }
+    };
+
     const showLastDoc = (doc) => {
       ui.lastDoc.hidden = !doc;
       ui.lastDocName.textContent = doc?.name ?? '';
+      ui.lastDocMeta.textContent = doc ? describeDoc(doc) : '';
+      if (doc) {
+        renderThumbnail(doc);
+      } else {
+        thumbToken++;
+        ui.lastDocThumb.innerHTML = THUMB_ICON;
+      }
     };
 
     const refreshLanding = async () => showLastDoc(await storage.get());
@@ -727,6 +1064,7 @@
       state.pdf = await state.loadingTask.promise;
       ui.pageCount.textContent = String(state.pdf.numPages);
       ui.pageInput.max = String(state.pdf.numPages);
+      storage.update({ numPages: state.pdf.numPages, updatedAt: Date.now() });
 
       state.scale = doc.scale ?? (await fitWidthScale());
       updateZoomUi();
@@ -796,7 +1134,7 @@
     });
 
     ui.deleteLast.addEventListener('click', async () => {
-      if (confirm('Delete the uploaded document?')) {
+      if (confirm('Remove this document from your browser?')) {
         await storage.remove();
         showLastDoc(null);
       }
