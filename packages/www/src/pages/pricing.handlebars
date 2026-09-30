@@ -3,134 +3,144 @@
   url='/pricing.html'
   navbarAlwaysMurky=true
 }}
-  <div class="container-md">
-    <h1 class="mb-4">Pricing</h1>
-  </div>
-  <div class="container-md mb-5">
-    <p>Translations with Vocably are always free and unlimited. I am <a href="/about.html" class="link-secondary">working hard</a> to keep it this way.</p>
+  <section class="pricing-hero container-md text-center">
+    <h1 class="pricing-title">Simple, honest pricing</h1>
+    <p class="pricing-lead">
+      Translations with Vocably are always free and unlimited. I am
+      <a href="/about.html" class="link-secondary">working hard</a>
+      to keep it this way.
+    </p>
+  </section>
 
-    <p>The <strong>Free Plan</strong> lets you save <strong>{{ htmlWebpackPlugin.options.environment.usageLimit.maxCollectionLength }} words</strong> in your study collection. When your collection reaches {{ htmlWebpackPlugin.options.environment.usageLimit.maxCollectionLength }} words, you can save <strong>{{ htmlWebpackPlugin.options.environment.usageLimit.cardsPerDay }} new words per day</strong>. All translations remain free and unlimited.</p>
+  <section class="container-lg">
+    <div class="pricing-plans">
+      <article class="pricing-plan">
+        <header>
+          <h2 class="pricing-plan-name">Free</h2>
+          <p class="pricing-plan-tagline">Everything you need to start learning</p>
+        </header>
+        <div class="pricing-plan-price">
+          <span class="pricing-plan-amount">$0</span>
+          <span class="pricing-plan-period">forever</span>
+        </div>
+        <p class="pricing-plan-alt">No credit card required</p>
+        <ul class="pricing-plan-features">
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span>Unlimited translations everywhere</span></li>
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span>Save your first <strong>{{ htmlWebpackPlugin.options.environment.usageLimit.maxCollectionLength }} words</strong> as flashcards</span></li>
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span>Then <strong>{{ htmlWebpackPlugin.options.environment.usageLimit.cardsPerDay }} new words per day</strong></span></li>
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span>Study all saved flashcards</span></li>
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span>Study multiple languages</span></li>
+        </ul>
+      </article>
 
-    <div class="hide-other">
-      <p>With <strong>Premium</strong>, you can <strong>save unlimited words</strong> and get <strong>one more type of practice question</strong>:</p>
-      <div style="text-align: center;"><video
+      <article class="pricing-plan pricing-plan-featured">
+        <header>
+          <h2 class="pricing-plan-name">Premium</h2>
+          <p class="pricing-plan-tagline">For learners who save a lot of words</p>
+        </header>
+        <div class="pricing-plan-price">
+          <span class="pricing-plan-amount" data-monthly-price>
+            <span class="spinner-border spinner-border-sm" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </span>
+          </span>
+          <span class="pricing-plan-period">per month</span>
+        </div>
+        <p class="pricing-plan-alt">
+          or <strong data-yearly-price>…</strong> per year
+          <span class="pricing-plan-savings" data-yearly-savings hidden></span>
+        </p>
+        <ul class="pricing-plan-features">
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span>Everything in Free</span></li>
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span><strong>Unlimited</strong> flashcards, no daily limit</span></li>
+          <li><i class="bi bi-check-lg" aria-hidden="true"></i><span>Extra practice question: <strong>arrange by letters</strong></span></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="hide-other container-md pricing-showcase">
+    <div class="pricing-showcase-media">
+      <video
         autoplay
         loop
         muted
         playsinline
-        style="width: 184px; height: 400px"
       >
         <source src="assets/arrange-by-letters/mobile.mov" type="video/quicktime" />
         <source src="assets/arrange-by-letters/mobile.webm" type="video/webm" />
         The video is not supported by your browser.
-      </video></div>
+      </video>
     </div>
-  </div>
-  <div class="container-lg">
-    <style>
-      .features-table {
-        th:not(:first-child), td:not(:first-child) {
-          text-align: center;
-        }
+    <div class="pricing-showcase-text">
+      <span class="pricing-eyebrow">Premium</span>
+      <h2>Arrange by letters</h2>
+      <p>
+        An extra type of practice question that makes you rebuild each word
+        letter by letter, so spelling sticks as well as meaning.
+      </p>
+    </div>
+  </section>
 
-        td {
-          vertical-align: middle;
-        }
-
-        tr:last-child td {
-          border-bottom: none;
-        }
-      }
-
-      .smaller-on-tiny-screens {
-        font-size: 1.2rem;
-      }
-
-      @media (width < 450px) {
-        .smaller-on-tiny-screens {
-          font-size: 0.9rem;
-        }
-      }
-    </style>
-
-    <div style="overflow-x: auto;">
-      <table class="table features-table">
-        <tr style="vertical-align: bottom;">
-          <th>Feature</th>
-          <th>Free plan</th>
-          <th>Premium</th>
-        </tr>
-        <tr>
-          <td>Translate with Chrome/Safari extension</td>
-          <td><i class="bi bi-check"></i></td>
-          <td><i class="bi bi-check"></i></td>
-        </tr>
-        <tr>
-          <td>Translate in iOS/Android app</td>
-          <td><i class="bi bi-check"></i></td>
-          <td><i class="bi bi-check"></i></td>
-        </tr>
-        <tr>
-          <td>Translate with iOS Safari extension</td>
-          <td><i class="bi bi-check"></i></td>
-          <td><i class="bi bi-check"></i></td>
-        </tr>
-        <tr>
-          <td>Study all the saved flashcards in iOS/Android app</td>
-          <td><i class="bi bi-check"></i></td>
-          <td><i class="bi bi-check"></i></td>
-        </tr>
-        <tr>
-          <td>Study multiple languages</td>
-          <td><i class="bi bi-check"></i></td>
-          <td><i class="bi bi-check"></i></td>
-        </tr>
-        <tr>
-          <td>Save translations as flashcards</td>
-          <td class="smaller-on-tiny-screens">
-            <div><strong>First {{ htmlWebpackPlugin.options.environment.usageLimit.maxCollectionLength }} cards</strong></div>
-            <div>Unlimited</div>
-            <div class="mt-3"><strong>Over {{ htmlWebpackPlugin.options.environment.usageLimit.maxCollectionLength }} cards</strong></div>
-            <div>{{ htmlWebpackPlugin.options.environment.usageLimit.cardsPerDay }} cards per day</div>
-          </td>
-          <td class="smaller-on-tiny-screens">Unlimited</td>
-        </tr>
-        <tr>
-          <td>Extra question type</td>
-          <td><i class="bi bi-x"></i></td>
-          <td><i class="bi bi-check"></i></td>
-        </tr>
-        <tr>
-          <td>Price</td>
-          <td>&nbsp;</td>
-          <td>
-            <table style="margin: 0 auto; white-space: nowrap;" class="smaller-on-tiny-screens">
-              <tr>
-                <td class="text-end" style="min-width: 5rem;" data-monthly-price>
-                  <div class="spinner-border spinner-border-sm" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                </td>
-                <td class="text-start" style="white-space: nowrap">/month</td>
-              </tr>
-              <tr>
-                <td class="text-end" style="min-width: 5rem;" data-yearly-price>
-                  <div class="spinner-border spinner-border-sm" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                  </div>
-                </td>
-                <td class="text-start" style="">/year</td>
-              </tr>
-            </table>
-          </td>
-        </tr>
+  <section class="container-lg pricing-compare">
+    <h2 class="text-center">Compare plans</h2>
+    <div class="pricing-table-wrapper">
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Free</th>
+            <th scope="col" class="pricing-table-featured">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Translate with Chrome/Safari extension</th>
+            <td><i class="bi bi-check-lg" aria-label="Included"></i></td>
+            <td class="pricing-table-featured"><i class="bi bi-check-lg" aria-label="Included"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Translate in iOS/Android app</th>
+            <td><i class="bi bi-check-lg" aria-label="Included"></i></td>
+            <td class="pricing-table-featured"><i class="bi bi-check-lg" aria-label="Included"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Translate with iOS Safari extension</th>
+            <td><i class="bi bi-check-lg" aria-label="Included"></i></td>
+            <td class="pricing-table-featured"><i class="bi bi-check-lg" aria-label="Included"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Study all the saved flashcards in iOS/Android app</th>
+            <td><i class="bi bi-check-lg" aria-label="Included"></i></td>
+            <td class="pricing-table-featured"><i class="bi bi-check-lg" aria-label="Included"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Study multiple languages</th>
+            <td><i class="bi bi-check-lg" aria-label="Included"></i></td>
+            <td class="pricing-table-featured"><i class="bi bi-check-lg" aria-label="Included"></i></td>
+          </tr>
+          <tr>
+            <th scope="row">Save translations as flashcards</th>
+            <td class="pricing-table-detail">
+              <div>Up to {{ htmlWebpackPlugin.options.environment.usageLimit.maxCollectionLength }}</div>
+              <div>then {{ htmlWebpackPlugin.options.environment.usageLimit.cardsPerDay }} per day</div>
+            </td>
+            <td class="pricing-table-featured pricing-table-detail">Unlimited</td>
+          </tr>
+          <tr>
+            <th scope="row">Extra question type</th>
+            <td><i class="bi bi-dash-lg text-muted" aria-label="Not included"></i></td>
+            <td class="pricing-table-featured"><i class="bi bi-check-lg" aria-label="Included"></i></td>
+          </tr>
+        </tbody>
       </table>
     </div>
-  </div>
+  </section>
+
   <div style="background: #f9f9f9; padding-top: 5rem; padding-bottom: 4rem; margin-top: 2rem;">
     <div class="text-center container-md">
+      <h2 class="mb-4">Start learning for free</h2>
       {{> cta }}
     </div>
   </div>
 {{/layout}}
-

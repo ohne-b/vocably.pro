@@ -376,4 +376,17 @@ initializePaddle({
     .forEach(
       (element) => (element.innerHTML = yearlyItem.formattedTotals.total)
     );
+
+  const monthlyTotal = Number(monthlyItem.totals.total);
+  const yearlyTotal = Number(yearlyItem.totals.total);
+  const savings = Math.floor((1 - yearlyTotal / (monthlyTotal * 12)) * 100);
+
+  if (savings > 0) {
+    document
+      .querySelectorAll<HTMLElement>('[data-yearly-savings]')
+      .forEach((element) => {
+        element.textContent = `Save ${savings}%`;
+        element.hidden = false;
+      });
+  }
 });
