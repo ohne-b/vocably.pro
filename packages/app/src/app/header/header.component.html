@@ -36,11 +36,11 @@
             mat-menu-item
             [routerLink]="['/welcome']"
             *ngIf="extensionCanBeInstalled"
-            ><mat-icon>person_raised_hand</mat-icon
-            >{{ 'header.setup' | transloco }}</a
+            ><mat-icon>extension</mat-icon>{{ 'header.setup' | transloco }}</a
           >
           <a mat-menu-item [routerLink]="['/membership']"
-            ><mat-icon>crown</mat-icon>{{ 'header.premium' | transloco }}</a
+            ><mat-icon>workspace_premium</mat-icon
+            >{{ 'header.premium' | transloco }}</a
           >
           <a mat-menu-item [routerLink]="['/settings']"
             ><mat-icon>settings</mat-icon>{{ 'header.settings' | transloco }}</a
