@@ -1,4 +1,6 @@
 export const en = {
+  // close button
+  'close_button.label': 'Close',
   // sign-in
   'sign_in.button': 'Sign in or Create an account',
   'sign_in.benefit.sync': 'Sync across devices',

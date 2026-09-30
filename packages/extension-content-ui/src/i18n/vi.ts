@@ -1,4 +1,6 @@
 export const vi = {
+  // close button
+  'close_button.label': 'Đóng',
   // sign-in
   'sign_in.button': 'Đăng nhập hoặc tạo tài khoản',
   'sign_in.benefit.sync': 'Đồng bộ trên mọi thiết bị',

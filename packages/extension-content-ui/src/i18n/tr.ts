@@ -1,4 +1,6 @@
 export const tr = {
+  // close button
+  'close_button.label': 'Kapat',
   // sign-in
   'sign_in.button': 'Giriş yap veya hesap oluştur',
   'sign_in.benefit.sync': 'Cihazlar arasında senkronizasyon',

@@ -1,4 +1,6 @@
 export const ru = {
+  // close button
+  'close_button.label': 'Закрыть',
   // sign-in
   'sign_in.button': 'Войти или создать аккаунт',
   'sign_in.benefit.sync': 'Синхронизация между устройствами',

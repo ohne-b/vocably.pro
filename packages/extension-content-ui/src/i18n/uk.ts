@@ -1,4 +1,6 @@
 export const uk = {
+  // close button
+  'close_button.label': 'Закрити',
   // sign-in
   'sign_in.button': 'Увійти або створити акаунт',
   'sign_in.benefit.sync': 'Синхронізація між пристроями',

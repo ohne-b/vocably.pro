@@ -15,23 +15,58 @@ vocably-close-button {
 }
 
 .vocably-close-button {
-  display: block;
+  $hover-bg: $v-light-color-elevation-3;
+  $active-bg: $v-light-color-elevation-4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: $button-size;
   height: $button-size;
-  line-height: $button-size !important;
+  line-height: 0 !important;
+  box-sizing: border-box;
   background: none;
   border: none;
+  border-radius: 50%;
+  outline: 3px solid transparent;
+  outline-offset: 0;
   padding: $close-button-padding;
   font-size: 0;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition:
+    transform 0.2s,
+    background-color 0.2s,
+    outline-color 0.2s;
+
+  &:hover {
+    background-color: $hover-bg;
+    outline-color: $hover-bg;
+  }
 
   &:active {
+    background-color: $active-bg;
+    outline-color: $active-bg;
     transform: scale(0.8);
+  }
+
+  &:focus-visible {
+    background-color: $hover-bg;
+    outline: 2px solid $v-light-color-primary;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:active {
+      transform: none;
+    }
   }
 }
 
 .vocably-close-svg {
+  display: block;
+  flex: none;
   width: $icon-size;
   height: $icon-size;
 }
