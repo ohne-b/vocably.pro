@@ -3,9 +3,23 @@ import { browser } from './browser';
 type ExtensionPlatform = {
   url: string;
   name: string;
-  platform: 'chromeExtension' | 'safariExtension' | 'iosSafariExtension';
+  platform:
+    | 'chromeExtension'
+    | 'edgeExtension'
+    | 'safariExtension'
+    | 'iosSafariExtension';
   paymentLink: string | 'web' | false;
 };
+
+const edgeExtensionId = 'dahphaiflimmafjchchidjmgidlkajho';
+
+/**
+ * Edge runs the Chrome Web Store build too, and many Edge users have that one
+ * installed. The browser alone therefore says nothing about the store; the ID
+ * of the running extension does.
+ */
+const isEdgeAddonsBuild = (): boolean =>
+  typeof chrome !== 'undefined' && chrome.runtime?.id === edgeExtensionId;
 
 export const detectExtensionPlatform = (): ExtensionPlatform => {
   if (
@@ -36,20 +50,11 @@ export const detectExtensionPlatform = (): ExtensionPlatform => {
     };
   }
 
-  // Chromium-based Edge runs the very same build, published under a separate
-  // listing, so only the store differs. `platform` stays `chromeExtension`:
-  // it is reported to the backend and shared with `@vocably/model`.
-  if (
-    browser.satisfies({
-      desktop: {
-        edge: '>=79',
-      },
-    })
-  ) {
+  if (isEdgeAddonsBuild()) {
     return {
-      url: 'https://microsoftedge.microsoft.com/addons/detail/dahphaiflimmafjchchidjmgidlkajho',
+      url: `https://microsoftedge.microsoft.com/addons/detail/${edgeExtensionId}`,
       name: 'Edge Add-ons',
-      platform: 'chromeExtension',
+      platform: 'edgeExtension',
       paymentLink: 'web',
     };
   }

@@ -82,7 +82,11 @@ export class VocablyTranslation {
   @Prop() extensionPlatform: {
     name: string;
     url: string;
-    platform: 'chromeExtension' | 'safariExtension' | 'iosSafariExtension';
+    platform:
+      | 'chromeExtension'
+      | 'edgeExtension'
+      | 'safariExtension'
+      | 'iosSafariExtension';
     paymentLink: string | false;
   };
   @Prop() updateCard: (

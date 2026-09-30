@@ -4,6 +4,7 @@ export type Platform =
   | 'ios'
   | 'android'
   | 'chromeExtension'
+  | 'edgeExtension'
   | 'safariExtension';
 export type RateInteractionPayload = 'never' | 'later' | 'feedback' | 'review';
 export type RateResponse = {
@@ -49,6 +50,7 @@ export const defaultUserMetadata: UserMetadata = {
     ios: undefined,
     android: undefined,
     chromeExtension: undefined,
+    edgeExtension: undefined,
     safariExtension: undefined,
   },
   lastUpdated: 0,

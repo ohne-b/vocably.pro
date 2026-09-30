@@ -178,6 +178,7 @@ export const [askForRating, onAskForRating] = createScopedMessage<
     translationResult: Result<TranslationCards>;
     extensionPlatform:
       | 'chromeExtension'
+      | 'edgeExtension'
       | 'safariExtension'
       | 'iosSafariExtension';
   },
@@ -189,6 +190,7 @@ export const [saveAskForRatingResponse, onSaveAskForRatingResponse] =
     {
       extensionPlatform:
         | 'chromeExtension'
+        | 'edgeExtension'
         | 'safariExtension'
         | 'iosSafariExtension';
       rateInteraction: RateInteractionPayload;
