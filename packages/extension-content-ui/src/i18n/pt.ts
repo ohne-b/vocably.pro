@@ -12,8 +12,9 @@ export const pt = {
   'subscribe.button': 'Assinar',
   // translation
   'translation.generating': 'Pensando...',
-  'translation.error':
-    'Uma solicitação ao Gemini ou ChatGPT resultou em um erro.',
+  'translation.error_title':
+    'O serviço de IA pode estar temporariamente indisponível',
+  'translation.error': 'Não foi possível carregar a tradução. Tente novamente.',
   'translation.retry': 'Tentar novamente',
   'translation.requesting_ai': 'Solicitando informações extras da IA',
   'translation.requests_extra_items': 'Detalhando',

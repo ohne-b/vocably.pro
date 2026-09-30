@@ -11,9 +11,9 @@ export const en = {
   'subscribe.button': 'Subscribe',
   // translation
   'translation.generating': 'Thinking...',
-  'translation.error':
-    'A (likely) Gemini or ChatGPT request has resulted in an error.',
-  'translation.retry': 'Retry',
+  'translation.error_title': 'The AI service may be temporarily unavailable',
+  'translation.error': "The translation couldn't be loaded. Please try again.",
+  'translation.retry': 'Try again',
   'translation.requesting_ai': 'Requesting extra info from AI',
   'translation.requests_extra_items': 'Breaking it down',
   'translation.ai_thinks': 'AI thinks that',

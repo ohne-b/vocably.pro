@@ -11,7 +11,8 @@ export const vi = {
   'subscribe.button': 'Đăng ký',
   // translation
   'translation.generating': 'Nghĩ...',
-  'translation.error': 'Yêu cầu Gemini hoặc ChatGPT đã xảy ra lỗi.',
+  'translation.error_title': 'Dịch vụ AI có thể tạm thời không khả dụng',
+  'translation.error': 'Không thể tải bản dịch. Vui lòng thử lại.',
   'translation.retry': 'Thử lại',
   'translation.requesting_ai': 'Đang yêu cầu thông tin thêm từ AI',
   'translation.requests_extra_items': 'Chia nhỏ thành các phần',

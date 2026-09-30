@@ -12,7 +12,8 @@ export const ru = {
   'subscribe.button': 'Подписаться',
   // translation
   'translation.generating': 'Думаю...',
-  'translation.error': 'Запрос к Gemini или ChatGPT завершился ошибкой.',
+  'translation.error_title': 'Возможно, сервис ИИ временно недоступен',
+  'translation.error': 'Не удалось загрузить перевод. Попробуйте ещё раз.',
   'translation.retry': 'Повторить',
   'translation.requesting_ai': 'Запрашиваем дополнительную информацию у ИИ',
   'translation.requests_extra_items': 'Разбираем на составные части',

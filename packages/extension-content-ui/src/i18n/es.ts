@@ -12,9 +12,10 @@ export const es = {
   'subscribe.button': 'Suscribirse',
   // translation
   'translation.generating': 'Pensando...',
-  'translation.error':
-    'Una solicitud a Gemini o ChatGPT ha resultado en un error.',
-  'translation.retry': 'Reintentar',
+  'translation.error_title':
+    'Es posible que el servicio de IA no esté disponible temporalmente',
+  'translation.error': 'No se pudo cargar la traducción. Inténtalo de nuevo.',
+  'translation.retry': 'Intentar de nuevo',
   'translation.requesting_ai': 'Solicitando información adicional a la IA',
   'translation.requests_extra_items': 'Desglosando',
   'translation.ai_thinks': 'La IA cree que',

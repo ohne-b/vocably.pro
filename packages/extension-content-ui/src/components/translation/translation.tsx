@@ -377,37 +377,28 @@ export class VocablyTranslation {
             </div>
           )}
           {this.result && this.result.success === false && (
-            <div
-              class="padding-left-12"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px',
-              }}
-            >
-              <div>{t('translation.error')}</div>
-              <div>
-                <button
-                  class="vocably-link-button vocably-nondecorated"
-                  onClick={() => this.retry.emit()}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                  }}
-                  disabled={this.isRetrying}
-                >
-                  {t('translation.retry')}
-                  {this.isRetrying && (
-                    <vocably-inline-loader></vocably-inline-loader>
-                  )}
-                  <vocably-icon-reload
-                    style={{
-                      display: this.isRetrying ? 'none' : 'inline-block',
-                    }}
-                  ></vocably-icon-reload>
-                </button>
+            <div class="vocably-error-state" role="alert">
+              <div class="vocably-error-state-icon">
+                <vocably-icon-error></vocably-icon-error>
               </div>
+              <div class="vocably-error-state-title">
+                {t('translation.error_title')}
+              </div>
+              <div class="vocably-error-state-message">
+                {t('translation.error')}
+              </div>
+              <button
+                class="vocably-error-state-retry"
+                onClick={() => this.retry.emit()}
+                disabled={this.isRetrying}
+              >
+                {this.isRetrying ? (
+                  <vocably-inline-loader></vocably-inline-loader>
+                ) : (
+                  <vocably-icon-reload></vocably-icon-reload>
+                )}
+                {t('translation.retry')}
+              </button>
             </div>
           )}
           {this.result && this.result.success === true && (

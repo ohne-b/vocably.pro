@@ -12,7 +12,9 @@ export const tr = {
   'subscribe.button': 'Abone ol',
   // translation
   'translation.generating': 'Düşünmek...',
-  'translation.error': 'Gemini veya ChatGPT isteği bir hatayla sonuçlandı.',
+  'translation.error_title':
+    'Yapay zekâ hizmeti geçici olarak kullanılamıyor olabilir',
+  'translation.error': 'Çeviri yüklenemedi. Lütfen tekrar deneyin.',
   'translation.retry': 'Tekrar dene',
   'translation.requesting_ai': 'Yapay zekadan ek bilgi isteniyor',
   'translation.requests_extra_items': 'Parçalarına ayırıyoruz',
