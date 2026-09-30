@@ -37,6 +37,8 @@ export const uk = {
   'search.preferred_languages': 'Бажані мови',
   'search.available_languages': 'Доступні мови',
   'search.placeholder_default': 'Будь-яке слово або фраза',
+  'search.swap_direction': 'Змінити напрямок перекладу',
+  'search.submit': 'Перекласти',
   'search.placeholder_reversed':
     'Введіть слово або фразу. Vocably створить {source} картки.',
   'search.hint':

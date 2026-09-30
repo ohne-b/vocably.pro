@@ -38,6 +38,8 @@ export const es = {
   'search.preferred_languages': 'Idiomas preferidos',
   'search.available_languages': 'Idiomas disponibles',
   'search.placeholder_default': 'Cualquier palabra o frase',
+  'search.swap_direction': 'Cambiar la dirección de traducción',
+  'search.submit': 'Traducir',
   'search.placeholder_reversed':
     'Escribe {article} {language} palabra o frase aquí. Se crearán tarjetas de {source}.',
   'search.hint':

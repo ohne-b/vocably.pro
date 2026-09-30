@@ -37,6 +37,8 @@ export const en = {
   'search.preferred_languages': 'Preferred Languages',
   'search.available_languages': 'Available Languages',
   'search.placeholder_default': 'Any word or phrase',
+  'search.swap_direction': 'Swap translation direction',
+  'search.submit': 'Translate',
   'search.placeholder_reversed':
     'Enter {article} {language} word or phrase here. {source} cards will be created.',
   'search.hint':

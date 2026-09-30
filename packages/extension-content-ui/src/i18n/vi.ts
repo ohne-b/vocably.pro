@@ -36,6 +36,8 @@ export const vi = {
   'search.preferred_languages': 'Ngôn ngữ ưa thích',
   'search.available_languages': 'Ngôn ngữ có sẵn',
   'search.placeholder_default': 'Bất kỳ từ hoặc cụm từ nào',
+  'search.swap_direction': 'Đổi chiều dịch',
+  'search.submit': 'Dịch',
   'search.placeholder_reversed':
     'Nhập từ hoặc cụm từ {language} tại đây. Thẻ {source} sẽ được tạo.',
   'search.hint':

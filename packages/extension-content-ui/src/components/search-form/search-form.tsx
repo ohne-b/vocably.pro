@@ -252,6 +252,8 @@ export class VocablySearchForm {
               <button
                 type="button"
                 class={{ direction: true, reversed: this.values.isReversed }}
+                aria-label={t('search.swap_direction')}
+                title={t('search.swap_direction')}
                 onClick={() => {
                   const values = {
                     ...this.values,
@@ -265,7 +267,14 @@ export class VocablySearchForm {
                   }
                 }}
               >
-                <vocably-icon-arrow-right class="icon"></vocably-icon-arrow-right>
+                <svg
+                  class="icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+                </svg>
               </button>
             </div>
             <vocably-hint-selector
@@ -313,7 +322,12 @@ export class VocablySearchForm {
                 });
               }}
             />
-            <button class="submit" type="submit" disabled={!canSubmit}>
+            <button
+              class="submit"
+              type="submit"
+              disabled={!canSubmit}
+              aria-label={t('search.submit')}
+            >
               <vocably-icon-magnify
                 class={{
                   magnify: true,

@@ -37,6 +37,8 @@ export const tr = {
   'search.preferred_languages': 'Tercih Edilen Diller',
   'search.available_languages': 'Mevcut Diller',
   'search.placeholder_default': 'Herhangi bir kelime veya cümle',
+  'search.swap_direction': 'Çeviri yönünü değiştir',
+  'search.submit': 'Çevir',
   'search.placeholder_reversed':
     '{language} dilinde kelime veya cümle girin. {source} kartları oluşturulacak.',
   'search.hint':

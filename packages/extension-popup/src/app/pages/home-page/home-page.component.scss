@@ -1,34 +1,99 @@
+@import '@vocably/styles/variables';
+
+$divider: $v-light-color-border-muted;
+
+// Sticky app bar matching the settings page. The negative margin swallows
+// the container padding so the bar sits flush with the popup edges.
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
+  margin: -1rem -1rem 1rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid $divider;
+  background: rgba($v-light-color-body-bg, 0.9);
+  backdrop-filter: blur(8px);
+
+  .logo {
+    height: 1.1rem;
+  }
 
   .settings {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.3rem;
     margin-left: auto;
-    text-decoration: none;
-    gap: 0.2rem;
+    margin-right: -0.5rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: $v-border-radius;
     font-size: 0.9rem;
-    color: var(--text-emphasize);
+    color: $v-light-color-emphasize;
+    text-decoration: none;
+    transition: background-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $v-light-color-hover-bg;
+      color: $v-light-color-emphasize;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgba($v-light-color-primary, 0.4);
+      outline-offset: 1px;
+    }
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      color: $v-gray-450;
+    }
   }
 }
 
-.qr-code {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: $v-gray-450;
+}
 
-  &.visible {
-    max-height: 400px;
+.onboarding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  border: 1px solid $divider;
+  border-radius: 12px;
+  text-align: center;
+
+  .onboarding-title {
+    margin: 0;
+    font-size: 1rem;
+    color: $v-light-color-emphasize;
   }
+
+  .button {
+    white-space: nowrap;
+  }
+}
+
+.skeleton {
+  display: block;
+  margin-top: 1rem;
 }
 
 .search-result {
   display: block;
   max-width: inherit;
+  margin-top: 1rem;
 }
 
 .floating-loading {
@@ -36,5 +101,16 @@
   z-index: 1;
   left: 50%;
   transform: translateX(-50%);
-  backdrop-filter: blur(3px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid $divider;
+  border-radius: 999px;
+  background: rgba($v-light-color-body-bg, 0.85);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  font-size: 0.85rem;
+  white-space: nowrap;
 }

@@ -37,6 +37,8 @@ export const ru = {
   'search.preferred_languages': 'Предпочтительные языки',
   'search.available_languages': 'Доступные языки',
   'search.placeholder_default': 'Любое слово или фраза',
+  'search.swap_direction': 'Сменить направление перевода',
+  'search.submit': 'Перевести',
   'search.placeholder_reversed':
     'Введите слово или фразу. Vocably создаст {source} карточки.',
   'search.hint':

@@ -1,33 +1,21 @@
-<div class="header">
-  <vocably-logo style="height: 1.1rem"></vocably-logo>
-  <div
-    *ngIf="needsOnboarding"
-    class="text-center"
-    style="position: relative; top: -1px; margin-left: 0.22rem"
-  >
-    {{ 'home.almost_ready' | translate }}
-  </div>
+<header class="header">
+  <vocably-logo class="logo"></vocably-logo>
   <a class="settings" [routerLink]="['settings']"
-    ><mat-icon>page_info</mat-icon> {{ 'home.settings' | translate }}</a
+    ><mat-icon>page_info</mat-icon>{{ 'home.settings' | translate }}</a
   >
-</div>
+</header>
 
-<div *ngIf="!languagePairsLoaded" class="mt-2">
+<div *ngIf="!languagePairsLoaded" class="status">
   <ion-spinner name="dots"></ion-spinner>
   {{ 'home.loading_presets' | translate }}
 </div>
 
 <ng-container *ngIf="languagePairsLoaded">
-  <div style="margin-top: 2rem" *ngIf="needsOnboarding">
-    <div>
-      <a
-        [href]="welcomeUrl"
-        target="_blank"
-        class="button block"
-        style="white-space: nowrap"
-        >{{ 'home.setup' | translate }}</a
-      >
-    </div>
+  <div class="onboarding" *ngIf="needsOnboarding">
+    <p class="onboarding-title">{{ 'home.almost_ready' | translate }}</p>
+    <a [href]="welcomeUrl" target="_blank" class="button block">{{
+      'home.setup' | translate
+    }}</a>
   </div>
 
   <ng-container *ngIf="!needsOnboarding">
@@ -43,20 +31,15 @@
     ></vocably-search-form>
     <vocably-skeleton-loader
       *ngIf="isSearching && !searchResult"
-      style="margin-top: 1rem"
+      class="skeleton"
     ></vocably-skeleton-loader>
-    <div
-      *ngIf="isSearching && searchResult"
-      class="text-center floating-loading"
-      style="margin-top: 1rem; font-size: 0.9rem"
-    >
+    <div *ngIf="isSearching && searchResult" class="floating-loading">
       <ion-spinner name="dots"></ion-spinner>
       {{ 'home.requesting_chatgpt' | translate }}
     </div>
 
     <vocably-translation
       *ngIf="searchResult"
-      style="margin-top: 12px"
       class="search-result"
       [explanation]="explanationState"
       [explanationAnimationDelay]="explanationAnimationDelay"
