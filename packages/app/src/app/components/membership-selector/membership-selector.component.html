@@ -1,72 +1,113 @@
 <div class="membership container-l">
   <header class="intro">
+    <span class="intro-badge">
+      <mat-icon>workspace_premium</mat-icon>
+      {{ 'membership_selector.premium' | transloco }}
+    </span>
     <h1 class="intro-title">{{ 'membership_selector.title' | transloco }}</h1>
     <p class="intro-subtitle">
       {{ 'membership_selector.subtitle' | transloco }}
     </p>
   </header>
 
-  <section class="plans" *ngIf="subscriptionProducts">
-    <button
-      type="button"
-      class="plan"
-      *ngFor="let product of subscriptionProducts; let i = index"
-      [class.featured]="i === featuredIndex"
-      (click)="onSelect(product)"
-    >
-      <span class="plan-badge" *ngIf="i === featuredIndex">
-        {{ 'membership_selector.best_value' | transloco }}
-      </span>
+  <section class="plans" [class.loading]="!subscriptionProducts">
+    @for (product of subscriptionProducts ?? []; track product.priceId) {
+      <button
+        type="button"
+        class="plan"
+        [class.featured]="product.interval === featuredInterval"
+        (click)="onSelect(product)"
+      >
+        @if (product.interval === featuredInterval) {
+          <span class="plan-badge">
+            {{ 'membership_selector.best_value' | transloco }}
+          </span>
+        }
 
-      <span class="plan-name">
-        {{ product.duration }} {{ product.durationUnit }}
-      </span>
+        <span class="plan-head">
+          <span class="plan-name">
+            {{
+              (product.interval === 'year'
+                ? 'membership_selector.yearly'
+                : 'membership_selector.monthly'
+              ) | transloco
+            }}
+          </span>
+          @if (savePercent(product); as percent) {
+            <span class="plan-save">
+              {{ 'membership_selector.save' | transloco: { percent: percent } }}
+            </span>
+          }
+        </span>
 
-      <span class="plan-price">
-        <ng-container *ngIf="product.perMonth">
+        <span class="plan-price">
           <span class="plan-amount">{{ product.perMonth }}</span>
           <span class="plan-period">{{
             'membership_selector.per_month' | transloco
           }}</span>
-        </ng-container>
-        <ng-container *ngIf="!product.perMonth">
-          <span class="plan-amount">{{ product.total }}</span>
-          <span class="plan-period">{{
-            'membership_selector.pay_once' | transloco
-          }}</span>
-        </ng-container>
-      </span>
+        </span>
 
-      <span class="plan-total">
-        <ng-container *ngIf="product.perMonth">
-          {{ 'membership_selector.total' | transloco }}:
-          <del *ngIf="product.maxTotal">{{ product.maxTotal }}</del>
-          <strong>{{ product.total }}</strong>
-          <span class="plan-save" *ngIf="savePercent(product) as percent">
-            {{ 'membership_selector.save' | transloco: { percent: percent } }}
+        <span class="plan-billing">
+          @if (product.interval === 'year') {
+            @if (product.maxTotal) {
+              <del>{{ product.maxTotal }}</del>
+            }
+            {{
+              'membership_selector.billed_yearly'
+                | transloco: { total: product.total }
+            }}
+          } @else {
+            {{ 'membership_selector.billed_monthly' | transloco }}
+          }
+        </span>
+
+        <span class="plan-divider"></span>
+
+        <span class="plan-perks">
+          @if (product.trialDays > 0) {
+            <span class="plan-perk">
+              <mat-icon>check</mat-icon>
+              {{
+                `membership_selector.free_trial_${product.trialDays}_days`
+                  | transloco
+              }}
+            </span>
+          }
+          <span class="plan-perk">
+            <mat-icon>check</mat-icon>
+            {{ 'membership_selector.cancel_anytime' | transloco }}
           </span>
-        </ng-container>
-      </span>
+        </span>
 
-      <span class="plan-button">
-        {{ 'membership_selector.select' | transloco }}
-      </span>
-
-      <span class="plan-note">
-        <ng-container *ngIf="product.trialDays > 0">
+        <span class="plan-button">
           {{
-            `membership_selector.trial_${product.trialDays}_days` | transloco
+            (product.trialDays > 0
+              ? 'membership_selector.start_trial'
+              : 'membership_selector.select'
+            ) | transloco
           }}
-          {{ 'membership_selector.cancel' | transloco }}
-        </ng-container>
-      </span>
-    </button>
+        </span>
+      </button>
+    } @empty {
+      <div class="plan plan-skeleton" aria-hidden="true"></div>
+      <div class="plan plan-skeleton" aria-hidden="true"></div>
+    }
   </section>
 
-  <p class="reassurance">
-    <mat-icon>verified_user</mat-icon>
-    <span>{{ 'membership_selector.cards_stay' | transloco }}</span>
-  </p>
+  <ul class="assurances">
+    <li>
+      <mat-icon>lock</mat-icon>
+      <span>{{ 'membership_selector.secure_payment' | transloco }}</span>
+    </li>
+    <li>
+      <mat-icon>event_available</mat-icon>
+      <span>{{ 'membership_selector.cancel_anytime' | transloco }}</span>
+    </li>
+    <li>
+      <mat-icon>verified_user</mat-icon>
+      <span>{{ 'membership_selector.cards_stay' | transloco }}</span>
+    </li>
+  </ul>
 
   <section class="rating">
     <div class="rating-score">

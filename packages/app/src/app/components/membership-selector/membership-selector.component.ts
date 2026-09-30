@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
@@ -7,6 +7,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import {
   getSubscriptionProducts,
+  SubscriptionInterval,
   SubscriptionProduct,
 } from '../../subscription-products';
 import { UserStaticMetadata } from '@vocably/model';
@@ -20,14 +21,14 @@ const parsePrice = (price: string): number =>
   selector: 'app-membership-selector',
   templateUrl: './membership-selector.component.html',
   styleUrls: ['./membership-selector.component.scss'],
-  imports: [MatIcon, NgIf, NgFor, TranslocoModule],
+  imports: [MatIcon, NgFor, TranslocoModule],
 })
 export class MembershipSelectorComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject();
 
   subscriptionProducts: SubscriptionProduct[] | null = null;
   staticMetadata: UserStaticMetadata | null = null;
-  featuredIndex = -1;
+  featuredInterval: SubscriptionInterval = 'year';
 
   constructor(
     private authService: AuthService,
@@ -37,7 +38,6 @@ export class MembershipSelectorComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     getSubscriptionProducts().then((products) => {
       this.subscriptionProducts = products;
-      this.featuredIndex = products.findIndex((product) => product.maxTotal);
     });
 
     getUserStaticMetadata().then((result) => {

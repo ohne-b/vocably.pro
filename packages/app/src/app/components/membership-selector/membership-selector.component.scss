@@ -15,21 +15,53 @@ $card-radius: 0.75rem;
 p,
 h1,
 h2,
-h3 {
+h3,
+ul {
   margin: 0;
 }
 
 .intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   text-align: center;
 }
 
+.intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  mat-icon {
+    font-size: 1.1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
 .intro-title {
-  margin-bottom: 0.5rem;
+  font-size: 2.25rem;
+  line-height: 1.15;
+
+  @media (max-width: $sm) {
+    font-size: 1.85rem;
+  }
 }
 
 .intro-subtitle {
+  max-width: 32rem;
   color: var(--text-muted);
   font-size: 1.1rem;
+  line-height: 1.45;
 }
 
 // Plans
@@ -37,15 +69,15 @@ h3 {
 .plans {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 46rem;
+  margin: 0 auto;
   padding-top: 0.75rem;
 
   @media (min-width: $md) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: stretch;
-  }
-
-  @media (min-width: $lg) {
     gap: 1.5rem;
   }
 }
@@ -55,14 +87,14 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 0.75rem;
-  padding: 1.75rem 1.5rem 1.5rem;
+  gap: 0.5rem;
+  padding: 2rem 1.75rem 1.75rem;
   color: inherit;
   font: inherit;
   text-align: left;
   background: var(--card-bg);
   border: 1px solid $card-border;
-  border-radius: $card-radius;
+  border-radius: 1rem;
   cursor: pointer;
   transition:
     border-color 200ms,
@@ -70,35 +102,67 @@ h3 {
     transform 200ms;
 
   &:hover {
-    border-color: var(--primary-color);
-    box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.12);
-    transform: translateY(-2px);
+    border-color: rgba(var(--primary-rgb), 0.6);
+    box-shadow: 0 12px 32px rgba(var(--primary-rgb), 0.14);
+    transform: translateY(-3px);
 
     .plan-button {
       @include button-hover();
-    }
-
-    &:not(.featured) .plan-button {
-      background: rgba(var(--primary-rgb), 0.08);
-      color: var(--primary-color);
+      border-color: var(--button-active-bg);
     }
   }
 
   &:focus-visible {
     outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
   }
 
   &.featured {
     border: 2px solid var(--primary-color);
-    padding: calc(1.75rem - 1px) calc(1.5rem - 1px) calc(1.5rem - 1px);
-    box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.15);
+    padding: calc(2rem - 1px) calc(1.75rem - 1px) calc(1.75rem - 1px);
+    background:
+      linear-gradient(
+        180deg,
+        rgba(var(--primary-rgb), 0.08),
+        rgba(var(--primary-rgb), 0) 55%
+      ),
+      var(--card-bg);
+    box-shadow: 0 12px 32px rgba(var(--primary-rgb), 0.16);
+
+    @media (max-width: $md - 1) {
+      order: -1;
+    }
 
     .plan-button {
       background: var(--button-bg);
       color: var(--button-color);
-      border-color: var(--button-bg);
     }
+  }
+}
+
+.plan-skeleton {
+  min-height: 21rem;
+  cursor: default;
+  animation: pulse 1.4s ease-in-out infinite;
+
+  &:hover {
+    border-color: $card-border;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
   }
 }
 
@@ -107,23 +171,45 @@ h3 {
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 0.2rem 0.75rem;
+  padding: 0.3rem 0.9rem;
   border-radius: 999px;
   background: var(--primary-color);
-  color: var(--on-primari-color, #fff);
-  font-size: 0.75rem;
+  color: #fff;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+.plan-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 1.6rem;
 }
 
 .plan-name {
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--emphasize-color);
+}
+
+.plan-save {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(34, 160, 90, 0.12);
+  color: rgb(28, 135, 75);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(74, 222, 128, 0.14);
+    color: rgb(110, 231, 160);
+  }
 }
 
 .plan-price {
@@ -131,13 +217,15 @@ h3 {
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.4rem;
+  margin-top: 0.5rem;
 }
 
 .plan-amount {
   font-family: Ruda, sans-serif;
-  font-size: 2.25rem;
+  font-size: 2.75rem;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1;
+  letter-spacing: -0.01em;
   color: var(--emphasize-color);
   font-variant-numeric: tabular-nums;
 }
@@ -145,62 +233,88 @@ h3 {
 .plan-period {
   color: var(--text-muted);
   font-size: 0.9rem;
+  text-transform: lowercase;
 }
 
-.plan-total {
+.plan-billing {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: wrap;
   gap: 0.4rem;
-  min-height: 1.6rem;
+  min-height: 1.4rem;
   font-size: 0.9rem;
   color: var(--text-muted);
 
   del {
-    opacity: 0.8;
-  }
-
-  strong {
-    font-weight: 500;
-    color: var(--text-color);
+    opacity: 0.7;
   }
 }
 
-.plan-save {
-  padding: 0.1rem 0.5rem;
-  border-radius: 999px;
-  background: rgba(var(--primary-rgb), 0.1);
-  color: var(--primary-color);
-  font-size: 0.75rem;
-  font-weight: 500;
+.plan-divider {
+  height: 1px;
+  margin: 0.75rem 0 0.5rem;
+  background: $card-border;
+}
+
+.plan-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.plan-perk {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  mat-icon {
+    flex: none;
+    font-size: 1.1rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--primary-color);
+  }
 }
 
 .plan-button {
   @include button-pristine();
   @include button-block();
   margin-top: auto;
+  padding: 0.8rem 1rem;
+  font-weight: 500;
   background: transparent;
   box-shadow: none;
   border: 1px solid var(--button-bg);
   color: var(--button-bg);
 }
 
-.plan-note {
-  min-height: 1.25rem;
-  font-size: 0.8rem;
-  text-align: center;
-  color: var(--text-muted);
-}
+// Assurances
 
-.reassurance {
+.assurances {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: -0.75rem;
-  font-size: 0.9rem;
-  text-align: center;
+  gap: 0.75rem 1.75rem;
+  max-width: 46rem;
+  margin: -0.5rem auto 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
   color: var(--text-muted);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  li:last-child {
+    flex-basis: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 
   mat-icon {
     flex: none;
