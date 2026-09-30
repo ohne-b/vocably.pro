@@ -317,49 +317,6 @@
       color: var(--bs-secondary-color);
     }
 
-    .extensions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .install-extension-button {
-      --bg-color: #2c2c2c;
-      --bg-hover-color: #000;
-
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1rem 0.65rem 3rem;
-      border-radius: 2rem;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      transition: background-color 0.2s ease-in-out;
-
-      &.chrome {
-        background: var(--bg-color) url('assets/chrome.svg') 0.5rem center no-repeat;
-        background-size: 1.8rem;
-      }
-
-      &.edge {
-        background: var(--bg-color) url('assets/edge.svg') 0.55rem center no-repeat;
-        background-size: 1.7rem;
-      }
-
-      &.safari {
-        background: var(--bg-color) url('assets/safari.svg') 0.5rem calc(50% + 0.05rem) no-repeat;
-        background-size: 1.9rem;
-      }
-
-      &:hover {
-        color: #fff;
-        background-color: var(--bg-hover-color);
-      }
-    }
-
     /* ---------- Reader ---------- */
     .pdf-reader {
       position: fixed;
@@ -658,17 +615,7 @@
         </div>
 
         <p class="pdf-install__text">Don't have the Vocably extension yet? Install it here:</p>
-        <div class="extensions">
-          <a class="install-extension-button chrome" href="https://chrome.google.com/webstore/detail/vocably/baocigmmhhdemijfjnjdidbkfgpgogmb">
-            Chrome Extension
-          </a>
-          <a class="install-extension-button edge" href="https://microsoftedge.microsoft.com/addons/detail/dahphaiflimmafjchchidjmgidlkajho">
-            Edge Extension
-          </a>
-          <a class="install-extension-button safari" href="https://apps.apple.com/us/app/vocably-for-safari/id6464076425">
-            Safari Extension
-          </a>
-        </div>
+        {{> extension-buttons}}
       </div>
     </section>
   </div>
