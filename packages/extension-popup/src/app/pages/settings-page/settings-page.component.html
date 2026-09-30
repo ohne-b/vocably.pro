@@ -1,194 +1,229 @@
-<div class="header">
-  <a [routerLink]="['/']"
-    ><mat-icon>arrow_back</mat-icon> {{ 'settings.back' | translate }}</a
+<header class="header">
+  <a class="back" [routerLink]="['/']"
+    ><mat-icon>chevron_left</mat-icon>{{ 'settings.back' | translate }}</a
   >
-  <h1>{{ 'settings.title' | translate }}</h1>
+  <h1 class="title">{{ 'settings.title' | translate }}</h1>
+</header>
+
+<div class="content">
+  <ng-container *ngIf="settings$ | async as settings">
+    <section class="section">
+      <h2 class="section-title">
+        {{ 'settings.section_general' | translate }}
+      </h2>
+      <div class="card">
+        <label class="row">
+          <mat-icon class="row-icon">translate</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{ 'settings.language' | translate }}</span>
+          </span>
+          <span class="select">
+            <select
+              [value]="settings.locale || 'en'"
+              (change)="setLocale($any($event.target).value)"
+            >
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="pt">Português</option>
+              <option value="ru">Русский</option>
+              <option value="uk">Українська</option>
+              <option value="vi">Tiếng Việt</option>
+              <option value="tr">Türkçe</option>
+            </select>
+            <mat-icon>expand_more</mat-icon>
+          </span>
+        </label>
+
+        <label class="row">
+          <mat-icon class="row-icon">language</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{
+              'settings.autodetect' | translate
+            }}</span>
+            <span class="row-description">{{
+              'settings.autodetect_help' | translate
+            }}</span>
+          </span>
+          <input
+            type="checkbox"
+            role="switch"
+            class="switch"
+            [checked]="settings.autodetectLanguage"
+            (change)="
+              setSettings({
+                autodetectLanguage: !settings.autodetectLanguage,
+              })
+            "
+          />
+        </label>
+
+        <label class="row">
+          <mat-icon class="row-icon">volume_up</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{
+              'settings.auto_play' | translate
+            }}</span>
+          </span>
+          <input
+            type="checkbox"
+            role="switch"
+            class="switch"
+            [checked]="settings.autoPlay"
+            (change)="
+              setSettings({
+                autoPlay: !settings.autoPlay,
+              })
+            "
+          />
+        </label>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">{{ 'settings.section_popup' | translate }}</h2>
+      <div class="card">
+        <label class="row">
+          <mat-icon class="row-icon">ads_click</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{
+              'settings.double_click' | translate
+            }}</span>
+          </span>
+          <input
+            type="checkbox"
+            role="switch"
+            class="switch"
+            [checked]="settings.showOnDoubleClick"
+            (change)="
+              setSettings({
+                showOnDoubleClick: !settings.showOnDoubleClick,
+              })
+            "
+          />
+        </label>
+
+        <label class="row">
+          <mat-icon class="row-icon">text_select_end</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{
+              'settings.selection' | translate
+            }}</span>
+          </span>
+          <input
+            type="checkbox"
+            role="switch"
+            class="switch"
+            [checked]="settings.showOnSelection"
+            (change)="
+              setSettings({
+                showOnSelection: !settings.showOnSelection,
+              })
+            "
+          />
+        </label>
+
+        <label class="row">
+          <mat-icon class="row-icon">keyboard</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{ 'settings.hot_key' | translate }}</span>
+          </span>
+          <input
+            type="checkbox"
+            role="switch"
+            class="switch"
+            [checked]="settings.showOnHotKey"
+            (change)="
+              setSettings({
+                showOnHotKey: !settings.showOnHotKey,
+              })
+            "
+          />
+        </label>
+
+        <label class="row">
+          <mat-icon class="row-icon">visibility_off</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{
+              'settings.hide_button' | translate
+            }}</span>
+          </span>
+          <input
+            type="checkbox"
+            role="switch"
+            class="switch"
+            [checked]="settings.hideSelectionButton"
+            (change)="
+              setSettings({
+                hideSelectionButton: !settings.hideSelectionButton,
+              })
+            "
+          />
+        </label>
+
+        <div class="row">
+          <mat-icon class="row-icon">info</mat-icon>
+          <span class="row-text">
+            <span class="row-description">{{
+              'settings.context_menu_hint' | translate
+            }}</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">{{ 'settings.section_cards' | translate }}</h2>
+      <div class="card">
+        <div class="row-group">
+          <div class="row">
+            <mat-icon class="row-icon">smartphone</mat-icon>
+            <span class="row-text">
+              <span class="row-label">{{
+                'settings.mobile_app_title' | translate
+              }}</span>
+              <span class="row-description">{{
+                'settings.mobile_app_desc' | translate
+              }}</span>
+            </span>
+            <button
+              class="action"
+              [attr.aria-expanded]="showQRCode"
+              (click)="showQRCode = !showQRCode"
+            >
+              {{ 'settings.get_app' | translate }}
+              <mat-icon [class.rotated]="showQRCode">expand_more</mat-icon>
+            </button>
+          </div>
+          <div class="qr-panel" [class.visible]="showQRCode">
+            <div class="qr-code-inner">
+              <vocably-qr-code class="qr-image"></vocably-qr-code>
+              <div class="qr-text">
+                <p>{{ 'settings.scan_qr' | translate }}</p>
+                <p class="qr-or">{{ 'settings.or_open' | translate }}</p>
+                <a href="https://vocably.pro/app.html" target="_blank"
+                  >vocably.pro/app.html</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <mat-icon class="row-icon">computer</mat-icon>
+          <span class="row-text">
+            <span class="row-label">{{
+              'settings.web_app_title' | translate
+            }}</span>
+            <span class="row-description">{{
+              'settings.web_app_desc' | translate
+            }}</span>
+          </span>
+          <a class="action" href="https://app.vocably.pro" target="_blank">
+            {{ 'settings.open_web_app' | translate }}
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </div>
+      </div>
+    </section>
+  </ng-container>
 </div>
-<ng-container *ngIf="settings$ | async as settings">
-  <div class="mb-1">
-    <label>
-      {{ 'settings.language' | translate }}
-      <select
-        [value]="settings.locale || 'en'"
-        (change)="setLocale($any($event.target).value)"
-      >
-        <option value="en">English</option>
-        <option value="es">Español</option>
-        <option value="pt">Português</option>
-        <option value="ru">Русский</option>
-        <option value="uk">Українська</option>
-        <option value="vi">Tiếng Việt</option>
-        <option value="tr">Türkçe</option>
-      </select>
-    </label>
-  </div>
-
-  <p class="mb-0_5">
-    <label>
-      <input
-        type="checkbox"
-        [checked]="settings.autodetectLanguage"
-        (change)="
-          setSettings({
-            autodetectLanguage: !settings.autodetectLanguage,
-          })
-        "
-      />
-      {{ 'settings.autodetect' | translate }}
-    </label>
-  </p>
-  <p class="mb-1 small" style="max-width: 500px">
-    {{ 'settings.autodetect_help' | translate }}
-  </p>
-  <p class="mb-1">
-    <label>
-      <input
-        type="checkbox"
-        [checked]="settings.showOnDoubleClick"
-        (change)="
-          setSettings({
-            showOnDoubleClick: !settings.showOnDoubleClick,
-          })
-        "
-      />
-      {{ 'settings.double_click' | translate }}
-    </label>
-  </p>
-
-  <p class="mb-1">
-    <label>
-      <input
-        type="checkbox"
-        [checked]="settings.showOnSelection"
-        (change)="
-          setSettings({
-            showOnSelection: !settings.showOnSelection,
-          })
-        "
-      />
-      {{ 'settings.selection' | translate }}
-    </label>
-  </p>
-
-  <p class="mb-1">
-    <label>
-      <input
-        type="checkbox"
-        [checked]="settings.showOnHotKey"
-        (change)="
-          setSettings({
-            showOnHotKey: !settings.showOnHotKey,
-          })
-        "
-      />
-      {{ 'settings.hot_key' | translate }}
-    </label>
-  </p>
-
-  <p class="mb-0_5">
-    <label>
-      <input
-        type="checkbox"
-        [checked]="settings.hideSelectionButton"
-        (change)="
-          setSettings({
-            hideSelectionButton: !settings.hideSelectionButton,
-          })
-        "
-      />
-      {{ 'settings.hide_button' | translate }}
-    </label>
-  </p>
-  <div class="mb-1 small" style="max-width: 500px">
-    <p class="mb-0_5">{{ 'settings.alternatively' | translate }}</p>
-    <ul>
-      <li class="mb-0_5">
-        {{ 'settings.context_menu' | translate }}
-      </li>
-      <li class="mb-0_5">
-        {{ 'settings.double_click_word' | translate }} [<button
-          class="link"
-          (click)="
-            setSettings({
-              showOnDoubleClick: !settings.showOnDoubleClick,
-            })
-          "
-        >
-          {{
-            (settings.showOnDoubleClick
-              ? 'settings.disable'
-              : 'settings.enable'
-            ) | translate
-          }}</button
-        >]
-      </li>
-      <li class="mb-0_5">
-        {{ 'settings.select_text' | translate }} [<button
-          class="link"
-          (click)="
-            setSettings({
-              showOnSelection: !settings.showOnSelection,
-            })
-          "
-        >
-          {{
-            (settings.showOnSelection ? 'settings.disable' : 'settings.enable')
-              | translate
-          }}</button
-        >]
-      </li>
-      <li>
-        {{ 'settings.double_shift' | translate }} [<button
-          class="link"
-          (click)="
-            setSettings({
-              showOnHotKey: !settings.showOnHotKey,
-            })
-          "
-        >
-          {{
-            (settings.showOnHotKey ? 'settings.disable' : 'settings.enable')
-              | translate
-          }}</button
-        >]
-      </li>
-    </ul>
-  </div>
-
-  <p class="mb-1">
-    <label>
-      <input
-        type="checkbox"
-        [checked]="settings.autoPlay"
-        (change)="
-          setSettings({
-            autoPlay: !settings.autoPlay,
-          })
-        "
-      />
-      {{ 'settings.auto_play' | translate }}
-    </label>
-  </p>
-
-  <div>
-    <button class="link" (click)="showQRCode = true">
-      {{ 'settings.mobile_app' | translate }}
-    </button>
-    {{ 'settings.to_study' | translate }}
-  </div>
-  <div class="qr-code" [class.visible]="showQRCode">
-    <p class="mt-1 mb-1">{{ 'settings.scan_qr' | translate }}</p>
-    <vocably-qr-code style="width: 200px"></vocably-qr-code>
-    <div>
-      {{ 'settings.or_open' | translate }}<br />
-      <strong>https://vocably.pro/app.html</strong>
-    </div>
-  </div>
-  <div class="mt-1">
-    {{ 'settings.import_prompt' | translate }}
-    <a href="https://app.vocably.pro" target="_blank">{{
-      'settings.web_app_link' | translate
-    }}</a
-    >.
-  </div>
-</ng-container>
