@@ -29,14 +29,14 @@ $divider: $v-light-color-border-muted;
     padding: 0.3rem 0.6rem;
     border-radius: $v-border-radius;
     font-size: 0.9rem;
-    color: $v-light-color-emphasize;
+    color: $v-gray-450;
     text-decoration: none;
     transition: background-color 0.15s ease;
 
     &:hover,
     &:focus-visible {
       background-color: $v-light-color-hover-bg;
-      color: $v-light-color-emphasize;
+      color: $v-gray-450;
     }
 
     &:focus-visible {
@@ -48,7 +48,6 @@ $divider: $v-light-color-border-muted;
       font-size: 18px;
       width: 18px;
       height: 18px;
-      color: $v-gray-450;
     }
   }
 }
