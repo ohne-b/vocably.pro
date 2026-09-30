@@ -371,6 +371,24 @@ export class VocablyTranslationCards {
               </div>
             )}
 
+            {this.canCongratulate && (
+              <div
+                key="congratulation"
+                class={
+                  'vocably-added-congratulation' +
+                  (this.congratulateItemIndex === itemIndex
+                    ? ' vocably-added-congratulation-visible'
+                    : '')
+                }
+              >
+                <div class="vocably-pb-12">
+                  <vocably-first-translation-congratulation
+                    card={card}
+                  ></vocably-first-translation-congratulation>
+                </div>
+              </div>
+            )}
+
             <div
               key="card"
               data-test="card"
@@ -379,23 +397,6 @@ export class VocablyTranslationCards {
                 'vocably-bottom-12-border': itemIndex < cardsArray.length - 1,
               }}
             >
-              {this.canCongratulate && (
-                <div
-                  key="congratulation"
-                  class={
-                    'vocably-added-congratulation' +
-                    (this.congratulateItemIndex === itemIndex
-                      ? ' vocably-added-congratulation-visible'
-                      : '')
-                  }
-                >
-                  <div class="vocably-pb-12">
-                    <vocably-first-translation-congratulation
-                      card={card}
-                    ></vocably-first-translation-congratulation>
-                  </div>
-                </div>
-              )}
               <div key="container" class="vocably-card-container">
                 <div class="vocably-card-action">
                   {!this.hideActions && isCardItem(card) && (

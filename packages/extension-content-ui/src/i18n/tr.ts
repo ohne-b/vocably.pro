@@ -63,10 +63,18 @@ export const tr = {
   'language.save': 'Kaydet',
   'language.saving': 'Kaydediliyor...',
   // first-translation-congratulation
-  'congrats.on_phone': 'zaten telefonunuzda.',
-  'congrats.scan_qr': 'Öğrenmek için QR kodunu tarayın.',
-  'congrats.or_go_to': 'Veya şuraya gidin:',
-  'congrats.to_study_browser': 'tarayıcınızda çalışmak için.',
+  'congrats.badge': 'İlk kart kaydedildi',
+  'congrats.title': '{word} artık destenizde.',
+  'congrats.description':
+    'Aralıklı tekrarla çalışın, kalıcı olarak aklınızda kalsın.',
+  'congrats.get_app': 'Vocably uygulamasını edinin',
+  'congrats.scan_qr':
+    'Her yerde çalışmak için kodu telefonunuzun kamerasıyla tarayın.',
+  'congrats.get_app_mobile': 'Vocably uygulamasıyla her yerde çalışın.',
+  'congrats.app_store_caption': 'Hemen indirin',
+  'congrats.google_play_caption': 'HEMEN İNDİRİN',
+  'congrats.browser':
+    'Tarayıcıyı mı tercih edersiniz? {link} adresinde çalışın',
   // mobile-button
   'mobile_button.look_up': 'Ara',
   // tag-form

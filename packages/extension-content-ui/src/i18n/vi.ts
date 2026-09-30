@@ -62,10 +62,16 @@ export const vi = {
   'language.save': 'Lưu',
   'language.saving': 'Đang lưu...',
   // first-translation-congratulation
-  'congrats.on_phone': 'đã có trên điện thoại của bạn.',
-  'congrats.scan_qr': 'Quét mã QR để học.',
-  'congrats.or_go_to': 'Hoặc truy cập',
-  'congrats.to_study_browser': 'để học trong trình duyệt của bạn.',
+  'congrats.badge': 'Đã lưu thẻ đầu tiên',
+  'congrats.title': '{word} đã có trong bộ thẻ của bạn.',
+  'congrats.description':
+    'Ôn tập bằng phương pháp lặp lại ngắt quãng để ghi nhớ lâu dài.',
+  'congrats.get_app': 'Tải ứng dụng Vocably',
+  'congrats.scan_qr': 'Quét mã bằng camera điện thoại để học mọi lúc mọi nơi.',
+  'congrats.get_app_mobile': 'Học mọi lúc mọi nơi với ứng dụng Vocably.',
+  'congrats.app_store_caption': 'Tải về trên',
+  'congrats.google_play_caption': 'TẢI NỘI DUNG TRÊN',
+  'congrats.browser': 'Thích dùng trình duyệt? Học tại {link}',
   // mobile-button
   'mobile_button.look_up': 'Tra cứu',
   // tag-form

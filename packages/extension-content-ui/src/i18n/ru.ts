@@ -61,10 +61,17 @@ export const ru = {
   'language.save': 'Сохранить',
   'language.saving': 'Сохранение...',
   // first-translation-congratulation
-  'congrats.on_phone': 'уже на вашем телефоне.',
-  'congrats.scan_qr': 'Отсканируйте QR-код, чтобы учить.',
-  'congrats.or_go_to': 'Или перейдите на',
-  'congrats.to_study_browser': 'чтобы учиться в браузере.',
+  'congrats.badge': 'Первая карточка сохранена',
+  'congrats.title': '{word} уже в вашей колоде.',
+  'congrats.description':
+    'Повторяйте её с помощью интервальных повторений, и слово запомнится надолго.',
+  'congrats.get_app': 'Скачайте приложение Vocably',
+  'congrats.scan_qr':
+    'Отсканируйте код камерой телефона, чтобы учиться где угодно.',
+  'congrats.get_app_mobile': 'Учитесь где угодно с приложением Vocably.',
+  'congrats.app_store_caption': 'Загрузите в',
+  'congrats.google_play_caption': 'ДОСТУПНО В',
+  'congrats.browser': 'Удобнее в браузере? Учитесь на {link}',
   // mobile-button
   'mobile_button.look_up': 'Найти',
   // tag-form

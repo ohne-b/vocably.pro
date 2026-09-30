@@ -63,10 +63,17 @@ export const pt = {
   'language.save': 'Salvar',
   'language.saving': 'Salvando...',
   // first-translation-congratulation
-  'congrats.on_phone': 'já está no seu telefone.',
-  'congrats.scan_qr': 'Escaneie o código QR para aprender.',
-  'congrats.or_go_to': 'Ou vá para',
-  'congrats.to_study_browser': 'para estudar no seu navegador.',
+  'congrats.badge': 'Primeiro cartão salvo',
+  'congrats.title': '{word} já está no seu baralho.',
+  'congrats.description':
+    'Revise com repetição espaçada e você não vai mais esquecer.',
+  'congrats.get_app': 'Baixe o app Vocably',
+  'congrats.scan_qr':
+    'Escaneie o código com a câmera do celular para estudar onde estiver.',
+  'congrats.get_app_mobile': 'Estude onde estiver com o app Vocably.',
+  'congrats.app_store_caption': 'Baixar na',
+  'congrats.google_play_caption': 'DISPONÍVEL NO',
+  'congrats.browser': 'Prefere o navegador? Estude em {link}',
   // mobile-button
   'mobile_button.look_up': 'Pesquisar',
   // tag-form

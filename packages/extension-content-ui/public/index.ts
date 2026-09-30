@@ -115,6 +115,12 @@ document.getElementById('congrats').card = longCard;
 document.getElementById('congrats-short').card =
   simpletonTranslationResult.value.deck.cards[0];
 
+['congrats-ios', 'congrats-android'].forEach((id) => {
+  // @ts-ignore
+  document.getElementById(id).card =
+    simpletonTranslationResult.value.deck.cards[0];
+});
+
 const successfulTranslationResult: Result<TranslationCards> = {
   success: true,
   value: {
