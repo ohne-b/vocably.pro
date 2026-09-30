@@ -1,8 +1,121 @@
 @import '../../styles/component';
 
+$star-color: #ffb400;
+
 vocably-rate {
   @include base-font();
   display: block;
   // Reddit sets visibility: hidden for custom elements
   visibility: visible !important;
+}
+
+.vocably-rate-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid $v-light-color-border-muted;
+  background: linear-gradient(
+    160deg,
+    rgba($star-color, 0.08) 0%,
+    rgba($star-color, 0) 55%
+  );
+}
+
+.vocably-rate-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.vocably-rate-star {
+  width: 18px;
+  height: 18px;
+  fill: $star-color;
+}
+
+.vocably-rate-title {
+  color: $v-light-color-emphasize;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.vocably-rate-description {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.vocably-rate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.vocably-rate-primary {
+  @include button();
+  @include inline-button();
+  font-size: 14px !important;
+  transition:
+    background-color 200ms,
+    transform 150ms;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.vocably-rate-secondary {
+  @include button();
+  @include inline-button();
+  font-size: 14px !important;
+  background: $v-light-color-elevation-2;
+  color: $v-light-color-emphasize !important;
+  transition:
+    background-color 200ms,
+    transform 150ms;
+
+  &:hover:not([disabled]),
+  &:focus:not([disabled]) {
+    background: $v-light-color-elevation-3;
+  }
+
+  &:active:not([disabled]) {
+    background: $v-light-color-elevation-3;
+    transform: scale(0.97);
+  }
+}
+
+.vocably-rate-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+  width: 100%;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid $v-light-color-border-muted;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.vocably-rate-link {
+  @include link(!important);
+}
+
+.vocably-rate-dismiss {
+  @include unstyled();
+  font: inherit;
+  font-size: 13px;
+  color: $v-light-color-body !important;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+
+  &:hover,
+  &:focus-visible {
+    color: $v-light-color-emphasize !important;
+  }
 }

@@ -44,17 +44,15 @@ export const ru = {
   'search.hint':
     'Введите любое слово или фразу. Vocably создаст {language} карточки для вас.',
   // rate
-  'rate.tagline': 'Это займёт меньше минуты, но много значит для Vocably.',
-  'rate.question': 'Нравится ли вам Vocably? Ваш отзыв на {platform}',
-  'rate.question2': 'поможет этому проекту.',
+  'rate.title': 'Нравится Vocably?',
+  'rate.description':
+    'Оценка на {platform} займёт меньше минуты, но очень поможет проекту.',
   'rate.ok': 'Оценить Vocably',
-  'rate.later': 'Спросить позже.',
-  'rate.dislike': 'Вас что-то не устраивает в Vocably? Тогда, пожалуйста,',
-  'rate.contact': 'свяжитесь с автором',
-  'rate.feedback_note':
-    '. Я серьёзно отношусь к каждому отзыву. Мы можем улучшить этот проект вместе.',
+  'rate.later': 'Может, позже',
   'rate.show_again': 'Это сообщение появится снова через 10 переводов.',
-  'rate.never': 'Больше не показывать это сообщение.',
+  'rate.dislike': 'Что-то не так?',
+  'rate.contact': 'Написать автору',
+  'rate.never': 'Больше не показывать',
   // language
   'language.i_study': 'Я изучаю',
   'language.i_speak': 'Я знаю',

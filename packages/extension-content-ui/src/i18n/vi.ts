@@ -43,19 +43,15 @@ export const vi = {
   'search.hint':
     'Nhập bất kỳ từ hoặc cụm từ nào. Vocably sẽ tạo thẻ {language} cho bạn.',
   // rate
-  'rate.tagline':
-    'Chỉ mất chưa đến một phút, nhưng sẽ có ý nghĩa rất lớn với Vocably.',
-  'rate.question':
-    'Bạn có thấy Vocably hữu ích không? Đánh giá của bạn trên {platform}',
-  'rate.question2': 'sẽ tạo ra sự khác biệt lớn cho dự án này.',
+  'rate.title': 'Bạn thích Vocably chứ?',
+  'rate.description':
+    'Đánh giá trên {platform} chỉ mất chưa đến một phút nhưng có ý nghĩa rất lớn với dự án này.',
   'rate.ok': 'Đánh giá Vocably',
-  'rate.later': 'Hỏi tôi sau.',
-  'rate.dislike': 'Bạn có điều gì không hài lòng về Vocably? Vui lòng',
-  'rate.contact': 'liên hệ với tác giả',
-  'rate.feedback_note':
-    '. Tôi coi trọng từng phản hồi. Chúng ta có thể cải thiện dự án này cùng nhau.',
-  'rate.show_again': 'Bạn sẽ thấy thông báo này lại sau 10 lần dịch.',
-  'rate.never': 'Không bao giờ hiển thị thông báo này nữa.',
+  'rate.later': 'Để sau',
+  'rate.show_again': 'Thông báo này sẽ xuất hiện lại sau 10 lần dịch.',
+  'rate.dislike': 'Có điều gì chưa ổn?',
+  'rate.contact': 'Gửi phản hồi',
+  'rate.never': 'Không hiển thị lại',
   // language
   'language.i_study': 'Tôi học',
   'language.i_speak': 'Tôi nói',

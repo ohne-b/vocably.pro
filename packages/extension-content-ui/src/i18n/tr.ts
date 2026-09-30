@@ -44,19 +44,15 @@ export const tr = {
   'search.hint':
     'Herhangi bir dilde kelime veya cümle girin. Vocably sizin için {language} kartları oluşturacak.',
   // rate
-  'rate.tagline':
-    'Bir dakikadan az sürer, ancak Vocably için çok şey ifade eder.',
-  'rate.question':
-    "Vocably'yi yararlı buluyor musunuz? {platform} üzerindeki değerlendirmeniz",
-  'rate.question2': 'bu proje için büyük fark yaratacak.',
+  'rate.title': "Vocably'yi beğendiniz mi?",
+  'rate.description':
+    '{platform} üzerinde değerlendirmek bir dakikadan az sürer ve bu proje için çok şey ifade eder.',
   'rate.ok': "Vocably'yi değerlendir",
-  'rate.later': 'Daha sonra sor.',
-  'rate.dislike': "Vocably'de beğenmediğiniz bir şey mi var? O zaman lütfen",
-  'rate.contact': 'yazar ile iletişime geçin',
-  'rate.feedback_note':
-    '. Her geri bildirimi ciddiye alıyorum. Bu projeyi birlikte geliştirebiliriz.',
-  'rate.show_again': 'Bu mesajı 10 çeviriden sonra tekrar göreceksiniz.',
-  'rate.never': 'Bu mesajı bir daha gösterme.',
+  'rate.later': 'Belki sonra',
+  'rate.show_again': 'Bu mesaj 10 çeviriden sonra tekrar görünecek.',
+  'rate.dislike': 'Bir sorun mu var?',
+  'rate.contact': 'Geri bildirim gönderin',
+  'rate.never': 'Bir daha gösterme',
   // language
   'language.i_study': 'Çalışılan Dil:',
   'language.i_speak': 'Çeviri Dili:',

@@ -45,18 +45,15 @@ export const pt = {
   'search.hint':
     'Digite qualquer palavra ou frase em qualquer idioma. O Vocably criará cartões de {language} para você.',
   // rate
-  'rate.tagline':
-    'Levará menos de um minuto, mas significará muito para o Vocably.',
-  'rate.question': 'Você acha o Vocably útil? Sua avaliação no {platform}',
-  'rate.question2': 'fará uma grande diferença para este projeto.',
+  'rate.title': 'Está gostando do Vocably?',
+  'rate.description':
+    'Avaliar no {platform} leva menos de um minuto e significa muito para este projeto.',
   'rate.ok': 'Avaliar o Vocably',
-  'rate.later': 'Pergunte-me mais tarde.',
-  'rate.dislike': 'Há algo que você não goste no Vocably? Então por favor',
-  'rate.contact': 'entre em contato com o autor',
-  'rate.feedback_note':
-    '. Levo cada feedback a sério. Podemos melhorar este projeto juntos.',
-  'rate.show_again': 'Você verá esta mensagem novamente após 10 traduções.',
-  'rate.never': 'Nunca mostrar esta mensagem novamente.',
+  'rate.later': 'Talvez mais tarde',
+  'rate.show_again': 'Esta mensagem aparecerá novamente após 10 traduções.',
+  'rate.dislike': 'Algo não está certo?',
+  'rate.contact': 'Enviar feedback',
+  'rate.never': 'Não mostrar novamente',
   // language
   'language.i_study': 'Estudo',
   'language.i_speak': 'Falo',

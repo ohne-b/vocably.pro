@@ -44,19 +44,15 @@ export const en = {
   'search.hint':
     'Type any word or phrase in any language. Vocably will create {language} cards for you.',
   // rate
-  'rate.tagline':
-    'It will take less than a minute, but will mean a lot for Vocably.',
-  'rate.question': 'Do you find Vocably useful? Your rating on the {platform}',
-  'rate.question2': 'will make a big difference for this project.',
+  'rate.title': 'Enjoying Vocably?',
+  'rate.description':
+    'A quick rating on the {platform} takes less than a minute and means a lot to this project.',
   'rate.ok': 'Rate Vocably',
-  'rate.later': 'Ask me later.',
-  'rate.dislike':
-    "Is there something you don't like about Vocably? Then please",
-  'rate.contact': 'contact the author',
-  'rate.feedback_note':
-    '. I take every feedback seriously. We can improve this project together.',
-  'rate.show_again': 'You will see this message again after 10 translations.',
-  'rate.never': 'Never show this message again.',
+  'rate.later': 'Maybe later',
+  'rate.show_again': 'This message will appear again after 10 translations.',
+  'rate.dislike': 'Something not right?',
+  'rate.contact': 'Share feedback',
+  'rate.never': "Don't show again",
   // language
   'language.i_study': 'I study',
   'language.i_speak': 'I speak',

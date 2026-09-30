@@ -563,32 +563,30 @@ export class VocablyTranslation {
                   ref={(el) => (this.askForRatingContainer = el)}
                 >
                   <div style={{ paddingTop: '12px' }}>
-                    <div class="panel">
-                      <vocably-rate
-                        platform={this.extensionPlatform}
-                        onUserSelected={(choiceEvent) => {
-                          switch (choiceEvent.detail) {
-                            case 'review':
-                            case 'feedback':
-                              break;
-                            case 'later':
-                              this.askForRatingContainer &&
-                                this.askForRatingContainer.classList.add(
-                                  'vocably-rate-container-hidden'
-                                );
-                              break;
-                            case 'never':
-                              this.askForRatingContainer &&
-                                this.askForRatingContainer.classList.add(
-                                  'vocably-rate-container-hidden'
-                                );
-                              break;
-                          }
+                    <vocably-rate
+                      platform={this.extensionPlatform}
+                      onUserSelected={(choiceEvent) => {
+                        switch (choiceEvent.detail) {
+                          case 'review':
+                          case 'feedback':
+                            break;
+                          case 'later':
+                            this.askForRatingContainer &&
+                              this.askForRatingContainer.classList.add(
+                                'vocably-rate-container-hidden'
+                              );
+                            break;
+                          case 'never':
+                            this.askForRatingContainer &&
+                              this.askForRatingContainer.classList.add(
+                                'vocably-rate-container-hidden'
+                              );
+                            break;
+                        }
 
-                          this.ratingInteraction.emit(choiceEvent.detail);
-                        }}
-                      ></vocably-rate>
-                    </div>
+                        this.ratingInteraction.emit(choiceEvent.detail);
+                      }}
+                    ></vocably-rate>
                   </div>
                 </div>
               )}
