@@ -356,16 +356,12 @@ initializePaddle({
         priceId: window['paddleYearlyPriceId'],
         quantity: 1,
       },
-      {
-        priceId: window['paddleLifetimePriceId'],
-        quantity: 1,
-      },
     ],
   });
 
   const {
     details: {
-      lineItems: [monthlyItem, yearlyItem, lifetimeItem],
+      lineItems: [monthlyItem, yearlyItem],
     },
   } = data;
 
@@ -379,11 +375,5 @@ initializePaddle({
     .querySelectorAll('[data-yearly-price]')
     .forEach(
       (element) => (element.innerHTML = yearlyItem.formattedTotals.total)
-    );
-
-  document
-    .querySelectorAll('[data-lifetime-price]')
-    .forEach(
-      (element) => (element.innerHTML = lifetimeItem.formattedTotals.total)
     );
 });

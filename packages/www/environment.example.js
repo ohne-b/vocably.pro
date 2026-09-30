@@ -9,7 +9,6 @@ module.exports = {
     paddleClientSideToken: 'test_36e6911acf8912e58cde7765548',
     paddleMonthlyPriceId: 'pri_01jyzzammkt25f6mmf8tjsxr9p',
     paddleYearlyPriceId: 'pri_01jz0ps01b1kcz9brm2877cbhg',
-    paddleLifetimePriceId: 'pri_01jz0pve2gry96kxkrk4n237qa',
     searchSeoDataFolder: 'search-data-dev',
   },
 };
