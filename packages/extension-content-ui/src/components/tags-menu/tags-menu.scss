@@ -17,7 +17,7 @@
   max-height: calc(100vh / 2.2);
   padding: $v-border-radius 0;
   border-radius: $v-border-radius;
-  box-shadow: 0 var(--shadow-v-offset) var(--shadow-spread) rgba(0, 0, 0, 0.6);
+  @include floating-shadow();
   overflow-y: auto;
 }
 

@@ -125,3 +125,14 @@
     --color: #{$v-light-color-body};
   }
 }
+
+// Layered shadow for floating surfaces: a hairline ring for crisp edges
+// on white pages, a tight contact shadow, and a soft ambient one for depth.
+// Relies on --shadow-v-offset and --shadow-spread defined by the component.
+@mixin floating-shadow() {
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.06),
+    0 1px 2px rgba(15, 23, 42, 0.08),
+    0 var(--shadow-v-offset) var(--shadow-spread) -2px rgba(15, 23, 42, 0.1),
+    0 10px 28px -6px rgba(15, 23, 42, 0.22);
+}
