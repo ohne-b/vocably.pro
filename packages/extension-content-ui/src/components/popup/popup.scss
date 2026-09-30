@@ -111,9 +111,12 @@ $scrollbar-track: 6px;
     overflow-y: scroll;
     box-sizing: border-box;
     max-height: calc(
-      var(--max-height) - var(--header-padding-top) - var(--header-padding-top) -
-        var(--header-padding-bottom) - var(--padding-bottom) -
-        var(--shadow-spread) * 2
+      var(--max-height) - var(--header-padding-top) - var(
+          --header-padding-top
+        ) - var(--header-padding-bottom) - var(--padding-bottom) - var(
+          --shadow-spread
+        ) *
+        2
     );
     max-width: calc(var(--max-width) - var(--padding-right) - var(--padding-x));
     scrollbar-gutter: stable;
@@ -138,6 +141,7 @@ $scrollbar-track: 6px;
 
   .content-wrapper {
     overflow: hidden;
+    margin: 0 auto;
     width: 0;
     height: 0;
   }

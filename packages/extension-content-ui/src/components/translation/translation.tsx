@@ -367,7 +367,7 @@ export class VocablyTranslation {
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexDirection: 'column',
-                gap: '12px',
+                gap: '6px',
               }}
             >
               <vocably-spinner></vocably-spinner>
