@@ -1,7 +1,7 @@
 import { CardItem, DeckSettings, isGoogleTTSLanguage } from '@vocably/model';
 import { isGoodPlural, sanitizeTranscript } from '@vocably/sulna';
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { View } from 'react-native';
+import { PixelRatio, Platform, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Text, useTheme } from 'react-native-paper';
 import { CardExample, CardExampleRef } from '../../CardExample';
@@ -17,6 +17,9 @@ type Props = {
   onPress?: () => unknown;
   deckSettings: DeckSettings;
 };
+
+// Explicit line height lets PlaySound be centered against the first line.
+const sourceLineHeight = 40;
 
 export const CardFront: FC<Props> = ({
   card,
@@ -63,13 +66,16 @@ export const CardFront: FC<Props> = ({
 
   const presentAndPast = [present, past].filter(Boolean).join(`\n`);
 
+  const fontScale = PixelRatio.getFontScale();
+
   return (
     <View>
       <View
         style={{
+          // No wrapping: the source wraps inside its own Text so that
+          // PlaySound and the first word always stay on the same line.
           flexDirection: 'row',
-          flexWrap: 'wrap',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           columnGap: 8,
           width: '100%',
           // Keep LTR order even when the card is in an RTL language.
@@ -82,11 +88,26 @@ export const CardFront: FC<Props> = ({
             language={card.data.language}
             size={24}
             ref={playRef}
+            // Center the icon against the first line of the source.
+            style={{
+              height: sourceLineHeight * fontScale,
+              justifyContent: 'center',
+              transform: [
+                {
+                  translateX: 2,
+                },
+                {
+                  translateY:
+                    Platform.OS === 'ios' ? 3 * fontScale : 2 * 1.2 * fontScale,
+                },
+              ],
+            }}
           />
         )}
         <Text
           style={{
             fontSize: 32,
+            lineHeight: sourceLineHeight,
             color: theme.colors.secondary,
             flexShrink: 1,
           }}

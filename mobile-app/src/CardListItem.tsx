@@ -6,6 +6,7 @@ import React, { FC, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   PixelRatio,
+  Platform,
   Pressable,
   StyleProp,
   View,
@@ -38,6 +39,9 @@ type Props = {
   disabledModalLookup?: boolean;
   hideDefinitions?: boolean;
 };
+
+// Explicit line height lets PlaySound be centered against the first line.
+const sourceLineHeight = 30;
 
 export const CardListItem: FC<Props> = ({
   card,
@@ -87,18 +91,40 @@ export const CardListItem: FC<Props> = ({
           direction: 'ltr',
         }}
       >
-        {isGoogleTTSLanguage(card.language) && (
-          <PlaySound text={card.source} language={card.language} size={22} />
-        )}
-        <Text
+        {/* No wrapping: the source wraps inside its own Text so that
+            PlaySound and the first word always stay on the same line. */}
+        <View
           style={{
-            fontSize: 24,
-            color: theme.colors.secondary,
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            columnGap: 8,
             flexShrink: 1,
           }}
         >
-          {card.source}
-        </Text>
+          {isGoogleTTSLanguage(card.language) && (
+            <PlaySound
+              text={card.source}
+              language={card.language}
+              size={22}
+              // Center the icon against the first line of the source.
+              style={{
+                height: sourceLineHeight * fontScale,
+                justifyContent: 'center',
+                transform: [{ translateY: Platform.OS === 'android' ? 2 : 3 }],
+              }}
+            />
+          )}
+          <Text
+            style={{
+              fontSize: 24,
+              lineHeight: sourceLineHeight,
+              color: theme.colors.secondary,
+              flexShrink: 1,
+            }}
+          >
+            {card.source}
+          </Text>
+        </View>
         {allowCopy && (
           <Pressable
             hitSlop={10}
