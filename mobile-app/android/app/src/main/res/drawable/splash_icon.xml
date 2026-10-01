@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash screen icon: the iOS launch logo centered in the 288dp splash icon box.
+     The system scales the icon up ~1.77x and masks it to a 192dp circle, so a 100dp
+     logo renders at ~177dp (iOS shows it at ~185pt) without being clipped. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:width="288dp" android:height="288dp">
+    <shape android:shape="rectangle">
+      <solid android:color="@android:color/transparent" />
+    </shape>
+  </item>
+  <item
+    android:width="100dp"
+    android:height="36dp"
+    android:gravity="center"
+    android:drawable="@drawable/splash_logo" />
+</layer-list>
