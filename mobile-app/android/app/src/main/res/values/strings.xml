@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Vocably</string>
+    <string name="translate_with_vocably">Translate with Vocably</string>
 </resources>

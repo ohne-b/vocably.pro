@@ -22,7 +22,7 @@
       </intent-filter>
     </activity>
     <activity
-      android:label="Translate with Vocably"
+      android:label="@string/translate_with_vocably"
       android:theme="@style/Theme.Share.Transparent"
       android:documentLaunchMode="intoExisting"
       android:launchMode="singleInstancePerTask"
