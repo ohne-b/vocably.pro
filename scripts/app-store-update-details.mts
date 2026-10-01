@@ -76,10 +76,9 @@ Mastering a language means using it and remembering every word. That's what Voca
 Terms of Use (EULA): ${eula}`,
     keywords:
       'translator,english,german,spanish,french,italian,danish,dutch,norwegian,finnish,swedish,korean,greek',
-    promo:
-      "This project is dedicated to everyone who boldly uses a foreign language in real life. There aren't that many of us.",
+    promo: '',
     whatsNew:
-      '- Better support for right-to-left languages such as Arabic, Hebrew and Persian.\n- Bug fixes and improvements.\n- Vocably is improving, folks!',
+      '- A better-looking Safari extension.\n- Fixed the broken layout of some cards (a bug introduced in version 119).\nAnyway, step by step, Vocably is improving, folks.',
   },
   ru: {
     name: 'Vocably: словарь и карточки',
@@ -112,10 +111,9 @@ Terms of Use (EULA): ${eula}`,
 Условия использования (EULA): ${eula}`,
     keywords:
       'словарь,переводчик,обучение,английский,немецкий,французский,испанский,итальянский,голландский,слова',
-    promo:
-      'Этот проект посвящается всем, кто смело использует иностранный язык в реальной жизни. Нас не так уж и много.',
+    promo: '',
     whatsNew:
-      '- Улучшена поддержка языков с письмом справа налево, таких как арабский, иврит и персидский.\n- Исправления ошибок и улучшения.\n- Vocably становится лучше, друзья!',
+      '- Расширение для Safari стало красивее.\n- Исправлена сломанная вёрстка некоторых карточек (ошибка появилась в версии 119).\nТак или иначе, шаг за шагом Vocably становится лучше, друзья.',
   },
   uk: {
     name: 'Vocably: словник і картки',
@@ -148,10 +146,9 @@ Terms of Use (EULA): ${eula}`,
 Умови використання (EULA): ${eula}`,
     keywords:
       'перекладач,англійська,німецька,іспанська,французька,італійська,польська,слова,мови,навчання',
-    promo:
-      'Цей проєкт присвячується всім, хто сміливо використовує іноземну мову в реальному житті. Нас не так уже й багато.',
+    promo: '',
     whatsNew:
-      '- Покращено підтримку мов із письмом справа наліво, як-от арабська, іврит і перська.\n- Виправлення помилок і покращення.\n- Vocably стає кращим, друзі!',
+      "- Розширення для Safari стало гарнішим.\n- Виправлено зламану верстку деяких карток (помилка з'явилася у версії 119).\nТак чи інакше, крок за кроком Vocably стає кращим, друзі.",
   },
   es: {
     name: 'Vocably: diccionario y fichas',
@@ -184,10 +181,9 @@ Dominar un idioma significa usarlo y recordar cada palabra. Para eso existe Voca
 Condiciones de uso (EULA): ${eula}`,
     keywords:
       'traductor,inglés,alemán,francés,italiano,portugués,idiomas,palabras,aprender,tarjetas',
-    promo:
-      'Este proyecto está dedicado a todos los que usan con valentía un idioma extranjero en la vida real. No somos tantos.',
+    promo: '',
     whatsNew:
-      '- Mejor compatibilidad con idiomas que se escriben de derecha a izquierda, como el árabe, el hebreo y el persa.\n- Correcciones de errores y mejoras.\n- ¡Vocably sigue mejorando, amigos!',
+      '- La extensión de Safari tiene un aspecto mejor.\n- Se corrigió el diseño roto de algunas fichas (un error introducido en la versión 119).\nEn fin, paso a paso, Vocably sigue mejorando, amigos.',
   },
   pt: {
     name: 'Vocably: dicionário e cartões',
@@ -220,10 +216,9 @@ Dominar um idioma significa usá-lo e lembrar de cada palavra. É para isso que 
 Termos de Uso (EULA): ${eula}`,
     keywords:
       'tradutor,inglês,espanhol,alemão,francês,italiano,idiomas,palavras,aprender,flashcards',
-    promo:
-      'Este projeto é dedicado a todos que usam com coragem um idioma estrangeiro na vida real. Não somos tantos assim.',
+    promo: '',
     whatsNew:
-      '- Melhor suporte a idiomas escritos da direita para a esquerda, como árabe, hebraico e persa.\n- Correções de erros e melhorias.\n- O Vocably está melhorando, pessoal!',
+      '- A extensão do Safari ficou mais bonita.\n- Corrigido o layout quebrado de alguns flashcards (um problema introduzido na versão 119).\nEnfim, passo a passo, o Vocably está melhorando, pessoal.',
   },
   tr: {
     name: 'Vocably: Sözlük ve Kartlar',
@@ -256,10 +251,9 @@ Bir dili öğrenmek, onu kullanmak ve her kelimeyi hatırlamak demektir. Vocably
 Kullanım Koşulları (EULA): ${eula}`,
     keywords:
       'çevirmen,ingilizce,almanca,ispanyolca,fransızca,italyanca,rusça,dil,öğrenme,flashcard',
-    promo:
-      'Bu proje, yabancı bir dili gerçek hayatta cesurca kullanan herkese adanmıştır. Sayımız o kadar da fazla değil.',
+    promo: '',
     whatsNew:
-      '- Arapça, İbranice ve Farsça gibi sağdan sola yazılan diller için daha iyi destek.\n- Hata düzeltmeleri ve iyileştirmeler.\n- Vocably gelişiyor, arkadaşlar!',
+      '- Safari uzantısı artık daha güzel görünüyor.\n- Bazı kartların bozuk düzeni düzeltildi (sorun 119 sürümünde ortaya çıkmıştı).\nNeyse, Vocably adım adım gelişiyor, arkadaşlar.',
   },
   vi: {
     name: 'Vocably: Từ điển & Flashcard',
@@ -292,10 +286,9 @@ Thành thạo một ngôn ngữ nghĩa là sử dụng nó và nhớ từng từ
 Điều khoản sử dụng (EULA): ${eula}`,
     keywords:
       'tiếng anh,tiếng hàn,tiếng nhật,tiếng trung,tiếng pháp,tiếng đức,ngoại ngữ,từ mới,phát âm',
-    promo:
-      'Dự án này dành tặng tất cả những ai mạnh dạn sử dụng ngoại ngữ trong đời sống thực. Chúng ta không nhiều lắm đâu.',
+    promo: '',
     whatsNew:
-      '- Hỗ trợ tốt hơn cho các ngôn ngữ viết từ phải sang trái như tiếng Ả Rập, tiếng Do Thái và tiếng Ba Tư.\n- Sửa lỗi và cải tiến.\n- Vocably đang ngày càng tốt hơn, các bạn ơi!',
+      '- Tiện ích mở rộng Safari có giao diện đẹp hơn.\n- Sửa bố cục bị lỗi ở một số flashcard (lỗi xuất hiện từ phiên bản 119).\nDù sao thì, từng bước một, Vocably đang ngày càng tốt hơn, các bạn ơi.',
   },
 };
 
@@ -340,7 +333,10 @@ const dryRun = process.argv.includes('--dry-run');
 const problems = Object.entries(details).flatMap(([language, fields]) => [
   ...(localeMap[language] ? [] : [`${language}: no App Store locale`]),
   ...(Object.keys(limits) as (keyof Details)[])
-    .filter((field) => fields[field].trim() === '' && field !== 'whatsNew')
+    .filter(
+      (field) =>
+        fields[field].trim() === '' && field !== 'whatsNew' && field !== 'promo'
+    )
     .map((field) => `${language}.${field} is empty`),
   ...(Object.entries(limits) as [keyof Details, number][])
     .filter(([field, limit]) => fields[field].length > limit)
