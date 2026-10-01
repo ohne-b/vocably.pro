@@ -22,6 +22,25 @@ type Options = {
 
 export type TearDown = () => void;
 
+const whenVisible = (): Promise<void> =>
+  new Promise((resolve) => {
+    if (document.visibilityState === 'visible') {
+      resolve();
+      return;
+    }
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState !== 'visible') {
+        return;
+      }
+
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      resolve();
+    };
+
+    document.addEventListener('visibilitychange', onVisibilityChange);
+  });
+
 const getLocaleLanguage = (): string => {
   if (!window?.navigator?.language) {
     return 'en';
@@ -71,10 +90,10 @@ export const setContents = async ({
     translation.phrase = source;
     translation.playAudioPronunciation = playAudioPronunciation;
     translation.extensionPlatform = extensionPlatform;
+    translation.isLoggedInUser = await api.isLoggedIn();
     translation.canCongratulate =
       contentScriptConfiguration.allowFirstTranslationCongratulation &&
-      !userKnowsHowToAdd;
-    translation.isLoggedInUser = await api.isLoggedIn();
+      (!userKnowsHowToAdd || !translation.isLoggedInUser);
 
     type AnalyzePayload = {
       sourceLanguage?: GoogleLanguage;
@@ -330,10 +349,19 @@ export const setContents = async ({
           },
         };
       } finally {
+        setTimeout(closeWindow, 3000);
+
         // Asked on every way out: a deck that failed to arrive is not going to
         // arrive later, and the add reloads the deck in the service worker
         // anyway. The component itself skips a card that is already in the
         // collection or one that is over the free plan limit.
+        //
+        // The add waits for the user to come back to this tab. Rendering is
+        // paused in a hidden one, so an add done in the background would be
+        // over before the card ever showed up as being added - and the first
+        // card congratulation follows exactly that.
+        await whenVisible();
+
         if (!tornDown) {
           await translation.addRememberedCard();
         }
@@ -343,8 +371,6 @@ export const setContents = async ({
       translation.existingSourceLanguages = existingLanguagesResult.success
         ? existingLanguagesResult.value
         : [];
-
-      setTimeout(closeWindow, 3000);
     };
 
     // Emitted by `vocably-sign-in` in the cover a signed out user gets when
