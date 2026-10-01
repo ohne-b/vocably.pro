@@ -1,18 +1,9 @@
 export const ru = {
   // app
   'app.checking_auth': 'Проверка авторизации',
-  'app.translates_text':
-    'Это расширение переводит выделенный текст и создаёт карточки.',
-  'app.flashcards_mobile':
-    'Карточки будут доступны на вашем мобильном устройстве.',
-  'app.need_signed_in':
-    'Вам нужно войти в систему, чтобы использовать Vocably.',
-  'app.sign_in': 'Войти или создать аккаунт',
   // home
-  'home.almost_ready': 'почти готово!',
   'home.settings': 'Настройки',
   'home.loading_presets': 'Загрузка предустановок',
-  'home.setup': 'Настройка',
   'home.requesting_chatgpt': 'Запрос к ИИ',
   // settings
   'settings.title': 'Настройки',

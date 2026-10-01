@@ -1,17 +1,9 @@
 export const uk = {
   // app
   'app.checking_auth': 'Перевірка авторизації',
-  'app.translates_text':
-    'Це розширення перекладає виділений текст та створює картки.',
-  'app.flashcards_mobile':
-    'Картки будуть доступні на вашому мобільному пристрої.',
-  'app.need_signed_in': 'Вам потрібно увійти, щоб користуватися Vocably.',
-  'app.sign_in': 'Увійти або створити акаунт',
   // home
-  'home.almost_ready': 'майже готовий!',
   'home.settings': 'Налаштування',
   'home.loading_presets': 'Завантаження налаштувань',
-  'home.setup': 'Налаштувати',
   'home.requesting_chatgpt': 'Запит до ШI',
   // settings
   'settings.title': 'Налаштування',

@@ -1,17 +1,9 @@
 export const pt = {
   // app
   'app.checking_auth': 'Verificando o status de autenticação',
-  'app.translates_text':
-    'Esta extensão traduz o texto selecionado e cria cartões.',
-  'app.flashcards_mobile':
-    'Os cartões estarão disponíveis no seu dispositivo móvel.',
-  'app.need_signed_in': 'Você precisa estar conectado para usar o Vocably.',
-  'app.sign_in': 'Entrar ou criar conta',
   // home
-  'home.almost_ready': 'está quase pronto!',
   'home.settings': 'Configurações',
   'home.loading_presets': 'Carregando predefinições de pesquisa',
-  'home.setup': 'Configurar',
   'home.requesting_chatgpt': 'Consultando a IA',
   // settings
   'settings.title': 'Configurações',
