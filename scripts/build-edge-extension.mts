@@ -53,10 +53,7 @@ if (version !== 'latest' && !version.startsWith(`${env}_`)) {
 
 const sourceUrl = `${artifactsUrl}/${version}.zip`;
 
-const outputName = version === 'latest' ? `${env}_latest` : version;
 const outputDir = `${rootDir}/tmp/edge`;
-const outputPath = `${outputDir}/${outputName}.zip`;
-const outputUnpackedPath = `${outputDir}/${outputName}`;
 
 const workingDir = mkdtempSync(`${tmpdir()}/vocably-edge-`);
 const downloadPath = `${workingDir}/${version}.zip`;
@@ -87,13 +84,31 @@ try {
 
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
 
-  console.log('Setting the "key" param in manifest.json...');
-  manifest.key = edgeKey;
-  writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  if (typeof manifest.version !== 'string' || !manifest.version) {
+    throw new Error("The manifest.json doesn't contain a version");
+  }
+
+  const outputName = `${env}_${manifest.version.replace(/\./g, '_')}`;
+  const outputPath = `${outputDir}/${outputName}.zip`;
+  const outputStorePath = `${outputDir}/${outputName}_store.zip`;
+  const outputUnpackedPath = `${outputDir}/${outputName}`;
 
   mkdirSync(outputDir, { recursive: true });
   rmSync(outputPath, { force: true });
+  rmSync(outputStorePath, { force: true });
   rmSync(outputUnpackedPath, { recursive: true, force: true });
+
+  console.log('Packing the store version without the "key" param...');
+  delete manifest.key;
+  writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  execFileSync('zip', ['-9', '-y', '-r', '-q', outputStorePath, '.'], {
+    cwd: unpackedDir,
+    stdio: 'inherit',
+  });
+
+  console.log('Setting the "key" param in manifest.json...');
+  manifest.key = edgeKey;
+  writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 
   console.log('Saving the unpacked version...');
   cpSync(unpackedDir, outputUnpackedPath, { recursive: true });
@@ -106,6 +121,7 @@ try {
 
   console.log(outputUnpackedPath);
   console.log(outputPath);
+  console.log(outputStorePath);
 } catch (e) {
   console.error(e instanceof Error ? e.message : e);
   process.exitCode = 1;
