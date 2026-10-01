@@ -96,7 +96,7 @@ export const CardFront: FC<Props> = ({
                       translateY:
                         Platform.OS === 'ios'
                           ? -1 * fontScale
-                          : 5 * 1.2 * fontScale,
+                          : 4 * 1.2 * fontScale,
                     },
                   ],
                 }}
