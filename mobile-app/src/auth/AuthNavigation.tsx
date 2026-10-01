@@ -11,6 +11,7 @@ import { LoginScreen } from './LoginScreen';
 import { DiscoverySurveyScreen } from './DiscoverySurveyScreen';
 import { Trans } from 'react-i18next';
 import { i18n } from '../i18n';
+import { modalScreenLayout } from '../ModalStatusBar';
 
 const Stack = createStackNavigator();
 
@@ -90,6 +91,7 @@ export const AuthNavigation: FC<Props> = ({ initialRouteName }) => {
       />
       {renderAuthScreens(Stack)}
       <Stack.Group
+        screenLayout={modalScreenLayout}
         screenOptions={{
           presentation: 'modal',
           headerShown: false,

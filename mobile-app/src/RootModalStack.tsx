@@ -18,6 +18,7 @@ import { StudyScreen } from './study/StudyScreen';
 import { TabsNavigator } from './TabsNavigator';
 import { WelcomeScreen } from './Welcome/WelcomeScreen';
 import { LookUpModal } from './LookUpModal';
+import { modalScreenLayout } from './ModalStatusBar';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ export const RootModalStack = () => {
         <Stack.Screen name="TabsNavigator" component={TabsNavigator} />
       </Stack.Group>
       <Stack.Group
+        screenLayout={modalScreenLayout}
         screenOptions={{
           presentation: 'modal',
           headerShown: false,
