@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/content-script.js</key>
 		<data>
-		J6g3mKLEviBE15xgxVkzdW+RZJE=
+		vbWr5L8z/HMXh209i6GLs/EqulQ=
 		</data>
 		<key>Resources/images/icon-128x128.png</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Resources/manifest.json</key>
 		<data>
-		O7O/bNBX5zlAtSTfNbt306sO5HU=
+		X5S0p0cXozN2AbahViDITNIRrCI=
 		</data>
 		<key>Resources/popup/1154.js</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Resources/popup/1165.js</key>
 		<data>
-		ix1WbqBAQvoGx7Bz/I+nQJjD5Hs=
+		hylHYXzz3/+y4B66EMKhP5T7mSc=
 		</data>
 		<key>Resources/popup/1346.js</key>
 		<data>
@@ -80,6 +80,10 @@
 		<data>
 		J9klMbj+QNSwKv7LxvHG7Rux1uc=
 		</data>
+		<key>Resources/popup/2151.js</key>
+		<data>
+		9YcpVIwPVvu+0Q4F/xtlsCu6Eco=
+		</data>
 		<key>Resources/popup/2258.js</key>
 		<data>
 		fo6K2NgQ8Y2DFqAZJUW4UV3D4n4=
@@ -118,7 +122,7 @@
 		</data>
 		<key>Resources/popup/2851.js</key>
 		<data>
-		N+KFZQ/iJq645Vqq1NjbSz4ltDY=
+		LHjlfToc4KSBJ3bK3WrxBtdA/5o=
 		</data>
 		<key>Resources/popup/3009.js</key>
 		<data>
@@ -178,7 +182,7 @@
 		</data>
 		<key>Resources/popup/4151.js</key>
 		<data>
-		AwDFQzG150MCyIjObBnrUt9at0U=
+		u7C/01YLLvRbbkUWh/X3Go50AR8=
 		</data>
 		<key>Resources/popup/4514.js</key>
 		<data>
@@ -186,7 +190,7 @@
 		</data>
 		<key>Resources/popup/4648.js</key>
 		<data>
-		Off0xcMHwbYTKC3qyJHExk3CQqU=
+		7epjnTWoOJQ9MOYQgPZ9HpH9GCs=
 		</data>
 		<key>Resources/popup/4666.js</key>
 		<data>
@@ -202,11 +206,11 @@
 		</data>
 		<key>Resources/popup/510.js</key>
 		<data>
-		S+sVHUn2pauqRSoYZDHyUqMArRI=
+		o7vQxu0aaouXd7WCEDVLyF3W+8k=
 		</data>
 		<key>Resources/popup/5167.js</key>
 		<data>
-		lOzpcyu5x5fSdDg1wyTtzMbuRHk=
+		b/Ik2uOkx4MRe4xb1QbdtUy05JA=
 		</data>
 		<key>Resources/popup/5191.js</key>
 		<data>
@@ -228,6 +232,10 @@
 		<data>
 		Ajh1kLAG1VXbLzE+0I/xyvN2VWA=
 		</data>
+		<key>Resources/popup/5606.js</key>
+		<data>
+		6nbLQiSbYrbBt/oj+oXGLXKpmcg=
+		</data>
 		<key>Resources/popup/5834.js</key>
 		<data>
 		vRsdCEB6f4Nu5+s1876EXLUtX8U=
@@ -239,6 +247,10 @@
 		<key>Resources/popup/6152.js</key>
 		<data>
 		Brh79gpFQrrn7fxFTKcapq25xH8=
+		</data>
+		<key>Resources/popup/6179.js</key>
+		<data>
+		Cr1yhzpcWM/af3SJgZIVUFJpfG8=
 		</data>
 		<key>Resources/popup/6192.js</key>
 		<data>
@@ -262,7 +274,7 @@
 		</data>
 		<key>Resources/popup/6678.js</key>
 		<data>
-		YlmQLymyk/Gry4Hr6pxFF0wJXSQ=
+		/7NuWjS9svmMctAF1yUfXKksMf8=
 		</data>
 		<key>Resources/popup/6813.js</key>
 		<data>
@@ -287,6 +299,10 @@
 		<key>Resources/popup/7320.js</key>
 		<data>
 		xsFCw2VJtjEY/7exdWv7ujk/8Ao=
+		</data>
+		<key>Resources/popup/7472.js</key>
+		<data>
+		kOvn2ul4qhdbvn52llpToMhQik8=
 		</data>
 		<key>Resources/popup/7606.js</key>
 		<data>
@@ -342,7 +358,7 @@
 		</data>
 		<key>Resources/popup/8598.js</key>
 		<data>
-		UyKh7CT5zamFdVDWOMEA+r+Cf3w=
+		AZMqk8PEMe9MUTJHpIB6AG5fsmo=
 		</data>
 		<key>Resources/popup/8661.js</key>
 		<data>
@@ -360,6 +376,10 @@
 		<data>
 		r+PG+hM1eMBkZALQpGNDw6X/mJ0=
 		</data>
+		<key>Resources/popup/9092.js</key>
+		<data>
+		jlYJfRdBg3BGF6iMjanpRFfnZyw=
+		</data>
 		<key>Resources/popup/9390.js</key>
 		<data>
 		CJRilQ4Ws017EYm8mB+lsdwBi44=
@@ -370,7 +390,7 @@
 		</data>
 		<key>Resources/popup/9428.js</key>
 		<data>
-		C1gKI65/I9aVJchhGnMwU+TUa+8=
+		2BRXwogkd/6BmKwKniA4nkCXdiw=
 		</data>
 		<key>Resources/popup/9548.js</key>
 		<data>
@@ -406,7 +426,7 @@
 		</data>
 		<key>Resources/popup/main.js</key>
 		<data>
-		oevQ3TyfRfqp+jfabuXl6odg5As=
+		4EeYOejjZVHxf1lhGQyVp2NS6j4=
 		</data>
 		<key>Resources/popup/polyfills.js</key>
 		<data>
@@ -414,11 +434,11 @@
 		</data>
 		<key>Resources/popup/styles.css</key>
 		<data>
-		CRIQggP3ztjdVPXH2WZNv/k4HlU=
+		4livk7Muv/usAL0RU3ZCpSPy2FQ=
 		</data>
 		<key>Resources/service-worker.js</key>
 		<data>
-		pbc+D77JsnKyM5x6h9r2tMeNh6I=
+		PE6T68fnt9LSRQ2Hy+4HJDjTNHU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -427,7 +447,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			k+cWtwz3hA80icUY9mtKokcLSrFRNiNdZTRaM/fd0wI=
+			TU3UNz8ur9ZcoJHbvcRXKbASmATJs6CyvLZ2VKMfbm8=
 			</data>
 		</dict>
 		<key>Resources/images/icon-128x128.png</key>
@@ -462,7 +482,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SohPjnaKUY4q/JKqXRM7PsTMkYRYIxWdg7G1OIkn+Vo=
+			EmYyWoBaUJPJ1p1PgZjIGXu6FlvbOX26cKJeTLUXM0E=
 			</data>
 		</dict>
 		<key>Resources/popup/1154.js</key>
@@ -476,7 +496,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BcPeDOT7p3aEOYLSIHIVgNy7VAiiN86p4xT+/MSul7U=
+			2Mvn2a81FdzJlz12e1qCHuuhObt9Gg6zOPPqsUCh1tE=
 			</data>
 		</dict>
 		<key>Resources/popup/1346.js</key>
@@ -556,6 +576,13 @@
 			APllsNF/ZK3mP7wAXDQ5YthvTXDrtQMRLyd0JYrPGvs=
 			</data>
 		</dict>
+		<key>Resources/popup/2151.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2+GDJJ/EiVRSF5JEWlKG7+bSe2xl+nXv+k/olV5kqbE=
+			</data>
+		</dict>
 		<key>Resources/popup/2258.js</key>
 		<dict>
 			<key>hash2</key>
@@ -623,7 +650,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			giYF/LdO9slH5JHbX8IyOCgOabJE4/qU+nxxPnEGtJY=
+			F1CbeAvOTdOFyrquvtQWUBMNFrOx2Ep+IOBjUF5/Hkk=
 			</data>
 		</dict>
 		<key>Resources/popup/3009.js</key>
@@ -728,7 +755,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			o510dhyWRxzBENGGJJF2EOu5aslSA8hpKi0AHGyo+g8=
+			Rhjq88uYRmtqEYAXFriHVj7ynzAivpw8EIQq0u7fMuo=
 			</data>
 		</dict>
 		<key>Resources/popup/4514.js</key>
@@ -742,7 +769,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			b0IEixLEkbU3XemedO9RCGDOQ6ioF2mICmqhcf/TBNA=
+			yiqX6pSxdKU0GIh0GZ7M43peTTza49hykO9C4L8nQvA=
 			</data>
 		</dict>
 		<key>Resources/popup/4666.js</key>
@@ -770,14 +797,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			nCCKP/miYH/TouI5FVhJpqalad08N4zidtsjfAxKvA0=
+			23EPuNy0VhD2uAR5tOG7dKA5ShwGAG5e6OSizGkQEVI=
 			</data>
 		</dict>
 		<key>Resources/popup/5167.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DXtODidsRaKfCVUpTP+eBl8iTlpV7mFoaQs2zc3qoJA=
+			JQBwJr1kNAdM687m8rYheI1W5dLKchyTDceGcGw/iiA=
 			</data>
 		</dict>
 		<key>Resources/popup/5191.js</key>
@@ -815,6 +842,13 @@
 			jcRXB+IaY4YRw0etCNs73O2V8PVRWMlgPk614mzGTJ4=
 			</data>
 		</dict>
+		<key>Resources/popup/5606.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yc6ZE3oZe8U9Cr9mP9PAetZyKY26d2S5mi6oOpHklos=
+			</data>
+		</dict>
 		<key>Resources/popup/5834.js</key>
 		<dict>
 			<key>hash2</key>
@@ -834,6 +868,13 @@
 			<key>hash2</key>
 			<data>
 			5ZPpLet7jCIHBvWvr4MBA49xiYciSbpDor3ruRgQMO4=
+			</data>
+		</dict>
+		<key>Resources/popup/6179.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ES/xlmF85v6gKi9XltEqb6qR7fAyy4q5/5Bf7MWLkhU=
 			</data>
 		</dict>
 		<key>Resources/popup/6192.js</key>
@@ -875,7 +916,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OcGubrCgfZIdrd4tp9SbPb89FzZ1Ax/AbzQHsQVPmeQ=
+			ImiaC5857VR1G/XlW7lSDM3H0UUoFM+lOiJYpT+z0rg=
 			</data>
 		</dict>
 		<key>Resources/popup/6813.js</key>
@@ -918,6 +959,13 @@
 			<key>hash2</key>
 			<data>
 			mmPr7csPfu/VmYyNZlqz0rS76sN4ka/S3oIfXRSo1pY=
+			</data>
+		</dict>
+		<key>Resources/popup/7472.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Wi5CxGSmbQfGO5B780ToNpgOhldCEbV3GRwRYLvKH3U=
 			</data>
 		</dict>
 		<key>Resources/popup/7606.js</key>
@@ -1015,7 +1063,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IhWCHqCTagt7iDTrEqc2sI3p6+gNhYpnw7TnYyYE5w0=
+			uMbzxDuJSxukb+8WqQ/KcR6qbX5A75FHKFJBn8YZY+4=
 			</data>
 		</dict>
 		<key>Resources/popup/8661.js</key>
@@ -1046,6 +1094,13 @@
 			5NSB/29ptyTM2Qo6nvu8DV59g7ALy8gBv0/HNhrTCoo=
 			</data>
 		</dict>
+		<key>Resources/popup/9092.js</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oiyC8p1tE5lPmb6OGM4HraeLlAfoH/eqomAJLxwsBRg=
+			</data>
+		</dict>
 		<key>Resources/popup/9390.js</key>
 		<dict>
 			<key>hash2</key>
@@ -1064,7 +1119,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LPUopVSpjx8qZ+pCwXaOJXdL30arEq7LC+KzYKXgK8g=
+			wmAyXhvde7Fkjtk6NFegU/kp1vIJrEFrwgUJJ6M3jzQ=
 			</data>
 		</dict>
 		<key>Resources/popup/9548.js</key>
@@ -1127,7 +1182,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ebcvCOOUe7ndeuKeKJHm1Dqi3uNX7RjRKP7V7+eoZXY=
+			NYMWfNX6LFCow+2ZlpVsvPj/PmeFuA00eS0CdvGYxy4=
 			</data>
 		</dict>
 		<key>Resources/popup/polyfills.js</key>
@@ -1141,14 +1196,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6w4YmB0QMFxRPV6Ec0W2mvnsE5a+yQyHN36atXvz5Vo=
+			NZOqC94Jvl5cNLH/4IVHR520y06DBNB6XRrw7yvWVnM=
 			</data>
 		</dict>
 		<key>Resources/service-worker.js</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			uwVedRgMIX1UjmpvweGqz+bEm7R9Z7BHJjRm5EUyFf4=
+			gKPf4X3IV7N21+fkhbIBzod4FiIyXsbVxD/IYuBwvlM=
 			</data>
 		</dict>
 	</dict>

@@ -121,6 +121,7 @@ const [detachTag, onDetachTag] = createScopedMessage('detachTag');
 const [updateTag, onUpdateTag] = createScopedMessage('updateTag');
 const [deleteTag, onDeleteTag] = createScopedMessage('deleteTag');
 const [analyzeUnitsOfSpeech, onAnalyzeUnitsOfSpeech] = createScopedMessage('analyzeUnitsOfSpeech');
+const [loadLanguageDeck, onLoadLanguageDeck] = createScopedMessage('loadLanguageDeck');
 
 ;// ./src/play-audio.ts
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {

@@ -1974,17 +1974,17 @@ const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
 /***/ },
 
-/***/ 5063
+/***/ 7095
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   t: () => (/* binding */ t)
 /* harmony export */ });
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(4830);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9012);
 
 
-const t = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_0__.b)(_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_0__.t);
+const t = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_0__.b)(_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_0__.t);
 
 
 
@@ -8221,7 +8221,27 @@ const explode = (lines) => {
 
 /***/ },
 
-/***/ 4830
+/***/ 6499
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   a: () => (/* binding */ isCardItem),
+/* harmony export */   i: () => (/* binding */ isDetachedCardItem)
+/* harmony export */ });
+const isCardItem = (item) => {
+    return item.id !== undefined;
+};
+const isDetachedCardItem = (item) => {
+    return item.id === undefined;
+};
+
+
+
+
+/***/ },
+
+/***/ 9012
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8231,13 +8251,13 @@ const explode = (lines) => {
 /* harmony export */   t: () => (/* binding */ translations)
 /* harmony export */ });
 const en$2 = {
+  // close button
+  'close_button.label': 'Close',
   // sign-in
-  'sign_in.please': 'Please sign in to proceed.',
   'sign_in.button': 'Sign in or Create an account',
-  'sign_in.agree': 'By signing in, you agree to our',
-  'sign_in.terms': 'Terms of Service',
-  'sign_in.and': 'and',
-  'sign_in.privacy': 'Privacy Policy',
+  'sign_in.benefit.sync': 'Sync across devices',
+  'sign_in.benefit.study': 'Study your cards on mobile or in a browser',
+  'sign_in.benefit.export': 'Export your cards as CSV',
   // subscribe
   'subscribe.trial_message': 'Request a 7 day free trial to proceed.',
   'subscribe.message': 'Please subscribe to proceed.',
@@ -8245,8 +8265,9 @@ const en$2 = {
   'subscribe.button': 'Subscribe',
   // translation
   'translation.generating': 'Thinking...',
-  'translation.error': 'A (likely) Gemini or ChatGPT request has resulted in an error.',
-  'translation.retry': 'Retry',
+  'translation.error_title': 'The AI service may be temporarily unavailable',
+  'translation.error': "The translation couldn't be loaded. Please try again.",
+  'translation.retry': 'Try again',
   'translation.requesting_ai': 'Requesting extra info from AI',
   'translation.requests_extra_items': 'Breaking it down',
   'translation.ai_thinks': 'AI thinks that',
@@ -8268,29 +8289,36 @@ const en$2 = {
   'search.preferred_languages': 'Preferred Languages',
   'search.available_languages': 'Available Languages',
   'search.placeholder_default': 'Any word or phrase',
+  'search.swap_direction': 'Swap translation direction',
+  'search.submit': 'Translate',
   'search.placeholder_reversed': 'Enter {article} {language} word or phrase here. {source} cards will be created.',
   'search.hint': 'Type any word or phrase in any language. Vocably will create {language} cards for you.',
   // rate
-  'rate.tagline': 'It will take less than a minute, but will mean a lot for Vocably.',
-  'rate.question': 'Do you find Vocably useful? Your rating on the {platform}',
-  'rate.question2': 'will make a big difference for this project.',
+  'rate.title': 'Enjoying Vocably?',
+  'rate.description': 'A quick rating on the {platform} takes less than a minute and means a lot to this project.',
   'rate.ok': 'Rate Vocably',
-  'rate.later': 'Ask me later.',
-  'rate.dislike': "Is there something you don't like about Vocably? Then please",
-  'rate.contact': 'contact the author',
-  'rate.feedback_note': '. I take every feedback seriously. We can improve this project together.',
-  'rate.show_again': 'You will see this message again after 10 translations.',
-  'rate.never': 'Never show this message again.',
+  'rate.later': 'Maybe later',
+  'rate.show_again': 'This message will appear again after 10 translations.',
+  'rate.dislike': 'Something not right?',
+  'rate.contact': 'Share feedback',
+  'rate.never': "Don't show again",
   // language
+  'language.title': 'Choose your languages',
+  'language.hint': 'Vocably translates words from the language you study into the language you speak.',
   'language.i_study': 'I study',
   'language.i_speak': 'I speak',
   'language.save': 'Save',
   'language.saving': 'Saving...',
   // first-translation-congratulation
-  'congrats.on_phone': 'is already on your phone.',
-  'congrats.scan_qr': 'Scan the QR code to learn it.',
-  'congrats.or_go_to': 'Or go to',
-  'congrats.to_study_browser': 'to study in your browser.',
+  'congrats.badge': 'First card saved',
+  'congrats.title': '{word} is in your deck.',
+  'congrats.description': 'Review it with spaced repetition and it will stick for good.',
+  'congrats.get_app': 'Get the Vocably app',
+  'congrats.scan_qr': 'Scan the code with your phone camera to study on the go.',
+  'congrats.get_app_mobile': 'Study on the go with the Vocably app.',
+  'congrats.app_store_caption': 'Download on the',
+  'congrats.google_play_caption': 'GET IT ON',
+  'congrats.browser': 'Prefer the browser? Study at {link}',
   // mobile-button
   'mobile_button.look_up': 'Look up',
   // tag-form
@@ -8312,13 +8340,13 @@ const en$2 = {
 };
 
 const ru$2 = {
+  // close button
+  'close_button.label': 'Закрыть',
   // sign-in
-  'sign_in.please': 'Пожалуйста, войдите, чтобы продолжить.',
   'sign_in.button': 'Войти или создать аккаунт',
-  'sign_in.agree': 'Входя, вы соглашаетесь с нашими',
-  'sign_in.terms': 'Условиями использования',
-  'sign_in.and': 'и',
-  'sign_in.privacy': 'Политикой конфиденциальности',
+  'sign_in.benefit.sync': 'Синхронизация между устройствами',
+  'sign_in.benefit.study': 'Учите карточки на телефоне или в браузере',
+  'sign_in.benefit.export': 'Экспорт карточек в CSV',
   // subscribe
   'subscribe.trial_message': 'Запросите бесплатный пробный период на 7 дней, чтобы продолжить.',
   'subscribe.message': 'Пожалуйста, оформите подписку, чтобы продолжить.',
@@ -8326,7 +8354,8 @@ const ru$2 = {
   'subscribe.button': 'Подписаться',
   // translation
   'translation.generating': 'Думаю...',
-  'translation.error': 'Запрос к Gemini или ChatGPT завершился ошибкой.',
+  'translation.error_title': 'Возможно, сервис ИИ временно недоступен',
+  'translation.error': 'Не удалось загрузить перевод. Попробуйте ещё раз.',
   'translation.retry': 'Повторить',
   'translation.requesting_ai': 'Запрашиваем дополнительную информацию у ИИ',
   'translation.requests_extra_items': 'Разбираем на составные части',
@@ -8349,29 +8378,36 @@ const ru$2 = {
   'search.preferred_languages': 'Предпочтительные языки',
   'search.available_languages': 'Доступные языки',
   'search.placeholder_default': 'Любое слово или фраза',
+  'search.swap_direction': 'Сменить направление перевода',
+  'search.submit': 'Перевести',
   'search.placeholder_reversed': 'Введите слово или фразу. Vocably создаст {source} карточки.',
   'search.hint': 'Введите любое слово или фразу. Vocably создаст {language} карточки для вас.',
   // rate
-  'rate.tagline': 'Это займёт меньше минуты, но много значит для Vocably.',
-  'rate.question': 'Нравится ли вам Vocably? Ваш отзыв на {platform}',
-  'rate.question2': 'поможет этому проекту.',
+  'rate.title': 'Нравится Vocably?',
+  'rate.description': 'Оценка на {platform} займёт меньше минуты, но очень поможет проекту.',
   'rate.ok': 'Оценить Vocably',
-  'rate.later': 'Спросить позже.',
-  'rate.dislike': 'Вас что-то не устраивает в Vocably? Тогда, пожалуйста,',
-  'rate.contact': 'свяжитесь с автором',
-  'rate.feedback_note': '. Я серьёзно отношусь к каждому отзыву. Мы можем улучшить этот проект вместе.',
+  'rate.later': 'Может, позже',
   'rate.show_again': 'Это сообщение появится снова через 10 переводов.',
-  'rate.never': 'Больше не показывать это сообщение.',
+  'rate.dislike': 'Что-то не так?',
+  'rate.contact': 'Написать автору',
+  'rate.never': 'Больше не показывать',
   // language
+  'language.title': 'Выберите языки',
+  'language.hint': 'Vocably переводит слова с изучаемого языка на язык, который вы знаете.',
   'language.i_study': 'Я изучаю',
   'language.i_speak': 'Я знаю',
   'language.save': 'Сохранить',
   'language.saving': 'Сохранение...',
   // first-translation-congratulation
-  'congrats.on_phone': 'уже на вашем телефоне.',
-  'congrats.scan_qr': 'Отсканируйте QR-код, чтобы учить.',
-  'congrats.or_go_to': 'Или перейдите на',
-  'congrats.to_study_browser': 'чтобы учиться в браузере.',
+  'congrats.badge': 'Первая карточка сохранена',
+  'congrats.title': '{word} уже в вашей колоде.',
+  'congrats.description': 'Повторяйте её с помощью интервальных повторений, и слово запомнится надолго.',
+  'congrats.get_app': 'Скачайте приложение Vocably',
+  'congrats.scan_qr': 'Отсканируйте код камерой телефона, чтобы учиться где угодно.',
+  'congrats.get_app_mobile': 'Учитесь где угодно с приложением Vocably.',
+  'congrats.app_store_caption': 'Загрузите в',
+  'congrats.google_play_caption': 'ДОСТУПНО В',
+  'congrats.browser': 'Удобнее в браузере? Учитесь на {link}',
   // mobile-button
   'mobile_button.look_up': 'Найти',
   // tag-form
@@ -8393,13 +8429,13 @@ const ru$2 = {
 };
 
 const tr$2 = {
+  // close button
+  'close_button.label': 'Kapat',
   // sign-in
-  'sign_in.please': 'Devam etmek için lütfen giriş yapın.',
   'sign_in.button': 'Giriş yap veya hesap oluştur',
-  'sign_in.agree': 'Giriş yaparak kabul etmiş olursunuz:',
-  'sign_in.terms': 'Kullanım Koşulları',
-  'sign_in.and': 've',
-  'sign_in.privacy': 'Gizlilik Politikası',
+  'sign_in.benefit.sync': 'Cihazlar arasında senkronizasyon',
+  'sign_in.benefit.study': 'Kartlarını telefonda veya tarayıcıda çalış',
+  'sign_in.benefit.export': 'Kartlarını CSV olarak dışa aktar',
   // subscribe
   'subscribe.trial_message': 'Devam etmek için 7 günlük ücretsiz deneme talep edin.',
   'subscribe.message': 'Devam etmek için lütfen abone olun.',
@@ -8407,7 +8443,8 @@ const tr$2 = {
   'subscribe.button': 'Abone ol',
   // translation
   'translation.generating': 'Düşünmek...',
-  'translation.error': 'Gemini veya ChatGPT isteği bir hatayla sonuçlandı.',
+  'translation.error_title': 'Yapay zekâ hizmeti geçici olarak kullanılamıyor olabilir',
+  'translation.error': 'Çeviri yüklenemedi. Lütfen tekrar deneyin.',
   'translation.retry': 'Tekrar dene',
   'translation.requesting_ai': 'Yapay zekadan ek bilgi isteniyor',
   'translation.requests_extra_items': 'Parçalarına ayırıyoruz',
@@ -8430,29 +8467,36 @@ const tr$2 = {
   'search.preferred_languages': 'Tercih Edilen Diller',
   'search.available_languages': 'Mevcut Diller',
   'search.placeholder_default': 'Herhangi bir kelime veya cümle',
+  'search.swap_direction': 'Çeviri yönünü değiştir',
+  'search.submit': 'Çevir',
   'search.placeholder_reversed': '{language} dilinde kelime veya cümle girin. {source} kartları oluşturulacak.',
   'search.hint': 'Herhangi bir dilde kelime veya cümle girin. Vocably sizin için {language} kartları oluşturacak.',
   // rate
-  'rate.tagline': 'Bir dakikadan az sürer, ancak Vocably için çok şey ifade eder.',
-  'rate.question': "Vocably'yi yararlı buluyor musunuz? {platform} üzerindeki değerlendirmeniz",
-  'rate.question2': 'bu proje için büyük fark yaratacak.',
+  'rate.title': "Vocably'yi beğendiniz mi?",
+  'rate.description': '{platform} üzerinde değerlendirmek bir dakikadan az sürer ve bu proje için çok şey ifade eder.',
   'rate.ok': "Vocably'yi değerlendir",
-  'rate.later': 'Daha sonra sor.',
-  'rate.dislike': "Vocably'de beğenmediğiniz bir şey mi var? O zaman lütfen",
-  'rate.contact': 'yazar ile iletişime geçin',
-  'rate.feedback_note': '. Her geri bildirimi ciddiye alıyorum. Bu projeyi birlikte geliştirebiliriz.',
-  'rate.show_again': 'Bu mesajı 10 çeviriden sonra tekrar göreceksiniz.',
-  'rate.never': 'Bu mesajı bir daha gösterme.',
+  'rate.later': 'Belki sonra',
+  'rate.show_again': 'Bu mesaj 10 çeviriden sonra tekrar görünecek.',
+  'rate.dislike': 'Bir sorun mu var?',
+  'rate.contact': 'Geri bildirim gönderin',
+  'rate.never': 'Bir daha gösterme',
   // language
+  'language.title': 'Dillerinizi seçin',
+  'language.hint': 'Vocably, çalıştığınız dildeki kelimeleri bildiğiniz dile çevirir.',
   'language.i_study': 'Çalışılan Dil:',
   'language.i_speak': 'Çeviri Dili:',
   'language.save': 'Kaydet',
   'language.saving': 'Kaydediliyor...',
   // first-translation-congratulation
-  'congrats.on_phone': 'zaten telefonunuzda.',
-  'congrats.scan_qr': 'Öğrenmek için QR kodunu tarayın.',
-  'congrats.or_go_to': 'Veya şuraya gidin:',
-  'congrats.to_study_browser': 'tarayıcınızda çalışmak için.',
+  'congrats.badge': 'İlk kart kaydedildi',
+  'congrats.title': '{word} artık destenizde.',
+  'congrats.description': 'Aralıklı tekrarla çalışın, kalıcı olarak aklınızda kalsın.',
+  'congrats.get_app': 'Vocably uygulamasını edinin',
+  'congrats.scan_qr': 'Her yerde çalışmak için kodu telefonunuzun kamerasıyla tarayın.',
+  'congrats.get_app_mobile': 'Vocably uygulamasıyla her yerde çalışın.',
+  'congrats.app_store_caption': 'Hemen indirin',
+  'congrats.google_play_caption': 'HEMEN İNDİRİN',
+  'congrats.browser': 'Tarayıcıyı mı tercih edersiniz? {link} adresinde çalışın',
   // mobile-button
   'mobile_button.look_up': 'Ara',
   // tag-form
@@ -8474,13 +8518,13 @@ const tr$2 = {
 };
 
 const uk$2 = {
+  // close button
+  'close_button.label': 'Закрити',
   // sign-in
-  'sign_in.please': 'Будь ласка, увійдіть, щоб продовжити.',
   'sign_in.button': 'Увійти або створити акаунт',
-  'sign_in.agree': 'Входячи, ви погоджуєтесь з нашими',
-  'sign_in.terms': 'Умовами використання',
-  'sign_in.and': 'та',
-  'sign_in.privacy': 'Політикою конфіденційності',
+  'sign_in.benefit.sync': 'Синхронізація між пристроями',
+  'sign_in.benefit.study': 'Вчіть картки на телефоні або в браузері',
+  'sign_in.benefit.export': 'Експорт карток у CSV',
   // subscribe
   'subscribe.trial_message': 'Запитайте 7-денний безкоштовний пробний період, щоб продовжити.',
   'subscribe.message': 'Будь ласка, оформіть підписку, щоб продовжити.',
@@ -8488,7 +8532,8 @@ const uk$2 = {
   'subscribe.button': 'Підписатися',
   // translation
   'translation.generating': 'Думаю...',
-  'translation.error': 'Запит до Gemini або ChatGPT завершився помилкою.',
+  'translation.error_title': 'Можливо, сервіс ШІ тимчасово недоступний',
+  'translation.error': 'Не вдалося завантажити переклад. Спробуйте ще раз.',
   'translation.retry': 'Повторити',
   'translation.requesting_ai': 'Запитуємо додаткову інформацію у ШІ',
   'translation.requests_extra_items': 'Розбираємо на складові частини',
@@ -8511,29 +8556,36 @@ const uk$2 = {
   'search.preferred_languages': 'Бажані мови',
   'search.available_languages': 'Доступні мови',
   'search.placeholder_default': 'Будь-яке слово або фраза',
+  'search.swap_direction': 'Змінити напрямок перекладу',
+  'search.submit': 'Перекласти',
   'search.placeholder_reversed': 'Введіть слово або фразу. Vocably створить {source} картки.',
   'search.hint': 'Введіть будь-яке слово або фразу. Vocably створить {language} картки для вас.',
   // rate
-  'rate.tagline': 'Це займе менше хвилини, але багато значить для Vocably.',
-  'rate.question': 'Чи вважаєте ви Vocably корисним? Ваш відгук на {platform}',
-  'rate.question2': 'має велике значення для цього проекту.',
+  'rate.title': 'Подобається Vocably?',
+  'rate.description': 'Оцінка на {platform} займе менше хвилини, але дуже допоможе проєкту.',
   'rate.ok': 'Оцінити Vocably',
-  'rate.later': 'Запитати пізніше.',
-  'rate.dislike': 'Вас щось не влаштовує у Vocably? Тоді, будь ласка,',
-  'rate.contact': "зв'яжіться з автором",
-  'rate.feedback_note': '. Я серйозно ставлюся до кожного відгуку. Ми можемо покращити цей проект разом.',
-  'rate.show_again': 'Ви побачите це повідомлення знову після 10 перекладів.',
-  'rate.never': 'Більше не показувати це повідомлення.',
+  'rate.later': 'Можливо, пізніше',
+  'rate.show_again': 'Це повідомлення з’явиться знову через 10 перекладів.',
+  'rate.dislike': 'Щось не так?',
+  'rate.contact': 'Написати автору',
+  'rate.never': 'Більше не показувати',
   // language
+  'language.title': 'Оберіть мови',
+  'language.hint': 'Vocably перекладає слова з мови, яку ви вивчаєте, мовою, яку ви знаєте.',
   'language.i_study': 'Я вивчаю:',
   'language.i_speak': 'Переклад:',
   'language.save': 'Зберегти',
   'language.saving': 'Збереження...',
   // first-translation-congratulation
-  'congrats.on_phone': 'вже на вашому телефоні.',
-  'congrats.scan_qr': 'Відскануйте QR-код, щоб вчити.',
-  'congrats.or_go_to': 'Або перейдіть на',
-  'congrats.to_study_browser': 'щоб навчатися у браузері.',
+  'congrats.badge': 'Першу картку збережено',
+  'congrats.title': '{word} вже у вашій колоді.',
+  'congrats.description': 'Повторюйте її за допомогою інтервальних повторень, і слово запам’ятається надовго.',
+  'congrats.get_app': 'Завантажте застосунок Vocably',
+  'congrats.scan_qr': 'Відскануйте код камерою телефона, щоб навчатися будь-де.',
+  'congrats.get_app_mobile': 'Навчайтеся будь-де із застосунком Vocably.',
+  'congrats.app_store_caption': 'Завантажте в',
+  'congrats.google_play_caption': 'ДОСТУПНО В',
+  'congrats.browser': 'Зручніше в браузері? Навчайтеся на {link}',
   // mobile-button
   'mobile_button.look_up': 'Знайти',
   // tag-form
@@ -8555,13 +8607,13 @@ const uk$2 = {
 };
 
 const vi$2 = {
+  // close button
+  'close_button.label': 'Đóng',
   // sign-in
-  'sign_in.please': 'Vui lòng đăng nhập để tiếp tục.',
   'sign_in.button': 'Đăng nhập hoặc tạo tài khoản',
-  'sign_in.agree': 'Khi đăng nhập, bạn đồng ý với',
-  'sign_in.terms': 'Điều khoản dịch vụ',
-  'sign_in.and': 'và',
-  'sign_in.privacy': 'Chính sách bảo mật',
+  'sign_in.benefit.sync': 'Đồng bộ trên mọi thiết bị',
+  'sign_in.benefit.study': 'Học thẻ trên điện thoại hoặc trong trình duyệt',
+  'sign_in.benefit.export': 'Xuất thẻ của bạn dưới dạng CSV',
   // subscribe
   'subscribe.trial_message': 'Yêu cầu dùng thử miễn phí 7 ngày để tiếp tục.',
   'subscribe.message': 'Vui lòng đăng ký để tiếp tục.',
@@ -8569,7 +8621,8 @@ const vi$2 = {
   'subscribe.button': 'Đăng ký',
   // translation
   'translation.generating': 'Nghĩ...',
-  'translation.error': 'Yêu cầu Gemini hoặc ChatGPT đã xảy ra lỗi.',
+  'translation.error_title': 'Dịch vụ AI có thể tạm thời không khả dụng',
+  'translation.error': 'Không thể tải bản dịch. Vui lòng thử lại.',
   'translation.retry': 'Thử lại',
   'translation.requesting_ai': 'Đang yêu cầu thông tin thêm từ AI',
   'translation.requests_extra_items': 'Chia nhỏ thành các phần',
@@ -8592,29 +8645,36 @@ const vi$2 = {
   'search.preferred_languages': 'Ngôn ngữ ưa thích',
   'search.available_languages': 'Ngôn ngữ có sẵn',
   'search.placeholder_default': 'Bất kỳ từ hoặc cụm từ nào',
+  'search.swap_direction': 'Đổi chiều dịch',
+  'search.submit': 'Dịch',
   'search.placeholder_reversed': 'Nhập từ hoặc cụm từ {language} tại đây. Thẻ {source} sẽ được tạo.',
   'search.hint': 'Nhập bất kỳ từ hoặc cụm từ nào. Vocably sẽ tạo thẻ {language} cho bạn.',
   // rate
-  'rate.tagline': 'Chỉ mất chưa đến một phút, nhưng sẽ có ý nghĩa rất lớn với Vocably.',
-  'rate.question': 'Bạn có thấy Vocably hữu ích không? Đánh giá của bạn trên {platform}',
-  'rate.question2': 'sẽ tạo ra sự khác biệt lớn cho dự án này.',
+  'rate.title': 'Bạn thích Vocably chứ?',
+  'rate.description': 'Đánh giá trên {platform} chỉ mất chưa đến một phút nhưng có ý nghĩa rất lớn với dự án này.',
   'rate.ok': 'Đánh giá Vocably',
-  'rate.later': 'Hỏi tôi sau.',
-  'rate.dislike': 'Bạn có điều gì không hài lòng về Vocably? Vui lòng',
-  'rate.contact': 'liên hệ với tác giả',
-  'rate.feedback_note': '. Tôi coi trọng từng phản hồi. Chúng ta có thể cải thiện dự án này cùng nhau.',
-  'rate.show_again': 'Bạn sẽ thấy thông báo này lại sau 10 lần dịch.',
-  'rate.never': 'Không bao giờ hiển thị thông báo này nữa.',
+  'rate.later': 'Để sau',
+  'rate.show_again': 'Thông báo này sẽ xuất hiện lại sau 10 lần dịch.',
+  'rate.dislike': 'Có điều gì chưa ổn?',
+  'rate.contact': 'Gửi phản hồi',
+  'rate.never': 'Không hiển thị lại',
   // language
+  'language.title': 'Chọn ngôn ngữ của bạn',
+  'language.hint': 'Vocably dịch từ ngôn ngữ bạn học sang ngôn ngữ bạn nói.',
   'language.i_study': 'Tôi học',
   'language.i_speak': 'Tôi nói',
   'language.save': 'Lưu',
   'language.saving': 'Đang lưu...',
   // first-translation-congratulation
-  'congrats.on_phone': 'đã có trên điện thoại của bạn.',
-  'congrats.scan_qr': 'Quét mã QR để học.',
-  'congrats.or_go_to': 'Hoặc truy cập',
-  'congrats.to_study_browser': 'để học trong trình duyệt của bạn.',
+  'congrats.badge': 'Đã lưu thẻ đầu tiên',
+  'congrats.title': '{word} đã có trong bộ thẻ của bạn.',
+  'congrats.description': 'Ôn tập bằng phương pháp lặp lại ngắt quãng để ghi nhớ lâu dài.',
+  'congrats.get_app': 'Tải ứng dụng Vocably',
+  'congrats.scan_qr': 'Quét mã bằng camera điện thoại để học mọi lúc mọi nơi.',
+  'congrats.get_app_mobile': 'Học mọi lúc mọi nơi với ứng dụng Vocably.',
+  'congrats.app_store_caption': 'Tải về trên',
+  'congrats.google_play_caption': 'TẢI NỘI DUNG TRÊN',
+  'congrats.browser': 'Thích dùng trình duyệt? Học tại {link}',
   // mobile-button
   'mobile_button.look_up': 'Tra cứu',
   // tag-form
@@ -8636,13 +8696,13 @@ const vi$2 = {
 };
 
 const es$2 = {
+  // close button
+  'close_button.label': 'Cerrar',
   // sign-in
-  'sign_in.please': 'Por favor, inicia sesión para continuar.',
   'sign_in.button': 'Iniciar sesión o crear una cuenta',
-  'sign_in.agree': 'Al iniciar sesión, aceptas nuestros',
-  'sign_in.terms': 'Términos de servicio',
-  'sign_in.and': 'y',
-  'sign_in.privacy': 'Política de privacidad',
+  'sign_in.benefit.sync': 'Sincroniza entre dispositivos',
+  'sign_in.benefit.study': 'Estudia tus tarjetas en el móvil o en el navegador',
+  'sign_in.benefit.export': 'Exporta tus tarjetas en CSV',
   // subscribe
   'subscribe.trial_message': 'Solicita una prueba gratuita de 7 días para continuar.',
   'subscribe.message': 'Por favor, suscríbete para continuar.',
@@ -8650,8 +8710,9 @@ const es$2 = {
   'subscribe.button': 'Suscribirse',
   // translation
   'translation.generating': 'Pensando...',
-  'translation.error': 'Una solicitud a Gemini o ChatGPT ha resultado en un error.',
-  'translation.retry': 'Reintentar',
+  'translation.error_title': 'Es posible que el servicio de IA no esté disponible temporalmente',
+  'translation.error': 'No se pudo cargar la traducción. Inténtalo de nuevo.',
+  'translation.retry': 'Intentar de nuevo',
   'translation.requesting_ai': 'Solicitando información adicional a la IA',
   'translation.requests_extra_items': 'Desglosando',
   'translation.ai_thinks': 'La IA cree que',
@@ -8673,29 +8734,36 @@ const es$2 = {
   'search.preferred_languages': 'Idiomas preferidos',
   'search.available_languages': 'Idiomas disponibles',
   'search.placeholder_default': 'Cualquier palabra o frase',
+  'search.swap_direction': 'Cambiar la dirección de traducción',
+  'search.submit': 'Traducir',
   'search.placeholder_reversed': 'Escribe {article} {language} palabra o frase aquí. Se crearán tarjetas de {source}.',
   'search.hint': 'Escribe cualquier palabra o frase en cualquier idioma. Vocably creará tarjetas de {language} para ti.',
   // rate
-  'rate.tagline': 'Tomará menos de un minuto, pero significará mucho para Vocably.',
-  'rate.question': '¿Encuentras útil Vocably? Tu calificación en {platform}',
-  'rate.question2': 'marcará una gran diferencia para este proyecto.',
+  'rate.title': '¿Te gusta Vocably?',
+  'rate.description': 'Calificarlo en {platform} te llevará menos de un minuto y significa mucho para este proyecto.',
   'rate.ok': 'Calificar Vocably',
-  'rate.later': 'Pregúntame más tarde.',
-  'rate.dislike': '¿Hay algo que no te guste de Vocably? Entonces por favor',
-  'rate.contact': 'contacta al autor',
-  'rate.feedback_note': '. Tomo cada comentario en serio. Podemos mejorar este proyecto juntos.',
-  'rate.show_again': 'Verás este mensaje de nuevo después de 10 traducciones.',
-  'rate.never': 'No mostrar este mensaje nunca más.',
+  'rate.later': 'Quizás más tarde',
+  'rate.show_again': 'Este mensaje volverá a aparecer después de 10 traducciones.',
+  'rate.dislike': '¿Algo no va bien?',
+  'rate.contact': 'Enviar comentarios',
+  'rate.never': 'No volver a mostrar',
   // language
+  'language.title': 'Elige tus idiomas',
+  'language.hint': 'Vocably traduce las palabras del idioma que estudias al idioma que hablas.',
   'language.i_study': 'Estudio',
   'language.i_speak': 'Hablo',
   'language.save': 'Guardar',
   'language.saving': 'Guardando...',
   // first-translation-congratulation
-  'congrats.on_phone': 'ya está en tu teléfono.',
-  'congrats.scan_qr': 'Escanea el código QR para aprenderlo.',
-  'congrats.or_go_to': 'O ve a',
-  'congrats.to_study_browser': 'para estudiar en tu navegador.',
+  'congrats.badge': 'Primera tarjeta guardada',
+  'congrats.title': '{word} ya está en tu mazo.',
+  'congrats.description': 'Repásala con repetición espaciada y la recordarás para siempre.',
+  'congrats.get_app': 'Descarga la app de Vocably',
+  'congrats.scan_qr': 'Escanea el código con la cámara de tu teléfono para estudiar en cualquier lugar.',
+  'congrats.get_app_mobile': 'Estudia en cualquier lugar con la app de Vocably.',
+  'congrats.app_store_caption': 'Descárgalo en el',
+  'congrats.google_play_caption': 'DISPONIBLE EN',
+  'congrats.browser': '¿Prefieres el navegador? Estudia en {link}',
   // mobile-button
   'mobile_button.look_up': 'Buscar',
   // tag-form
@@ -8717,13 +8785,13 @@ const es$2 = {
 };
 
 const pt$2 = {
+  // close button
+  'close_button.label': 'Fechar',
   // sign-in
-  'sign_in.please': 'Por favor, faça login para continuar.',
   'sign_in.button': 'Entrar ou criar uma conta',
-  'sign_in.agree': 'Ao entrar, você concorda com nossos',
-  'sign_in.terms': 'Termos de Serviço',
-  'sign_in.and': 'e',
-  'sign_in.privacy': 'Política de Privacidade',
+  'sign_in.benefit.sync': 'Sincronize entre dispositivos',
+  'sign_in.benefit.study': 'Estude seus cartões no celular ou no navegador',
+  'sign_in.benefit.export': 'Exporte seus cartões em CSV',
   // subscribe
   'subscribe.trial_message': 'Solicite um período de teste gratuito de 7 dias para continuar.',
   'subscribe.message': 'Por favor, assine para continuar.',
@@ -8731,7 +8799,8 @@ const pt$2 = {
   'subscribe.button': 'Assinar',
   // translation
   'translation.generating': 'Pensando...',
-  'translation.error': 'Uma solicitação ao Gemini ou ChatGPT resultou em um erro.',
+  'translation.error_title': 'O serviço de IA pode estar temporariamente indisponível',
+  'translation.error': 'Não foi possível carregar a tradução. Tente novamente.',
   'translation.retry': 'Tentar novamente',
   'translation.requesting_ai': 'Solicitando informações extras da IA',
   'translation.requests_extra_items': 'Detalhando',
@@ -8754,29 +8823,36 @@ const pt$2 = {
   'search.preferred_languages': 'Idiomas preferidos',
   'search.available_languages': 'Idiomas disponíveis',
   'search.placeholder_default': 'Qualquer palavra ou frase',
+  'search.swap_direction': 'Inverter a direção da tradução',
+  'search.submit': 'Traduzir',
   'search.placeholder_reversed': 'Digite {article} {language} palavra ou frase aqui. Cartões de {source} serão criados.',
   'search.hint': 'Digite qualquer palavra ou frase em qualquer idioma. O Vocably criará cartões de {language} para você.',
   // rate
-  'rate.tagline': 'Levará menos de um minuto, mas significará muito para o Vocably.',
-  'rate.question': 'Você acha o Vocably útil? Sua avaliação no {platform}',
-  'rate.question2': 'fará uma grande diferença para este projeto.',
+  'rate.title': 'Está gostando do Vocably?',
+  'rate.description': 'Avaliar no {platform} leva menos de um minuto e significa muito para este projeto.',
   'rate.ok': 'Avaliar o Vocably',
-  'rate.later': 'Pergunte-me mais tarde.',
-  'rate.dislike': 'Há algo que você não goste no Vocably? Então por favor',
-  'rate.contact': 'entre em contato com o autor',
-  'rate.feedback_note': '. Levo cada feedback a sério. Podemos melhorar este projeto juntos.',
-  'rate.show_again': 'Você verá esta mensagem novamente após 10 traduções.',
-  'rate.never': 'Nunca mostrar esta mensagem novamente.',
+  'rate.later': 'Talvez mais tarde',
+  'rate.show_again': 'Esta mensagem aparecerá novamente após 10 traduções.',
+  'rate.dislike': 'Algo não está certo?',
+  'rate.contact': 'Enviar feedback',
+  'rate.never': 'Não mostrar novamente',
   // language
+  'language.title': 'Escolha seus idiomas',
+  'language.hint': 'O Vocably traduz as palavras do idioma que você estuda para o idioma que você fala.',
   'language.i_study': 'Estudo',
   'language.i_speak': 'Falo',
   'language.save': 'Salvar',
   'language.saving': 'Salvando...',
   // first-translation-congratulation
-  'congrats.on_phone': 'já está no seu telefone.',
-  'congrats.scan_qr': 'Escaneie o código QR para aprender.',
-  'congrats.or_go_to': 'Ou vá para',
-  'congrats.to_study_browser': 'para estudar no seu navegador.',
+  'congrats.badge': 'Primeiro cartão salvo',
+  'congrats.title': '{word} já está no seu baralho.',
+  'congrats.description': 'Revise com repetição espaçada e você não vai mais esquecer.',
+  'congrats.get_app': 'Baixe o app Vocably',
+  'congrats.scan_qr': 'Escaneie o código com a câmera do celular para estudar onde estiver.',
+  'congrats.get_app_mobile': 'Estude onde estiver com o app Vocably.',
+  'congrats.app_store_caption': 'Baixar na',
+  'congrats.google_play_caption': 'DISPONÍVEL NO',
+  'congrats.browser': 'Prefere o navegador? Estude em {link}',
   // mobile-button
   'mobile_button.look_up': 'Pesquisar',
   // tag-form
@@ -10472,31 +10548,27 @@ const translations = {
 
 /***/ },
 
-/***/ 7039
+/***/ 7990
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   vocably_animated_content_wrapper: () => (/* binding */ VocablyAnimatedContentWrapper),
+/* harmony export */   vocably_icon_arrow_right: () => (/* binding */ VocablyIconArrowRight),
 /* harmony export */   vocably_icon_reload: () => (/* binding */ VocablyIconReload),
 /* harmony export */   vocably_inline_loader: () => (/* binding */ VocablyInlineLoader),
 /* harmony export */   vocably_rate: () => (/* binding */ VocablyRate),
 /* harmony export */   vocably_translation_cards: () => (/* binding */ VocablyTranslationCards)
 /* harmony export */ });
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5063);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4830);
+/* harmony import */ var _index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7095);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9012);
+/* harmony import */ var _translation_cards_8c7c5e45_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6499);
 
 
 
 
-const isCardItem = (item) => {
-    return item.id !== undefined;
-};
-const isDetachedCardItem = (item) => {
-    return item.id === undefined;
-};
 
 const toLocationHash = (input) => encodeURIComponent(input);
 
@@ -10537,6 +10609,18 @@ const VocablyAnimatedContentWrapper = class {
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
 VocablyAnimatedContentWrapper.style = animatedContentWrapperCss;
+
+const iconArrowRightCss = ":host{display:inline-block;width:24px;height:24px;visibility:visible !important}.svg{height:100%;width:auto;fill:#6a6a6a}";
+
+const VocablyIconArrowRight = class {
+  constructor(hostRef) {
+    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
+  }
+  render() {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "svg", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M10,17L15,12L10,7V17Z" }))));
+  }
+};
+VocablyIconArrowRight.style = iconArrowRightCss;
 
 const iconReloadCss = ":host{--size:18px;--color:#0050ff;display:inline-block;width:var(--size);height:var(--size)}.svg{height:100%;width:auto;fill:var(--color)}";
 
@@ -10591,8 +10675,9 @@ const buildCircle = (spinner, duration, index, total) => {
 };
 VocablyInlineLoader.style = inlineLoaderCss;
 
-const rateCss = "vocably-rate{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:block;visibility:visible !important}";
+const rateCss = "vocably-rate{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:block;visibility:visible !important}.vocably-rate-card{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:16px;border-radius:12px;border:1px solid #e6e6e6;background:linear-gradient(160deg, rgba(255, 180, 0, 0.08) 0%, rgba(255, 180, 0, 0) 55%)}.vocably-rate-stars{display:flex;gap:2px}.vocably-rate-star{width:18px;height:18px;fill:#ffb400}.vocably-rate-title{color:#000000;font-size:18px;line-height:1.3}.vocably-rate-description{font-size:14px;line-height:1.4}.vocably-rate-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}.vocably-rate-primary{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.vocably-rate-primary:hover:not([disabled]),.vocably-rate-primary:focus:not([disabled]){background:#0047e3}.vocably-rate-primary:active:not([disabled]){background:#0047e3}.vocably-rate-primary[disabled]{background:#bababa;cursor:not-allowed}.vocably-rate-primary{padding-left:16px;padding-right:16px;width:auto;font-size:14px !important;transition:background-color 200ms, transform 150ms}.vocably-rate-primary:active{transform:scale(0.97)}.vocably-rate-secondary{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.vocably-rate-secondary:hover:not([disabled]),.vocably-rate-secondary:focus:not([disabled]){background:#0047e3}.vocably-rate-secondary:active:not([disabled]){background:#0047e3}.vocably-rate-secondary[disabled]{background:#bababa;cursor:not-allowed}.vocably-rate-secondary{padding-left:16px;padding-right:16px;width:auto;font-size:14px !important;background:rgba(0, 0, 0, 0.04);color:#000000 !important;transition:background-color 200ms, transform 150ms}.vocably-rate-secondary:hover:not([disabled]),.vocably-rate-secondary:focus:not([disabled]){background:rgba(0, 0, 0, 0.07)}.vocably-rate-secondary:active:not([disabled]){background:rgba(0, 0, 0, 0.07);transform:scale(0.97)}.vocably-rate-footer{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 12px;width:100%;margin-top:8px;padding-top:12px;border-top:1px solid #e6e6e6;font-size:13px;line-height:1.4}.vocably-rate-link{text-decoration:underline !important;text-decoration-thickness:0.5px !important;text-underline-offset:2px !important;color:#0050ff !important;background:none !important;border:none !important;border-radius:0 !important;cursor:pointer}.vocably-rate-link:hover,.vocably-rate-link:focus,.vocably-rate-link:active{color:#0047e3 !important}.vocably-rate-dismiss{background:none;color:inherit;border:none;padding:0;font:inherit;cursor:pointer;font:inherit;font-size:13px;color:#6a6a6a !important;cursor:pointer;text-decoration:underline;text-underline-offset:2px}.vocably-rate-dismiss:hover,.vocably-rate-dismiss:focus-visible{color:#000000 !important}";
 
+const Star = () => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "vocably-rate-star", viewBox: "0 0 24 24", "aria-hidden": "true", xmlns: "http://www.w3.org/2000/svg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M12 2.5l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55L2.48 9.42l6.58-.96L12 2.5z" })));
 const VocablyRate = class {
   constructor(hostRef) {
     (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
@@ -10600,14 +10685,14 @@ const VocablyRate = class {
     this.platform = undefined;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
     (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
   }
   render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("strong", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.tagline'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mt-12" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.question', { platform: this.platform.name }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("br", null), (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.question2')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mt-12" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { href: this.platform.url, target: "_blank", class: "vocably-button", onClick: () => this.userSelected.emit('review') }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.ok')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { style: { marginLeft: '8px' }, class: "vocably-link-button", onClick: () => this.userSelected.emit('later') }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.later'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mt-12" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.dislike'), ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { href: "https://app.vocably.pro/feedback", target: "_blank", class: "vocably-link-button", onClick: () => this.userSelected.emit('feedback') }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.contact')), (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.feedback_note')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mt-12" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.show_again'), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-link-button vocably-text-link vocably-small", onClick: () => this.userSelected.emit('never') }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.never')))));
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-card" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-stars" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(Star, null), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(Star, null), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(Star, null), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(Star, null), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(Star, null)), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-title" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.title')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-description" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.description', { platform: this.platform.name })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-actions" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { href: this.platform.url, target: "_blank", class: "vocably-rate-primary", onClick: () => this.userSelected.emit('review') }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.ok')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-rate-secondary", title: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.show_again'), onClick: () => this.userSelected.emit('later') }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.later'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-footer" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", null, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.dislike'), ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { href: "https://app.vocably.pro/feedback", target: "_blank", class: "vocably-rate-link", onClick: () => this.userSelected.emit('feedback') }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.contact'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-rate-dismiss", onClick: () => this.userSelected.emit('never') }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('rate.never'))))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
@@ -10625,15 +10710,31 @@ const getSelectedTagIds = (cards, cardId) => {
   return card.data.tags.map((tag) => tag.id);
 };
 
-const translationCardsCss = ".vocably-mb-6{margin-bottom:6px}.vocably-mt-12{margin-top:12px}.vocably-pb-12{padding-bottom:12px}.vocably-small{font-size:14.4px}.vocably-bottom-12-border{padding-bottom:12px;border-bottom:1px solid rgba(0, 0, 0, 0.04);margin-bottom:12px}.panel{background:rgba(0, 0, 0, 0.04);border:none;border-radius:8px;padding:14px}.vocably-card .vocably-card-container{position:relative}.vocably-card .vocably-safe-action-area{padding-right:34px}.vocably-card:first-child{border-top:none}.vocably-card .vocably-card-source{padding-right:50px}.vocably-card .vocably-card-action{position:absolute;top:0;right:0;min-width:24px;height:24px;line-height:24px;text-align:center}.vocably-card .vocably-card-action-button{padding:0;margin:0;background:none;border:none;cursor:pointer;outline:none;min-width:auto;box-shadow:none;color:#0050ff}.vocably-card .vocably-card-action-button:hover{filter:brightness(80%)}.vocably-card .vocably-card-action-button:active{filter:brightness(60%)}.vocably-card .vocably-card-action-button>*{vertical-align:middle}.vocably-card .vocably-card-action-button.vocably-card-add-button{--button-color:#0050ff;--color:var(--button-color);border:1.5px solid var(--button-color);color:var(--button-color);border-radius:16px;padding-right:8px !important;padding-left:2px !important;height:32px;display:inline-flex;align-items:center;justify-content:center}.vocably-card .vocably-card-action-button.vocably-card-add-button vocably-icon-spin{--color:var(--button-color)}.vocably-card .vocably-card-action-button.vocably-card-add-button vocably-icon-plus{--color:var(--button-color)}vocably-play-sound{opacity:0.8}vocably-play-sound:hover{opacity:1}vocably-play-sound{margin-right:4px}.vocably-added-congratulation{max-height:0;overflow:hidden;transition:max-height 0.5s ease-in-out}.vocably-added-congratulation.vocably-added-congratulation-visible{max-height:750px}.vocably-tag{border:none;border-radius:4px;background-color:rgba(0, 0, 0, 0.04);padding:6px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.vocably-tag-remove-button{background:none;color:inherit;border:none;padding:0;font:inherit;cursor:pointer;vertical-align:middle;height:24px;opacity:0.3;transition:opacity 300ms;transform:scale(80%)}.vocably-tag-remove-button .vocably-tag-remove-button-icon{--color:#bababa;--size:24px}.vocably-tag-remove-button:hover{opacity:1}.padding-left-12{padding-left:12px}.max-limit-1{overflow:hidden;color:#000000;max-height:0;transition:max-height 0.5s ease-in-out}.max-limit-1.max-limit-visible{max-height:200px}.max-limit-1 .max-limit-2{padding-bottom:12px}.max-limit-1 .max-limit-3{display:flex;flex-direction:column;gap:8px;flex-wrap:wrap;justify-content:flex-start}.max-limit-1 .upgrade-button{flex:1;font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.max-limit-1 .upgrade-button:hover:not([disabled]),.max-limit-1 .upgrade-button:focus:not([disabled]){background:#0047e3}.max-limit-1 .upgrade-button:active:not([disabled]){background:#0047e3}.max-limit-1 .upgrade-button[disabled]{background:#bababa;cursor:not-allowed}.max-limit-1 .upgrade-button{min-width:200px;padding-left:16px;padding-right:16px}";
+const translationCardsCss = ".vocably-mb-6{margin-bottom:6px}.vocably-mt-12{margin-top:12px}.vocably-pb-12{padding-bottom:12px}.vocably-small{font-size:14.4px}.vocably-bottom-12-border{padding-bottom:12px;border-bottom:1px solid rgba(0, 0, 0, 0.04);margin-bottom:12px}.panel{background:rgba(0, 0, 0, 0.04);border:none;border-radius:8px;padding:14px}.vocably-card .vocably-card-container{position:relative;display:grid;grid-template-columns:minmax(0, 1fr)}.vocably-card .vocably-safe-action-area{grid-area:1/1;padding-right:34px}.vocably-card:first-child{border-top:none}.vocably-card .vocably-card-source{padding-right:50px}.vocably-card .vocably-card-action{position:absolute;top:-0.3em;right:0;min-width:24px;height:24px;line-height:24px;text-align:center}.vocably-card .vocably-card-action .vocably-card-action-icon{display:inline-flex;align-items:center;justify-content:center;flex:none;width:24px;height:24px;overflow:hidden}.vocably-card .vocably-card-action-button{padding:0;margin:0;background:none;border:none;cursor:pointer;outline:none;min-width:auto;box-shadow:none;color:#0050ff}.vocably-card .vocably-card-action-button:hover{filter:brightness(80%)}.vocably-card .vocably-card-action-button:active{filter:brightness(60%)}.vocably-card .vocably-card-action-button>*{vertical-align:middle}.vocably-card .vocably-card-action-button.vocably-card-add-button{--button-color:#0050ff;--color:var(--button-color);border:1.5px solid var(--button-color);color:var(--button-color);border-radius:16px;padding-right:8px !important;padding-left:2px !important;height:32px;display:inline-flex;align-items:center;justify-content:center}.vocably-card .vocably-card-action-button.vocably-card-add-button vocably-icon-spin{--color:var(--button-color)}.vocably-card .vocably-card-action-button.vocably-card-add-button vocably-icon-plus{--color:var(--button-color)}vocably-play-sound{opacity:0.8}vocably-play-sound:hover{opacity:1}vocably-play-sound{margin-right:4px}.vocably-added-congratulation{max-height:0;overflow:hidden;transition:max-height 0.5s ease-in-out}.vocably-added-congratulation.vocably-added-congratulation-visible{max-height:750px}.vocably-tag{border:none;border-radius:4px;background-color:rgba(0, 0, 0, 0.04);padding:6px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}.vocably-tag-remove-button{background:none;color:inherit;border:none;padding:0;font:inherit;cursor:pointer;vertical-align:middle;height:24px;opacity:0.3;transition:opacity 300ms;transform:scale(80%)}.vocably-tag-remove-button .vocably-tag-remove-button-icon{--color:#bababa;--size:24px}.vocably-tag-remove-button:hover{opacity:1}.padding-left-12{padding-left:12px}.max-limit-1{overflow:hidden;color:#000000;max-height:0;transition:max-height 0.5s ease-in-out}.max-limit-1.max-limit-visible{max-height:200px}.max-limit-1 .max-limit-2{padding-bottom:12px}.max-limit-1 .max-limit-3{display:flex;flex-direction:column;gap:8px;flex-wrap:wrap;justify-content:flex-start}.max-limit-1 .upgrade-button{flex:1;font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.max-limit-1 .upgrade-button:hover:not([disabled]),.max-limit-1 .upgrade-button:focus:not([disabled]){background:#0047e3}.max-limit-1 .upgrade-button:active:not([disabled]){background:#0047e3}.max-limit-1 .upgrade-button[disabled]{background:#bababa;cursor:not-allowed}.max-limit-1 .upgrade-button{min-width:200px;padding-left:16px;padding-right:16px}.vocably-sign-in-cover{grid-area:1/1;z-index:2;margin-top:-0.3em;overflow:hidden;width:0;min-width:100%}.vocably-sign-in-cover-panel{position:relative;box-sizing:border-box;height:100%;padding-top:48px;background:rgb(255, 255, 255);animation:vocably-sign-in-slide-in 300ms ease-out}.vocably-sign-in-cover-hiding .vocably-sign-in-cover-panel{animation:vocably-sign-in-slide-out 300ms ease-in forwards}.vocably-sign-in-cover-close{position:absolute;top:4px;right:4px}@keyframes vocably-sign-in-slide-in{from{transform:translateX(100%)}to{transform:translateX(0)}}@keyframes vocably-sign-in-slide-out{from{transform:translateX(0)}to{transform:translateX(100%)}}";
 
+// Keep in sync with $sign-in-slide-duration in translation-cards.scss
+const signInSlideDuration = 300;
 const VocablyTranslationCards = class {
   constructor(hostRef) {
     (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
     this.removeCard = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "removeCard", 7);
     this.addCard = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "addCard", 7);
+    this.addCardIntent = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "addCardIntent", 7);
     this.watchMePaying = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "watchMePaying", 7);
     this.resultUpdated = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "resultUpdated", 7);
+    this.showSignIn = (itemIndex) => {
+      clearTimeout(this.signInHideTimeout);
+      this.signInHiding = false;
+      this.signInItemIndex = itemIndex;
+    };
+    this.hideSignIn = () => {
+      clearTimeout(this.signInHideTimeout);
+      this.signInHiding = true;
+      this.signInHideTimeout = setTimeout(() => {
+        this.signInItemIndex = -1;
+        this.signInHiding = false;
+      }, signInSlideDuration);
+    };
     this.overlay = null;
     this.tagsMenu = null;
     this.makeUpdateCard = (card) => async (data) => {
@@ -10679,6 +10780,8 @@ const VocablyTranslationCards = class {
     this.isUpdating = null;
     this.disabled = false;
     this.isLightweight = false;
+    this.isLoggedInUser = false;
+    this.hideActions = false;
     this.playAudioPronunciation = undefined;
     this.updateCard = undefined;
     this.attachTag = undefined;
@@ -10689,14 +10792,34 @@ const VocablyTranslationCards = class {
     this.addedItemIndex = -1;
     this.congratulateItemIndex = -1;
     this.addAttemptIndex = -1;
+    this.signInItemIndex = -1;
+    this.signInHiding = false;
     this.removing = null;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
     (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
+    clearTimeout(this.signInHideTimeout);
+  }
+  /**
+   * An add does not always start with a click in here: a card picked while
+   * signed out is added by `vocably-translation` once the visitor has signed in
+   * and their collection has arrived. The card being added shows up as
+   * `isUpdating` either way, so the congratulation follows that rather than the
+   * click.
+   */
+  isUpdatingChanged(card) {
+    if (card === null ||
+      !(0,_translation_cards_8c7c5e45_js__WEBPACK_IMPORTED_MODULE_3__.i)(card) ||
+      this.congratulateItemIndex !== -1) {
+      return;
+    }
+    // -1 for a card of the other list, which is exactly the "nothing to
+    // congratulate" value.
+    this.congratulateItemIndex = this.cards.indexOf(card);
   }
   showTagMenu(caller, cardId) {
     if (this.overlay) {
@@ -10791,23 +10914,23 @@ const VocablyTranslationCards = class {
     this.tagsMenu = tagsMenu;
   }
   render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, this.cards.map((card, itemIndex, cardsArray) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { key: itemIndex, id: cardToLocationHash(card.data) }, !this.canAdd && this.cardsLimit !== 'unlimited' && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, this.cards.map((card, itemIndex, cardsArray) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { key: `card-${itemIndex}`, id: cardToLocationHash(card.data) }, !this.canAdd && this.cardsLimit !== 'unlimited' && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { key: "limit", class: {
         'max-limit-1': true,
         'max-limit-visible': this.addAttemptIndex === itemIndex,
-      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "max-limit-2" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "panel max-limit-3" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.free_plan_limit', {
-      plan: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.free_plan'),
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "max-limit-2" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "panel max-limit-3" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.free_plan_limit', {
+      plan: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.free_plan'),
       count: this.cardsLimit.maxCards,
-    })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.per_day', {
+    })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.per_day', {
       count: this.cardsLimit.cardsPerDay,
     })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { href: this.paymentLink, target: "_blank", class: "upgrade-button", onClick: () => {
         this.watchMePaying.emit();
-      } }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.upgrade')))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { "data-test": "card", class: {
-        'vocably-card padding-left-12': true,
-        'vocably-bottom-12-border': itemIndex < cardsArray.length - 1,
-      } }, this.canCongratulate && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: 'vocably-added-congratulation' +
+      } }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.upgrade')))))), this.canCongratulate && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { key: "congratulation", class: 'vocably-added-congratulation' +
         (this.congratulateItemIndex === itemIndex
           ? ' vocably-added-congratulation-visible'
-          : '') }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-pb-12" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-first-translation-congratulation", { card: card })))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-card-container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-card-action" }, isCardItem(card) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: {
+          : '') }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-pb-12" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-first-translation-congratulation", { card: card })))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { key: "card", "data-test": "card", class: {
+        'vocably-card padding-left-12': true,
+        'vocably-bottom-12-border': itemIndex < cardsArray.length - 1,
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { key: "container", class: "vocably-card-container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-card-action" }, !this.hideActions && (0,_translation_cards_8c7c5e45_js__WEBPACK_IMPORTED_MODULE_3__.a)(card) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: {
         display: 'flex',
         flexDirection: 'column',
         gap: '8px',
@@ -10819,7 +10942,7 @@ const VocablyTranslationCards = class {
         alignItems: 'center',
         gap: '4px',
         marginTop: '4px',
-      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-card-action-button", title: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.remove_card'), disabled: this.isUpdating !== null, onClick: () => {
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-card-action-button", title: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.remove_card'), disabled: this.isUpdating !== null, onClick: () => {
         if (this.disabled) {
           return false;
         }
@@ -10832,18 +10955,31 @@ const VocablyTranslationCards = class {
           translationCards: this.translationCards,
           card,
         });
-      } }, this.isUpdating === card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-spin", null)), this.isUpdating !== card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-bookmark-check", null)))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-card-action-button", title: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.edit_tags'), disabled: this.isUpdating !== null, onClick: (e) => {
+      } }, this.isUpdating === card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-spin", null)), this.isUpdating !== card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-bookmark-check", null)))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-card-action-button", title: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.edit_tags'), disabled: this.isUpdating !== null, onClick: (e) => {
         if (this.disabled) {
           return;
         }
         e.target &&
           this.showTagMenu(e.target, card.id);
-      } }, this.isUpdating !== card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-tag", null))))), isDetachedCardItem(card) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: {
+      } }, this.isUpdating !== card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-tag", null))))), !this.hideActions && (0,_translation_cards_8c7c5e45_js__WEBPACK_IMPORTED_MODULE_3__.i)(card) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: {
         'vocably-card-action-button': true,
         'vocably-card-add-button': true,
       }, title: "Add card", disabled: this.isUpdating !== null, onClick: () => {
         if (this.disabled) {
           return false;
+        }
+        if (!this.isLoggedInUser) {
+          // Adding is impossible until the visitor signs in,
+          // which happens elsewhere. Their choice is handed
+          // over to `vocably-translation`, the only part of
+          // this that survives long enough to add the card once
+          // the session and the collection are there.
+          this.addCardIntent.emit({
+            translationCards: this.translationCards,
+            card,
+          });
+          this.showSignIn(itemIndex);
+          return;
         }
         if (!this.canAdd) {
           this.addAttemptIndex = itemIndex;
@@ -10861,23 +10997,33 @@ const VocablyTranslationCards = class {
           translationCards: this.translationCards,
           card,
         });
-      } }, this.isUpdating === card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-spin", null)), this.isUpdating !== card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-plus", null)), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { style: {
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "vocably-card-action-icon" }, this.isUpdating === card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-spin", null)), this.isUpdating !== card && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-plus", null))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { style: {
         marginLeft: '2px',
         display: 'inline-block',
         fontSize: '16px',
-      } }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.learn'))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-safe-action-area" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-card-source", { card: card, playAudioPronunciation: this.playAudioPronunciation, style: {
+      } }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.learn'))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-safe-action-area" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-card-source", { card: card, playAudioPronunciation: this.playAudioPronunciation, style: {
         marginBottom: '6px',
-      }, class: "vocably-card-source" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-card-definitions", { class: "vocably-mb-6", card: card, updateCard: this.makeUpdateCard(card), isLightweight: this.isLightweight }), card.data.example && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-small vocably-mb-6" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.example')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-card-examples", { example: card.data.example }))), isItem(card) && card.data.tags.length > 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mt-12", style: {
+      }, class: "vocably-card-source" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-card-definitions", { class: "vocably-mb-6", card: card, updateCard: this.makeUpdateCard(card), isLightweight: this.isLightweight }), card.data.example && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-small vocably-mb-6" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.example')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-card-examples", { example: card.data.example }))), isItem(card) && card.data.tags.length > 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mt-12", style: {
         display: 'flex',
         gap: '6px',
         flexWrap: 'wrap',
-      } }, card.data.tags.map((tagItem) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-tag" }, tagItem.data.title, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "button", class: "vocably-tag-remove-button", "aria-label": (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.remove_tag'), title: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.remove_tag'), onClick: this.detachTagClick(card, tagItem) }, this.removing &&
+      } }, card.data.tags.map((tagItem) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-tag" }, tagItem.data.title, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "button", class: "vocably-tag-remove-button", "aria-label": (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.remove_tag'), title: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('translation.remove_tag'), onClick: this.detachTagClick(card, tagItem) }, this.removing &&
       this.removing.card === card &&
       this.removing.tag === tagItem && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-spin", null)), (!this.removing ||
       this.removing.card !== card ||
-      this.removing.tag !== tagItem) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-remove", { class: "vocably-tag-remove-button-icon" }))))))))))))))));
+      this.removing.tag !== tagItem) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-remove", { class: "vocably-tag-remove-button-icon" }))))))))), this.signInItemIndex === itemIndex && !this.isLoggedInUser && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { "data-test": "sign-in-cover", class: {
+        'vocably-sign-in-cover': true,
+        'vocably-sign-in-cover-hiding': this.signInHiding,
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-sign-in-cover-panel" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-close-button", { class: "vocably-sign-in-cover-close", onClose: (event) => {
+        // Otherwise the whole popup is being closed
+        event.stopPropagation();
+        this.hideSignIn();
+      } }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-sign-in", null)))))))))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
+  static get watchers() { return {
+    "isUpdating": ["isUpdatingChanged"]
+  }; }
 };
 VocablyTranslationCards.style = translationCardsCss;
 
@@ -11021,7 +11167,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 
 
-const buttonCss = ":host{display:block;visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important}.button{display:flex;border-radius:5px;width:21px;height:21px;line-height:21px;background-color:#fff;padding:3px;cursor:pointer;box-sizing:content-box;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0, 0, 0, 0.8);transition:box-shadow 0.1s}.button .svg{height:18.9px}.button:hover{box-shadow:0 2px 5px rgba(0, 0, 0, 0.9)}.button:active{box-shadow:0 2px 3px rgba(0, 0, 0, 0.7)}.button{animation-duration:0.3s;animation-name:fadeIn}@keyframes fadeIn{from{opacity:0}to{opacity:1}}";
+const buttonCss = ":host{display:block;visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important}.button{display:flex;border-radius:7px;width:21px;height:21px;line-height:21px;background-color:#fff;padding:3px;cursor:pointer;box-sizing:content-box;align-items:center;justify-content:center;box-shadow:0 0 0 0.5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.16), 0 3px 8px rgba(0, 0, 0, 0.14);transition:box-shadow 150ms ease, transform 150ms ease}.button .svg{height:18.9px}.button:hover{transform:translateY(-1px);box-shadow:0 0 0 0.5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.14), 0 6px 14px rgba(0, 0, 0, 0.18)}.button:active{transform:translateY(0) scale(0.94);box-shadow:0 0 0 0.5px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.18)}.button{animation:popIn 200ms cubic-bezier(0.2, 0.9, 0.3, 1.2)}@keyframes popIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}";
 
 const VocablyButton = class {
   constructor(hostRef) {
@@ -11038,7 +11184,7 @@ VocablyButton.style = buttonCss;
 
 /***/ },
 
-/***/ 6962
+/***/ 5104
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11048,6 +11194,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   vocably_card_examples: () => (/* binding */ VocablyCardExamples),
 /* harmony export */   vocably_card_source: () => (/* binding */ VocablyCardSource),
 /* harmony export */   vocably_card_translation: () => (/* binding */ VocablyCardTranslation),
+/* harmony export */   vocably_close_button: () => (/* binding */ VocablyCloseButton),
 /* harmony export */   vocably_first_translation_congratulation: () => (/* binding */ VocablyFirstTranslationCongratulation),
 /* harmony export */   vocably_icon_bookmark_check: () => (/* binding */ VocablyIconBookmarkCheck),
 /* harmony export */   vocably_icon_plus: () => (/* binding */ VocablyIconPlus),
@@ -11057,13 +11204,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   vocably_overlay: () => (/* binding */ VocablyOverlay),
 /* harmony export */   vocably_play_sound: () => (/* binding */ VocablyPlaySound),
 /* harmony export */   vocably_qr_code: () => (/* binding */ VocablyButton),
+/* harmony export */   vocably_sign_in: () => (/* binding */ VocablySignIn),
 /* harmony export */   vocably_tag_form: () => (/* binding */ VocablyTagsMenu$1),
 /* harmony export */   vocably_tags_menu: () => (/* binding */ VocablyTagsMenu)
 /* harmony export */ });
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 /* harmony import */ var _stringArray_af4489c8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(931);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5063);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4830);
+/* harmony import */ var _index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7095);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9012);
 
 
 
@@ -11205,6 +11353,28 @@ const VocablyCardTranslation = class {
   }
 };
 VocablyCardTranslation.style = cardTranslationCss;
+
+const closeButtonCss = "vocably-close-button{display:inline-block;width:25px;height:25px;line-height:25px;vertical-align:middle;visibility:visible !important}.vocably-close-button{display:flex;align-items:center;justify-content:center;width:25px;height:25px;line-height:0 !important;box-sizing:border-box;background:none;border:none;border-radius:50%;outline:3px solid transparent;outline-offset:0;padding:7px;font-size:0;cursor:pointer;transition:transform 0.2s, background-color 0.2s, outline-color 0.2s}.vocably-close-button:hover{background-color:rgba(0, 0, 0, 0.07);outline-color:rgba(0, 0, 0, 0.07)}.vocably-close-button:active{background-color:rgba(0, 0, 0, 0.14);outline-color:rgba(0, 0, 0, 0.14);transform:scale(0.8)}.vocably-close-button:focus-visible{background-color:rgba(0, 0, 0, 0.07);outline:2px solid #0050ff;outline-offset:2px}@media (prefers-reduced-motion: reduce){.vocably-close-button{transition:none}.vocably-close-button:active{transform:none}}.vocably-close-svg{display:block;flex:none;width:11px;height:11px}.vocably-close-svg-path{stroke-width:0.5px;stroke:#6a6a6a}";
+
+const VocablyCloseButton = class {
+  constructor(hostRef) {
+    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
+    this.close = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "close", 7);
+  }
+  connectedCallback() {
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+  }
+  disconnectedCallback() {
+    var _a;
+    (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
+  }
+  render() {
+    const label = (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('close_button.label');
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "button", class: "vocably-close-button", "aria-label": label, title: label, onClick: () => this.close.emit(), onMouseDown: (e) => e.stopPropagation(), onMouseUp: (e) => e.stopPropagation() }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "vocably-close-svg", viewBox: "0 0 10 10", fill: "none", xmlns: "http://www.w3.org/2000/svg", "aria-hidden": "true", focusable: "false" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { class: "vocably-close-svg-path", d: "M10 0L0 10M0 0L10 10" })))));
+  }
+  get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
+};
+VocablyCloseButton.style = closeButtonCss;
 
 (()=>{var s=`
 <div class="container">
@@ -11771,32 +11941,79 @@ VocablyCardTranslation.style = cardTranslationCss;
       }
     `;let e=this.attachShadow({mode:"open"});this.getAttribute("nonce")&&t.setAttribute("nonce",this.getAttribute("nonce"));let o=this.getAttribute("mode")??"light",i=a;o==="dark"&&(i=i.replace(/#222227/g,"#ffffff")),e.appendChild(t),e.innerHTML=e.innerHTML+i;}connectedCallback(){new ResizeObserver(this.resetWidth.bind(this)).observe(this),this.resetWidth(),this.setAttribute("rendered","");}resetWidth(){this.style.setProperty("--width",`${this.clientWidth}px`);}};typeof window<"u"&&window.customElements&&!window.customElements.get("pixel-9-pro")&&window.customElements.define("pixel-9-pro",l);})();
 
-const firstTranslationCongratulationCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;line-height:1 !important;display:block}:host .phone{width:140px}:host .phone-bg{width:100%;height:100%;background-color:#fff}:host .card{position:relative;height:100%;transform-style:preserve-3d;animation:spin 10s infinite linear}@keyframes spin{0%{transform:rotateY(0deg)}45%{transform:rotateY(0deg)}50%{transform:rotateY(180deg)}95%{transform:rotateY(180deg)}100%{transform:rotateY(0deg)}}:host .card-side-wrapper{background-color:#fff;width:100%;height:100%;padding:6px;padding-top:24px;box-sizing:border-box;overflow:hidden;position:absolute;top:0;backface-visibility:hidden}:host .back{transform:rotateY(180deg)}:host .card-side{display:flex;flex-direction:column;min-height:100%;justify-content:center;align-items:center;gap:4px}:host .emphasize{color:#000000;font-weight:bold}:host .row{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:18px;flex-wrap:wrap}:host p{margin-top:0;margin-bottom:8px}:host .small{font-size:12px}:host{visibility:visible !important}.svg{max-width:100px;width:100%}.vocably-list{list-style:outside;padding:0;margin:0 0 0 16px}";
+const firstTranslationCongratulationCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:block;visibility:visible !important}.container{display:flex;flex-direction:row;align-items:center;flex-wrap:wrap;gap:20px;padding:12px;border-radius:8px;background:linear-gradient(160deg, rgba(0, 80, 255, 0.06) 0%, rgba(0, 80, 255, 0) 60%)}.illustration{flex:0 0 auto;margin:0 auto}.content{flex:1 1 200px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:8px;line-height:1.35}.status{display:inline-flex;align-items:center;gap:4px;padding:3px 10px 3px 6px;border-radius:999px;background-color:rgba(18, 161, 80, 0.12);color:#12a150;font-size:12px;font-weight:400;letter-spacing:0.02em}.status-icon{width:14px;height:14px}.title{color:#000000;font-size:18px;font-weight:400;line-height:1.3}.word{color:#0050ff;overflow-wrap:anywhere}.description{font-size:14px}.get-app{display:flex;flex-direction:row;align-items:center;gap:12px;width:100%;margin-top:4px;padding:10px;box-sizing:border-box;border-radius:12px;background-color:rgb(255, 255, 255);border:1px solid #e6e6e6}.qr-frame{flex:0 0 auto;width:84px;height:84px;padding:4px;box-sizing:border-box;border-radius:8px;background-color:#fff}.qr{width:100%}.get-app-text{display:flex;flex-direction:column;gap:4px;min-width:0}.get-app-title{color:#000000;font-size:14px;font-weight:400}.get-app-hint{font-size:13px}.get-app-mobile{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:4px}.store-badge{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px 0 12px;box-sizing:border-box;border-radius:10px;background-color:#000;color:#fff !important;text-decoration:none !important;border:1px solid #a6a6a6;transition:transform 150ms, box-shadow 150ms}.store-badge:hover,.store-badge:focus-visible{box-shadow:0 4px 12px rgba(0, 0, 0, 0.25)}.store-badge:active{transform:scale(0.97)}.store-logo{width:24px;height:24px;flex:0 0 auto}.store-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1;white-space:nowrap}.store-caption{font-size:10px;margin-bottom:2px}.store-name{font-size:18px;font-weight:400;letter-spacing:-0.01em}.browser{font-size:12px;color:#6a6a6a}.link{text-decoration:underline;text-decoration-thickness:0.5px;text-underline-offset:2px;color:#0050ff;background:none;border:none;border-radius:0;cursor:pointer}.link:hover,.link:focus,.link:active{color:#0047e3}.phone{display:block;width:112px}.phone-bg{width:100%;height:100%;background-color:#fff}.card{position:relative;height:100%;transform-style:preserve-3d;animation:spin 10s infinite ease-in-out}@keyframes spin{0%,45%{transform:rotateY(0deg)}50%,95%{transform:rotateY(180deg)}100%{transform:rotateY(360deg)}}@media (prefers-reduced-motion: reduce){.card{animation:none}}.card-side-wrapper{background-color:#fff;width:100%;height:100%;padding:6px;padding-top:24px;box-sizing:border-box;overflow:hidden;position:absolute;top:0;backface-visibility:hidden;line-height:1.2}.back{transform:rotateY(180deg)}.card-side{display:flex;flex-direction:column;min-height:100%;justify-content:center;align-items:center;gap:4px;text-align:center}.card-source-line{display:flex;flex-direction:row;align-items:center;justify-content:center;flex-wrap:wrap;column-gap:4px}.emphasize{color:#000000;font-weight:bold}.small{font-size:10px}.vocably-list{list-style:outside;padding:0;margin:0 0 0 12px;text-align:left}";
 
+const APP_STORE_URL = 'https://apps.apple.com/app/vocably-pro-language-cards/id1641258757';
+const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.vocablypro';
+const detectPlatform = () => {
+  const ua = navigator.userAgent;
+  if (/android/i.test(ua)) {
+    return 'android';
+  }
+  // iPadOS reports itself as a Mac, touch support gives it away
+  if (/iPad|iPhone|iPod/.test(ua) ||
+    (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) {
+    return 'ios';
+  }
+  return 'desktop';
+};
+// Replaces {placeholders} in a translated string with JSX nodes
+const interpolate = (template, params) => template.split(/(\{\w+\})/).map((part) => {
+  const match = part.match(/^\{(\w+)\}$/);
+  return match && match[1] in params ? params[match[1]] : part;
+});
+// Keeps the headline readable when a whole sentence was translated
+const truncate = (text, maxLength = 48) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
+  const cut = text.slice(0, maxLength);
+  const lastSpace = cut.lastIndexOf(' ');
+  return `${(lastSpace > maxLength / 2 ? cut.slice(0, lastSpace) : cut).trim()}…`;
+};
 const VocablyFirstTranslationCongratulation = class {
   constructor(hostRef) {
     (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
     this.card = undefined;
+    this.platform = undefined;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
     (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
   }
-  render() {
+  renderPhone() {
     var _a, _b;
     const examples = (0,_stringArray_af4489c8_js__WEBPACK_IMPORTED_MODULE_1__.e)((_a = this.card.data.example) !== null && _a !== void 0 ? _a : '');
     const definitions = (0,_stringArray_af4489c8_js__WEBPACK_IMPORTED_MODULE_1__.e)((_b = this.card.data.definition) !== null && _b !== void 0 ? _b : '');
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "row" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "col" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("iphone-16-max", { class: "phone" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "phone-bg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side-wrapper front" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        flexWrap: 'wrap',
-        columnGap: '4px',
-      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "emphasize small" }, this.card.data.source), this.card.data.ipa && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, "[", this.card.data.ipa, "]")), this.card.data.g && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, "(", this.card.data.g, ")")), this.card.data.partOfSpeech && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, this.card.data.partOfSpeech))), examples.length === 1 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, examples[0])), examples.length > 1 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("ul", { class: "small vocably-list" }, examples.map((item) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", null, item))))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side-wrapper back" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side" }, definitions.length > 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("ul", { class: "small vocably-list" }, this.card.data.translation && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "emphasize" }, this.card.data.translation)), definitions.map((item) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", null, item))))), definitions.length === 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "emphasize small" }, this.card.data.translation)))))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "col" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("p", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "emphasize" }, this.card.data.source), ' ', (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.on_phone')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("p", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.scan_qr')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-qr-code", { style: { width: '180px', marginBottom: '8px' } }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("p", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.or_go_to'), ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { href: `https://app.vocably.pro/deck/${this.card.data.language}`, target: "_blank" }, "app.vocably.pro")), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.to_study_browser'))))));
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("iphone-16-max", { class: "phone" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "phone-bg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side-wrapper front" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-source-line" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "emphasize small" }, this.card.data.source), this.card.data.ipa && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, "[", this.card.data.ipa, "]")), this.card.data.g && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, "(", this.card.data.g, ")")), this.card.data.partOfSpeech && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, this.card.data.partOfSpeech))), examples.length === 1 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "small" }, examples[0])), examples.length > 1 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("ul", { class: "small vocably-list" }, examples.map((item) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", null, item))))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side-wrapper back" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "card-side" }, definitions.length > 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("ul", { class: "small vocably-list" }, this.card.data.translation && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "emphasize" }, this.card.data.translation)), definitions.map((item) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", null, item))))), definitions.length === 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "emphasize small" }, this.card.data.translation))))))));
+  }
+  renderQrCode() {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "get-app" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "qr-frame" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-qr-code", { class: "qr" })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "get-app-text" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "get-app-title" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.get_app')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "get-app-hint" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.scan_qr')))));
+  }
+  renderAppStoreBadge() {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { class: "store-badge", href: APP_STORE_URL, target: "_blank", rel: "noopener", "aria-label": "App Store" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "store-logo", viewBox: "0 0 24 24", "aria-hidden": "true" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { fill: "currentColor", d: "M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701" })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "store-text" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "store-caption" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.app_store_caption')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "store-name" }, "App Store"))));
+  }
+  renderGooglePlayBadge() {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { class: "store-badge", href: GOOGLE_PLAY_URL, target: "_blank", rel: "noopener", "aria-label": "Google Play" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "store-logo", viewBox: "0 0 24 24", "aria-hidden": "true" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { fill: "#00C3FF", d: "M3.5 1.8 13.2 12 3.5 22.2a1.6 1.6 0 0 1-.5-1.2V3a1.6 1.6 0 0 1 .5-1.2z" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { fill: "#00E676", d: "M3.5 1.8a1.5 1.5 0 0 1 1.7-.1l11.4 6.6-3.4 3.7z" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { fill: "#FF3A44", d: "M3.5 22.2 13.2 12l3.4 3.7-11.4 6.6a1.5 1.5 0 0 1-1.7-.1z" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { fill: "#FFD500", d: "m16.6 8.3 3.9 2.3c1.1.6 1.1 2.2 0 2.8l-3.9 2.3-3.4-3.7z" })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "store-text" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "store-caption" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.google_play_caption')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "store-name" }, "Google Play"))));
+  }
+  renderStoreBadge(platform) {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "get-app-mobile" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "get-app-hint" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.get_app_mobile')), platform === 'ios'
+      ? this.renderAppStoreBadge()
+      : this.renderGooglePlayBadge()));
+  }
+  render() {
+    var _a;
+    const platform = (_a = this.platform) !== null && _a !== void 0 ? _a : detectPlatform();
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: { container: true, [`platform-${platform}`]: true } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "illustration" }, this.renderPhone()), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "content" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "status" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "status-icon", viewBox: "0 0 24 24", "aria-hidden": "true" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { fill: "currentColor", d: "M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z" })), (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.badge')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "title" }, interpolate((0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.title'), {
+      word: ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "word" }, truncate(this.card.data.source))),
+    })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "description" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.description')), platform === 'desktop'
+      ? this.renderQrCode()
+      : this.renderStoreBadge(platform), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "browser" }, interpolate((0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('congrats.browser'), {
+      link: ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { class: "link", href: `https://app.vocably.pro/deck/${this.card.data.language}`, target: "_blank", rel: "noopener" }, "app.vocably.pro")),
+    }))))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
@@ -11972,7 +12189,45 @@ const VocablyButton = class {
 };
 VocablyButton.style = qrCodeCss;
 
-const tagFormCss = ":host{visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important;--shadow-spread:10px;--shadow-v-offset:4px}.tag-form{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;background-color:rgb(255, 255, 255);padding:24px;border-radius:16px;box-shadow:0 var(--shadow-v-offset) var(--shadow-spread) rgba(0, 0, 0, 0.6);box-sizing:border-box;width:clamp(340px, 90vw, 390px)}form{display:flex;flex-direction:column;gap:16px;position:relative}h1{font-size:16px;padding:0;margin:0;font-weight:normal}label{display:flex;flex-direction:column;gap:16px}input[type=text]{color:#6a6a6a !important;font-size:var(--font-size, 14.4px) !important;padding:8px 8px !important;border:none !important;border-radius:8px !important;background-color:rgba(0, 0, 0, 0.04);outline:none !important;height:auto !important;line-height:inherit !important;box-shadow:none !important;box-sizing:border-box !important;width:100% !important}input[type=text]:focus{background-color:rgba(0, 0, 0, 0.07) !important}input[type=text]:focus{background-color:rgba(0, 0, 0, 0.07)}.buttons{display:flex;justify-content:flex-end;gap:4px}.delete{text-decoration:underline;text-decoration-thickness:0.5px;text-underline-offset:2px;color:#0050ff;background:none;border:none;border-radius:0;cursor:pointer}.delete:hover,.delete:focus,.delete:active{color:#0047e3}.delete{color:#ff5e5e}.delete:hover,.delete:focus,.delete:active{color:#e13a3a}.delete{margin-right:auto}.cancel{text-decoration:underline;text-decoration-thickness:0.5px;text-underline-offset:2px;color:#0050ff;background:none;border:none;border-radius:0;cursor:pointer}.cancel:hover,.cancel:focus,.cancel:active{color:#0047e3}.submit{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.submit:hover:not([disabled]),.submit:focus:not([disabled]){background:#0047e3}.submit:active:not([disabled]){background:#0047e3}.submit[disabled]{background:#bababa;cursor:not-allowed}.submit{margin:0;flex:0;min-width:140px}.loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background-color:rgb(255, 255, 255);opacity:0.6}";
+const signInCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:block;visibility:visible !important}.container{display:inline-block}.button{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.button:hover:not([disabled]),.button:focus:not([disabled]){background:#0047e3}.button:active:not([disabled]){background:#0047e3}.button[disabled]{background:#bababa;cursor:not-allowed}.p{margin-bottom:16px;text-align:center}.p a{color:#0050ff}.link{text-decoration:underline !important;text-decoration-thickness:0.5px !important;text-underline-offset:2px !important;color:#0050ff !important;background:none !important;border:none !important;border-radius:0 !important;cursor:pointer}.link:hover,.link:focus,.link:active{color:#0047e3 !important}.benefits{list-style:none;margin:0 0 16px;padding:0;text-align:left}.benefit{display:flex;align-items:center;gap:8px;padding:8px 0}.benefit+.benefit{border-top:0.6px solid #bababa}.benefit-icon{flex:0 0 auto;width:24px;height:24px;fill:#0050ff}.benefit-text{font-size:14.4px;line-height:20px}";
+
+const benefits = [
+  {
+    // cloud-sync-outline
+    key: 'sign_in.benefit.sync',
+    icon: 'M13.03 18C13.08 18.7 13.24 19.38 13.5 20H6.5C5 20 3.69 19.5 2.61 18.43C1.54 17.38 1 16.09 1 14.58C1 13.28 1.39 12.12 2.17 11.1S4 9.43 5.25 9.15C5.67 7.62 6.5 6.38 7.75 5.43S10.42 4 12 4C13.95 4 15.6 4.68 16.96 6.04C18.32 7.4 19 9.05 19 11C19.04 11 19.07 11 19.1 11C18.36 11.07 17.65 11.23 17 11.5V11C17 9.62 16.5 8.44 15.54 7.46C14.56 6.5 13.38 6 12 6S9.44 6.5 8.46 7.46C7.5 8.44 7 9.62 7 11H6.5C5.53 11 4.71 11.34 4.03 12.03C3.34 12.71 3 13.53 3 14.5S3.34 16.29 4.03 17C4.71 17.66 5.53 18 6.5 18H13.03M19 13.5V12L16.75 14.25L19 16.5V15C20.38 15 21.5 16.12 21.5 17.5C21.5 17.9 21.41 18.28 21.24 18.62L22.33 19.71C22.75 19.08 23 18.32 23 17.5C23 15.29 21.21 13.5 19 13.5M19 20C17.62 20 16.5 18.88 16.5 17.5C16.5 17.1 16.59 16.72 16.76 16.38L15.67 15.29C15.25 15.92 15 16.68 15 17.5C15 19.71 16.79 21.5 19 21.5V23L21.25 20.75L19 18.5V20Z',
+  },
+  {
+    // cellphone-link
+    key: 'sign_in.benefit.study',
+    icon: 'M22,17H18V10H22M23,8H17A1,1 0 0,0 16,9V19A1,1 0 0,0 17,20H23A1,1 0 0,0 24,19V9A1,1 0 0,0 23,8M4,6H22V4H4A2,2 0 0,0 2,6V17H0V20H14V17H4V6Z',
+  },
+  {
+    // file-delimited-outline
+    key: 'sign_in.benefit.export',
+    icon: 'M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2M18 20H6V4H13V9H18V20M10 19L12 15H9V10H15V15L13 19H10',
+  },
+];
+const VocablySignIn = class {
+  constructor(hostRef) {
+    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
+    this.confirm = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "confirm", 7);
+  }
+  connectedCallback() {
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+  }
+  disconnectedCallback() {
+    var _a;
+    (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
+  }
+  render() {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, { "data-test": "sign-in" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("ul", { class: "benefits", style: { padding: '0 32px' } }, benefits.map((benefit) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "benefit", key: benefit.key }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "benefit-icon", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: benefit.icon })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "benefit-text" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)(benefit.key)))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "p" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "button", "data-test": "sign-in-button", onClick: () => this.confirm.emit() }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('sign_in.button')))));
+  }
+  get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
+};
+VocablySignIn.style = signInCss;
+
+const tagFormCss = ":host{visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important;--shadow-spread:10px;--shadow-v-offset:4px}.tag-form{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;background-color:rgb(255, 255, 255);padding:24px;border-radius:16px;box-shadow:0 0 0 1px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.08), 0 var(--shadow-v-offset) var(--shadow-spread) -2px rgba(15, 23, 42, 0.1), 0 10px 28px -6px rgba(15, 23, 42, 0.22);box-sizing:border-box;width:clamp(340px, 90vw, 390px)}form{display:flex;flex-direction:column;gap:16px;position:relative}h1{font-size:16px;padding:0;margin:0;font-weight:normal}label{display:flex;flex-direction:column;gap:16px}input[type=text]{color:#6a6a6a !important;font-size:var(--font-size, 14.4px) !important;padding:8px 8px !important;border:none !important;border-radius:8px !important;background-color:rgba(0, 0, 0, 0.04);outline:none !important;height:auto !important;line-height:inherit !important;box-shadow:none !important;box-sizing:border-box !important;width:100% !important}input[type=text]:focus{background-color:rgba(0, 0, 0, 0.07) !important}input[type=text]:focus{background-color:rgba(0, 0, 0, 0.07)}.buttons{display:flex;justify-content:flex-end;gap:4px}.delete{text-decoration:underline;text-decoration-thickness:0.5px;text-underline-offset:2px;color:#0050ff;background:none;border:none;border-radius:0;cursor:pointer}.delete:hover,.delete:focus,.delete:active{color:#0047e3}.delete{color:#ff5e5e}.delete:hover,.delete:focus,.delete:active{color:#e13a3a}.delete{margin-right:auto}.cancel{text-decoration:underline;text-decoration-thickness:0.5px;text-underline-offset:2px;color:#0050ff;background:none;border:none;border-radius:0;cursor:pointer}.cancel:hover,.cancel:focus,.cancel:active{color:#0047e3}.submit{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.submit:hover:not([disabled]),.submit:focus:not([disabled]){background:#0047e3}.submit:active:not([disabled]){background:#0047e3}.submit[disabled]{background:#bababa;cursor:not-allowed}.submit{margin:0;flex:0;min-width:140px}.loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background-color:rgb(255, 255, 255);opacity:0.6}";
 
 const VocablyTagsMenu$1 = class {
   constructor(hostRef) {
@@ -11985,7 +12240,7 @@ const VocablyTagsMenu$1 = class {
     this.saving = false;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
@@ -12014,7 +12269,7 @@ const VocablyTagsMenu$1 = class {
     this.saving = true;
     const result = await this.saveTag(Object.assign(Object.assign({}, this.tagItem), { data: Object.assign(Object.assign({}, (_a = this.tagItem) === null || _a === void 0 ? void 0 : _a.data), { title: this.title.trim() }) }));
     if (result.success === false) {
-      alert((0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.save_error'));
+      alert((0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.save_error'));
       this.saving = false;
       return;
     }
@@ -12031,7 +12286,7 @@ const VocablyTagsMenu$1 = class {
     this.saving = true;
     const result = await this.deleteTag(this.tagItem);
     if (result.success === false) {
-      alert((0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.delete_error'));
+      alert((0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.delete_error'));
       this.saving = false;
       return;
     }
@@ -12046,19 +12301,19 @@ const VocablyTagsMenu$1 = class {
         this.onSubmit();
         return false;
       } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("label", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("h1", null, this.tagItem
-      ? (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.new_name_for', { title: this.tagItem.data.title })
-      : (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.new_tag_name')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("input", { type: "text", placeholder: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.placeholder'), onKeyUp: this.onInputChange.bind(this), onChange: this.onInputChange.bind(this), ref: (el) => (this.textInput = el) })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "buttons" }, this.tagItem && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "delete", disabled: this.isDisabled(), type: "button", onClick: () => {
-        const yesPlease = window.confirm((0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.delete_confirm'));
+      ? (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.new_name_for', { title: this.tagItem.data.title })
+      : (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.new_tag_name')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("input", { type: "text", placeholder: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.placeholder'), onKeyUp: this.onInputChange.bind(this), onChange: this.onInputChange.bind(this), ref: (el) => (this.textInput = el) })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "buttons" }, this.tagItem && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "delete", disabled: this.isDisabled(), type: "button", onClick: () => {
+        const yesPlease = window.confirm((0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.delete_confirm'));
         if (yesPlease) {
           this.onDelete();
         }
-      } }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.delete'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "button", class: "cancel", onClick: () => this.hide.emit() }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.cancel')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "submit", class: "submit", disabled: this.isDisabled() }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.save'))), this.saving && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "loader" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-spinner", null))))));
+      } }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.delete'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "button", class: "cancel", onClick: () => this.hide.emit() }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.cancel')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "submit", class: "submit", disabled: this.isDisabled() }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tag_form.save'))), this.saving && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "loader" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-spinner", null))))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
 VocablyTagsMenu$1.style = tagFormCss;
 
-const tagsMenuCss = ":host{--shadow-spread:10px;--shadow-v-offset:4px;--padding:12px;--item-height:48px;font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;visibility:visible !important;background-color:rgb(255, 255, 255);max-height:45.4545454545vh;padding:8px 0;border-radius:8px;box-shadow:0 var(--shadow-v-offset) var(--shadow-spread) rgba(0, 0, 0, 0.6);overflow-y:auto}menu{list-style:none;padding:0;margin:0}menu li{border-top:0.5px solid #bababa;min-width:300px}menu li.info{padding:var(--padding)}menu li:first-child{border-top:none}menu li{display:flex;align-items:center}menu li.clickable{padding:0}menu li.clickable:hover{background-color:rgba(230, 230, 230, 0.5)}menu button{display:block;border:none;width:100%;font-size:100%;box-sizing:border-box;padding:var(--padding);text-align:left;cursor:pointer;background-color:transparent;white-space:nowrap;height:var(--item-height)}menu button:hover{background-color:rgba(230, 230, 230, 0.5)}menu button:active{background-color:rgba(230, 230, 230, 0.2)}.icon{display:inline-block;width:18px;height:18px;vertical-align:bottom;margin-left:4px}.spinner{--size:18px}";
+const tagsMenuCss = ":host{--shadow-spread:10px;--shadow-v-offset:4px;--padding:12px;--item-height:48px;font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;visibility:visible !important;background-color:rgb(255, 255, 255);max-height:45.4545454545vh;padding:8px 0;border-radius:8px;box-shadow:0 0 0 1px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.08), 0 var(--shadow-v-offset) var(--shadow-spread) -2px rgba(15, 23, 42, 0.1), 0 10px 28px -6px rgba(15, 23, 42, 0.22);overflow-y:auto}menu{list-style:none;padding:0;margin:0}menu li{border-top:0.5px solid #bababa;min-width:300px}menu li.info{padding:var(--padding)}menu li:first-child{border-top:none}menu li{display:flex;align-items:center}menu li.clickable{padding:0}menu li.clickable:hover{background-color:rgba(230, 230, 230, 0.5)}menu button{display:block;border:none;width:100%;font-size:100%;box-sizing:border-box;padding:var(--padding);text-align:left;cursor:pointer;background-color:transparent;white-space:nowrap;height:var(--item-height)}menu button:hover{background-color:rgba(230, 230, 230, 0.5)}menu button:active{background-color:rgba(230, 230, 230, 0.2)}.icon{display:inline-block;width:18px;height:18px;vertical-align:bottom;margin-left:4px}.spinner{--size:18px}";
 
 const VocablyTagsMenu = class {
   constructor(hostRef) {
@@ -12077,7 +12332,7 @@ const VocablyTagsMenu = class {
       this.disabled = false;
       this.savingTag = null;
       if (result.success === false) {
-        alert((0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.error'));
+        alert((0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.error'));
         return;
       }
     };
@@ -12091,7 +12346,7 @@ const VocablyTagsMenu = class {
     this.savingTag = null;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
@@ -12125,15 +12380,15 @@ const VocablyTagsMenu = class {
     this.tagForm = tagForm;
   }
   render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("menu", null, this.existingItems.length === 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "info" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.info_line1'), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("br", null), (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.info_line2'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "clickable" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { onClick: () => {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("menu", null, this.existingItems.length === 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "info" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.info_line1'), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("br", null), (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.info_line2'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "clickable" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { onClick: () => {
         if (this.disabled) {
           return false;
         }
         this.displayTagForm();
-      } }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.add'))), this.existingItems
+      } }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.add'))), this.existingItems
       .sort((a, b) => b.created - a.created)
       .map((tagItem) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("li", { class: "clickable" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { onClick: this.onTagClick(tagItem), style: { flex: '1' } }, tagItem.data.title, ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "icon" }, this.savingTag !== tagItem &&
-      this.selectedItems.includes(tagItem.id) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-check", { class: "check" })), this.savingTag === tagItem && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-spin", { class: "spinner" })))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { title: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.edit'), class: "edit", style: { flex: '0', textAlign: 'center' }, onClick: () => {
+      this.selectedItems.includes(tagItem.id) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-check", { class: "check" })), this.savingTag === tagItem && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-spin", { class: "spinner" })))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { title: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('tags_menu.edit'), class: "edit", style: { flex: '0', textAlign: 'center' }, onClick: () => {
         if (this.disabled) {
           return false;
         }
@@ -12143,48 +12398,6 @@ const VocablyTagsMenu = class {
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
 VocablyTagsMenu.style = tagsMenuCss;
-
-
-
-
-/***/ },
-
-/***/ 5266
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   vocably_close_button: () => (/* binding */ VocablyCloseButton),
-/* harmony export */   vocably_logo: () => (/* binding */ VocablyLogo)
-/* harmony export */ });
-/* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
-
-
-const closeButtonCss = "vocably-close-button{display:inline-block;width:25px;height:25px;line-height:25px;vertical-align:middle;visibility:visible !important}.vocably-close-button{display:block;width:25px;height:25px;line-height:25px !important;background:none;border:none;padding:7px;font-size:0;cursor:pointer;transition:transform 0.2s}.vocably-close-button:active{transform:scale(0.8)}.vocably-close-svg{width:11px;height:11px}.vocably-close-svg-path{stroke-width:0.5px;stroke:#6a6a6a}";
-
-const VocablyCloseButton = class {
-  constructor(hostRef) {
-    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
-    this.close = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "close", 7);
-  }
-  render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-close-button", onClick: () => this.close.emit(), onMouseDown: (e) => e.stopPropagation(), onMouseUp: (e) => e.stopPropagation() }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "vocably-close-svg", viewBox: "0 0 10 10", fill: "none", xmlns: "http://www.w3.org/2000/svg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { class: "vocably-close-svg-path", d: "M10 0L0 10M0 0L10 10" })))));
-  }
-};
-VocablyCloseButton.style = closeButtonCss;
-
-const logoCss = ":host{--logo-color:#000000;display:inline-block;line-height:0;visibility:visible !important}.svg{height:100%;width:auto}.svg .primary{fill:#0050ff}";
-
-const VocablyLogo = class {
-  constructor(hostRef) {
-    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
-  }
-  render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { width: "1086", height: "258", viewBox: "0 0 1086 258", class: "svg", fill: "none", xmlns: "http://www.w3.org/2000/svg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M363.813 199.05L323.32 50.7578H346.993L378.453 178.8H379.699L411.159 50.7578H434.831L394.338 199.05H363.813Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M494.948 201.853C482.488 201.853 472.832 199.361 465.668 194.065C458.504 188.769 453.52 181.292 450.406 171.634C447.291 161.977 445.733 150.45 445.733 137.054C445.733 123.658 447.291 112.131 450.406 102.473C453.52 92.8152 458.504 85.3385 465.668 80.0423C472.832 74.7462 482.488 72.2539 494.948 72.2539C507.407 72.2539 517.063 74.7462 524.227 80.0423C531.391 85.3385 536.375 92.8152 539.178 102.473C542.293 112.131 543.539 123.658 543.539 137.054C543.539 150.45 541.982 161.977 539.178 171.634C536.375 181.292 531.08 188.769 524.227 194.065C517.063 199.361 507.407 201.853 494.948 201.853ZM494.948 183.784C499.931 183.784 503.981 183.161 507.407 181.915C510.833 180.669 513.325 178.488 515.506 175.061C517.686 171.946 518.932 166.961 519.866 161.042C520.489 154.811 521.112 147.023 521.112 137.054C521.112 127.085 520.801 119.296 519.866 113.065C518.932 106.834 517.686 102.161 515.506 99.046C513.637 95.9307 510.833 93.4385 507.407 92.1924C503.981 90.9462 499.931 90.3232 494.948 90.3232C489.964 90.3232 485.603 90.9462 482.177 92.1924C478.751 93.4385 476.259 95.6191 474.078 99.046C471.898 102.161 470.652 107.146 469.718 113.065C468.783 119.296 468.472 127.085 468.472 137.054C468.472 147.023 468.783 154.811 469.718 161.042C470.652 167.273 471.898 171.946 474.078 175.061C476.259 178.177 478.751 180.669 482.177 181.915C485.603 183.161 489.964 183.784 494.948 183.784Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M622.033 201.853C612.066 201.853 603.033 199.673 595.246 195.311C587.459 190.95 581.54 183.784 577.18 174.126C572.819 164.469 570.638 152.007 570.638 136.43C570.638 123.657 572.196 113.065 574.999 104.654C577.803 96.2423 581.852 89.6999 587.147 85.0268C592.131 80.3537 598.36 76.927 605.213 75.0578C612.066 73.1885 619.23 71.9424 627.017 71.9424C633.247 71.9424 639.165 72.254 645.083 73.1886C651.001 74.1232 655.673 74.7461 659.1 75.6807L656.608 93.4385C653.493 93.127 648.821 92.5036 642.903 91.569C636.673 90.9459 630.443 90.3232 624.214 90.3232C618.918 90.3232 614.558 90.6344 611.131 91.569C608.016 92.5036 605.213 93.7499 603.344 95.6191C600.541 98.423 598.36 103.408 596.803 110.573C595.246 117.738 594.311 126.461 594.311 136.742C594.311 146.088 594.934 153.877 596.492 159.796C598.049 165.715 599.606 170.077 601.475 172.881C603.344 175.996 605.213 177.865 606.771 179.111C607.705 179.734 609.262 180.669 611.131 181.292C613 181.915 615.804 182.538 619.23 182.538C622.968 182.538 627.017 181.915 631.378 180.98C635.739 180.046 639.476 178.8 643.214 177.554C646.952 176.307 651.001 174.749 655.673 172.569L662.215 189.392C655.673 193.13 649.444 196.246 643.526 198.115C637.607 199.984 630.132 201.853 622.033 201.853Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M714.855 201.853C708.314 201.853 702.396 200.296 697.412 197.18C692.117 194.065 688.068 189.392 685.264 183.473C682.461 177.553 680.904 170.388 680.904 161.977C680.904 151.696 683.084 143.907 687.133 137.988C691.494 132.38 697.412 128.019 705.199 125.527C712.986 123.034 722.019 121.788 732.298 121.788H752.856C752.856 114.935 752.545 109.327 752.233 104.965C751.922 100.604 750.676 97.177 749.119 94.9962C747.873 93.4385 746.315 92.1921 744.135 91.569C741.954 90.9459 739.151 90.6346 735.725 90.6346C730.43 90.6346 724.823 91.2577 719.528 92.1923C714.232 93.1269 709.249 94.373 704.888 95.6191C700.527 96.8653 695.543 98.7344 690.248 100.604L684.018 83.7806C689.625 81.2883 694.609 79.4194 699.281 77.8617C703.953 76.304 709.249 75.0577 715.167 73.8115C721.085 72.5654 727.003 71.9424 733.544 71.9424C743.823 71.9424 752.233 73.8114 758.152 77.5498C764.381 81.2883 768.742 86.5847 771.234 93.4385C774.037 100.292 775.283 108.392 775.283 117.738V199.049H760.332L757.217 185.965H755.971C755.037 186.588 753.168 187.834 750.676 189.703C748.184 191.261 745.069 193.13 741.331 195C737.594 196.869 733.544 198.426 729.184 199.984C724.511 201.23 719.839 201.853 714.855 201.853ZM719.839 182.85C724.511 182.85 729.184 182.227 733.544 180.669C737.905 179.111 741.954 177.554 745.381 175.996C748.807 174.438 750.987 173.192 752.545 172.257V141.104C751.299 140.792 748.807 140.481 745.069 140.169C741.331 139.858 736.659 139.546 731.052 139.546C718.905 139.546 711.429 140.792 708.626 143.285C707.068 144.531 705.822 146.711 704.888 149.827C703.953 152.942 703.642 156.992 703.642 161.665C703.642 169.142 704.888 174.438 707.38 177.865C709.872 181.292 713.921 182.85 719.839 182.85Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M860.63 201.854C856.58 201.854 851.597 201.542 845.678 200.607C839.76 199.673 833.842 198.738 827.612 197.492C821.694 196.246 816.399 194.688 811.727 193.442V38.6079H834.154V76.6157C835.711 76.3042 838.203 75.6811 841.629 75.058C845.056 74.4349 848.482 73.8119 852.843 73.1889C856.892 72.5658 860.941 72.2541 864.991 72.2541C878.073 72.2541 888.04 77.2388 895.204 87.208C902.369 97.1772 905.795 113.065 905.795 135.184C905.795 148.892 904.549 160.108 902.057 168.831C899.565 177.554 896.139 184.408 891.778 189.081C887.417 193.754 882.745 197.18 877.138 199.05C871.532 200.919 866.236 201.854 860.63 201.854ZM860.007 182.85C863.433 182.85 866.236 182.538 868.417 182.227C870.597 181.915 872.155 180.981 873.401 179.734C874.646 178.488 875.892 176.308 877.45 173.504C879.007 170.7 879.942 165.715 881.188 159.173C882.122 152.631 882.745 143.285 882.745 131.758C882.745 120.231 882.122 111.508 881.188 105.9C880.253 100.293 878.384 96.5542 876.515 94.9965C874.024 92.8157 869.351 91.5693 862.187 91.5693C855.335 91.5693 849.416 92.1926 844.433 93.4388C839.449 94.6849 836.023 95.6196 834.154 96.5542V180.046C835.4 180.357 836.957 180.669 839.449 181.292C841.941 181.915 844.744 182.227 848.17 182.538C851.597 182.538 855.646 182.85 860.007 182.85Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M939.435 199.05V38.2964H961.862V199.05H939.435Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M1007.03 234.565L1024.16 187.212L983.977 75.0581H1007.34L1034.13 163.223H1035.06L1061.54 75.0581H1085.21L1042.85 192.196L1030.39 234.877H1007.03V234.565Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M216.928 48.8888H19.1319C9.78725 48.8888 2 56.3657 2 66.0235V178.178C2 187.524 9.47576 195.312 19.1319 195.312H32.2145V235.812C32.2145 244.224 36.8869 251.701 44.0511 255.439C46.8545 256.997 49.9695 257.62 53.0844 257.62C57.7567 257.62 62.1176 256.062 66.1669 253.258L131.58 195.624H216.928C226.273 195.624 234.06 188.147 234.06 178.489V66.3349C234.06 56.6772 226.273 48.8888 216.928 48.8888ZM57.1337 241.42C54.3303 243.601 51.8384 242.666 50.9039 242.043C49.9695 241.42 47.4775 239.862 47.4775 235.812V125.839C47.4775 118.673 52.4613 108.081 58.0682 103.408L119.743 49.8236V186.277L57.1337 241.42Z", class: "primary" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M194.501 14.308C194.501 4.96178 184.533 -4.07308 172.696 4.33847L132.514 38.2963H194.501V14.308Z", class: "primary" }))));
-  }
-};
-VocablyLogo.style = logoCss;
 
 
 
@@ -12203,7 +12416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _language_60445225_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1868);
 /* harmony import */ var _language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(582);
 /* harmony import */ var _showdown_844c8b17_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(842);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4830);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9012);
 
 
 
@@ -12226,7 +12439,7 @@ const VocablyFixGrammar = class {
     this.result = null;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_4__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_4__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
@@ -12296,14 +12509,13 @@ VocablyFixGrammar.style = grammarFixerCss;
 
 /***/ },
 
-/***/ 2854
+/***/ 9767
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   vocably_hint_selector: () => (/* binding */ VocablyLanguageSelector),
-/* harmony export */   vocably_icon_arrow_right: () => (/* binding */ VocablyIconArrowRight)
+/* harmony export */   vocably_hint_selector: () => (/* binding */ VocablyLanguageSelector)
 /* harmony export */ });
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 
@@ -12355,18 +12567,6 @@ const VocablyLanguageSelector = class {
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
 VocablyLanguageSelector.style = hintSelectorCss;
-
-const iconArrowRightCss = ":host{display:inline-block;width:24px;height:24px;visibility:visible !important}.svg{height:100%;width:auto;fill:#6a6a6a}";
-
-const VocablyIconArrowRight = class {
-  constructor(hostRef) {
-    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
-  }
-  render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "svg", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M10,17L15,12L10,7V17Z" }))));
-  }
-};
-VocablyIconArrowRight.style = iconArrowRightCss;
 
 
 
@@ -12659,45 +12859,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 /* harmony import */ var _language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(582);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5063);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4830);
+/* harmony import */ var _index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7095);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9012);
 
 
 
 
 
-const languageCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:block;visibility:visible !important}.container{display:inline-block}.p{margin-bottom:16px}.h1{font-size:26px;margin-bottom:16px}.button{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.button:hover:not([disabled]),.button:focus:not([disabled]){background:#0047e3}.button:active:not([disabled]){background:#0047e3}.button[disabled]{background:#bababa;cursor:not-allowed}select{color:#6a6a6a !important;font-size:var(--font-size, 14.4px) !important;padding:10px 14px !important;border:none !important;border-radius:8px !important;background-color:rgba(0, 0, 0, 0.04);outline:none !important;height:auto !important;line-height:inherit !important;box-shadow:none !important;box-sizing:border-box !important;width:100% !important}select:focus{background-color:rgba(0, 0, 0, 0.07) !important}select{appearance:none !important;background:rgba(0, 0, 0, 0.04) url('data:image/svg+xml;utf8,<svg width=\"11\" height=\"7\" viewBox=\"0 0 11 7\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 1 5 6 1 1\" stroke=\"rgb(109, 109, 109)\" stroke-width=\".5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/></svg>') no-repeat !important;background-position:right 14px top 50% !important;transition:background 200ms}select:hover{background:rgba(0, 0, 0, 0.07) url('data:image/svg+xml;utf8,<svg width=\"11\" height=\"7\" viewBox=\"0 0 11 7\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 1 5 6 1 1\" stroke=\"rgb(109, 109, 109)\" stroke-width=\".5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/></svg>') no-repeat !important;background-position:right 14px top 50% !important}";
+const languageCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:block;visibility:visible !important}.container{display:flex;flex-direction:column;gap:14px;margin:0;min-width:min(240px, 100%)}.header{display:flex;flex-direction:column;gap:2px}.title{font-size:17px;line-height:1.3;font-weight:600;color:#000000}.hint{font-size:13px;line-height:1.4;color:#6a6a6a;width:0;min-width:100%}.fields{display:flex;flex-wrap:wrap;gap:10px}.field{flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:4px;margin:0}.label{font-size:13px;line-height:1.2;font-weight:600;color:#6a6a6a}select{color:#6a6a6a !important;font-size:var(--font-size, 14.4px) !important;padding:9px 12px !important;border:none !important;border-radius:8px !important;background-color:rgba(0, 0, 0, 0.04);outline:none !important;height:auto !important;line-height:inherit !important;box-shadow:none !important;box-sizing:border-box !important;width:100% !important}select:focus{background-color:rgba(0, 0, 0, 0.07) !important}select{appearance:none !important;background:rgba(0, 0, 0, 0.04) url('data:image/svg+xml;utf8,<svg width=\"11\" height=\"7\" viewBox=\"0 0 11 7\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 1 5 6 1 1\" stroke=\"rgb(109, 109, 109)\" stroke-width=\".5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/></svg>') no-repeat !important;background-position:right 12px top 50% !important;transition:background 200ms}select:hover{background:rgba(0, 0, 0, 0.07) url('data:image/svg+xml;utf8,<svg width=\"11\" height=\"7\" viewBox=\"0 0 11 7\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 1 5 6 1 1\" stroke=\"rgb(109, 109, 109)\" stroke-width=\".5\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/></svg>') no-repeat !important;background-position:right 12px top 50% !important}select{font-family:inherit !important;color:#000000 !important;cursor:pointer;text-overflow:ellipsis;padding-right:34px !important}select:focus-visible{box-shadow:0 0 0 2px rgba(0, 80, 255, 0.35) !important}select:disabled{cursor:not-allowed;opacity:0.6}.button{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.button:hover:not([disabled]),.button:focus:not([disabled]){background:#0047e3}.button:active:not([disabled]){background:#0047e3}.button[disabled]{background:#bababa;cursor:not-allowed}.button{padding:9px 8px}.button:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(0, 80, 255, 0.35)}";
 
 const VocablyLanguage = class {
   constructor(hostRef) {
     (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
     this.confirm = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "confirm", 7);
-    this.sourceLanguage = undefined;
+    this.sourceLanguage = 'en';
     this.targetLanguage = undefined;
     this.waiting = undefined;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_3__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
     (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
   }
+  renderOptions(selected) {
+    return Object.keys(_language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_1__.l)
+      .map((code) => [code, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)(`nominative_${code}`)])
+      .sort((a, b) => a[1].localeCompare(b[1]))
+      .map(([code, label]) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("option", { selected: selected === code, value: code }, label)));
+  }
   render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, { "data-test": "language" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "h1 p" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.i_study')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "p" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("select", { "data-test": "source-language-selector", ref: (el) => (this.sourceLanguageSelect = el) }, Object.keys(_language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_1__.l)
-      .map((code) => [code, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)(`nominative_${code}`)])
-      .sort((a, b) => a[1].localeCompare(b[1]))
-      .map(([code, label]) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("option", { selected: this.sourceLanguage === code, value: code }, label))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "h1 p" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.i_speak')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "p" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("select", { "data-test": "target-language-selector", ref: (el) => (this.targetLanguageSelect = el) }, Object.keys(_language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_1__.l)
-      .map((code) => [code, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)(`nominative_${code}`)])
-      .sort((a, b) => a[1].localeCompare(b[1]))
-      .map(([code, label]) => ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("option", { selected: this.targetLanguage === code, value: code }, label))))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "button-container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "button", onClick: () => this.confirm.emit({
-        sourceLanguage: this.sourceLanguageSelect.value,
-        targetLanguage: this.targetLanguageSelect.value,
-      }), "data-test": "subscribe-button", disabled: this.waiting }, this.waiting ? (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.saving') : (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.save'))))));
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, { "data-test": "language" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("form", { class: "container", onSubmit: (event) => {
+        event.preventDefault();
+        this.confirm.emit({
+          sourceLanguage: this.sourceLanguageSelect.value,
+          targetLanguage: this.targetLanguageSelect.value,
+        });
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "header" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "title" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.title')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "hint" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.hint'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "fields" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("label", { class: "field" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "label" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.i_study')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("select", { "data-test": "source-language-selector", disabled: this.waiting, ref: (el) => (this.sourceLanguageSelect = el) }, this.renderOptions(this.sourceLanguage))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("label", { class: "field" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "label" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.i_speak')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("select", { "data-test": "target-language-selector", disabled: this.waiting, ref: (el) => (this.targetLanguageSelect = el) }, this.renderOptions(this.targetLanguage)))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "submit", class: "button", "data-test": "subscribe-button", disabled: this.waiting }, this.waiting ? (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.saving') : (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_2__.t)('language.save')))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
 VocablyLanguage.style = languageCss;
+
+
+
+
+/***/ },
+
+/***/ 8819
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   vocably_logo: () => (/* binding */ VocablyLogo)
+/* harmony export */ });
+/* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
+
+
+const logoCss = ":host{--logo-color:#000000;display:inline-block;line-height:0;visibility:visible !important}.svg{height:100%;width:auto}.svg .primary{fill:#0050ff}";
+
+const VocablyLogo = class {
+  constructor(hostRef) {
+    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
+  }
+  render() {
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { width: "1086", height: "258", viewBox: "0 0 1086 258", class: "svg", fill: "none", xmlns: "http://www.w3.org/2000/svg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M363.813 199.05L323.32 50.7578H346.993L378.453 178.8H379.699L411.159 50.7578H434.831L394.338 199.05H363.813Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M494.948 201.853C482.488 201.853 472.832 199.361 465.668 194.065C458.504 188.769 453.52 181.292 450.406 171.634C447.291 161.977 445.733 150.45 445.733 137.054C445.733 123.658 447.291 112.131 450.406 102.473C453.52 92.8152 458.504 85.3385 465.668 80.0423C472.832 74.7462 482.488 72.2539 494.948 72.2539C507.407 72.2539 517.063 74.7462 524.227 80.0423C531.391 85.3385 536.375 92.8152 539.178 102.473C542.293 112.131 543.539 123.658 543.539 137.054C543.539 150.45 541.982 161.977 539.178 171.634C536.375 181.292 531.08 188.769 524.227 194.065C517.063 199.361 507.407 201.853 494.948 201.853ZM494.948 183.784C499.931 183.784 503.981 183.161 507.407 181.915C510.833 180.669 513.325 178.488 515.506 175.061C517.686 171.946 518.932 166.961 519.866 161.042C520.489 154.811 521.112 147.023 521.112 137.054C521.112 127.085 520.801 119.296 519.866 113.065C518.932 106.834 517.686 102.161 515.506 99.046C513.637 95.9307 510.833 93.4385 507.407 92.1924C503.981 90.9462 499.931 90.3232 494.948 90.3232C489.964 90.3232 485.603 90.9462 482.177 92.1924C478.751 93.4385 476.259 95.6191 474.078 99.046C471.898 102.161 470.652 107.146 469.718 113.065C468.783 119.296 468.472 127.085 468.472 137.054C468.472 147.023 468.783 154.811 469.718 161.042C470.652 167.273 471.898 171.946 474.078 175.061C476.259 178.177 478.751 180.669 482.177 181.915C485.603 183.161 489.964 183.784 494.948 183.784Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M622.033 201.853C612.066 201.853 603.033 199.673 595.246 195.311C587.459 190.95 581.54 183.784 577.18 174.126C572.819 164.469 570.638 152.007 570.638 136.43C570.638 123.657 572.196 113.065 574.999 104.654C577.803 96.2423 581.852 89.6999 587.147 85.0268C592.131 80.3537 598.36 76.927 605.213 75.0578C612.066 73.1885 619.23 71.9424 627.017 71.9424C633.247 71.9424 639.165 72.254 645.083 73.1886C651.001 74.1232 655.673 74.7461 659.1 75.6807L656.608 93.4385C653.493 93.127 648.821 92.5036 642.903 91.569C636.673 90.9459 630.443 90.3232 624.214 90.3232C618.918 90.3232 614.558 90.6344 611.131 91.569C608.016 92.5036 605.213 93.7499 603.344 95.6191C600.541 98.423 598.36 103.408 596.803 110.573C595.246 117.738 594.311 126.461 594.311 136.742C594.311 146.088 594.934 153.877 596.492 159.796C598.049 165.715 599.606 170.077 601.475 172.881C603.344 175.996 605.213 177.865 606.771 179.111C607.705 179.734 609.262 180.669 611.131 181.292C613 181.915 615.804 182.538 619.23 182.538C622.968 182.538 627.017 181.915 631.378 180.98C635.739 180.046 639.476 178.8 643.214 177.554C646.952 176.307 651.001 174.749 655.673 172.569L662.215 189.392C655.673 193.13 649.444 196.246 643.526 198.115C637.607 199.984 630.132 201.853 622.033 201.853Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M714.855 201.853C708.314 201.853 702.396 200.296 697.412 197.18C692.117 194.065 688.068 189.392 685.264 183.473C682.461 177.553 680.904 170.388 680.904 161.977C680.904 151.696 683.084 143.907 687.133 137.988C691.494 132.38 697.412 128.019 705.199 125.527C712.986 123.034 722.019 121.788 732.298 121.788H752.856C752.856 114.935 752.545 109.327 752.233 104.965C751.922 100.604 750.676 97.177 749.119 94.9962C747.873 93.4385 746.315 92.1921 744.135 91.569C741.954 90.9459 739.151 90.6346 735.725 90.6346C730.43 90.6346 724.823 91.2577 719.528 92.1923C714.232 93.1269 709.249 94.373 704.888 95.6191C700.527 96.8653 695.543 98.7344 690.248 100.604L684.018 83.7806C689.625 81.2883 694.609 79.4194 699.281 77.8617C703.953 76.304 709.249 75.0577 715.167 73.8115C721.085 72.5654 727.003 71.9424 733.544 71.9424C743.823 71.9424 752.233 73.8114 758.152 77.5498C764.381 81.2883 768.742 86.5847 771.234 93.4385C774.037 100.292 775.283 108.392 775.283 117.738V199.049H760.332L757.217 185.965H755.971C755.037 186.588 753.168 187.834 750.676 189.703C748.184 191.261 745.069 193.13 741.331 195C737.594 196.869 733.544 198.426 729.184 199.984C724.511 201.23 719.839 201.853 714.855 201.853ZM719.839 182.85C724.511 182.85 729.184 182.227 733.544 180.669C737.905 179.111 741.954 177.554 745.381 175.996C748.807 174.438 750.987 173.192 752.545 172.257V141.104C751.299 140.792 748.807 140.481 745.069 140.169C741.331 139.858 736.659 139.546 731.052 139.546C718.905 139.546 711.429 140.792 708.626 143.285C707.068 144.531 705.822 146.711 704.888 149.827C703.953 152.942 703.642 156.992 703.642 161.665C703.642 169.142 704.888 174.438 707.38 177.865C709.872 181.292 713.921 182.85 719.839 182.85Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M860.63 201.854C856.58 201.854 851.597 201.542 845.678 200.607C839.76 199.673 833.842 198.738 827.612 197.492C821.694 196.246 816.399 194.688 811.727 193.442V38.6079H834.154V76.6157C835.711 76.3042 838.203 75.6811 841.629 75.058C845.056 74.4349 848.482 73.8119 852.843 73.1889C856.892 72.5658 860.941 72.2541 864.991 72.2541C878.073 72.2541 888.04 77.2388 895.204 87.208C902.369 97.1772 905.795 113.065 905.795 135.184C905.795 148.892 904.549 160.108 902.057 168.831C899.565 177.554 896.139 184.408 891.778 189.081C887.417 193.754 882.745 197.18 877.138 199.05C871.532 200.919 866.236 201.854 860.63 201.854ZM860.007 182.85C863.433 182.85 866.236 182.538 868.417 182.227C870.597 181.915 872.155 180.981 873.401 179.734C874.646 178.488 875.892 176.308 877.45 173.504C879.007 170.7 879.942 165.715 881.188 159.173C882.122 152.631 882.745 143.285 882.745 131.758C882.745 120.231 882.122 111.508 881.188 105.9C880.253 100.293 878.384 96.5542 876.515 94.9965C874.024 92.8157 869.351 91.5693 862.187 91.5693C855.335 91.5693 849.416 92.1926 844.433 93.4388C839.449 94.6849 836.023 95.6196 834.154 96.5542V180.046C835.4 180.357 836.957 180.669 839.449 181.292C841.941 181.915 844.744 182.227 848.17 182.538C851.597 182.538 855.646 182.85 860.007 182.85Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M939.435 199.05V38.2964H961.862V199.05H939.435Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M1007.03 234.565L1024.16 187.212L983.977 75.0581H1007.34L1034.13 163.223H1035.06L1061.54 75.0581H1085.21L1042.85 192.196L1030.39 234.877H1007.03V234.565Z", fill: "#212121" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M216.928 48.8888H19.1319C9.78725 48.8888 2 56.3657 2 66.0235V178.178C2 187.524 9.47576 195.312 19.1319 195.312H32.2145V235.812C32.2145 244.224 36.8869 251.701 44.0511 255.439C46.8545 256.997 49.9695 257.62 53.0844 257.62C57.7567 257.62 62.1176 256.062 66.1669 253.258L131.58 195.624H216.928C226.273 195.624 234.06 188.147 234.06 178.489V66.3349C234.06 56.6772 226.273 48.8888 216.928 48.8888ZM57.1337 241.42C54.3303 243.601 51.8384 242.666 50.9039 242.043C49.9695 241.42 47.4775 239.862 47.4775 235.812V125.839C47.4775 118.673 52.4613 108.081 58.0682 103.408L119.743 49.8236V186.277L57.1337 241.42Z", class: "primary" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M194.501 14.308C194.501 4.96178 184.533 -4.07308 172.696 4.33847L132.514 38.2963H194.501V14.308Z", class: "primary" }))));
+  }
+};
+VocablyLogo.style = logoCss;
 
 
 
@@ -12713,27 +12944,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   vocably_mobile_button: () => (/* binding */ VocablyMobileButton)
 /* harmony export */ });
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5063);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4830);
+/* harmony import */ var _index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7095);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9012);
 
 
 
 
-const mobileButtonCss = ":host{display:block;visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important}.button{color:#000000;display:flex;border-radius:19px;line-height:19px;background-color:#fff;padding:8px;border:none;cursor:pointer;box-sizing:content-box;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0, 0, 0, 0.6);user-select:none;-webkit-user-select:none;transition:all 0.2s}.button:active{box-shadow:0 3px 10px rgba(0, 0, 0, 0.4)}.button .svg{height:17.1px}.button .caption{margin-left:8px;white-space:nowrap;overflow:hidden;font-size:16px;animation-duration:1s;animation-name:slideIn}@keyframes slideIn{from{max-width:0}to{max-width:100px}}";
+const mobileButtonCss = ":host{display:block;visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important}.button{color:#000000;font-family:-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:-0.01em;display:flex;border-radius:999px;height:22px;line-height:22px;background-color:#fff;padding:11px 18px 11px 14px;border:none;cursor:pointer;box-sizing:content-box;align-items:center;justify-content:center;box-shadow:0 0 0 0.5px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.18);user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;transition:box-shadow 150ms ease, transform 150ms ease;animation:popIn 250ms cubic-bezier(0.2, 0.9, 0.3, 1.2)}.button:active{transform:scale(0.95);box-shadow:0 0 0 0.5px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.14)}.button .svg{height:20px;flex-shrink:0}.button .caption{margin-left:8px;white-space:nowrap;overflow:hidden;animation-duration:600ms;animation-timing-function:ease-out;animation-name:slideIn}@keyframes slideIn{from{max-width:0;opacity:0}to{max-width:150px;opacity:1}}@keyframes popIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}";
 
 const VocablyMobileButton = class {
   constructor(hostRef) {
     (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
     (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
   }
   render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "button", onTouchStart: () => true }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { viewBox: "0 0 633 699", fill: "none", class: "svg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M585.428 130.443H46.6646C21.2112 130.443 0 150.809 0 177.116V482.609C0 508.067 20.3627 529.281 46.6646 529.281H82.2994V639.599C82.2994 662.511 95.026 682.877 114.54 693.06C122.176 697.303 130.661 699 139.145 699C151.872 699 163.75 694.757 174.78 687.12L352.954 530.13H585.428C610.882 530.13 632.093 509.764 632.093 483.457V177.964C632.093 151.658 610.882 130.443 585.428 130.443ZM150.175 654.874C142.539 660.814 135.752 658.268 133.206 656.57C130.661 654.873 123.873 650.63 123.873 639.599V340.045C123.873 320.527 137.448 291.676 152.72 278.947L320.713 132.989V504.672L150.175 654.874Z", fill: "#0050FF" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M524.34 36.2492C524.34 10.7914 497.19 -13.8184 464.949 9.09357L355.499 101.59H524.34V36.2492Z", fill: "#0050FF" })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "caption" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('mobile_button.look_up')))));
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "button", onTouchStart: () => true }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { viewBox: "0 0 633 699", fill: "none", class: "svg" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M585.428 130.443H46.6646C21.2112 130.443 0 150.809 0 177.116V482.609C0 508.067 20.3627 529.281 46.6646 529.281H82.2994V639.599C82.2994 662.511 95.026 682.877 114.54 693.06C122.176 697.303 130.661 699 139.145 699C151.872 699 163.75 694.757 174.78 687.12L352.954 530.13H585.428C610.882 530.13 632.093 509.764 632.093 483.457V177.964C632.093 151.658 610.882 130.443 585.428 130.443ZM150.175 654.874C142.539 660.814 135.752 658.268 133.206 656.57C130.661 654.873 123.873 650.63 123.873 639.599V340.045C123.873 320.527 137.448 291.676 152.72 278.947L320.713 132.989V504.672L150.175 654.874Z", fill: "#0050FF" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M524.34 36.2492C524.34 10.7914 497.19 -13.8184 464.949 9.09357L355.499 101.59H524.34V36.2492Z", fill: "#0050FF" })), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "caption" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('mobile_button.look_up')))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
@@ -12755,7 +12986,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 
 
-const popupCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important;--max-height:48vh;--max-width:100vw;--background-rgb:255, 255, 255;--header-height:19px;--header-padding-top:12px;--header-padding-bottom:20px;--header-decay-length:10px;--padding-x:16px;--border-radius:16px;--padding-bottom:16px;--shadow-spread:10px;--shadow-v-offset:4px;--scrollbar-track:6px;--scrollbar-gutter:4px}@supports (-webkit-touch-callout: none){:host{--scrollbar-track:0px}}:host{display:inline-block;padding:calc(var(--shadow-spread) - var(--shadow-v-offset)) var(--shadow-spread) calc(var(--shadow-spread) + var(--shadow-v-offset));text-align:left}:host .popup{background:rgb(var(--background-rgb));box-shadow:0 var(--shadow-v-offset) var(--shadow-spread) rgba(0, 0, 0, 0.6);border-radius:var(--border-radius);box-sizing:border-box;position:relative;padding-top:calc(var(--header-height) + var(--header-padding-top));padding-right:var(--scrollbar-gutter);padding-bottom:1px;padding-left:0}:host .header{position:absolute;background:linear-gradient(0deg, rgba(255, 255, 255, 0), rgb(255, 255, 255) var(--header-decay-length));left:0;right:0;top:0;height:var(--header-height);border-radius:var(--border-radius) 0 0 0;display:flex;align-items:center;padding:var(--header-padding-top) 0 var(--header-padding-bottom) var(--padding-x);margin-right:var(--padding-x)}:host .header .logo{height:var(--header-height);transform:translate(4px, 2px)}:host .header .close{border:none;padding:0;background:none;text-align:center;cursor:pointer;margin-left:auto;position:relative;right:-7px}:host .footer{position:absolute;background:linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);left:0;right:0;bottom:0;height:var(--padding-bottom);border-radius:0 0 var(--border-radius) var(--border-radius);pointer-events:none}:host .body{--padding-right:calc(\n    var(--padding-x) - var(--scrollbar-track) - var(--scrollbar-gutter)\n  );min-width:140px;overflow:auto;overflow-y:scroll;box-sizing:border-box;max-height:calc(var(--max-height) - var(--header-padding-top) - var(--header-padding-top) - var(--header-padding-bottom) - var(--padding-bottom) - var(--shadow-spread) * 2);max-width:calc(var(--max-width) - var(--padding-right) - var(--padding-x));scrollbar-gutter:stable;scrollbar-color:auto;padding-top:var(--header-padding-bottom);padding-left:var(--padding-x);padding-right:var(--padding-right);padding-bottom:var(--padding-bottom)}:host .body::-webkit-scrollbar{-webkit-appearance:none;width:6px;height:6px}:host .body::-webkit-scrollbar-thumb{border-radius:4px;background-color:#cdcdcd;-webkit-box-shadow:0 0 1px rgba(255, 255, 255, 0.5)}:host .content-wrapper{overflow:hidden;width:0;height:0}:host .content-unlimited{width:80vw}:host .content{display:inline-block}";
+const popupCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;visibility:visible !important;margin-top:0 !important;margin-bottom:0 !important;margin-left:0 !important;margin-right:0 !important;--max-height:48vh;--max-width:100vw;--background-rgb:255, 255, 255;--header-height:19px;--header-padding-top:12px;--header-padding-bottom:20px;--header-decay-length:10px;--padding-x:16px;--border-radius:16px;--padding-bottom:16px;--shadow-spread:10px;--shadow-v-offset:4px;--scrollbar-track:6px;--scrollbar-gutter:4px;--content-bleed:4px}@supports (-webkit-touch-callout: none){:host{--scrollbar-track:0px}}:host{display:inline-block;padding:calc(var(--shadow-spread) - var(--shadow-v-offset)) var(--shadow-spread) calc(var(--shadow-spread) + var(--shadow-v-offset));text-align:left}:host .popup{background:rgb(var(--background-rgb));box-shadow:0 0 0 1px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.08), 0 var(--shadow-v-offset) var(--shadow-spread) -2px rgba(15, 23, 42, 0.1), 0 10px 28px -6px rgba(15, 23, 42, 0.22);border-radius:var(--border-radius);box-sizing:border-box;position:relative;padding-top:calc(var(--header-height) + var(--header-padding-top));padding-right:var(--scrollbar-gutter);padding-bottom:1px;padding-left:0}:host .header{position:absolute;background:linear-gradient(0deg, rgba(255, 255, 255, 0), rgb(255, 255, 255) var(--header-decay-length));left:0;right:0;top:0;height:var(--header-height);border-radius:var(--border-radius) 0 0 0;display:flex;align-items:center;padding:var(--header-padding-top) 0 var(--header-padding-bottom) var(--padding-x);margin-right:var(--padding-x)}:host .header .logo{height:var(--header-height);transform:translate(4px, 2px)}:host .header .close{border:none;padding:0;background:none;text-align:center;cursor:pointer;margin-left:auto;position:relative;right:-7px}:host .footer{position:absolute;background:linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);left:0;right:0;bottom:0;height:var(--padding-bottom);border-radius:0 0 var(--border-radius) var(--border-radius);pointer-events:none}:host .body{--padding-right:calc(\n    var(--padding-x) - var(--scrollbar-track) - var(--scrollbar-gutter)\n  );min-width:140px;overflow:auto;overflow-y:scroll;box-sizing:border-box;max-height:calc(var(--max-height) - var(--header-padding-top) - var(--header-padding-top) - var(--header-padding-bottom) - var(--padding-bottom) - var(--shadow-spread) * 2);max-width:calc(var(--max-width) - var(--padding-right) - var(--padding-x));scrollbar-gutter:stable;scrollbar-color:auto;padding-top:calc(var(--header-padding-bottom) - var(--content-bleed));padding-left:calc(var(--padding-x) - var(--content-bleed));padding-right:calc(var(--padding-right) - var(--content-bleed));padding-bottom:calc(var(--padding-bottom) - var(--content-bleed))}:host .body::-webkit-scrollbar{-webkit-appearance:none;width:6px;height:6px}:host .body::-webkit-scrollbar-thumb{border-radius:4px;background-color:#cdcdcd;-webkit-box-shadow:0 0 1px rgba(255, 255, 255, 0.5)}:host .content-wrapper{overflow:hidden;margin:0 auto;width:0;height:0}:host .content-unlimited{width:80vw;padding:var(--content-bleed)}:host .content{display:inline-block}";
 
 const VocablyPopup = class {
   constructor(hostRef) {
@@ -12774,8 +13005,8 @@ const VocablyPopup = class {
     const resizeObserver = new ResizeObserver(() => {
       requestAnimationFrame(() => {
         const rect = content.getBoundingClientRect();
-        contentWrapper.style.width = `${rect.width}px`;
-        contentWrapper.style.height = `${rect.height}px`;
+        contentWrapper.style.width = `calc(${rect.width}px + 2 * var(--content-bleed))`;
+        contentWrapper.style.height = `calc(${rect.height}px + 2 * var(--content-bleed))`;
       });
     });
     resizeObserver.observe(content);
@@ -12803,9 +13034,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 /* harmony import */ var _language_60445225_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1868);
 /* harmony import */ var _language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(582);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5063);
+/* harmony import */ var _index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7095);
 /* harmony import */ var _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(8457);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(4830);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9012);
 
 
 
@@ -13120,7 +13351,7 @@ function uniq(array) {
   return (array && array.length) ? baseUniq(array) : [];
 }
 
-const searchFormCss = ":host{--font-size:16px;display:block;visibility:visible !important}.form{display:flex;flex-direction:column;gap:12px}.preset{--font-size:calc(var(--font-size) * 0.9);display:flex;flex-direction:row;gap:12px}.preset .direction{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:40px;height:40px;line-height:40px;border:none;border-radius:8px;background-color:rgba(0, 0, 0, 0.04);transition:background-color 0.25s ease-in-out;cursor:pointer;outline:none}.preset .direction:focus{background-color:rgba(0, 0, 0, 0.07) !important}.preset .direction:hover{background-color:rgba(0, 0, 0, 0.07)}.preset .direction .icon{transition:transform 0.3s ease-in-out}.preset .direction.reversed .icon{transform:rotate(180deg)}.preset .language{width:100%}.search-input{--height:var(--search-text-height, 40px);position:relative}.search-input .input{font-family:inherit;padding-left:12px;padding-right:40px;color:#6a6a6a;border:none;border-radius:8px;background-color:rgba(0, 0, 0, 0.04);outline:none;height:var(--height);box-shadow:none;box-sizing:border-box;display:block;width:100%;transition:background-color 0.25s ease-in-out;font-size:var(--search-text-font-size, var(--font-size));font-weight:var(--search-text-font-weight, inherit)}.search-input .input::placeholder{color:#bababa}.search-input .input:focus{background-color:rgba(0, 0, 0, 0.07)}.search-input .submit{position:absolute;right:0;top:0;height:var(--height);width:40px;display:flex;align-items:center;justify-content:center;border:none;border-left:none;border-radius:0 8px 8px 0;background-color:transparent;transition:all 0.25s ease-in-out}.search-input .submit:not(:disabled){cursor:pointer;background-color:rgba(0, 0, 0, 0.07)}.search-input .submit:not(:disabled):hover{background-color:rgba(0, 0, 0, 0.14)}.search-input .submit:disabled{opacity:0.2}.search-input .submit .magnify{transition:transform 0.3s ease-in-out}.search-input .submit .animating{transition:none;animation-name:rock;animation-duration:2s;animation-iteration-count:infinite;animation-timing-function:linear;transform-origin:9px 9px}@keyframes rock{0%,50%,100%{transform:rotate(0deg)}25%{transform:rotate(-25deg)}75%{transform:rotate(25deg)}}.hint{margin-left:12px;font-size:calc(var(--font-size) * 0.9);color:#bababa}.hint .hint-icon-button{vertical-align:middle;border:none;display:inline-flex;width:24px;height:24px;cursor:pointer;align-items:center;justify-content:center;border-radius:6px}.hint .hint-icon-button.reversed{transform:rotate(180deg)}";
+const searchFormCss = ":host{--font-size:16px;display:block;visibility:visible !important}.form{display:flex;flex-direction:column;gap:12px}.preset{--font-size:calc(var(--font-size) * 0.9);display:flex;flex-direction:row;align-items:center;gap:8px}.preset .direction{box-sizing:border-box;display:flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:none;border-radius:8px;background-color:rgba(0, 0, 0, 0.04);color:#6a6a6a;transition:background-color 0.2s ease, transform 0.1s ease;cursor:pointer;outline:none}.preset .direction:hover,.preset .direction:focus-visible{background-color:rgba(0, 0, 0, 0.07)}.preset .direction:active{transform:scale(0.92)}.preset .direction .icon{width:18px;height:18px;fill:currentColor;transition:transform 0.3s ease-in-out}.preset .direction.reversed .icon{transform:rotate(180deg)}.preset .language{flex:1;min-width:0}.search-input{--height:var(--search-text-height, 44px);--submit-size:calc(var(--height) - 8px);position:relative}.search-input .input{font-family:inherit;padding-left:14px;padding-right:calc(var(--submit-size) + 12px);color:#6a6a6a;border:none;border-radius:10px;background-color:rgba(0, 0, 0, 0.04);outline:none;height:var(--height);box-shadow:none;box-sizing:border-box;display:block;width:100%;transition:background-color 0.2s ease;font-size:var(--search-text-font-size, var(--font-size));font-weight:var(--search-text-font-weight, inherit)}.search-input .input::placeholder{color:#bababa}.search-input .input:hover:not(:focus):not(:disabled){background-color:rgba(0, 0, 0, 0.055)}.search-input .input:focus{background-color:rgba(0, 0, 0, 0.07)}.search-input .submit{position:absolute;right:4px;top:4px;height:var(--submit-size);width:var(--submit-size);padding:0;display:flex;align-items:center;justify-content:center;border:none;border-radius:7px;background-color:transparent;transition:background-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease}.search-input .submit:not(:disabled){cursor:pointer;background-color:rgba(0, 0, 0, 0.07)}.search-input .submit:not(:disabled):hover,.search-input .submit:not(:disabled):focus-visible{outline:none;background-color:rgba(0, 0, 0, 0.14)}.search-input .submit:not(:disabled):active{transform:scale(0.92)}.search-input .submit:disabled{opacity:0.3}.search-input .submit .magnify{--size:20px;transition:transform 0.3s ease-in-out}.search-input .submit .animating{transition:none;animation-name:rock;animation-duration:2s;animation-iteration-count:infinite;animation-timing-function:linear;transform-origin:8px 8px}@keyframes rock{0%,50%,100%{transform:rotate(0deg)}25%{transform:rotate(-25deg)}75%{transform:rotate(25deg)}}.hint{margin:-4px 0 0 14px;font-size:calc(var(--font-size) * 0.8);line-height:1.4;color:#bababa}.hint .hint-icon-button{vertical-align:middle;border:none;display:inline-flex;width:24px;height:24px;cursor:pointer;align-items:center;justify-content:center;border-radius:6px}.hint .hint-icon-button.reversed{transform:rotate(180deg)}";
 
 const article = (phrase) => {
   var _a;
@@ -13164,7 +13395,7 @@ const VocablySearchForm = class {
     }
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_5__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_5__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
@@ -13173,7 +13404,7 @@ const VocablySearchForm = class {
   languageName(languageCode) {
     var _a;
     // @ts-ignore
-    return (_a = (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)(`nominative_${languageCode}`)) !== null && _a !== void 0 ? _a : '';
+    return (_a = (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)(`nominative_${languageCode}`)) !== null && _a !== void 0 ? _a : '';
   }
   getPlaceholderText() {
     if (!this.values.sourceLanguage || !this.values.targetLanguage) {
@@ -13181,13 +13412,13 @@ const VocablySearchForm = class {
     }
     const targetLanguageName = this.languageName(this.values.targetLanguage);
     if (this.values.isReversed) {
-      return (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.placeholder_reversed', {
+      return (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.placeholder_reversed', {
         article: article(targetLanguageName),
         language: targetLanguageName,
-        source: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)(`objective_${this.values.sourceLanguage}`),
+        source: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)(`objective_${this.values.sourceLanguage}`),
       });
     }
-    return (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.placeholder_default');
+    return (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.placeholder_default');
   }
   getSourceLanguageGroups() {
     const { preferred, available } = Object.keys(_language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_2__.l).reduce((acc, language) => {
@@ -13202,7 +13433,7 @@ const VocablySearchForm = class {
       available: [],
     });
     const availableGroup = [
-      (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.available_languages'),
+      (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.available_languages'),
       available
         .map((lng) => [lng, this.languageName(lng)])
         .sort(([_, lngA], [__, lngB]) => {
@@ -13214,7 +13445,7 @@ const VocablySearchForm = class {
     }
     return [
       [
-        (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.preferred_languages'),
+        (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.preferred_languages'),
         preferred.map((lng) => [lng, this.languageName(lng)]),
       ],
       availableGroup,
@@ -13234,7 +13465,7 @@ const VocablySearchForm = class {
       available: [],
     });
     const availableGroup = [
-      (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.available_languages'),
+      (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.available_languages'),
       available
         .map((lng) => [lng, this.languageName(lng)])
         .sort(([_, lngA], [__, lngB]) => {
@@ -13246,7 +13477,7 @@ const VocablySearchForm = class {
     }
     return [
       [
-        (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.preferred_languages'),
+        (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.preferred_languages'),
         preferred.map((lng) => [lng, this.languageName(lng)]),
       ],
       availableGroup,
@@ -13265,19 +13496,19 @@ const VocablySearchForm = class {
     return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("form", { class: "form", onSubmit: (e) => {
         e.preventDefault();
         this.formSubmit.emit(this.values);
-      }, "aria-label": "Search form" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "preset" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { class: "language", hint: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.i_study'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => {
+      }, "aria-label": "Search form" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "preset" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { class: "language", hint: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.i_study'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => {
         const values = Object.assign(Object.assign({}, this.values), { sourceLanguage: event.detail, targetLanguage: this.getTargetLanguageCandidate(event.detail) });
         this.valuesChange.emit(values);
         if (canSubmit) {
           this.formSubmit.emit(values);
         }
-      }, value: this.values.sourceLanguage, optionGroups: this.getSourceLanguageGroups() }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "button", class: { direction: true, reversed: this.values.isReversed }, onClick: () => {
+      }, value: this.values.sourceLanguage, optionGroups: this.getSourceLanguageGroups() }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { type: "button", class: { direction: true, reversed: this.values.isReversed }, "aria-label": (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.swap_direction'), title: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.swap_direction'), onClick: () => {
         const values = Object.assign(Object.assign({}, this.values), { isReversed: !this.values.isReversed });
         this.valuesChange.emit(values);
         if (canSubmit) {
           this.formSubmit.emit(values);
         }
-      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-arrow-right", { class: "icon" }))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { class: 'language', hint: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.i_speak'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => {
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("svg", { class: "icon", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 24 24", "aria-hidden": "true" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("path", { d: "M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" })))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { class: 'language', hint: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.i_speak'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => {
         const values = Object.assign(Object.assign({}, this.values), { targetLanguage: event.detail });
         this.valuesChange.emit(values);
         if (canSubmit) {
@@ -13290,57 +13521,16 @@ const VocablySearchForm = class {
           // @ts-ignore
           text: e.target.value
         }));
-      } }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "submit", type: "submit", disabled: !canSubmit }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-magnify", { class: {
+      } }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "submit", type: "submit", disabled: !canSubmit, "aria-label": (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.submit') }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-magnify", { class: {
         magnify: true,
         animating: this.loading,
-      } }))), !this.hideHint && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { "data-nosnippet": true, class: "hint" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.hint', {
-      language: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_3__.t)(`objective_${this.values.sourceLanguage}`),
+      } }))), !this.hideHint && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { "data-nosnippet": true, class: "hint" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)('search.hint', {
+      language: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_3__.t)(`objective_${this.values.sourceLanguage}`),
     }))))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
 VocablySearchForm.style = searchFormCss;
-
-
-
-
-/***/ },
-
-/***/ 1649
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   vocably_sign_in: () => (/* binding */ VocablySignIn)
-/* harmony export */ });
-/* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5063);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4830);
-
-
-
-
-const signInCss = ":host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:block;visibility:visible !important}.container{display:inline-block}.button{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.button:hover:not([disabled]),.button:focus:not([disabled]){background:#0047e3}.button:active:not([disabled]){background:#0047e3}.button[disabled]{background:#bababa;cursor:not-allowed}.p{margin-bottom:16px;text-align:center}.p a{color:#0050ff}.link{text-decoration:underline !important;text-decoration-thickness:0.5px !important;text-underline-offset:2px !important;color:#0050ff !important;background:none !important;border:none !important;border-radius:0 !important;cursor:pointer}.link:hover,.link:focus,.link:active{color:#0047e3 !important}";
-
-const VocablySignIn = class {
-  constructor(hostRef) {
-    (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
-    this.confirm = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "confirm", 7);
-  }
-  connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
-  }
-  disconnectedCallback() {
-    var _a;
-    (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
-  }
-  render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, { "data-test": "sign-in" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "p" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('sign_in.please')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "p" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "button", "data-test": "sign-in-button", onClick: () => this.confirm.emit() }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('sign_in.button'))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('sign_in.agree'), ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { class: "link", href: "https://vocably.pro/terms-and-conditions.html", target: "_blank" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('sign_in.terms')), ' ', (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('sign_in.and'), ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("a", { class: "link", href: "https://vocably.pro/privacy-policy.html", target: "_blank" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('sign_in.privacy')), ".")));
-  }
-  get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
-};
-VocablySignIn.style = signInCss;
 
 
 
@@ -13412,14 +13602,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 
 
-const spinnerCss = ":host{display:inline-block;width:140px;height:18px;vertical-align:middle;visibility:visible !important}.spinner{text-align:center;height:18px}.spinner>div{width:18px;height:18px;background-color:#0050ff;border-radius:100%;display:inline-block;-webkit-animation:sk-bouncedelay 1.4s infinite ease-in-out both;animation:sk-bouncedelay 1.4s infinite ease-in-out both}.spinner .bounce1{-webkit-animation-delay:-0.32s;animation-delay:-0.32s}.spinner .bounce2{-webkit-animation-delay:-0.16s;animation-delay:-0.16s}@-webkit-keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0)}40%{-webkit-transform:scale(1)}}@keyframes sk-bouncedelay{0%,80%,100%{-webkit-transform:scale(0);transform:scale(0)}40%{-webkit-transform:scale(1);transform:scale(1)}}";
+const spinnerCss = ":host{display:inline-flex;align-items:center;justify-content:center;height:32px;vertical-align:middle;visibility:visible !important}.spinner{display:flex;align-items:center;gap:4px}.dot{width:18px;height:18px;border-radius:50%;background-color:#e6e6e6;transform:translateY(0) scale(0.85);animation:vocably-spinner-wave 1.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;will-change:transform, background-color}.dot:nth-child(2){animation-delay:0.21s}.dot:nth-child(3){animation-delay:0.42s}@keyframes vocably-spinner-wave{0%,60%,100%{background-color:#e6e6e6;box-shadow:0 2px 6px rgba(0, 80, 255, 0);transform:translateY(0) scale(0.85)}30%{background-color:#0050ff;box-shadow:0 3px 8px rgba(0, 80, 255, 0.35);transform:translateY(-7px) scale(1)}}@media (prefers-reduced-motion: reduce){.dot{animation-name:vocably-spinner-fade}@keyframes vocably-spinner-fade{0%,60%,100%{background-color:#e6e6e6}30%{background-color:#0050ff}}}";
 
 const VocablySpinner = class {
   constructor(hostRef) {
     (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
   }
   render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "spinner" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "bounce1" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "bounce2" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "bounce3" }))));
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "spinner", role: "status", "aria-label": "Loading" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "dot" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "dot" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "dot" }))));
   }
 };
 VocablySpinner.style = spinnerCss;
@@ -13438,8 +13628,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   vocably_subscribe: () => (/* binding */ VocablySubscribe)
 /* harmony export */ });
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(5063);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4830);
+/* harmony import */ var _index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7095);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9012);
 
 
 
@@ -13453,14 +13643,14 @@ const VocablySubscribe = class {
     this.trial = false;
   }
   connectedCallback() {
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_2__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
     (_a = this.unsubLocale) === null || _a === void 0 ? void 0 : _a.call(this);
   }
   render() {
-    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, { "data-test": "subscribe" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "message" }, this.trial ? (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.trial_message') : (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.message')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "button-container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "button", onClick: () => this.confirm.emit(), "data-test": "subscribe-button" }, this.trial ? (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.trial_button') : (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.button'))))));
+    return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, { "data-test": "subscribe" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "message" }, this.trial ? (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.trial_message') : (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.message')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "button-container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "button", onClick: () => this.confirm.emit(), "data-test": "subscribe-button" }, this.trial ? (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.trial_button') : (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_1__.t)('subscribe.button'))))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
 };
@@ -13482,12 +13672,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7949);
 /* harmony import */ var _stringArray_af4489c8_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(931);
 /* harmony import */ var _language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(582);
-/* harmony import */ var _showdown_844c8b17_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(842);
-/* harmony import */ var _index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5063);
-/* harmony import */ var _language_60445225_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1868);
-/* harmony import */ var _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8457);
-/* harmony import */ var _translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4830);
+/* harmony import */ var _translation_cards_8c7c5e45_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6499);
+/* harmony import */ var _showdown_844c8b17_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(842);
+/* harmony import */ var _index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7095);
+/* harmony import */ var _language_60445225_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(1868);
+/* harmony import */ var _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8457);
+/* harmony import */ var _translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9012);
 /* module decorator */ module = __webpack_require__.hmd(module);
+
 
 
 
@@ -13519,7 +13711,7 @@ var symbolTag = '[object Symbol]';
  */
 function isSymbol(value) {
   return typeof value == 'symbol' ||
-    ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.a)(value) && (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.b)(value) == symbolTag);
+    ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.a)(value) && (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.b)(value) == symbolTag);
 }
 
 /**
@@ -13546,7 +13738,7 @@ function arrayMap(array, iteratee) {
 var INFINITY$1 = 1 / 0;
 
 /** Used to convert symbols to primitives and strings. */
-var symbolProto = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.S ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.S.prototype : undefined,
+var symbolProto = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.S ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.S.prototype : undefined,
     symbolToString = symbolProto ? symbolProto.toString : undefined;
 
 /**
@@ -13562,7 +13754,7 @@ function baseToString(value) {
   if (typeof value == 'string') {
     return value;
   }
-  if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(value)) {
+  if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(value)) {
     // Recursively convert values (susceptible to call stack limits).
     return arrayMap(value, baseToString) + '';
   }
@@ -13607,7 +13799,7 @@ var objectCreate = Object.create;
 var baseCreate = (function() {
   function object() {}
   return function(proto) {
-    if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.d)(proto)) {
+    if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.d)(proto)) {
       return {};
     }
     if (objectCreate) {
@@ -13722,7 +13914,7 @@ function constant(value) {
 
 var defineProperty = (function() {
   try {
-    var func = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.g)(Object, 'defineProperty');
+    var func = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.g)(Object, 'defineProperty');
     func({}, '', {});
     return func;
   } catch (e) {}
@@ -13819,7 +14011,7 @@ var hasOwnProperty$4 = objectProto$5.hasOwnProperty;
  */
 function assignValue(object, key, value) {
   var objValue = object[key];
-  if (!(hasOwnProperty$4.call(object, key) && (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.e)(objValue, value)) ||
+  if (!(hasOwnProperty$4.call(object, key) && (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.e)(objValue, value)) ||
       (value === undefined && !(key in object))) {
     baseAssignValue(object, key, value);
   }
@@ -13966,7 +14158,7 @@ function isLength(value) {
  * // => false
  */
 function isArrayLike(value) {
-  return value != null && isLength(value.length) && !(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.f)(value);
+  return value != null && isLength(value.length) && !(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.f)(value);
 }
 
 /**
@@ -13980,7 +14172,7 @@ function isArrayLike(value) {
  *  else `false`.
  */
 function isIterateeCall(value, index, object) {
-  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.d)(object)) {
+  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.d)(object)) {
     return false;
   }
   var type = typeof index;
@@ -13988,7 +14180,7 @@ function isIterateeCall(value, index, object) {
         ? (isArrayLike(object) && isIndex(index, object.length))
         : (type == 'string' && index in object)
       ) {
-    return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.e)(object[index], value);
+    return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.e)(object[index], value);
   }
   return false;
 }
@@ -14073,7 +14265,7 @@ var argsTag$1 = '[object Arguments]';
  * @returns {boolean} Returns `true` if `value` is an `arguments` object,
  */
 function baseIsArguments(value) {
-  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.a)(value) && (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.b)(value) == argsTag$1;
+  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.a)(value) && (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.b)(value) == argsTag$1;
 }
 
 /** Used for built-in method references. */
@@ -14104,7 +14296,7 @@ var propertyIsEnumerable = objectProto$3.propertyIsEnumerable;
  * // => false
  */
 var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
-  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.a)(value) && hasOwnProperty$3.call(value, 'callee') &&
+  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.a)(value) && hasOwnProperty$3.call(value, 'callee') &&
     !propertyIsEnumerable.call(value, 'callee');
 };
 
@@ -14135,7 +14327,7 @@ var freeModule$2 = freeExports$2 && "object" == 'object' && module && !module.no
 var moduleExports$2 = freeModule$2 && freeModule$2.exports === freeExports$2;
 
 /** Built-in value references. */
-var Buffer$1 = moduleExports$2 ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.r.Buffer : undefined;
+var Buffer$1 = moduleExports$2 ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.r.Buffer : undefined;
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeIsBuffer = Buffer$1 ? Buffer$1.isBuffer : undefined;
@@ -14210,8 +14402,8 @@ typedArrayTags[weakMapTag] = false;
  * @returns {boolean} Returns `true` if `value` is a typed array, else `false`.
  */
 function baseIsTypedArray(value) {
-  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.a)(value) &&
-    isLength(value.length) && !!typedArrayTags[(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.b)(value)];
+  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.a)(value) &&
+    isLength(value.length) && !!typedArrayTags[(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.b)(value)];
 }
 
 /**
@@ -14237,7 +14429,7 @@ var freeModule$1 = freeExports$1 && "object" == 'object' && module && !module.no
 var moduleExports$1 = freeModule$1 && freeModule$1.exports === freeExports$1;
 
 /** Detect free variable `process` from Node.js. */
-var freeProcess = moduleExports$1 && _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.h.process;
+var freeProcess = moduleExports$1 && _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.h.process;
 
 /** Used to access faster Node.js helpers. */
 var nodeUtil = (function() {
@@ -14291,7 +14483,7 @@ var hasOwnProperty$2 = objectProto$2.hasOwnProperty;
  * @returns {Array} Returns the array of property names.
  */
 function arrayLikeKeys(value, inherited) {
-  var isArr = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(value),
+  var isArr = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(value),
       isArg = !isArr && isArguments(value),
       isBuff = !isArr && !isArg && isBuffer(value),
       isType = !isArr && !isArg && !isBuff && isTypedArray(value),
@@ -14364,7 +14556,7 @@ var hasOwnProperty$1 = objectProto$1.hasOwnProperty;
  * @returns {Array} Returns the array of property names.
  */
 function baseKeysIn(object) {
-  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.d)(object)) {
+  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.d)(object)) {
     return nativeKeysIn(object);
   }
   var isProto = isPrototype(object),
@@ -14418,7 +14610,7 @@ var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
  * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
  */
 function isKey(value, object) {
-  if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(value)) {
+  if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(value)) {
     return false;
   }
   var type = typeof value;
@@ -14493,12 +14685,12 @@ function memoize(func, resolver) {
     memoized.cache = cache.set(key, result) || cache;
     return result;
   };
-  memoized.cache = new (memoize.Cache || _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.M);
+  memoized.cache = new (memoize.Cache || _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.M);
   return memoized;
 }
 
 // Expose `MapCache`.
-memoize.Cache = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.M;
+memoize.Cache = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.M;
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -14581,7 +14773,7 @@ function toString(value) {
  * @returns {Array} Returns the cast property path array.
  */
 function castPath(value, object) {
-  if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(value)) {
+  if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(value)) {
     return value;
   }
   return isKey(value, object) ? [value] : stringToPath(toString(value));
@@ -14645,7 +14837,7 @@ function arrayPush(array, values) {
 }
 
 /** Built-in value references. */
-var spreadableSymbol = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.S ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.S.isConcatSpreadable : undefined;
+var spreadableSymbol = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.S ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.S.isConcatSpreadable : undefined;
 
 /**
  * Checks if `value` is a flattenable `arguments` object or array.
@@ -14655,7 +14847,7 @@ var spreadableSymbol = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.S ? _i
  * @returns {boolean} Returns `true` if `value` is flattenable, else `false`.
  */
 function isFlattenable(value) {
-  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(value) || isArguments(value) ||
+  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(value) || isArguments(value) ||
     !!(spreadableSymbol && value && value[spreadableSymbol]);
 }
 
@@ -14771,7 +14963,7 @@ var objectCtorString = funcToString.call(Object);
  * // => true
  */
 function isPlainObject(value) {
-  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.a)(value) || (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.b)(value) != objectTag) {
+  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.a)(value) || (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.b)(value) != objectTag) {
     return false;
   }
   var proto = getPrototype(value);
@@ -14791,7 +14983,7 @@ function isPlainObject(value) {
  * @memberOf Stack
  */
 function stackClear() {
-  this.__data__ = new _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.L;
+  this.__data__ = new _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.L;
   this.size = 0;
 }
 
@@ -14853,14 +15045,14 @@ var LARGE_ARRAY_SIZE = 200;
  */
 function stackSet(key, value) {
   var data = this.__data__;
-  if (data instanceof _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.L) {
+  if (data instanceof _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.L) {
     var pairs = data.__data__;
-    if (!_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.j || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
+    if (!_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.j || (pairs.length < LARGE_ARRAY_SIZE - 1)) {
       pairs.push([key, value]);
       this.size = ++data.size;
       return this;
     }
-    data = this.__data__ = new _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.M(pairs);
+    data = this.__data__ = new _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.M(pairs);
   }
   data.set(key, value);
   this.size = data.size;
@@ -14875,7 +15067,7 @@ function stackSet(key, value) {
  * @param {Array} [entries] The key-value pairs to cache.
  */
 function Stack(entries) {
-  var data = this.__data__ = new _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.L(entries);
+  var data = this.__data__ = new _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.L(entries);
   this.size = data.size;
 }
 
@@ -14896,7 +15088,7 @@ var freeModule = freeExports && "object" == 'object' && module && !module.nodeTy
 var moduleExports = freeModule && freeModule.exports === freeExports;
 
 /** Built-in value references. */
-var Buffer = moduleExports ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.r.Buffer : undefined,
+var Buffer = moduleExports ? _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.r.Buffer : undefined,
     allocUnsafe = Buffer ? Buffer.allocUnsafe : undefined;
 
 /**
@@ -14919,7 +15111,7 @@ function cloneBuffer(buffer, isDeep) {
 }
 
 /** Built-in value references. */
-var Uint8Array = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.r.Uint8Array;
+var Uint8Array = _isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.r.Uint8Array;
 
 /**
  * Creates a clone of `arrayBuffer`.
@@ -15000,7 +15192,7 @@ function hasPath(object, path, hasFunc) {
   }
   length = object == null ? 0 : object.length;
   return !!length && isLength(length) && isIndex(key, length) &&
-    ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(object) || isArguments(object));
+    ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(object) || isArguments(object));
 }
 
 /**
@@ -15080,7 +15272,7 @@ var baseFor = createBaseFor();
  * @param {*} value The value to assign.
  */
 function assignMergeValue(object, key, value) {
-  if ((value !== undefined && !(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.e)(object[key], value)) ||
+  if ((value !== undefined && !(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.e)(object[key], value)) ||
       (value === undefined && !(key in object))) {
     baseAssignValue(object, key, value);
   }
@@ -15112,7 +15304,7 @@ function assignMergeValue(object, key, value) {
  * // => false
  */
 function isArrayLikeObject(value) {
-  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.a)(value) && isArrayLike(value);
+  return (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.a)(value) && isArrayLike(value);
 }
 
 /**
@@ -15194,13 +15386,13 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
   var isCommon = newValue === undefined;
 
   if (isCommon) {
-    var isArr = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(srcValue),
+    var isArr = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(srcValue),
         isBuff = !isArr && isBuffer(srcValue),
         isTyped = !isArr && !isBuff && isTypedArray(srcValue);
 
     newValue = srcValue;
     if (isArr || isBuff || isTyped) {
-      if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.c)(objValue)) {
+      if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.c)(objValue)) {
         newValue = objValue;
       }
       else if (isArrayLikeObject(objValue)) {
@@ -15223,7 +15415,7 @@ function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, sta
       if (isArguments(objValue)) {
         newValue = toPlainObject(objValue);
       }
-      else if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.d)(objValue) || (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.f)(objValue)) {
+      else if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.d)(objValue) || (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.f)(objValue)) {
         newValue = initCloneObject(srcValue);
       }
     }
@@ -15257,7 +15449,7 @@ function baseMerge(object, source, srcIndex, customizer, stack) {
   }
   baseFor(source, function(srcValue, key) {
     stack || (stack = new Stack);
-    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.d)(srcValue)) {
+    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.d)(srcValue)) {
       baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
     }
     else {
@@ -15319,7 +15511,7 @@ var merge = createAssigner(function(object, source, srcIndex) {
  * @returns {Object} Returns `object`.
  */
 function baseSet(object, path, value, customizer) {
-  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.d)(object)) {
+  if (!(0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.d)(object)) {
     return object;
   }
   path = castPath(path, object);
@@ -15341,7 +15533,7 @@ function baseSet(object, path, value, customizer) {
       var objValue = nested[key];
       newValue = customizer ? customizer(objValue, key, nested) : undefined;
       if (newValue === undefined) {
-        newValue = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.d)(objValue)
+        newValue = (0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.d)(objValue)
           ? objValue
           : (isIndex(path[index + 1]) ? [] : {});
       }
@@ -15414,8 +15606,8 @@ var pick = flatRest(function(object, paths) {
 });
 
 const sortLanguages = (existingLanguages) => (entryA, entryB) => {
-  const isEntryAExists = (0,_language_60445225_js__WEBPACK_IMPORTED_MODULE_5__.i)(entryA[0]) && existingLanguages.includes(entryA[0]);
-  const isEntryBExists = (0,_language_60445225_js__WEBPACK_IMPORTED_MODULE_5__.i)(entryB[0]) && existingLanguages.includes(entryB[0]);
+  const isEntryAExists = (0,_language_60445225_js__WEBPACK_IMPORTED_MODULE_6__.i)(entryA[0]) && existingLanguages.includes(entryA[0]);
+  const isEntryBExists = (0,_language_60445225_js__WEBPACK_IMPORTED_MODULE_6__.i)(entryB[0]) && existingLanguages.includes(entryB[0]);
   if (isEntryAExists && !isEntryBExists) {
     return -1;
   }
@@ -15509,9 +15701,9 @@ const createTranslationCards = ({ collection, analysisItems, language, }) => {
         .reduce(combineCards, []));
 };
 
-const translationCss = "@charset \"UTF-8\";:host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;visibility:visible !important;max-width:min(90vw, 600px);display:inline-block}:host li{margin:0}.vocably-mb-4{margin-bottom:4px}.vocably-mb-6{margin-bottom:6px}.vocably-mt-12{margin-top:12px}.vocably-pt-12{padding-top:12px}.vocably-pb-12{padding-bottom:12px}.vocably-mb-12{margin-bottom:12px}.vocably-mb-18{margin-bottom:18px}.vocably-bottom-12-border{padding-bottom:12px;border-bottom:1px solid rgba(0, 0, 0, 0.04);margin-bottom:12px}.vocably-text-right{text-align:right}.vocably-emphasized{color:#000000;font-weight:bold}.vocably-small{font-size:14.4px}.vocably-muted{color:#bababa}.vocably-invisible-space{display:inline-block;width:0;font-size:0}.vocably-error{color:#ff5e5e}.vocably-loading-container{position:relative}.vocably-reload{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;background:white;opacity:0.5}@keyframes vocably-floating{0%{transform:translate(0, -2px)}50%{transform:translate(1px, 2px)}100%{transform:translate(0, -2px)}}.explanation-frame-visible{max-height:500px;opacity:1}.panel{background:rgba(0, 0, 0, 0.04);border:none;border-radius:8px;padding:14px}.explanation p,.explanation ol,.explanation ul{margin:0 0 12px 0}.explanation p:last-child,.explanation ol:last-child,.explanation ul:last-child{margin-bottom:0}.explanation ol,.explanation ul{padding-inline-start:1.2em}.explanation strong{font-weight:bold}vocably-play-sound{opacity:0.8}vocably-play-sound:hover{opacity:1}vocably-play-sound{margin-right:4px}.vocably-rate-container{transition:all 1s ease-in-out;max-height:500px;opacity:1;box-sizing:border-box;overflow:hidden}.vocably-rate-container.vocably-rate-container-hidden{max-height:0;opacity:0}.vocably-direct-translation{display:flex;flex-direction:row}.vocably-list{list-style:none;margin:0;padding:0}.vocably-list li{padding-left:18px;position:relative}.vocably-list li::before{content:\"•\";font-size:18px;position:absolute;left:6px;top:0}.vocably-italic{font-style:italic}.vocably-language-selector{display:flex;align-items:center;justify-content:space-between;gap:4px}.vocably-language-selector .vocably-language-wrapper{width:46%}.vocably-language-selector .vocably-language-wrapper vocably-language-selector{width:100%}.vocably-button{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.vocably-button:hover:not([disabled]),.vocably-button:focus:not([disabled]){background:#0047e3}.vocably-button:active:not([disabled]){background:#0047e3}.vocably-button[disabled]{background:#bababa;cursor:not-allowed}.vocably-button{padding-left:16px;padding-right:16px;width:auto}.vocably-link-button{background:none;color:inherit;border:none;padding:0;font:inherit;cursor:pointer;text-decoration:underline !important;text-decoration-thickness:0.5px !important;text-underline-offset:2px !important;color:#0050ff !important;background:none !important;border:none !important;border-radius:0 !important;cursor:pointer}.vocably-link-button:hover,.vocably-link-button:focus,.vocably-link-button:active{color:#0047e3 !important}.vocably-text-link,.vocably-text-link:active,.vocably-text-link:visited{color:#6a6a6a !important;text-decoration:underline !important}.vocably-nondecorated{text-decoration:none !important}.vocably-text-link:hover{color:#000000 !important}.padding-left-12{padding-left:12px}";
+const translationCss = "@charset \"UTF-8\";:host{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;visibility:visible !important;max-width:min(90vw, 600px);display:inline-block}:host li{margin:0}.vocably-mb-4{margin-bottom:4px}.vocably-mb-6{margin-bottom:6px}.vocably-mt-12{margin-top:12px}.vocably-pt-12{padding-top:12px}.vocably-pb-12{padding-bottom:12px}.vocably-mb-12{margin-bottom:12px}.vocably-mb-18{margin-bottom:18px}.vocably-bottom-12-border{padding-bottom:12px;border-bottom:1px solid rgba(0, 0, 0, 0.04);margin-bottom:12px}.vocably-text-right{text-align:right}.vocably-emphasized{color:#000000;font-weight:bold}.vocably-small{font-size:14.4px}.vocably-muted{color:#bababa}.vocably-invisible-space{display:inline-block;width:0;font-size:0}.vocably-error{color:#ff5e5e}.vocably-loading-container{position:relative}.vocably-reload{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;align-items:center;justify-content:center;background:white;opacity:0.5}@keyframes vocably-floating{0%{transform:translate(0, -2px)}50%{transform:translate(1px, 2px)}100%{transform:translate(0, -2px)}}.explanation-frame-visible{max-height:500px;opacity:1}.panel{background:rgba(0, 0, 0, 0.04);border:none;border-radius:8px;padding:14px}.explanation p,.explanation ol,.explanation ul{margin:0 0 12px 0}.explanation p:last-child,.explanation ol:last-child,.explanation ul:last-child{margin-bottom:0}.explanation ol,.explanation ul{padding-inline-start:1.2em}.explanation strong{font-weight:bold}vocably-play-sound{opacity:0.8}vocably-play-sound:hover{opacity:1}vocably-play-sound{margin-right:4px}.vocably-rate-container{transition:all 1s ease-in-out;max-height:500px;opacity:1;box-sizing:border-box;overflow:hidden}.vocably-rate-container.vocably-rate-container-hidden{max-height:0;opacity:0}.vocably-direct-translation{display:flex;flex-direction:row}.vocably-list{list-style:none;margin:0;padding:0}.vocably-list li{padding-left:18px;position:relative}.vocably-list li::before{content:\"•\";font-size:18px;position:absolute;left:6px;top:0}.vocably-italic{font-style:italic}.vocably-language-selector{display:flex;align-items:center;justify-content:space-between;gap:4px}.vocably-language-selector .vocably-language-wrapper{width:46%}.vocably-language-selector .vocably-language-wrapper vocably-language-selector{width:100%}.vocably-button{font-family:arial, sans-serif !important;font-size:16px !important;line-height:20px !important;color:#6a6a6a !important;display:inline-block;box-sizing:border-box;background:#0050ff;color:#ffffff !important;border:none;padding:8px;font:inherit;font-weight:500;cursor:pointer;border-radius:12px;text-align:center;text-decoration:none;width:100%;transition:background-color 200ms;text-decoration:none !important}.vocably-button:hover:not([disabled]),.vocably-button:focus:not([disabled]){background:#0047e3}.vocably-button:active:not([disabled]){background:#0047e3}.vocably-button[disabled]{background:#bababa;cursor:not-allowed}.vocably-button{padding-left:16px;padding-right:16px;width:auto}.vocably-link-button{background:none;color:inherit;border:none;padding:0;font:inherit;cursor:pointer;text-decoration:underline !important;text-decoration-thickness:0.5px !important;text-underline-offset:2px !important;color:#0050ff !important;background:none !important;border:none !important;border-radius:0 !important;cursor:pointer}.vocably-link-button:hover,.vocably-link-button:focus,.vocably-link-button:active{color:#0047e3 !important}.vocably-text-link,.vocably-text-link:active,.vocably-text-link:visited{color:#6a6a6a !important;text-decoration:underline !important}.vocably-nondecorated{text-decoration:none !important}.vocably-text-link:hover{color:#000000 !important}.padding-left-12{padding-left:12px}.vocably-error-state{display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 12px 4px}.vocably-error-state-icon{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255, 94, 94, 0.12);margin-bottom:12px}.vocably-error-state-icon vocably-icon-error{width:24px;height:24px}.vocably-error-state-title{color:#000000;font-weight:bold;max-width:360px;text-wrap:balance;margin-bottom:4px}.vocably-error-state-message{font-size:14.4px;max-width:360px;text-wrap:balance;margin-bottom:16px}.vocably-error-state-retry{background:none;color:inherit;border:none;padding:0;font:inherit;cursor:pointer;--button-color:#0050ff;--color:var(--button-color);display:inline-flex !important;align-items:center;justify-content:center;gap:4px;height:32px;padding:0 14px 0 10px !important;border:1.5px solid var(--button-color) !important;border-radius:16px !important;color:var(--button-color) !important;font-size:14.4px !important;cursor:pointer;transition:background-color 200ms}.vocably-error-state-retry:hover:not([disabled]),.vocably-error-state-retry:focus-visible:not([disabled]){background-color:rgba(0, 80, 255, 0.08) !important}.vocably-error-state-retry:active:not([disabled]){background-color:rgba(0, 80, 255, 0.16) !important}.vocably-error-state-retry[disabled]{cursor:default;opacity:0.7}.vocably-error-state-retry vocably-inline-loader{width:18px}";
 
-const mdConverter = new _showdown_844c8b17_js__WEBPACK_IMPORTED_MODULE_3__.s.Converter();
+const mdConverter = new _showdown_844c8b17_js__WEBPACK_IMPORTED_MODULE_4__.s.Converter();
 const VocablyTranslation = class {
   constructor(hostRef) {
     (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.r)(this, hostRef);
@@ -15522,6 +15714,23 @@ const VocablyTranslation = class {
     this.removeCard = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "removeCard", 7);
     this.addCard = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "addCard", 7);
     this.watchMePaying = (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.c)(this, "watchMePaying", 7);
+    /**
+     * The remembered card as it stands in one of the rendered lists, but only
+     * once the visitor has signed in and the add is merely waiting for their
+     * collection.
+     *
+     * While they are still signed out it is `null`: the card is remembered, yet
+     * nothing about the buttons may change, as they are free to close the sign in
+     * cover and pick another card instead.
+     */
+    this.findPendingCard = (cards) => {
+      var _a;
+      const cardToAdd = this.cardToAdd;
+      if (cardToAdd === null || !this.isLoggedInUser) {
+        return null;
+      }
+      return (_a = cards.find((card) => equalCards(cardToAdd)(card.data))) !== null && _a !== void 0 ? _a : null;
+    };
     this.phrase = undefined;
     this.result = null;
     this.loading = false;
@@ -15549,9 +15758,12 @@ const VocablyTranslation = class {
     this.isRetrying = false;
     this.isLightweight = false;
     this.isLoadingExtraWords = false;
+    this.isLoggedInUser = false;
+    this.hideActions = false;
     this.addedToday = 0;
     this.translationCards = [];
     this.extraCards = [];
+    this.cardToAdd = null;
   }
   resultChanged(result) {
     if (result === null || result.success === false) {
@@ -15577,18 +15789,78 @@ const VocablyTranslation = class {
       this.extraCards = [];
     }
   }
+  /**
+   * Adds the card the visitor picked before signing in, if there is one.
+   *
+   * To be called once they are signed in and their own collection has been
+   * downloaded and handed over through `result`: only then can it be told
+   * whether the card has to be added at all. The host is the one that knows
+   * when that has happened, which is why this is asked for rather than guessed
+   * at from the props.
+   *
+   * The add is emitted from here rather than from `vocably-translation-cards`
+   * so that it travels the very same path a click does: the host puts the card
+   * into `isUpdating`, hands the new deck back through `result`, and every
+   * loader and interface change that follows an add happens on its own.
+   */
+  async addRememberedCard() {
+    if (this.cardToAdd === null || !this.isLoggedInUser) {
+      return;
+    }
+    const result = this.result;
+    if (!result || result.success === false) {
+      return;
+    }
+    const card = this.findPendingCard([
+      ...this.translationCards,
+      ...this.extraCards,
+    ]);
+    // One attempt only, so a second call has nothing left to do: a failed add
+    // comes back as an error `result`, and retrying it behind the visitor's
+    // back would take the page away from them over and over.
+    this.cardToAdd = null;
+    // The collection may well contain the card already - added on another
+    // device, or in the very tab the visitor has just signed in from. A card
+    // that is no longer detached is a card there is nothing left to do about.
+    if (card === null || !(0,_translation_cards_8c7c5e45_js__WEBPACK_IMPORTED_MODULE_3__.i)(card)) {
+      return;
+    }
+    // Over the free plan limit the add button opens the upgrade panel instead
+    // of adding, and that panel belongs to a click on a card. The remembered
+    // add is dropped, leaving the visitor with the button they came for.
+    if (!this.canAdd) {
+      return;
+    }
+    this.addCard.emit({
+      translationCards: result.value,
+      card,
+    });
+  }
+  get canAdd() {
+    return !!(this.cardsLimit === 'unlimited' ||
+      !this.paymentLink ||
+      (this.result &&
+        this.result.success &&
+        this.result.value.deck.cards.length < this.cardsLimit.maxCards) ||
+      (this.result &&
+        this.result.success &&
+        this.cardsLimit.cardsPerDay > this.addedToday));
+  }
   connectedCallback() {
-    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.i)(this.el.getAttribute('result'))) {
+    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.i)(this.el.getAttribute('result'))) {
       this.result = JSON.parse(this.el.getAttribute('result'));
     }
-    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.i)(this.el.getAttribute('isLightweight'))) {
+    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.i)(this.el.getAttribute('isLightweight'))) {
       this.isLightweight = JSON.parse(this.el.getAttribute('isLightweight'));
     }
-    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_6__.i)(this.el.getAttribute('showLanguages'))) {
+    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.i)(this.el.getAttribute('showLanguages'))) {
       this.showLanguages = JSON.parse(this.el.getAttribute('showLanguages'));
     }
+    if ((0,_isString_3e50dfcd_js__WEBPACK_IMPORTED_MODULE_7__.i)(this.el.getAttribute('hideActions'))) {
+      this.hideActions = JSON.parse(this.el.getAttribute('hideActions'));
+    }
     this.resultChanged(this.result);
-    this.unsubLocale = (0,_translations_a7e3745f_js__WEBPACK_IMPORTED_MODULE_7__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
+    this.unsubLocale = (0,_translations_dafc4723_js__WEBPACK_IMPORTED_MODULE_8__.s)(this.el, () => (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.f)(this.el));
   }
   disconnectedCallback() {
     var _a;
@@ -15603,22 +15875,23 @@ const VocablyTranslation = class {
     playSoundElement.play();
   }
   render() {
-    const sourceLanguageSelector = this.result && this.result.success && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { hint: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.i_study'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => this.changeSourceLanguage.emit(event.detail), value: this.sourceLanguage, optionGroups: [
+    var _a;
+    const sourceLanguageSelector = this.result && this.result.success && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { hint: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.i_study'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => this.changeSourceLanguage.emit(event.detail), value: this.sourceLanguage, optionGroups: [
         [
           '',
           Object.keys(_language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_2__.l)
             .map((code) => {
-            return [code, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)(`nominative_${code}`)];
+            return [code, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)(`nominative_${code}`)];
           })
             .sort(sortLanguages(this.existingSourceLanguages)),
         ],
       ] }));
-    const targetLanguageSelector = this.result && this.result.success && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { hint: (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.i_speak'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => this.changeTargetLanguage.emit(event.detail), value: this.targetLanguage, optionGroups: [
+    const targetLanguageSelector = this.result && this.result.success && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-hint-selector", { hint: (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.i_speak'), shrinkSmall: true, disabled: this.loading || this.disabled, onChoose: (event) => this.changeTargetLanguage.emit(event.detail), value: this.targetLanguage, optionGroups: [
         [
           '',
           Object.keys(_language_list_7bc9c83f_js__WEBPACK_IMPORTED_MODULE_2__.l)
             .map((code) => {
-            return [code, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)(`nominative_${code}`)];
+            return [code, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)(`nominative_${code}`)];
           })
             .sort(sortLanguages(this.existingTargetLanguages)),
         ],
@@ -15627,42 +15900,34 @@ const VocablyTranslation = class {
       this.result &&
       this.result.success &&
       this.result.value.aiThinksItIs;
-    const canAdd = this.cardsLimit === 'unlimited' ||
-      !this.paymentLink ||
-      (this.result &&
-        this.result.success &&
-        this.result.value.deck.cards.length < this.cardsLimit.maxCards) ||
-      (this.result &&
-        this.result.success &&
-        this.cardsLimit.cardsPerDay > this.addedToday);
+    const canAdd = this.canAdd;
     const isOkayToAskForRating = this.askForRating && canAdd;
+    // A card that is only waiting for the collection to arrive is already being
+    // added as far as the visitor is concerned, so it shows the spinner the
+    // click would have given it - and, just as during an add, no other card can
+    // be clicked in the meantime.
+    const isUpdating = (_a = this.isUpdating) !== null && _a !== void 0 ? _a : this.findPendingCard([...this.translationCards, ...this.extraCards]);
     return ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.H, { "data-test": "translation-container" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-loading-container" }, !this.result && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        gap: '12px',
-      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-spinner", null), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: { fontSize: '13px' } }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.generating')))), this.result && this.result.success === false && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "padding-left-12", style: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '12px',
-      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.error')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-link-button vocably-nondecorated", onClick: () => this.retry.emit(), style: {
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '4px',
-      }, disabled: this.isRetrying }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.retry'), this.isRetrying && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-inline-loader", null)), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-reload", { style: {
-        display: this.isRetrying ? 'none' : 'inline-block',
-      } }))))), this.result && this.result.success === true && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.F, null, this.showLanguages && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mb-18 vocably-language-selector" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-language-wrapper" }, sourceLanguageSelector), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-arrow-right", { class: "vocably-from-to" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-language-wrapper" }, targetLanguageSelector))), showChatGpt && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "padding-left-12 vocably-bottom-12-border" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-small vocably-muted vocably-mb-4" }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.ai_thinks'), ' '), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "vocably-emphasized" }, (0,_stringArray_af4489c8_js__WEBPACK_IMPORTED_MODULE_1__.i)(this.result.value.sourceLanguage) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-play-sound", { text: this.phrase, language: this.result.value.sourceLanguage, playAudioPronunciation: this.playAudioPronunciation })), this.phrase), ' ', (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.means'), ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("i", null, this.result.value.aiThinksItIs))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-translation-cards", { cards: this.translationCards, translationCards: this.result.value, canAdd: !!canAdd, cardsLimit: this.cardsLimit, paymentLink: this.paymentLink, canCongratulate: this.canCongratulate, isUpdating: this.isUpdating, disabled: this.disabled, isLightweight: this.isLightweight, playAudioPronunciation: this.playAudioPronunciation, updateCard: this.updateCard, attachTag: this.attachTag, detachTag: this.detachTag, updateTag: this.updateTag, deleteTag: this.deleteTag, onRemoveCard: (e) => this.removeCard.emit(e.detail), onAddCard: (e) => {
+        gap: '6px',
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-spinner", null), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: { fontSize: '13px' } }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.generating')))), this.result && this.result.success === false && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-error-state", role: "alert" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-error-state-icon" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-error", null)), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-error-state-title" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.error_title')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-error-state-message" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.error')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("button", { class: "vocably-error-state-retry", onClick: () => this.retry.emit(), disabled: this.isRetrying }, this.isRetrying ? ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-inline-loader", null)) : ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-reload", null)), (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.retry')))), this.result && this.result.success === true && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.F, null, this.showLanguages && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-mb-18 vocably-language-selector" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-language-wrapper" }, sourceLanguageSelector), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-icon-arrow-right", { class: "vocably-from-to" }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-language-wrapper" }, targetLanguageSelector))), showChatGpt && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "padding-left-12 vocably-bottom-12-border" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-small vocably-muted vocably-mb-4" }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.ai_thinks'), ' '), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { class: "vocably-emphasized" }, (0,_stringArray_af4489c8_js__WEBPACK_IMPORTED_MODULE_1__.i)(this.result.value.sourceLanguage) && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-play-sound", { text: this.phrase, language: this.result.value.sourceLanguage, playAudioPronunciation: this.playAudioPronunciation })), this.phrase), ' ', (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.means'), ' ', (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("i", null, this.result.value.aiThinksItIs))), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-translation-cards", { cards: this.translationCards, translationCards: this.result.value, canAdd: canAdd, cardsLimit: this.cardsLimit, paymentLink: this.paymentLink, canCongratulate: this.canCongratulate, isUpdating: isUpdating, disabled: this.disabled, isLightweight: this.isLightweight, isLoggedInUser: this.isLoggedInUser, hideActions: this.hideActions, playAudioPronunciation: this.playAudioPronunciation, updateCard: this.updateCard, attachTag: this.attachTag, detachTag: this.detachTag, updateTag: this.updateTag, deleteTag: this.deleteTag, onRemoveCard: (e) => this.removeCard.emit(e.detail), onAddCard: (e) => {
         e.stopPropagation();
         this.addCard.emit(e.detail);
+      }, onAddCardIntent: (e) => {
+        this.cardToAdd = e.detail.card.data;
       }, onWatchMePaying: () => this.watchMePaying.emit(), onResultUpdated: (e) => {
         this.result = e.detail;
       } }), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-animated-content-wrapper", { delay: this.explanationAnimationDelay, class: "explanation-frame" }, this.explanation.state !== 'none' && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-pt-12" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "panel" }, this.explanation.state === 'loading' && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)(_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.F, null, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", { style: {
         display: 'inline-block',
         verticalAlign: 'middle',
         fontSize: '13px',
-      } }, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.requesting_ai')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-inline-loader", { style: { marginLeft: '8px' } }))), this.explanation.state === 'error' &&
-      this.explanation.error, this.explanation.state === 'loaded' && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "explanation", innerHTML: mdConverter.makeHtml(this.explanation.value) }))))), this.extraCards.length > 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-pt-12" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-translation-cards", { cards: this.extraCards, translationCards: this.result.value, canAdd: !!canAdd, cardsLimit: this.cardsLimit, paymentLink: this.paymentLink, canCongratulate: this.canCongratulate, isUpdating: this.isUpdating, disabled: this.disabled, isLightweight: this.isLightweight, playAudioPronunciation: this.playAudioPronunciation, updateCard: this.updateCard, attachTag: this.attachTag, detachTag: this.detachTag, updateTag: this.updateTag, deleteTag: this.deleteTag, onRemoveCard: (e) => this.removeCard.emit(e.detail), onAddCard: (e) => this.addCard.emit(e.detail), onWatchMePaying: () => this.watchMePaying.emit(), onResultUpdated: (e) => {
+      } }, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.requesting_ai')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-inline-loader", { style: { marginLeft: '8px' } }))), this.explanation.state === 'error' &&
+      this.explanation.error, this.explanation.state === 'loaded' && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "explanation", innerHTML: mdConverter.makeHtml(this.explanation.value) }))))), this.extraCards.length > 0 && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-pt-12" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-translation-cards", { cards: this.extraCards, translationCards: this.result.value, canAdd: canAdd, cardsLimit: this.cardsLimit, paymentLink: this.paymentLink, canCongratulate: this.canCongratulate, isUpdating: isUpdating, disabled: this.disabled, isLightweight: this.isLightweight, isLoggedInUser: this.isLoggedInUser, hideActions: this.hideActions, playAudioPronunciation: this.playAudioPronunciation, updateCard: this.updateCard, attachTag: this.attachTag, detachTag: this.detachTag, updateTag: this.updateTag, deleteTag: this.deleteTag, onRemoveCard: (e) => this.removeCard.emit(e.detail), onAddCard: (e) => this.addCard.emit(e.detail), onAddCardIntent: (e) => {
+        this.cardToAdd = e.detail.card.data;
+      }, onWatchMePaying: () => this.watchMePaying.emit(), onResultUpdated: (e) => {
         this.result = e.detail;
       } }))), this.isLoadingExtraWords && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-pt-12", style: {
         paddingLeft: '12px',
@@ -15670,7 +15935,7 @@ const VocablyTranslation = class {
         display: 'flex',
         alignItems: 'center',
         gap: '4px',
-      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", null, (0,_index_e72c3d6e_js__WEBPACK_IMPORTED_MODULE_4__.t)('translation.requests_extra_items')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-inline-loader", null)))), isOkayToAskForRating && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-container", ref: (el) => (this.askForRatingContainer = el) }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: { paddingTop: '12px' } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "panel" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-rate", { platform: this.extensionPlatform, onUserSelected: (choiceEvent) => {
+      } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("span", null, (0,_index_ecc9f056_js__WEBPACK_IMPORTED_MODULE_5__.t)('translation.requests_extra_items')), (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-inline-loader", null)))), isOkayToAskForRating && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-rate-container", ref: (el) => (this.askForRatingContainer = el) }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { style: { paddingTop: '12px' } }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-rate", { platform: this.extensionPlatform, onUserSelected: (choiceEvent) => {
         switch (choiceEvent.detail) {
           case 'review':
           case 'feedback':
@@ -15685,7 +15950,7 @@ const VocablyTranslation = class {
             break;
         }
         this.ratingInteraction.emit(choiceEvent.detail);
-      } }))))), this.loading && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-reload", "data-test": "reload" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-spinner", null))))))));
+      } })))), this.loading && ((0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("div", { class: "vocably-reload", "data-test": "reload" }, (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.h)("vocably-spinner", null))))))));
   }
   get el() { return (0,_index_9e547a84_js__WEBPACK_IMPORTED_MODULE_0__.g)(this); }
   static get watchers() { return {
@@ -15703,8 +15968,8 @@ VocablyTranslation.style = translationCss;
 (module, __unused_webpack_exports, __webpack_require__) {
 
 var map = {
-	"./vocably-animated-content-wrapper_5.entry.js": [
-		7039,
+	"./vocably-animated-content-wrapper_6.entry.js": [
+		7990,
 		[
 			230
 		]
@@ -15721,14 +15986,8 @@ var map = {
 			230
 		]
 	],
-	"./vocably-card-definitions_15.entry.js": [
-		6962,
-		[
-			230
-		]
-	],
-	"./vocably-close-button_2.entry.js": [
-		5266,
+	"./vocably-card-definitions_17.entry.js": [
+		5104,
 		[
 			230
 		]
@@ -15739,8 +15998,8 @@ var map = {
 			230
 		]
 	],
-	"./vocably-hint-selector_2.entry.js": [
-		2854,
+	"./vocably-hint-selector.entry.js": [
+		9767,
 		[
 			230
 		]
@@ -15799,6 +16058,12 @@ var map = {
 			230
 		]
 	],
+	"./vocably-logo.entry.js": [
+		8819,
+		[
+			230
+		]
+	],
 	"./vocably-mobile-button.entry.js": [
 		4991,
 		[
@@ -15813,12 +16078,6 @@ var map = {
 	],
 	"./vocably-search-form.entry.js": [
 		1779,
-		[
-			230
-		]
-	],
-	"./vocably-sign-in.entry.js": [
-		1649,
 		[
 			230
 		]
@@ -15983,6 +16242,13 @@ const browser_browser = es5.getParser(window.navigator.userAgent);
 
 ;// ../browser/dist/esm/detectExtensionPlatform.js
 
+const edgeExtensionId = 'dahphaiflimmafjchchidjmgidlkajho';
+/**
+ * Edge runs the Chrome Web Store build too, and many Edge users have that one
+ * installed. The browser alone therefore says nothing about the store; the ID
+ * of the running extension does.
+ */
+const isEdgeAddonsBuild = () => typeof chrome !== 'undefined' && chrome.runtime?.id === edgeExtensionId;
 const detectExtensionPlatform = () => {
     if (browser_browser.satisfies({
         macos: {
@@ -16004,6 +16270,14 @@ const detectExtensionPlatform = () => {
             name: 'App Store',
             platform: 'iosSafariExtension',
             paymentLink: 'vocably-pro://upgrade',
+        };
+    }
+    if (isEdgeAddonsBuild()) {
+        return {
+            url: `https://microsoftedge.microsoft.com/addons/detail/${edgeExtensionId}`,
+            name: 'Edge Add-ons',
+            platform: 'edgeExtension',
+            paymentLink: 'web',
         };
     }
     return {
@@ -16034,7 +16308,7 @@ const patchEsm = () => {
 const defineCustomElements = (win, options) => {
   if (typeof window === 'undefined') return Promise.resolve();
   return patchEsm().then(() => {
-  return (0,index_9e547a84.b)([["vocably-translation",[[1,"vocably-translation",{"phrase":[1],"result":[16],"loading":[4],"existingSourceLanguages":[16],"existingTargetLanguages":[16],"askForRating":[4,"ask-for-rating"],"sourceLanguage":[1,"source-language"],"targetLanguage":[1,"target-language"],"isUpdating":[16],"canCongratulate":[4,"can-congratulate"],"playAudioPronunciation":[16],"extensionPlatform":[16],"updateCard":[16],"attachTag":[16],"detachTag":[16],"updateTag":[16],"deleteTag":[16],"disabled":[1028],"showLanguages":[4,"show-languages"],"hideChatGpt":[4,"hide-chat-gpt"],"cardsLimit":[1,"cards-limit"],"paymentLink":[1,"payment-link"],"explanation":[16],"explanationAnimationDelay":[2,"explanation-animation-delay"],"isRetrying":[4,"is-retrying"],"isLightweight":[4,"is-lightweight"],"isLoadingExtraWords":[4,"is-loading-extra-words"],"addedToday":[32],"translationCards":[32],"extraCards":[32],"play":[64]}]]],["vocably-grammar-fixer",[[1,"vocably-grammar-fixer",{"values":[16],"isLoading":[4,"is-loading"],"result":[16]}]]],["vocably-search-form",[[1,"vocably-search-form",{"loading":[4],"disabled":[4],"existingSourceLanguages":[16],"existingTargetLanguages":[16],"hideHint":[4,"hide-hint"],"autoFocus":[4,"auto-focus"],"languagePairs":[16],"values":[16],"textInputFocused":[32]}]]],["vocably-popup",[[1,"vocably-popup"]]],["vocably-skeleton-loader",[[1,"vocably-skeleton-loader"]]],["vocably-button",[[1,"vocably-button"]]],["vocably-icon-add",[[1,"vocably-icon-add"]]],["vocably-icon-ai",[[1,"vocably-icon-ai"]]],["vocably-icon-window-close",[[1,"vocably-icon-window-close"]]],["vocably-language",[[1,"vocably-language",{"sourceLanguage":[1,"source-language"],"targetLanguage":[1,"target-language"],"waiting":[4]}]]],["vocably-mobile-button",[[1,"vocably-mobile-button"]]],["vocably-sign-in",[[1,"vocably-sign-in"]]],["vocably-subscribe",[[1,"vocably-subscribe",{"trial":[4]}]]],["vocably-icon-magnify",[[1,"vocably-icon-magnify"]]],["vocably-close-button_2",[[0,"vocably-close-button"],[1,"vocably-logo"]]],["vocably-icon-copy",[[1,"vocably-icon-copy"]]],["vocably-skeleton-loader-bone",[[1,"vocably-skeleton-loader-bone"]]],["vocably-button-copy_4",[[1,"vocably-button-copy",{"copied":[32]}],[1,"vocably-icon-backspace"],[1,"vocably-icon-send"],[0,"vocably-tiny-select",{"value":[1],"label":[1],"disabled":[4],"selectedLabel":[32]}]]],["vocably-hint-selector_2",[[1,"vocably-hint-selector",{"shrinkSmall":[4,"shrink-small"],"optionGroups":[16],"value":[1],"hint":[1],"disabled":[4]}],[1,"vocably-icon-arrow-right"]]],["vocably-spinner",[[1,"vocably-spinner"]]],["vocably-icon-check",[[1,"vocably-icon-check"]]],["vocably-icon-error_3",[[1,"vocably-icon-error"],[1,"vocably-icon-play-circle"],[1,"vocably-icon-volume-medium"]]],["vocably-icon-close_3",[[1,"vocably-icon-close"],[1,"vocably-icon-edit"],[1,"vocably-icon-spin"]]],["vocably-card-definitions_15",[[1,"vocably-tags-menu",{"disabled":[4],"selectedItems":[16],"existingItems":[16],"attachTag":[16],"detachTag":[16],"saveTag":[16],"deleteTag":[16],"savingTag":[32]}],[0,"vocably-card-definitions",{"card":[16],"updateCard":[16],"isLightweight":[4,"is-lightweight"]}],[0,"vocably-card-source",{"card":[16],"playAudioPronunciation":[16]}],[1,"vocably-first-translation-congratulation",{"card":[16]}],[0,"vocably-card-examples",{"example":[1]}],[1,"vocably-icon-bookmark-check"],[1,"vocably-icon-plus"],[1,"vocably-icon-remove"],[1,"vocably-icon-tag"],[0,"vocably-card-translation",{"card":[16],"updateCard":[16],"disableEditing":[4,"disable-editing"],"isEdit":[32],"isSaving":[32]}],[1,"vocably-play-sound",{"text":[1],"language":[1],"playAudioPronunciation":[16],"isLoading":[32],"isPlaying":[32],"isPlayError":[32],"play":[64]}],[1,"vocably-tag-form",{"tagItem":[16],"saveTag":[16],"deleteTag":[16],"title":[32],"saving":[32]}],[1,"vocably-icon-tag-edit"],[1,"vocably-overlay",{"closeKeyCode":[16],"hide":[64]}],[1,"vocably-qr-code"]]],["vocably-animated-content-wrapper_5",[[0,"vocably-translation-cards",{"cards":[16],"translationCards":[16],"canAdd":[4,"can-add"],"cardsLimit":[1,"cards-limit"],"paymentLink":[1,"payment-link"],"canCongratulate":[4,"can-congratulate"],"isUpdating":[16],"disabled":[1028],"isLightweight":[4,"is-lightweight"],"playAudioPronunciation":[16],"updateCard":[16],"attachTag":[16],"detachTag":[16],"updateTag":[16],"deleteTag":[16],"saveCardClicked":[32],"addedItemIndex":[32],"congratulateItemIndex":[32],"addAttemptIndex":[32],"removing":[32]}],[1,"vocably-animated-content-wrapper",{"delay":[2]}],[1,"vocably-icon-reload"],[1,"vocably-inline-loader",{"duration":[2],"paused":[4]}],[0,"vocably-rate",{"platform":[16]}]]]], options);
+  return (0,index_9e547a84.b)([["vocably-translation",[[1,"vocably-translation",{"phrase":[1],"result":[16],"loading":[4],"existingSourceLanguages":[16],"existingTargetLanguages":[16],"askForRating":[4,"ask-for-rating"],"sourceLanguage":[1,"source-language"],"targetLanguage":[1,"target-language"],"isUpdating":[16],"canCongratulate":[4,"can-congratulate"],"playAudioPronunciation":[16],"extensionPlatform":[16],"updateCard":[16],"attachTag":[16],"detachTag":[16],"updateTag":[16],"deleteTag":[16],"disabled":[1028],"showLanguages":[4,"show-languages"],"hideChatGpt":[4,"hide-chat-gpt"],"cardsLimit":[1,"cards-limit"],"paymentLink":[1,"payment-link"],"explanation":[16],"explanationAnimationDelay":[2,"explanation-animation-delay"],"isRetrying":[4,"is-retrying"],"isLightweight":[4,"is-lightweight"],"isLoadingExtraWords":[4,"is-loading-extra-words"],"isLoggedInUser":[4,"is-logged-in-user"],"hideActions":[1028,"hide-actions"],"addedToday":[32],"translationCards":[32],"extraCards":[32],"cardToAdd":[32],"addRememberedCard":[64],"play":[64]}]]],["vocably-grammar-fixer",[[1,"vocably-grammar-fixer",{"values":[16],"isLoading":[4,"is-loading"],"result":[16]}]]],["vocably-popup",[[1,"vocably-popup"]]],["vocably-search-form",[[1,"vocably-search-form",{"loading":[4],"disabled":[4],"existingSourceLanguages":[16],"existingTargetLanguages":[16],"hideHint":[4,"hide-hint"],"autoFocus":[4,"auto-focus"],"languagePairs":[16],"values":[16],"textInputFocused":[32]}]]],["vocably-skeleton-loader",[[1,"vocably-skeleton-loader"]]],["vocably-button",[[1,"vocably-button"]]],["vocably-icon-add",[[1,"vocably-icon-add"]]],["vocably-icon-ai",[[1,"vocably-icon-ai"]]],["vocably-icon-window-close",[[1,"vocably-icon-window-close"]]],["vocably-language",[[1,"vocably-language",{"sourceLanguage":[1,"source-language"],"targetLanguage":[1,"target-language"],"waiting":[4]}]]],["vocably-mobile-button",[[1,"vocably-mobile-button"]]],["vocably-subscribe",[[1,"vocably-subscribe",{"trial":[4]}]]],["vocably-icon-magnify",[[1,"vocably-icon-magnify"]]],["vocably-logo",[[1,"vocably-logo"]]],["vocably-hint-selector",[[1,"vocably-hint-selector",{"shrinkSmall":[4,"shrink-small"],"optionGroups":[16],"value":[1],"hint":[1],"disabled":[4]}]]],["vocably-icon-copy",[[1,"vocably-icon-copy"]]],["vocably-skeleton-loader-bone",[[1,"vocably-skeleton-loader-bone"]]],["vocably-icon-check",[[1,"vocably-icon-check"]]],["vocably-button-copy_4",[[1,"vocably-button-copy",{"copied":[32]}],[1,"vocably-icon-backspace"],[1,"vocably-icon-send"],[0,"vocably-tiny-select",{"value":[1],"label":[1],"disabled":[4],"selectedLabel":[32]}]]],["vocably-spinner",[[1,"vocably-spinner"]]],["vocably-icon-error_3",[[1,"vocably-icon-error"],[1,"vocably-icon-play-circle"],[1,"vocably-icon-volume-medium"]]],["vocably-icon-close_3",[[1,"vocably-icon-close"],[1,"vocably-icon-edit"],[1,"vocably-icon-spin"]]],["vocably-card-definitions_17",[[1,"vocably-tags-menu",{"disabled":[4],"selectedItems":[16],"existingItems":[16],"attachTag":[16],"detachTag":[16],"saveTag":[16],"deleteTag":[16],"savingTag":[32]}],[0,"vocably-card-definitions",{"card":[16],"updateCard":[16],"isLightweight":[4,"is-lightweight"]}],[0,"vocably-card-source",{"card":[16],"playAudioPronunciation":[16]}],[1,"vocably-first-translation-congratulation",{"card":[16],"platform":[1]}],[0,"vocably-card-examples",{"example":[1]}],[1,"vocably-icon-bookmark-check"],[1,"vocably-icon-plus"],[1,"vocably-icon-remove"],[1,"vocably-icon-tag"],[1,"vocably-sign-in"],[0,"vocably-card-translation",{"card":[16],"updateCard":[16],"disableEditing":[4,"disable-editing"],"isEdit":[32],"isSaving":[32]}],[1,"vocably-play-sound",{"text":[1],"language":[1],"playAudioPronunciation":[16],"isLoading":[32],"isPlaying":[32],"isPlayError":[32],"play":[64]}],[1,"vocably-tag-form",{"tagItem":[16],"saveTag":[16],"deleteTag":[16],"title":[32],"saving":[32]}],[0,"vocably-close-button"],[1,"vocably-icon-tag-edit"],[1,"vocably-overlay",{"closeKeyCode":[16],"hide":[64]}],[1,"vocably-qr-code"]]],["vocably-animated-content-wrapper_6",[[0,"vocably-translation-cards",{"cards":[16],"translationCards":[16],"canAdd":[4,"can-add"],"cardsLimit":[1,"cards-limit"],"paymentLink":[1,"payment-link"],"canCongratulate":[4,"can-congratulate"],"isUpdating":[16],"disabled":[1028],"isLightweight":[4,"is-lightweight"],"isLoggedInUser":[4,"is-logged-in-user"],"hideActions":[4,"hide-actions"],"playAudioPronunciation":[16],"updateCard":[16],"attachTag":[16],"detachTag":[16],"updateTag":[16],"deleteTag":[16],"saveCardClicked":[32],"addedItemIndex":[32],"congratulateItemIndex":[32],"addAttemptIndex":[32],"signInItemIndex":[32],"signInHiding":[32],"removing":[32]}],[1,"vocably-animated-content-wrapper",{"delay":[2]}],[1,"vocably-icon-arrow-right"],[1,"vocably-icon-reload"],[1,"vocably-inline-loader",{"duration":[2],"paused":[4]}],[0,"vocably-rate",{"platform":[16]}]]]], options);
   });
 };
 
@@ -18081,6 +18355,7 @@ const [detachTag, onDetachTag] = createScopedMessage('detachTag');
 const [updateTag, onUpdateTag] = createScopedMessage('updateTag');
 const [deleteTag, onDeleteTag] = createScopedMessage('deleteTag');
 const [analyzeUnitsOfSpeech, onAnalyzeUnitsOfSpeech] = createScopedMessage('analyzeUnitsOfSpeech');
+const [loadLanguageDeck, onLoadLanguageDeck] = createScopedMessage('loadLanguageDeck');
 
 ;// ../extension-content-script/dist/api.js
 
@@ -18118,6 +18393,7 @@ const api = {
     deleteTag: deleteTag,
     explain: explain,
     analyzeUnitsOfSpeech: analyzeUnitsOfSpeech,
+    loadLanguageDeck: loadLanguageDeck,
 };
 const configureApi = (options) => {
     Object.assign(api, options);
@@ -18796,6 +19072,116 @@ const trimSenselessArticle = (language, source) => {
     return trimArticle(language, source).source;
 };
 
+;// ../sulna/dist/esm/auth.js
+/**
+ * Email + password helpers shared by the web app and the mobile app.
+ *
+ * The username of an email/password account *is* the normalized email: the
+ * user pool has no username_attributes or alias_attributes, so uniqueness of
+ * the address relies on every client normalizing it the same way.
+ */
+const normalizeEmail = (email) => email.trim().toLowerCase();
+/**
+ * Same shape the pre sign-up trigger accepts, so the form never submits an
+ * address the trigger would reject.
+ */
+const isValidEmail = (email) => /^[^\s"\\@]+@[^\s"\\@]+\.[^\s"\\@]+$/.test(normalizeEmail(email));
+const PASSWORD_MIN_LENGTH = 8;
+/**
+ * Cognito's list of special characters. The space counts as one too.
+ */
+const PASSWORD_SYMBOLS = '^$*.[]{}()?"!@#%&/\\,><\':;|_~`=+- ';
+/**
+ * Mirrors the default Cognito password policy of the user pool.
+ */
+const checkPassword = (password) => ({
+    minLength: password.length >= PASSWORD_MIN_LENGTH,
+    lowercase: /[a-z]/.test(password),
+    uppercase: /[A-Z]/.test(password),
+    digit: /[0-9]/.test(password),
+    symbol: [...password].some((char) => PASSWORD_SYMBOLS.includes(char)),
+});
+const isPasswordValid = (password) => Object.values(checkPassword(password)).every(Boolean);
+const errorCodesByName = {
+    NotAuthorizedException: 'invalidCredentials',
+    UserNotFoundException: 'invalidCredentials',
+    UserNotConfirmedException: 'userNotConfirmed',
+    UsernameExistsException: 'usernameExists',
+    AliasExistsException: 'usernameExists',
+    CodeMismatchException: 'codeMismatch',
+    ExpiredCodeException: 'codeExpired',
+    LimitExceededException: 'tooManyAttempts',
+    TooManyRequestsException: 'tooManyAttempts',
+    TooManyFailedAttemptsException: 'tooManyAttempts',
+    InvalidPasswordException: 'invalidPassword',
+    NetworkError: 'network',
+    UserCancelledException: 'cancelled',
+};
+const decode = (message) => {
+    try {
+        return decodeURIComponent(message.replace(/\+/g, ' '));
+    }
+    catch {
+        return message;
+    }
+};
+/**
+ * The pre sign-up trigger's messages (see packages/auth-lambdas) arrive as
+ * text only: in a UserLambdaValidationException from SignUp, and as the
+ * error_description of a failed Google/Apple redirect.
+ */
+const errorCodeFromMessage = (message) => {
+    const text = decode(message);
+    if (text.includes('An account with this email already exists')) {
+        if (text.includes('Google or Apple')) {
+            return 'emailTakenGoogleOrApple';
+        }
+        if (text.includes('Google')) {
+            return 'emailTakenGoogle';
+        }
+        if (text.includes('Apple')) {
+            return 'emailTakenApple';
+        }
+        return 'emailTakenPassword';
+    }
+    if (text.includes('An email address is required')) {
+        return 'invalidEmail';
+    }
+    // Amplify's own wording for a Google/Apple window the user closed.
+    if (text.includes('User cancelled OAuth flow') ||
+        text.includes('has been canceled') ||
+        // What the React Native in-app browser reports when it is closed.
+        text.trim() === 'canceled') {
+        return 'cancelled';
+    }
+    if (text.includes('Password attempts exceeded')) {
+        return 'tooManyAttempts';
+    }
+    return undefined;
+};
+/**
+ * Classifies whatever Amplify throws (or dispatches through Hub) so that the
+ * clients can show a translated message. The Cognito text itself is English
+ * only and is never meant to be shown as is.
+ */
+const getAuthErrorCode = (error) => {
+    if (typeof error === 'string') {
+        return errorCodeFromMessage(error) ?? 'unknown';
+    }
+    if (typeof error !== 'object' || error === null) {
+        return 'unknown';
+    }
+    const { name, message } = error;
+    const fromMessage = typeof message === 'string' ? errorCodeFromMessage(message) : undefined;
+    if (fromMessage) {
+        return fromMessage;
+    }
+    if (typeof name === 'string' && errorCodesByName[name]) {
+        return errorCodesByName[name];
+    }
+    return 'unknown';
+};
+
 ;// ../sulna/dist/esm/index.js
 
 
@@ -18858,41 +19244,6 @@ const isBatchUnitOfSpeechAnalyzePayload = (payload) => {
         payload['unitsOfSpeech'].every(isUnitOfSpeech));
 };
 
-;// ../model/dist/esm/user.js
-/* unused harmony import specifier */ var getAttributeValue;
-
-const mapUserAttributes = ({ user, attributes, }) => {
-    const email = attributes.find((a) => a.getName() === 'email');
-    const sub = attributes.find((a) => a.getName() === 'sub');
-    const status = attributes.find((a) => a.getName() === 'custom:status');
-    const cancellationDate = attributes.find((a) => a.getName() === 'custom:cancellation_date');
-    const nextBillDate = attributes.find((a) => a.getName() === 'custom:next_bill_date');
-    const unitPrice = attributes.find((a) => a.getName() === 'custom:unit_price');
-    const updateUrl = attributes.find((a) => a.getName() === 'custom:update_url');
-    const cancelUrl = attributes.find((a) => a.getName() === 'custom:cancel_url');
-    const productId = attributes.find((a) => a.getName() === 'custom:product_id');
-    const planName = attributes.find((a) => a.getName() === 'custom:plan_name');
-    if (!email || !sub) {
-        throw Error('Can find email and sub in user data.');
-    }
-    return {
-        username: user.getUsername(),
-        email: email.getValue(),
-        sub: sub.getValue(),
-        status: getAttributeValue(status),
-        updateUrl: getAttributeValue(updateUrl),
-        cancelUrl: getAttributeValue(cancelUrl),
-        nextBillDate: nextBillDate && new Date(nextBillDate.getValue()),
-        unitPrice: unitPrice && parseFloat(unitPrice.getValue()),
-        cancellationDate: cancellationDate && new Date(cancellationDate.getValue()),
-        productId: productId && parseInt(productId.getValue()),
-        planName: planName && planName.getValue(),
-    };
-};
-const user_isEligibleForTrial = (userData) => {
-    return userData.status !== 'deleted';
-};
-
 ;// ../model/dist/esm/user-metadata.js
 const defaultUserMetadata = {
     onboardingFlow: {
@@ -18905,6 +19256,7 @@ const defaultUserMetadata = {
         ios: undefined,
         android: undefined,
         chromeExtension: undefined,
+        edgeExtension: undefined,
         safariExtension: undefined,
     },
     lastUpdated: 0,
@@ -19142,13 +19494,13 @@ const getText = (anchor) => {
 
 ;// ../extension-content-ui/src/i18n/en.ts
 const en = {
+    // close button
+    'close_button.label': 'Close',
     // sign-in
-    'sign_in.please': 'Please sign in to proceed.',
     'sign_in.button': 'Sign in or Create an account',
-    'sign_in.agree': 'By signing in, you agree to our',
-    'sign_in.terms': 'Terms of Service',
-    'sign_in.and': 'and',
-    'sign_in.privacy': 'Privacy Policy',
+    'sign_in.benefit.sync': 'Sync across devices',
+    'sign_in.benefit.study': 'Study your cards on mobile or in a browser',
+    'sign_in.benefit.export': 'Export your cards as CSV',
     // subscribe
     'subscribe.trial_message': 'Request a 7 day free trial to proceed.',
     'subscribe.message': 'Please subscribe to proceed.',
@@ -19156,8 +19508,9 @@ const en = {
     'subscribe.button': 'Subscribe',
     // translation
     'translation.generating': 'Thinking...',
-    'translation.error': 'A (likely) Gemini or ChatGPT request has resulted in an error.',
-    'translation.retry': 'Retry',
+    'translation.error_title': 'The AI service may be temporarily unavailable',
+    'translation.error': "The translation couldn't be loaded. Please try again.",
+    'translation.retry': 'Try again',
     'translation.requesting_ai': 'Requesting extra info from AI',
     'translation.requests_extra_items': 'Breaking it down',
     'translation.ai_thinks': 'AI thinks that',
@@ -19179,29 +19532,36 @@ const en = {
     'search.preferred_languages': 'Preferred Languages',
     'search.available_languages': 'Available Languages',
     'search.placeholder_default': 'Any word or phrase',
+    'search.swap_direction': 'Swap translation direction',
+    'search.submit': 'Translate',
     'search.placeholder_reversed': 'Enter {article} {language} word or phrase here. {source} cards will be created.',
     'search.hint': 'Type any word or phrase in any language. Vocably will create {language} cards for you.',
     // rate
-    'rate.tagline': 'It will take less than a minute, but will mean a lot for Vocably.',
-    'rate.question': 'Do you find Vocably useful? Your rating on the {platform}',
-    'rate.question2': 'will make a big difference for this project.',
+    'rate.title': 'Enjoying Vocably?',
+    'rate.description': 'A quick rating on the {platform} takes less than a minute and means a lot to this project.',
     'rate.ok': 'Rate Vocably',
-    'rate.later': 'Ask me later.',
-    'rate.dislike': "Is there something you don't like about Vocably? Then please",
-    'rate.contact': 'contact the author',
-    'rate.feedback_note': '. I take every feedback seriously. We can improve this project together.',
-    'rate.show_again': 'You will see this message again after 10 translations.',
-    'rate.never': 'Never show this message again.',
+    'rate.later': 'Maybe later',
+    'rate.show_again': 'This message will appear again after 10 translations.',
+    'rate.dislike': 'Something not right?',
+    'rate.contact': 'Share feedback',
+    'rate.never': "Don't show again",
     // language
+    'language.title': 'Choose your languages',
+    'language.hint': 'Vocably translates words from the language you study into the language you speak.',
     'language.i_study': 'I study',
     'language.i_speak': 'I speak',
     'language.save': 'Save',
     'language.saving': 'Saving...',
     // first-translation-congratulation
-    'congrats.on_phone': 'is already on your phone.',
-    'congrats.scan_qr': 'Scan the QR code to learn it.',
-    'congrats.or_go_to': 'Or go to',
-    'congrats.to_study_browser': 'to study in your browser.',
+    'congrats.badge': 'First card saved',
+    'congrats.title': '{word} is in your deck.',
+    'congrats.description': 'Review it with spaced repetition and it will stick for good.',
+    'congrats.get_app': 'Get the Vocably app',
+    'congrats.scan_qr': 'Scan the code with your phone camera to study on the go.',
+    'congrats.get_app_mobile': 'Study on the go with the Vocably app.',
+    'congrats.app_store_caption': 'Download on the',
+    'congrats.google_play_caption': 'GET IT ON',
+    'congrats.browser': 'Prefer the browser? Study at {link}',
     // mobile-button
     'mobile_button.look_up': 'Look up',
     // tag-form
@@ -19224,13 +19584,13 @@ const en = {
 
 ;// ../extension-content-ui/src/i18n/ru.ts
 const ru = {
+    // close button
+    'close_button.label': 'Закрыть',
     // sign-in
-    'sign_in.please': 'Пожалуйста, войдите, чтобы продолжить.',
     'sign_in.button': 'Войти или создать аккаунт',
-    'sign_in.agree': 'Входя, вы соглашаетесь с нашими',
-    'sign_in.terms': 'Условиями использования',
-    'sign_in.and': 'и',
-    'sign_in.privacy': 'Политикой конфиденциальности',
+    'sign_in.benefit.sync': 'Синхронизация между устройствами',
+    'sign_in.benefit.study': 'Учите карточки на телефоне или в браузере',
+    'sign_in.benefit.export': 'Экспорт карточек в CSV',
     // subscribe
     'subscribe.trial_message': 'Запросите бесплатный пробный период на 7 дней, чтобы продолжить.',
     'subscribe.message': 'Пожалуйста, оформите подписку, чтобы продолжить.',
@@ -19238,7 +19598,8 @@ const ru = {
     'subscribe.button': 'Подписаться',
     // translation
     'translation.generating': 'Думаю...',
-    'translation.error': 'Запрос к Gemini или ChatGPT завершился ошибкой.',
+    'translation.error_title': 'Возможно, сервис ИИ временно недоступен',
+    'translation.error': 'Не удалось загрузить перевод. Попробуйте ещё раз.',
     'translation.retry': 'Повторить',
     'translation.requesting_ai': 'Запрашиваем дополнительную информацию у ИИ',
     'translation.requests_extra_items': 'Разбираем на составные части',
@@ -19261,29 +19622,36 @@ const ru = {
     'search.preferred_languages': 'Предпочтительные языки',
     'search.available_languages': 'Доступные языки',
     'search.placeholder_default': 'Любое слово или фраза',
+    'search.swap_direction': 'Сменить направление перевода',
+    'search.submit': 'Перевести',
     'search.placeholder_reversed': 'Введите слово или фразу. Vocably создаст {source} карточки.',
     'search.hint': 'Введите любое слово или фразу. Vocably создаст {language} карточки для вас.',
     // rate
-    'rate.tagline': 'Это займёт меньше минуты, но много значит для Vocably.',
-    'rate.question': 'Нравится ли вам Vocably? Ваш отзыв на {platform}',
-    'rate.question2': 'поможет этому проекту.',
+    'rate.title': 'Нравится Vocably?',
+    'rate.description': 'Оценка на {platform} займёт меньше минуты, но очень поможет проекту.',
     'rate.ok': 'Оценить Vocably',
-    'rate.later': 'Спросить позже.',
-    'rate.dislike': 'Вас что-то не устраивает в Vocably? Тогда, пожалуйста,',
-    'rate.contact': 'свяжитесь с автором',
-    'rate.feedback_note': '. Я серьёзно отношусь к каждому отзыву. Мы можем улучшить этот проект вместе.',
+    'rate.later': 'Может, позже',
     'rate.show_again': 'Это сообщение появится снова через 10 переводов.',
-    'rate.never': 'Больше не показывать это сообщение.',
+    'rate.dislike': 'Что-то не так?',
+    'rate.contact': 'Написать автору',
+    'rate.never': 'Больше не показывать',
     // language
+    'language.title': 'Выберите языки',
+    'language.hint': 'Vocably переводит слова с изучаемого языка на язык, который вы знаете.',
     'language.i_study': 'Я изучаю',
     'language.i_speak': 'Я знаю',
     'language.save': 'Сохранить',
     'language.saving': 'Сохранение...',
     // first-translation-congratulation
-    'congrats.on_phone': 'уже на вашем телефоне.',
-    'congrats.scan_qr': 'Отсканируйте QR-код, чтобы учить.',
-    'congrats.or_go_to': 'Или перейдите на',
-    'congrats.to_study_browser': 'чтобы учиться в браузере.',
+    'congrats.badge': 'Первая карточка сохранена',
+    'congrats.title': '{word} уже в вашей колоде.',
+    'congrats.description': 'Повторяйте её с помощью интервальных повторений, и слово запомнится надолго.',
+    'congrats.get_app': 'Скачайте приложение Vocably',
+    'congrats.scan_qr': 'Отсканируйте код камерой телефона, чтобы учиться где угодно.',
+    'congrats.get_app_mobile': 'Учитесь где угодно с приложением Vocably.',
+    'congrats.app_store_caption': 'Загрузите в',
+    'congrats.google_play_caption': 'ДОСТУПНО В',
+    'congrats.browser': 'Удобнее в браузере? Учитесь на {link}',
     // mobile-button
     'mobile_button.look_up': 'Найти',
     // tag-form
@@ -19306,13 +19674,13 @@ const ru = {
 
 ;// ../extension-content-ui/src/i18n/tr.ts
 const tr = {
+    // close button
+    'close_button.label': 'Kapat',
     // sign-in
-    'sign_in.please': 'Devam etmek için lütfen giriş yapın.',
     'sign_in.button': 'Giriş yap veya hesap oluştur',
-    'sign_in.agree': 'Giriş yaparak kabul etmiş olursunuz:',
-    'sign_in.terms': 'Kullanım Koşulları',
-    'sign_in.and': 've',
-    'sign_in.privacy': 'Gizlilik Politikası',
+    'sign_in.benefit.sync': 'Cihazlar arasında senkronizasyon',
+    'sign_in.benefit.study': 'Kartlarını telefonda veya tarayıcıda çalış',
+    'sign_in.benefit.export': 'Kartlarını CSV olarak dışa aktar',
     // subscribe
     'subscribe.trial_message': 'Devam etmek için 7 günlük ücretsiz deneme talep edin.',
     'subscribe.message': 'Devam etmek için lütfen abone olun.',
@@ -19320,7 +19688,8 @@ const tr = {
     'subscribe.button': 'Abone ol',
     // translation
     'translation.generating': 'Düşünmek...',
-    'translation.error': 'Gemini veya ChatGPT isteği bir hatayla sonuçlandı.',
+    'translation.error_title': 'Yapay zekâ hizmeti geçici olarak kullanılamıyor olabilir',
+    'translation.error': 'Çeviri yüklenemedi. Lütfen tekrar deneyin.',
     'translation.retry': 'Tekrar dene',
     'translation.requesting_ai': 'Yapay zekadan ek bilgi isteniyor',
     'translation.requests_extra_items': 'Parçalarına ayırıyoruz',
@@ -19343,29 +19712,36 @@ const tr = {
     'search.preferred_languages': 'Tercih Edilen Diller',
     'search.available_languages': 'Mevcut Diller',
     'search.placeholder_default': 'Herhangi bir kelime veya cümle',
+    'search.swap_direction': 'Çeviri yönünü değiştir',
+    'search.submit': 'Çevir',
     'search.placeholder_reversed': '{language} dilinde kelime veya cümle girin. {source} kartları oluşturulacak.',
     'search.hint': 'Herhangi bir dilde kelime veya cümle girin. Vocably sizin için {language} kartları oluşturacak.',
     // rate
-    'rate.tagline': 'Bir dakikadan az sürer, ancak Vocably için çok şey ifade eder.',
-    'rate.question': "Vocably'yi yararlı buluyor musunuz? {platform} üzerindeki değerlendirmeniz",
-    'rate.question2': 'bu proje için büyük fark yaratacak.',
+    'rate.title': "Vocably'yi beğendiniz mi?",
+    'rate.description': '{platform} üzerinde değerlendirmek bir dakikadan az sürer ve bu proje için çok şey ifade eder.',
     'rate.ok': "Vocably'yi değerlendir",
-    'rate.later': 'Daha sonra sor.',
-    'rate.dislike': "Vocably'de beğenmediğiniz bir şey mi var? O zaman lütfen",
-    'rate.contact': 'yazar ile iletişime geçin',
-    'rate.feedback_note': '. Her geri bildirimi ciddiye alıyorum. Bu projeyi birlikte geliştirebiliriz.',
-    'rate.show_again': 'Bu mesajı 10 çeviriden sonra tekrar göreceksiniz.',
-    'rate.never': 'Bu mesajı bir daha gösterme.',
+    'rate.later': 'Belki sonra',
+    'rate.show_again': 'Bu mesaj 10 çeviriden sonra tekrar görünecek.',
+    'rate.dislike': 'Bir sorun mu var?',
+    'rate.contact': 'Geri bildirim gönderin',
+    'rate.never': 'Bir daha gösterme',
     // language
+    'language.title': 'Dillerinizi seçin',
+    'language.hint': 'Vocably, çalıştığınız dildeki kelimeleri bildiğiniz dile çevirir.',
     'language.i_study': 'Çalışılan Dil:',
     'language.i_speak': 'Çeviri Dili:',
     'language.save': 'Kaydet',
     'language.saving': 'Kaydediliyor...',
     // first-translation-congratulation
-    'congrats.on_phone': 'zaten telefonunuzda.',
-    'congrats.scan_qr': 'Öğrenmek için QR kodunu tarayın.',
-    'congrats.or_go_to': 'Veya şuraya gidin:',
-    'congrats.to_study_browser': 'tarayıcınızda çalışmak için.',
+    'congrats.badge': 'İlk kart kaydedildi',
+    'congrats.title': '{word} artık destenizde.',
+    'congrats.description': 'Aralıklı tekrarla çalışın, kalıcı olarak aklınızda kalsın.',
+    'congrats.get_app': 'Vocably uygulamasını edinin',
+    'congrats.scan_qr': 'Her yerde çalışmak için kodu telefonunuzun kamerasıyla tarayın.',
+    'congrats.get_app_mobile': 'Vocably uygulamasıyla her yerde çalışın.',
+    'congrats.app_store_caption': 'Hemen indirin',
+    'congrats.google_play_caption': 'HEMEN İNDİRİN',
+    'congrats.browser': 'Tarayıcıyı mı tercih edersiniz? {link} adresinde çalışın',
     // mobile-button
     'mobile_button.look_up': 'Ara',
     // tag-form
@@ -19388,13 +19764,13 @@ const tr = {
 
 ;// ../extension-content-ui/src/i18n/uk.ts
 const uk = {
+    // close button
+    'close_button.label': 'Закрити',
     // sign-in
-    'sign_in.please': 'Будь ласка, увійдіть, щоб продовжити.',
     'sign_in.button': 'Увійти або створити акаунт',
-    'sign_in.agree': 'Входячи, ви погоджуєтесь з нашими',
-    'sign_in.terms': 'Умовами використання',
-    'sign_in.and': 'та',
-    'sign_in.privacy': 'Політикою конфіденційності',
+    'sign_in.benefit.sync': 'Синхронізація між пристроями',
+    'sign_in.benefit.study': 'Вчіть картки на телефоні або в браузері',
+    'sign_in.benefit.export': 'Експорт карток у CSV',
     // subscribe
     'subscribe.trial_message': 'Запитайте 7-денний безкоштовний пробний період, щоб продовжити.',
     'subscribe.message': 'Будь ласка, оформіть підписку, щоб продовжити.',
@@ -19402,7 +19778,8 @@ const uk = {
     'subscribe.button': 'Підписатися',
     // translation
     'translation.generating': 'Думаю...',
-    'translation.error': 'Запит до Gemini або ChatGPT завершився помилкою.',
+    'translation.error_title': 'Можливо, сервіс ШІ тимчасово недоступний',
+    'translation.error': 'Не вдалося завантажити переклад. Спробуйте ще раз.',
     'translation.retry': 'Повторити',
     'translation.requesting_ai': 'Запитуємо додаткову інформацію у ШІ',
     'translation.requests_extra_items': 'Розбираємо на складові частини',
@@ -19425,29 +19802,36 @@ const uk = {
     'search.preferred_languages': 'Бажані мови',
     'search.available_languages': 'Доступні мови',
     'search.placeholder_default': 'Будь-яке слово або фраза',
+    'search.swap_direction': 'Змінити напрямок перекладу',
+    'search.submit': 'Перекласти',
     'search.placeholder_reversed': 'Введіть слово або фразу. Vocably створить {source} картки.',
     'search.hint': 'Введіть будь-яке слово або фразу. Vocably створить {language} картки для вас.',
     // rate
-    'rate.tagline': 'Це займе менше хвилини, але багато значить для Vocably.',
-    'rate.question': 'Чи вважаєте ви Vocably корисним? Ваш відгук на {platform}',
-    'rate.question2': 'має велике значення для цього проекту.',
+    'rate.title': 'Подобається Vocably?',
+    'rate.description': 'Оцінка на {platform} займе менше хвилини, але дуже допоможе проєкту.',
     'rate.ok': 'Оцінити Vocably',
-    'rate.later': 'Запитати пізніше.',
-    'rate.dislike': 'Вас щось не влаштовує у Vocably? Тоді, будь ласка,',
-    'rate.contact': "зв'яжіться з автором",
-    'rate.feedback_note': '. Я серйозно ставлюся до кожного відгуку. Ми можемо покращити цей проект разом.',
-    'rate.show_again': 'Ви побачите це повідомлення знову після 10 перекладів.',
-    'rate.never': 'Більше не показувати це повідомлення.',
+    'rate.later': 'Можливо, пізніше',
+    'rate.show_again': 'Це повідомлення з’явиться знову через 10 перекладів.',
+    'rate.dislike': 'Щось не так?',
+    'rate.contact': 'Написати автору',
+    'rate.never': 'Більше не показувати',
     // language
+    'language.title': 'Оберіть мови',
+    'language.hint': 'Vocably перекладає слова з мови, яку ви вивчаєте, мовою, яку ви знаєте.',
     'language.i_study': 'Я вивчаю:',
     'language.i_speak': 'Переклад:',
     'language.save': 'Зберегти',
     'language.saving': 'Збереження...',
     // first-translation-congratulation
-    'congrats.on_phone': 'вже на вашому телефоні.',
-    'congrats.scan_qr': 'Відскануйте QR-код, щоб вчити.',
-    'congrats.or_go_to': 'Або перейдіть на',
-    'congrats.to_study_browser': 'щоб навчатися у браузері.',
+    'congrats.badge': 'Першу картку збережено',
+    'congrats.title': '{word} вже у вашій колоді.',
+    'congrats.description': 'Повторюйте її за допомогою інтервальних повторень, і слово запам’ятається надовго.',
+    'congrats.get_app': 'Завантажте застосунок Vocably',
+    'congrats.scan_qr': 'Відскануйте код камерою телефона, щоб навчатися будь-де.',
+    'congrats.get_app_mobile': 'Навчайтеся будь-де із застосунком Vocably.',
+    'congrats.app_store_caption': 'Завантажте в',
+    'congrats.google_play_caption': 'ДОСТУПНО В',
+    'congrats.browser': 'Зручніше в браузері? Навчайтеся на {link}',
     // mobile-button
     'mobile_button.look_up': 'Знайти',
     // tag-form
@@ -19470,13 +19854,13 @@ const uk = {
 
 ;// ../extension-content-ui/src/i18n/vi.ts
 const vi = {
+    // close button
+    'close_button.label': 'Đóng',
     // sign-in
-    'sign_in.please': 'Vui lòng đăng nhập để tiếp tục.',
     'sign_in.button': 'Đăng nhập hoặc tạo tài khoản',
-    'sign_in.agree': 'Khi đăng nhập, bạn đồng ý với',
-    'sign_in.terms': 'Điều khoản dịch vụ',
-    'sign_in.and': 'và',
-    'sign_in.privacy': 'Chính sách bảo mật',
+    'sign_in.benefit.sync': 'Đồng bộ trên mọi thiết bị',
+    'sign_in.benefit.study': 'Học thẻ trên điện thoại hoặc trong trình duyệt',
+    'sign_in.benefit.export': 'Xuất thẻ của bạn dưới dạng CSV',
     // subscribe
     'subscribe.trial_message': 'Yêu cầu dùng thử miễn phí 7 ngày để tiếp tục.',
     'subscribe.message': 'Vui lòng đăng ký để tiếp tục.',
@@ -19484,7 +19868,8 @@ const vi = {
     'subscribe.button': 'Đăng ký',
     // translation
     'translation.generating': 'Nghĩ...',
-    'translation.error': 'Yêu cầu Gemini hoặc ChatGPT đã xảy ra lỗi.',
+    'translation.error_title': 'Dịch vụ AI có thể tạm thời không khả dụng',
+    'translation.error': 'Không thể tải bản dịch. Vui lòng thử lại.',
     'translation.retry': 'Thử lại',
     'translation.requesting_ai': 'Đang yêu cầu thông tin thêm từ AI',
     'translation.requests_extra_items': 'Chia nhỏ thành các phần',
@@ -19507,29 +19892,36 @@ const vi = {
     'search.preferred_languages': 'Ngôn ngữ ưa thích',
     'search.available_languages': 'Ngôn ngữ có sẵn',
     'search.placeholder_default': 'Bất kỳ từ hoặc cụm từ nào',
+    'search.swap_direction': 'Đổi chiều dịch',
+    'search.submit': 'Dịch',
     'search.placeholder_reversed': 'Nhập từ hoặc cụm từ {language} tại đây. Thẻ {source} sẽ được tạo.',
     'search.hint': 'Nhập bất kỳ từ hoặc cụm từ nào. Vocably sẽ tạo thẻ {language} cho bạn.',
     // rate
-    'rate.tagline': 'Chỉ mất chưa đến một phút, nhưng sẽ có ý nghĩa rất lớn với Vocably.',
-    'rate.question': 'Bạn có thấy Vocably hữu ích không? Đánh giá của bạn trên {platform}',
-    'rate.question2': 'sẽ tạo ra sự khác biệt lớn cho dự án này.',
+    'rate.title': 'Bạn thích Vocably chứ?',
+    'rate.description': 'Đánh giá trên {platform} chỉ mất chưa đến một phút nhưng có ý nghĩa rất lớn với dự án này.',
     'rate.ok': 'Đánh giá Vocably',
-    'rate.later': 'Hỏi tôi sau.',
-    'rate.dislike': 'Bạn có điều gì không hài lòng về Vocably? Vui lòng',
-    'rate.contact': 'liên hệ với tác giả',
-    'rate.feedback_note': '. Tôi coi trọng từng phản hồi. Chúng ta có thể cải thiện dự án này cùng nhau.',
-    'rate.show_again': 'Bạn sẽ thấy thông báo này lại sau 10 lần dịch.',
-    'rate.never': 'Không bao giờ hiển thị thông báo này nữa.',
+    'rate.later': 'Để sau',
+    'rate.show_again': 'Thông báo này sẽ xuất hiện lại sau 10 lần dịch.',
+    'rate.dislike': 'Có điều gì chưa ổn?',
+    'rate.contact': 'Gửi phản hồi',
+    'rate.never': 'Không hiển thị lại',
     // language
+    'language.title': 'Chọn ngôn ngữ của bạn',
+    'language.hint': 'Vocably dịch từ ngôn ngữ bạn học sang ngôn ngữ bạn nói.',
     'language.i_study': 'Tôi học',
     'language.i_speak': 'Tôi nói',
     'language.save': 'Lưu',
     'language.saving': 'Đang lưu...',
     // first-translation-congratulation
-    'congrats.on_phone': 'đã có trên điện thoại của bạn.',
-    'congrats.scan_qr': 'Quét mã QR để học.',
-    'congrats.or_go_to': 'Hoặc truy cập',
-    'congrats.to_study_browser': 'để học trong trình duyệt của bạn.',
+    'congrats.badge': 'Đã lưu thẻ đầu tiên',
+    'congrats.title': '{word} đã có trong bộ thẻ của bạn.',
+    'congrats.description': 'Ôn tập bằng phương pháp lặp lại ngắt quãng để ghi nhớ lâu dài.',
+    'congrats.get_app': 'Tải ứng dụng Vocably',
+    'congrats.scan_qr': 'Quét mã bằng camera điện thoại để học mọi lúc mọi nơi.',
+    'congrats.get_app_mobile': 'Học mọi lúc mọi nơi với ứng dụng Vocably.',
+    'congrats.app_store_caption': 'Tải về trên',
+    'congrats.google_play_caption': 'TẢI NỘI DUNG TRÊN',
+    'congrats.browser': 'Thích dùng trình duyệt? Học tại {link}',
     // mobile-button
     'mobile_button.look_up': 'Tra cứu',
     // tag-form
@@ -19552,13 +19944,13 @@ const vi = {
 
 ;// ../extension-content-ui/src/i18n/es.ts
 const es = {
+    // close button
+    'close_button.label': 'Cerrar',
     // sign-in
-    'sign_in.please': 'Por favor, inicia sesión para continuar.',
     'sign_in.button': 'Iniciar sesión o crear una cuenta',
-    'sign_in.agree': 'Al iniciar sesión, aceptas nuestros',
-    'sign_in.terms': 'Términos de servicio',
-    'sign_in.and': 'y',
-    'sign_in.privacy': 'Política de privacidad',
+    'sign_in.benefit.sync': 'Sincroniza entre dispositivos',
+    'sign_in.benefit.study': 'Estudia tus tarjetas en el móvil o en el navegador',
+    'sign_in.benefit.export': 'Exporta tus tarjetas en CSV',
     // subscribe
     'subscribe.trial_message': 'Solicita una prueba gratuita de 7 días para continuar.',
     'subscribe.message': 'Por favor, suscríbete para continuar.',
@@ -19566,8 +19958,9 @@ const es = {
     'subscribe.button': 'Suscribirse',
     // translation
     'translation.generating': 'Pensando...',
-    'translation.error': 'Una solicitud a Gemini o ChatGPT ha resultado en un error.',
-    'translation.retry': 'Reintentar',
+    'translation.error_title': 'Es posible que el servicio de IA no esté disponible temporalmente',
+    'translation.error': 'No se pudo cargar la traducción. Inténtalo de nuevo.',
+    'translation.retry': 'Intentar de nuevo',
     'translation.requesting_ai': 'Solicitando información adicional a la IA',
     'translation.requests_extra_items': 'Desglosando',
     'translation.ai_thinks': 'La IA cree que',
@@ -19589,29 +19982,36 @@ const es = {
     'search.preferred_languages': 'Idiomas preferidos',
     'search.available_languages': 'Idiomas disponibles',
     'search.placeholder_default': 'Cualquier palabra o frase',
+    'search.swap_direction': 'Cambiar la dirección de traducción',
+    'search.submit': 'Traducir',
     'search.placeholder_reversed': 'Escribe {article} {language} palabra o frase aquí. Se crearán tarjetas de {source}.',
     'search.hint': 'Escribe cualquier palabra o frase en cualquier idioma. Vocably creará tarjetas de {language} para ti.',
     // rate
-    'rate.tagline': 'Tomará menos de un minuto, pero significará mucho para Vocably.',
-    'rate.question': '¿Encuentras útil Vocably? Tu calificación en {platform}',
-    'rate.question2': 'marcará una gran diferencia para este proyecto.',
+    'rate.title': '¿Te gusta Vocably?',
+    'rate.description': 'Calificarlo en {platform} te llevará menos de un minuto y significa mucho para este proyecto.',
     'rate.ok': 'Calificar Vocably',
-    'rate.later': 'Pregúntame más tarde.',
-    'rate.dislike': '¿Hay algo que no te guste de Vocably? Entonces por favor',
-    'rate.contact': 'contacta al autor',
-    'rate.feedback_note': '. Tomo cada comentario en serio. Podemos mejorar este proyecto juntos.',
-    'rate.show_again': 'Verás este mensaje de nuevo después de 10 traducciones.',
-    'rate.never': 'No mostrar este mensaje nunca más.',
+    'rate.later': 'Quizás más tarde',
+    'rate.show_again': 'Este mensaje volverá a aparecer después de 10 traducciones.',
+    'rate.dislike': '¿Algo no va bien?',
+    'rate.contact': 'Enviar comentarios',
+    'rate.never': 'No volver a mostrar',
     // language
+    'language.title': 'Elige tus idiomas',
+    'language.hint': 'Vocably traduce las palabras del idioma que estudias al idioma que hablas.',
     'language.i_study': 'Estudio',
     'language.i_speak': 'Hablo',
     'language.save': 'Guardar',
     'language.saving': 'Guardando...',
     // first-translation-congratulation
-    'congrats.on_phone': 'ya está en tu teléfono.',
-    'congrats.scan_qr': 'Escanea el código QR para aprenderlo.',
-    'congrats.or_go_to': 'O ve a',
-    'congrats.to_study_browser': 'para estudiar en tu navegador.',
+    'congrats.badge': 'Primera tarjeta guardada',
+    'congrats.title': '{word} ya está en tu mazo.',
+    'congrats.description': 'Repásala con repetición espaciada y la recordarás para siempre.',
+    'congrats.get_app': 'Descarga la app de Vocably',
+    'congrats.scan_qr': 'Escanea el código con la cámara de tu teléfono para estudiar en cualquier lugar.',
+    'congrats.get_app_mobile': 'Estudia en cualquier lugar con la app de Vocably.',
+    'congrats.app_store_caption': 'Descárgalo en el',
+    'congrats.google_play_caption': 'DISPONIBLE EN',
+    'congrats.browser': '¿Prefieres el navegador? Estudia en {link}',
     // mobile-button
     'mobile_button.look_up': 'Buscar',
     // tag-form
@@ -19634,13 +20034,13 @@ const es = {
 
 ;// ../extension-content-ui/src/i18n/pt.ts
 const pt = {
+    // close button
+    'close_button.label': 'Fechar',
     // sign-in
-    'sign_in.please': 'Por favor, faça login para continuar.',
     'sign_in.button': 'Entrar ou criar uma conta',
-    'sign_in.agree': 'Ao entrar, você concorda com nossos',
-    'sign_in.terms': 'Termos de Serviço',
-    'sign_in.and': 'e',
-    'sign_in.privacy': 'Política de Privacidade',
+    'sign_in.benefit.sync': 'Sincronize entre dispositivos',
+    'sign_in.benefit.study': 'Estude seus cartões no celular ou no navegador',
+    'sign_in.benefit.export': 'Exporte seus cartões em CSV',
     // subscribe
     'subscribe.trial_message': 'Solicite um período de teste gratuito de 7 dias para continuar.',
     'subscribe.message': 'Por favor, assine para continuar.',
@@ -19648,7 +20048,8 @@ const pt = {
     'subscribe.button': 'Assinar',
     // translation
     'translation.generating': 'Pensando...',
-    'translation.error': 'Uma solicitação ao Gemini ou ChatGPT resultou em um erro.',
+    'translation.error_title': 'O serviço de IA pode estar temporariamente indisponível',
+    'translation.error': 'Não foi possível carregar a tradução. Tente novamente.',
     'translation.retry': 'Tentar novamente',
     'translation.requesting_ai': 'Solicitando informações extras da IA',
     'translation.requests_extra_items': 'Detalhando',
@@ -19671,29 +20072,36 @@ const pt = {
     'search.preferred_languages': 'Idiomas preferidos',
     'search.available_languages': 'Idiomas disponíveis',
     'search.placeholder_default': 'Qualquer palavra ou frase',
+    'search.swap_direction': 'Inverter a direção da tradução',
+    'search.submit': 'Traduzir',
     'search.placeholder_reversed': 'Digite {article} {language} palavra ou frase aqui. Cartões de {source} serão criados.',
     'search.hint': 'Digite qualquer palavra ou frase em qualquer idioma. O Vocably criará cartões de {language} para você.',
     // rate
-    'rate.tagline': 'Levará menos de um minuto, mas significará muito para o Vocably.',
-    'rate.question': 'Você acha o Vocably útil? Sua avaliação no {platform}',
-    'rate.question2': 'fará uma grande diferença para este projeto.',
+    'rate.title': 'Está gostando do Vocably?',
+    'rate.description': 'Avaliar no {platform} leva menos de um minuto e significa muito para este projeto.',
     'rate.ok': 'Avaliar o Vocably',
-    'rate.later': 'Pergunte-me mais tarde.',
-    'rate.dislike': 'Há algo que você não goste no Vocably? Então por favor',
-    'rate.contact': 'entre em contato com o autor',
-    'rate.feedback_note': '. Levo cada feedback a sério. Podemos melhorar este projeto juntos.',
-    'rate.show_again': 'Você verá esta mensagem novamente após 10 traduções.',
-    'rate.never': 'Nunca mostrar esta mensagem novamente.',
+    'rate.later': 'Talvez mais tarde',
+    'rate.show_again': 'Esta mensagem aparecerá novamente após 10 traduções.',
+    'rate.dislike': 'Algo não está certo?',
+    'rate.contact': 'Enviar feedback',
+    'rate.never': 'Não mostrar novamente',
     // language
+    'language.title': 'Escolha seus idiomas',
+    'language.hint': 'O Vocably traduz as palavras do idioma que você estuda para o idioma que você fala.',
     'language.i_study': 'Estudo',
     'language.i_speak': 'Falo',
     'language.save': 'Salvar',
     'language.saving': 'Salvando...',
     // first-translation-congratulation
-    'congrats.on_phone': 'já está no seu telefone.',
-    'congrats.scan_qr': 'Escaneie o código QR para aprender.',
-    'congrats.or_go_to': 'Ou vá para',
-    'congrats.to_study_browser': 'para estudar no seu navegador.',
+    'congrats.badge': 'Primeiro cartão salvo',
+    'congrats.title': '{word} já está no seu baralho.',
+    'congrats.description': 'Revise com repetição espaçada e você não vai mais esquecer.',
+    'congrats.get_app': 'Baixe o app Vocably',
+    'congrats.scan_qr': 'Escaneie o código com a câmera do celular para estudar onde estiver.',
+    'congrats.get_app_mobile': 'Estude onde estiver com o app Vocably.',
+    'congrats.app_store_caption': 'Baixar na',
+    'congrats.google_play_caption': 'DISPONÍVEL NO',
+    'congrats.browser': 'Prefere o navegador? Estude em {link}',
     // mobile-button
     'mobile_button.look_up': 'Pesquisar',
     // tag-form
@@ -21366,7 +21774,6 @@ const messageTranslations = {
 
 const SUPPORTED_LOCALES = ['en', 'ru', 'uk', 'vi', 'tr', 'es', 'pt'];
 const detectLocale = () => {
-    console.log('detectLocale');
     const languages = typeof navigator !== 'undefined'
         ? navigator.languages?.length
             ? navigator.languages
@@ -22314,6 +22721,20 @@ var contents_rest = (undefined && undefined.__rest) || function (s, e) {
 
 
 
+const whenVisible = () => new Promise((resolve) => {
+    if (document.visibilityState === 'visible') {
+        resolve();
+        return;
+    }
+    const onVisibilityChange = () => {
+        if (document.visibilityState !== 'visible') {
+            return;
+        }
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+        resolve();
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+});
 const getLocaleLanguage = () => {
     var _a;
     if (!((_a = window === null || window === void 0 ? void 0 : window.navigator) === null || _a === void 0 ? void 0 : _a.language)) {
@@ -22324,14 +22745,24 @@ const getLocaleLanguage = () => {
 const setContents = (_a) => contents_awaiter(void 0, [_a], void 0, function* ({ popup, source, detectedLanguage, context, autoPlay, initiator, }) {
     let intervalId = undefined;
     let waitForPaymentIntervalId = undefined;
+    let waitForSignInIntervalId = undefined;
     let explicitlySetLanguage = null;
     let tornDown = false;
+    let windowProxy = null;
+    const closeWindow = () => {
+        if (windowProxy !== null) {
+            windowProxy.close();
+            windowProxy = null;
+        }
+    };
     const tearDown = () => {
         tornDown = true;
         clearInterval(intervalId);
         intervalId = undefined;
         clearInterval(waitForPaymentIntervalId);
         waitForPaymentIntervalId = undefined;
+        clearInterval(waitForSignInIntervalId);
+        waitForSignInIntervalId = undefined;
     };
     const setTranslation = () => contents_awaiter(void 0, void 0, void 0, function* () {
         const userKnowsHowToAdd = yield api.isUserKnowsHowToAdd();
@@ -22340,9 +22771,10 @@ const setContents = (_a) => contents_awaiter(void 0, [_a], void 0, function* ({ 
         translation.phrase = source;
         translation.playAudioPronunciation = playAudioPronunciation_playAudioPronunciation;
         translation.extensionPlatform = extensionPlatform;
+        translation.isLoggedInUser = yield api.isLoggedIn();
         translation.canCongratulate =
             contentScriptConfiguration.allowFirstTranslationCongratulation &&
-                !userKnowsHowToAdd;
+                (!userKnowsHowToAdd || !translation.isLoggedInUser);
         const analyze = (...args_1) => contents_awaiter(void 0, [...args_1], void 0, function* ({ sourceLanguage, targetLanguage, } = {}) {
             translation.loading = true;
             const [translationResult, cardsLimit] = yield Promise.all([
@@ -22506,6 +22938,75 @@ const setContents = (_a) => contents_awaiter(void 0, [_a], void 0, function* ({ 
             translation.isUpdating = null;
             yield api.setUserKnowsHowToAdd(true);
         }));
+        /**
+         * Once the user has signed in, their collection replaces the empty one the
+         * signed out translation was shown against, and the card they picked
+         * before signing in is added if it still has to be.
+         */
+        const onSignedIn = () => contents_awaiter(void 0, void 0, void 0, function* () {
+            translation.isLoggedInUser = true;
+            try {
+                translation.cardsLimit = yield api.getCardsLimit();
+                const result = translation.result;
+                if (!result || result.success === false) {
+                    return;
+                }
+                const deckResult = yield api.loadLanguageDeck(result.value.sourceLanguage);
+                // The language may have been changed while the deck was loading.
+                const currentResult = translation.result;
+                if (tornDown ||
+                    deckResult.success === false ||
+                    !currentResult ||
+                    currentResult.success === false ||
+                    currentResult.value.sourceLanguage !== deckResult.value.language) {
+                    return;
+                }
+                translation.result = {
+                    success: true,
+                    value: Object.assign(Object.assign({}, currentResult.value), { deck: deckResult.value }),
+                };
+            }
+            finally {
+                setTimeout(closeWindow, 3000);
+                // Asked on every way out: a deck that failed to arrive is not going to
+                // arrive later, and the add reloads the deck in the service worker
+                // anyway. The component itself skips a card that is already in the
+                // collection or one that is over the free plan limit.
+                //
+                // The add waits for the user to come back to this tab. Rendering is
+                // paused in a hidden one, so an add done in the background would be
+                // over before the card ever showed up as being added - and the first
+                // card congratulation follows exactly that.
+                yield whenVisible();
+                if (!tornDown) {
+                    yield translation.addRememberedCard();
+                }
+            }
+            const existingLanguagesResult = yield api.listLanguages();
+            translation.existingSourceLanguages = existingLanguagesResult.success
+                ? existingLanguagesResult.value
+                : [];
+        });
+        // Emitted by `vocably-sign-in` in the cover a signed out user gets when
+        // they try to add a card. Signing in happens in the app, in a new tab, so
+        // the session is polled for until it shows up.
+        translation.addEventListener('confirm', () => {
+            closeWindow();
+            windowProxy = window.open(`${api.appBaseUrl}/hands-free`, '_blank');
+            windowProxy && windowProxy.focus();
+            if (waitForSignInIntervalId !== undefined) {
+                return;
+            }
+            waitForSignInIntervalId = setInterval(() => contents_awaiter(void 0, void 0, void 0, function* () {
+                if (!(yield api.isLoggedIn()) ||
+                    waitForSignInIntervalId === undefined) {
+                    return;
+                }
+                clearInterval(waitForSignInIntervalId);
+                waitForSignInIntervalId = undefined;
+                yield onSignedIn();
+            }), 1000);
+        });
         // @ts-ignore
         translation.addEventListener('ratingInteraction', (_a) => contents_awaiter(void 0, [_a], void 0, function* ({ detail: payload }) {
             yield api.saveAskForRatingResponse({
@@ -22520,35 +23021,23 @@ const setContents = (_a) => contents_awaiter(void 0, [_a], void 0, function* ({ 
         popup.appendChild(translation);
     });
     let timerElapsed = false;
-    const isAlright = () => {
+    // Signing in is not required to translate: it is asked for only once the
+    // user tries to add a card. The languages are, as the service worker has
+    // nothing to translate from and into without them.
+    const getLanguages = () => {
         return Promise.all([
-            api.isLoggedIn(),
             api.getInternalSourceLanguage(),
             api.getInternalProxyLanguage(),
         ]);
     };
-    const [isLoggedIn, internalSourceLanguage, internalTargetLanguage] = yield isAlright();
-    if (isLoggedIn && internalSourceLanguage && internalTargetLanguage) {
+    const [internalSourceLanguage, internalTargetLanguage] = yield getLanguages();
+    if (internalSourceLanguage && internalTargetLanguage) {
         yield setTranslation();
         return tearDown;
     }
     const alert = document.createElement('div');
-    const updateAlertMessage = (isLoggedIn, internalSourceLanguage, internalTargetLanguage) => contents_awaiter(void 0, void 0, void 0, function* () {
+    const updateAlertMessage = (internalSourceLanguage, internalTargetLanguage) => contents_awaiter(void 0, void 0, void 0, function* () {
         var _a;
-        if (!isLoggedIn) {
-            if (alert.dataset.message !== 'sign-in') {
-                alert.dataset.message = 'sign-in';
-                alert.innerHTML = '';
-                const signInElement = document.createElement('vocably-sign-in');
-                signInElement.addEventListener('confirm', () => {
-                    closeWindow();
-                    windowProxy = window.open(`${api.appBaseUrl}/hands-free`, '_blank');
-                    windowProxy && windowProxy.focus();
-                });
-                alert.appendChild(signInElement);
-            }
-            return;
-        }
         if (!internalSourceLanguage || !internalTargetLanguage) {
             if (alert.dataset.message !== 'proxy-language') {
                 alert.dataset.message = 'proxy-language';
@@ -22572,24 +23061,16 @@ const setContents = (_a) => contents_awaiter(void 0, [_a], void 0, function* ({ 
             }
         }
     });
-    yield updateAlertMessage(isLoggedIn, internalSourceLanguage, internalTargetLanguage);
-    let windowProxy = null;
-    const closeWindow = () => {
-        if (windowProxy !== null) {
-            windowProxy.close();
-            windowProxy = null;
-        }
-    };
+    yield updateAlertMessage(internalSourceLanguage, internalTargetLanguage);
     intervalId = setInterval(() => contents_awaiter(void 0, void 0, void 0, function* () {
-        const [isLoggedIn, internalSourceLanguage, internalTargetLanguage] = yield isAlright();
-        if (isLoggedIn && internalSourceLanguage && internalTargetLanguage) {
+        const [internalSourceLanguage, internalTargetLanguage] = yield getLanguages();
+        if (internalSourceLanguage && internalTargetLanguage) {
             clearInterval(intervalId);
             intervalId = undefined;
             yield setTranslation();
-            setTimeout(closeWindow, 3000);
         }
         else {
-            yield updateAlertMessage(isLoggedIn, internalSourceLanguage, internalTargetLanguage);
+            yield updateAlertMessage(internalSourceLanguage, internalTargetLanguage);
         }
     }), 1000);
     popup.innerHTML = '';
