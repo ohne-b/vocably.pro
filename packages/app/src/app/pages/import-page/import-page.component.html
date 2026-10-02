@@ -26,6 +26,8 @@
               'import.import_cards_for' | transloco
             }}</span>
             <app-deck-selector
+              class="deck-field"
+              [class.deck-field-disabled]="isImporting"
               [disabled]="isImporting"
               [value]="selectedDeck"
               [languages]="languages"
