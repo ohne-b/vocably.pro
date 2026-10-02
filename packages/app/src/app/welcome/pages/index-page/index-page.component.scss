@@ -1,10 +1,28 @@
 @import '../../../../styles/variables';
+@import '../../surface';
 
 .onboarding {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+// One column: intro, then the mother tongue, then the study language.
+.layout {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  padding-top: 1rem;
+  gap: 2rem;
+
+  @media (width < $lg) {
+    gap: 1.5rem;
+  }
+}
+
+// Inset like the "I study" card content, so the text lines up with it.
+.welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0 $welcome-card-padding;
 }
 
 .intro-title {
@@ -23,22 +41,116 @@
   color: var(--text-muted);
 }
 
-.section-title {
-  margin: 0 0 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+// Reads as a plain sentence under the intro: "My mother tongue is [language]".
+.mother-tongue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
 }
 
+.mother-tongue-label {
+  margin: 0;
+  font-family: inherit;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--emphasize-color);
+}
+
+// Matches the language buttons: white field, thin border, blue on hover and
+// focus. Scoped here because the input is shared with the import page.
+.mother-tongue-input {
+  // A compact field that sits on the text line.
+  --mat-form-field-container-height: 2.75rem;
+  --mat-form-field-container-vertical-padding: 0.6rem;
+
+  display: block;
+  flex: 0 1 15rem;
+
+  @media (width < $sm) {
+    flex-basis: 100%;
+  }
+
+  ::ng-deep {
+    .mat-mdc-text-field-wrapper {
+      border: 1px solid $welcome-border;
+      border-radius: 0.75rem;
+      background-color: var(--card-bg);
+      transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    }
+
+    .mat-mdc-text-field-wrapper:hover,
+    .mat-mdc-text-field-wrapper.mdc-text-field--focused {
+      border-color: rgba(var(--primary-rgb), 0.6);
+      background-color: var(--card-bg);
+      box-shadow: 0 2px 8px -2px rgba(var(--primary-rgb), 0.25);
+    }
+
+    .mat-mdc-text-field-wrapper.mdc-text-field--focused {
+      border-color: var(--primary-color);
+    }
+
+    .mat-mdc-input-element {
+      color: var(--emphasize-color);
+      cursor: pointer;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+
+    .icon-container {
+      color: var(--primary-color);
+    }
+  }
+}
+
+.multilang {
+  font-size: 0.95rem;
+  line-height: 1.5;
+
+  mat-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.35rem;
+    font-size: 1.25rem;
+    vertical-align: -0.3em;
+  }
+}
+
+.languages {
+  min-width: 0;
+  @include welcome-card;
+}
+
+.languages-toolbar {
+  margin: 0;
+  @include welcome-card-toolbar;
+}
+
+.languages-body {
+  padding: $welcome-card-padding;
+}
+
+// Flags plus names need the full width on phones; the rest of the list
+// carries no flags and still fits in two columns.
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 0.75rem;
 
-  @media (min-width: $lg) {
-    .collapsable & {
+  @media (width >= $sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  &.more {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-top: 0.75rem;
+
+    @media (width >= $md) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
@@ -61,12 +173,13 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 0.75rem 1.5rem;
   margin-top: 1.25rem;
 }
 
-.action {
+.expand {
   display: inline-flex;
   align-items: center;
   gap: 0.15rem;
