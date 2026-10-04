@@ -54,13 +54,15 @@ export const getSubscriptionProducts = async (): Promise<
     currency: data.currencyCode,
   });
 
-  const monthlyAmount = Number(
-    data.details.lineItems[0].price.unitPrice.amount
-  );
+  // Use the line item totals (the amount the customer is actually charged)
+  // for every calculation. `price.unitPrice` is the base catalog amount and
+  // doesn't match the charged price, which produces inconsistent numbers.
+  const monthlyAmount = Number(data.details.lineItems[0].totals.total);
 
   data.details.lineItems.forEach((item, index) => {
     const product = subscriptionProducts[index];
-    product.total = formatter.format(Number(item.totals.total) / 100);
+    const totalAmount = Number(item.totals.total);
+    product.total = formatter.format(totalAmount / 100);
     if (item.price.trialPeriod) {
       product.trialDays = item.price.trialPeriod.frequency;
     }
@@ -71,9 +73,7 @@ export const getSubscriptionProducts = async (): Promise<
 
     if (product.interval === 'year') {
       product.maxTotal = formatter.format((monthlyAmount * 12) / 100);
-      product.perMonth = formatter.format(
-        Math.round(Number(item.price.unitPrice.amount) / 12) / 100
-      );
+      product.perMonth = formatter.format(Math.round(totalAmount / 12) / 100);
     }
   });
 
