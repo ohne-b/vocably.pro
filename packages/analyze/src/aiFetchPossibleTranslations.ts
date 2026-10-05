@@ -1,4 +1,8 @@
-import { createUserContent, GoogleGenAI } from '@google/genai';
+import {
+  createUserContent,
+  GenerateContentParameters,
+  GoogleGenAI,
+} from '@google/genai';
 import { parseJson } from '@vocably/api';
 import {
   chatGptRequest,
@@ -45,13 +49,9 @@ export const truncateText = (text: string, length: number): string => {
   return text.replace(/[<>]/gm, '').slice(0, length);
 };
 
-export const translateWithGemini = async (
+export const getGeminiTranslateGenerateContentParameters = (
   payload: Payload
-): Promise<Result<AiTranslationResult>> => {
-  const genAI = new GoogleGenAI({
-    apiKey: config.geminiApiKey,
-  });
-
+): GenerateContentParameters => {
   const source = secureSource(payload.source);
 
   const type = payload.inputType ?? 'word, phrase, or sentence';
@@ -96,27 +96,92 @@ export const translateWithGemini = async (
     };
   }
 
-  const result = await resultify(
-    genAI.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: createUserContent(source),
-      config: {
-        systemInstruction: [
-          `User provides a ${type} in any language, but most likely in ${
-            languageList[payload.sourceLanguage]
-          }.`,
-          `Provide possible translations into ${
-            languageList[payload.targetLanguage]
-          } and only in ${languageList[payload.targetLanguage]}.`,
-          `Avoid splitting. Don't split. Translate it as single unit of speech.`,
-        ],
-        thinkingConfig: {
-          thinkingBudget: 0, // Disables thinking
-        },
-        responseMimeType: 'application/json',
-        responseJsonSchema: responseSchema,
+  return {
+    model: 'gemini-2.5-flash',
+    contents: createUserContent(source),
+    config: {
+      systemInstruction: [
+        `User provides a ${type} in any language, but most likely in ${
+          languageList[payload.sourceLanguage]
+        }.`,
+        `Provide possible translations into ${
+          languageList[payload.targetLanguage]
+        } and only in ${languageList[payload.targetLanguage]}.`,
+        `Avoid splitting. Don't split. Translate it as single unit of speech.`,
+      ],
+      thinkingConfig: {
+        thinkingBudget: 0, // Disables thinking
       },
-    }),
+      responseMimeType: 'application/json',
+      responseJsonSchema: responseSchema,
+    },
+  };
+};
+
+export const getGeminiTranslateBatchItem = (payload: Payload) => {
+  const params = getGeminiTranslateGenerateContentParameters(payload);
+
+  if (!isArray(params?.config?.systemInstruction)) {
+    throw new Error('Gemini system instruction is empty');
+  }
+
+  const systemInstructionText =
+    params?.config?.systemInstruction.join('\n') ?? '';
+
+  delete params?.config?.systemInstruction;
+
+  return {
+    key: JSON.stringify(payload),
+    request: {
+      model: `models/${params.model}`,
+      contents: params.contents,
+      generation_config: {
+        ...params.config,
+      },
+      system_instruction: {
+        parts: [
+          {
+            text: systemInstructionText,
+          },
+        ],
+      },
+    },
+  };
+};
+
+export const handleGeminiTranslateResponse = (
+  text: string,
+  payload: Payload
+): Result<ValidTranslations> => {
+  const parseResult = parseJson(text);
+
+  if (!parseResult.success) {
+    return parseResult;
+  }
+
+  const sanitizeResult = sanitizeModelResponse(parseResult.value);
+
+  if (!sanitizeResult.success) {
+    return sanitizeResult;
+  }
+
+  return {
+    success: true,
+    value: toValidTranslations(payload, sanitizeResult.value),
+  };
+};
+
+export const translateWithGemini = async (
+  payload: Payload
+): Promise<Result<ValidTranslations>> => {
+  const genAI = new GoogleGenAI({
+    apiKey: config.geminiApiKey,
+  });
+
+  const result = await resultify(
+    genAI.models.generateContent(
+      getGeminiTranslateGenerateContentParameters(payload)
+    ),
     {
       reason: 'translateWithGemini: Unable to perform Gemini translation.',
       extra: payload,
@@ -127,18 +192,12 @@ export const translateWithGemini = async (
     return result;
   }
 
-  const parseResult = parseJson(result.value.text ?? '');
-
-  if (!parseResult.success) {
-    return parseResult;
-  }
-
-  return sanitizeModelResponse(parseResult.value);
+  return handleGeminiTranslateResponse(result.value.text ?? '', payload);
 };
 
 export const translateWithChatGpt = async (
   payload: Payload
-): Promise<Result<AiTranslationResult>> => {
+): Promise<Result<ValidTranslations>> => {
   const source = secureSource(payload.source);
   const type = payload.inputType ?? 'word, phrase, or sentence';
   const prompt = [
@@ -171,9 +230,16 @@ export const translateWithChatGpt = async (
     return responseResult;
   }
 
-  const translationData = responseResult.value;
+  const sanitizeResult = sanitizeModelResponse(responseResult.value);
 
-  return sanitizeModelResponse(translationData);
+  if (!sanitizeResult.success) {
+    return sanitizeResult;
+  }
+
+  return {
+    success: true,
+    value: toValidTranslations(payload, sanitizeResult.value),
+  };
 };
 
 const sanitizeModelResponse = (data: any): Result<AiTranslationResult> => {
@@ -240,19 +306,12 @@ const isCompound = (
   return ['sentence'].includes(detectedInputType as DetectedInputType);
 };
 
-export const aiFetchPossibleTranslations = async (
-  payload: Payload
-): Promise<Result<ValidTranslations>> => {
-  const result = await fallback(translateWithGemini(payload), () =>
-    translateWithChatGpt(payload)
-  );
-
-  if (result.success === false) {
-    return result;
-  }
-
+const toValidTranslations = (
+  payload: Payload,
+  translationVariants: AiTranslationResult
+): ValidTranslations => {
   const translations = uniqBy(
-    result.value
+    translationVariants
       .map(sanitizeTranslationVariant(payload))
       .map((translationVariant) => ({
         source: payload.source,
@@ -278,10 +337,15 @@ export const aiFetchPossibleTranslations = async (
     }
   );
 
-  return {
-    success: true,
-    value: [translations[0], ...translations.slice(1)],
-  };
+  return [translations[0], ...translations.slice(1)];
+};
+
+export const aiFetchPossibleTranslations = async (
+  payload: Payload
+): Promise<Result<ValidTranslations>> => {
+  return fallback(translateWithGemini(payload), () =>
+    translateWithChatGpt(payload)
+  );
 };
 
 const getTranslationsCacheFileName = ({

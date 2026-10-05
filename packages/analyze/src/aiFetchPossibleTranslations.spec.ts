@@ -165,9 +165,7 @@ describe('aiReverseTranslate', () => {
 
     console.log(inspect(result.value));
 
-    expect(result.value.every((e) => /^[a-z ]+$/.test(e.translation))).toEqual(
-      true
-    );
+    expect(result.value.every((e) => /^[a-z ]+$/.test(e.target))).toEqual(true);
   });
 
   it('cached', async () => {

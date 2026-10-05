@@ -8,6 +8,11 @@ export {
   isAiAnalysis,
   AiAnalysis,
 } from './aiUnitOfSpeechAnalyse';
+export {
+  getGeminiTranslateBatchItem,
+  getGeminiTranslateGenerateContentParameters,
+  handleGeminiTranslateResponse,
+} from './aiFetchPossibleTranslations';
 export { aiAnalysisToItem } from './analyseAndTranslate';
 export * from './batchUnitOfSpeechAnalyse';
 export { buildBulkAnalysisResult } from './buildBulkAnalysisResult';
