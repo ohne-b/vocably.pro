@@ -124,7 +124,7 @@ export const promptTranslations: Record<GoogleLanguage, PromptTranslation> = {
   },
   de: {
     grammar: 'Ihre Grammatik',
-    response: 'die eigentliche Antwort',
+    response: 'Die eigentliche Antwort',
   },
   el: {
     grammar: 'η γραμματική σας',

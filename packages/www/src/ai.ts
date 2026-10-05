@@ -1,7 +1,13 @@
+import * as Bowser from 'bowser';
 import { GoogleLanguage, isGoogleLanguage, languageList } from '@vocably/model';
 import { trimLanguage } from '@vocably/sulna';
 import { promptTranslations } from './ai/promptTranslations';
 import { searchConfig } from './constants';
+
+const browser = Bowser.getParser(window.navigator.userAgent);
+const isMobile = browser.is('ios') || browser.is('android');
+
+document.getElementById('ai-page')?.classList.toggle('is-mobile', isMobile);
 
 const languageSelector = document.getElementById(
   'language'
@@ -39,18 +45,24 @@ const selectSnippet = () => {
 
 promptSnippet.addEventListener('click', selectSnippet);
 
+const copyLabel = copyButton.querySelector('[data-copy-label]');
+let copyResetTimeout: ReturnType<typeof setTimeout> | undefined;
+
 copyButton.addEventListener('click', (e) => {
   e.stopPropagation();
   selectSnippet();
   navigator.clipboard.writeText(promptSnippet.innerText);
   const icon = copyButton.querySelector('.bi');
-  if (!icon) return;
-  icon.classList.remove('bi-copy');
-  icon.classList.add('bi-check-lg');
-  setTimeout(() => {
-    icon.classList.remove('bi-check-lg');
-    icon.classList.add('bi-copy');
-  }, 1500);
+  if (!icon || !copyLabel) return;
+  icon.classList.replace('bi-copy', 'bi-check-lg');
+  copyButton.classList.add('is-copied');
+  copyLabel.textContent = 'Copied';
+  clearTimeout(copyResetTimeout);
+  copyResetTimeout = setTimeout(() => {
+    icon.classList.replace('bi-check-lg', 'bi-copy');
+    copyButton.classList.remove('is-copied');
+    copyLabel.textContent = 'Copy prompt';
+  }, 2000);
 });
 
 const changeLanguage = () => {
