@@ -37,7 +37,8 @@ type Details = {
   keywords: string;
   // Max 170 characters. Can be changed without submitting a new version.
   promo: string;
-  // Max 4000 characters. Ignored by Apple for the very first version.
+  // Max 4000 characters, outro included. Ignored by Apple for the very first
+  // version.
   whatsNew: string;
 };
 
@@ -77,8 +78,7 @@ Terms of Use (EULA): ${eula}`,
     keywords:
       'translator,english,german,spanish,french,italian,danish,dutch,norwegian,finnish,swedish,korean,greek',
     promo: '',
-    whatsNew:
-      '- A better-looking Safari extension.\n- Fixed the broken layout of some cards (a bug introduced in version 119).\nAnyway, step by step, Vocably is improving, folks.',
+    whatsNew: '- Visual tweaks for your aesthetic pleasure.',
   },
   ru: {
     name: 'Vocably: словарь и карточки',
@@ -112,8 +112,7 @@ Terms of Use (EULA): ${eula}`,
     keywords:
       'словарь,переводчик,обучение,английский,немецкий,французский,испанский,итальянский,голландский,слова',
     promo: '',
-    whatsNew:
-      '- Расширение для Safari стало красивее.\n- Исправлена сломанная вёрстка некоторых карточек (ошибка появилась в версии 119).\nТак или иначе, шаг за шагом Vocably становится лучше, друзья.',
+    whatsNew: '- Визуальные улучшения для вашего эстетического удовольствия.',
   },
   uk: {
     name: 'Vocably: словник і картки',
@@ -147,8 +146,7 @@ Terms of Use (EULA): ${eula}`,
     keywords:
       'перекладач,англійська,німецька,іспанська,французька,італійська,польська,слова,мови,навчання',
     promo: '',
-    whatsNew:
-      "- Розширення для Safari стало гарнішим.\n- Виправлено зламану верстку деяких карток (помилка з'явилася у версії 119).\nТак чи інакше, крок за кроком Vocably стає кращим, друзі.",
+    whatsNew: '- Візуальні покращення для вашої естетичної насолоди.',
   },
   es: {
     name: 'Vocably: diccionario y fichas',
@@ -182,8 +180,7 @@ Condiciones de uso (EULA): ${eula}`,
     keywords:
       'traductor,inglés,alemán,francés,italiano,portugués,idiomas,palabras,aprender,tarjetas',
     promo: '',
-    whatsNew:
-      '- La extensión de Safari tiene un aspecto mejor.\n- Se corrigió el diseño roto de algunas fichas (un error introducido en la versión 119).\nEn fin, paso a paso, Vocably sigue mejorando, amigos.',
+    whatsNew: '- Retoques visuales para tu placer estético.',
   },
   pt: {
     name: 'Vocably: dicionário e cartões',
@@ -217,8 +214,7 @@ Termos de Uso (EULA): ${eula}`,
     keywords:
       'tradutor,inglês,espanhol,alemão,francês,italiano,idiomas,palavras,aprender,flashcards',
     promo: '',
-    whatsNew:
-      '- A extensão do Safari ficou mais bonita.\n- Corrigido o layout quebrado de alguns flashcards (um problema introduzido na versão 119).\nEnfim, passo a passo, o Vocably está melhorando, pessoal.',
+    whatsNew: '- Ajustes visuais para o seu prazer estético.',
   },
   tr: {
     name: 'Vocably: Sözlük ve Kartlar',
@@ -252,8 +248,7 @@ Kullanım Koşulları (EULA): ${eula}`,
     keywords:
       'çevirmen,ingilizce,almanca,ispanyolca,fransızca,italyanca,rusça,dil,öğrenme,flashcard',
     promo: '',
-    whatsNew:
-      '- Safari uzantısı artık daha güzel görünüyor.\n- Bazı kartların bozuk düzeni düzeltildi (sorun 119 sürümünde ortaya çıkmıştı).\nNeyse, Vocably adım adım gelişiyor, arkadaşlar.',
+    whatsNew: '- Estetik zevkiniz için görsel iyileştirmeler.',
   },
   vi: {
     name: 'Vocably: Từ điển & Flashcard',
@@ -287,10 +282,26 @@ Thành thạo một ngôn ngữ nghĩa là sử dụng nó và nhớ từng từ
     keywords:
       'tiếng anh,tiếng hàn,tiếng nhật,tiếng trung,tiếng pháp,tiếng đức,ngoại ngữ,từ mới,phát âm',
     promo: '',
-    whatsNew:
-      '- Tiện ích mở rộng Safari có giao diện đẹp hơn.\n- Sửa bố cục bị lỗi ở một số flashcard (lỗi xuất hiện từ phiên bản 119).\nDù sao thì, từng bước một, Vocably đang ngày càng tốt hơn, các bạn ơi.',
+    whatsNew: '- Tinh chỉnh giao diện để bạn thêm phần thích mắt.',
   },
 };
+
+// Appended to every "What's New".
+const whatsNewOutro: Record<string, string> = {
+  en: 'Vocably is improving, folks!',
+  ru: 'Vocably становится лучше, друзья!',
+  uk: 'Vocably стає кращим, друзі!',
+  es: '¡Vocably sigue mejorando, amigos!',
+  pt: 'O Vocably está melhorando, pessoal!',
+  tr: 'Vocably gelişiyor, arkadaşlar!',
+  vi: 'Vocably đang ngày càng tốt hơn, các bạn ơi!',
+};
+
+for (const [language, fields] of Object.entries(details)) {
+  fields.whatsNew = [fields.whatsNew, whatsNewOutro[language]]
+    .filter(Boolean)
+    .join('\n\n');
+}
 
 // Interface language → App Store localizations it is written to.
 const localeMap: Record<string, string[]> = {
@@ -332,6 +343,7 @@ const dryRun = process.argv.includes('--dry-run');
 
 const problems = Object.entries(details).flatMap(([language, fields]) => [
   ...(localeMap[language] ? [] : [`${language}: no App Store locale`]),
+  ...(whatsNewOutro[language] ? [] : [`${language}: no What's New outro`]),
   ...(Object.keys(limits) as (keyof Details)[])
     .filter(
       (field) =>
