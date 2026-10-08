@@ -1,6 +1,13 @@
 #!/usr/bin/env -S npx vite-node
 
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  writeFileSync,
+} from 'node:fs';
+import { dirname } from 'node:path';
 import {
   AnalysisItem,
   GoogleLanguage,
@@ -16,6 +23,7 @@ import {
   aiAnalysisToItem,
   isAiAnalysis,
   AiAnalysis,
+  getGeminiAnalyzeBatchItem,
 } from '@vocably/analyze';
 import { parseJson } from '@vocably/api';
 import { isArray } from 'lodash-es';
@@ -27,6 +35,9 @@ const languagesFolderPathPrefix = '../../vocably-languages';
 const outputFile = '../packages/www/seo/search-data-prod/de-en.json';
 const missingTranslationsFile =
   '../batch-analyze/data/missing-translations.json';
+// Picked up by batch-analyze/send-batch.mts.
+const missingUnitsOfSpeechBatchFile =
+  '../batch-analyze/data/batches/analyze-missing-units-of-speech-de.jsonl';
 
 const areAnalysisItemsEqual =
   (a: AnalysisItem) =>
@@ -37,6 +48,21 @@ const areAnalysisItemsEqual =
     );
   };
 
+const getUnitOfSpeechFilename = ({
+  source,
+  partOfSpeech,
+  language,
+}: {
+  source: string;
+  partOfSpeech: string;
+  language: GoogleLanguage;
+}): string =>
+  `${languagesFolderPathPrefix}/${getAnalyseCacheFileName({
+    source,
+    partOfSpeech,
+    sourceLanguage: language,
+  })}`;
+
 const getAiAnalysis = ({
   source,
   partOfSpeech,
@@ -46,13 +72,11 @@ const getAiAnalysis = ({
   partOfSpeech: string;
   language: GoogleLanguage;
 }): Result<AiAnalysis> => {
-  const unitOfSpeechFilename = `${languagesFolderPathPrefix}/${getAnalyseCacheFileName(
-    {
-      source,
-      partOfSpeech,
-      sourceLanguage: language,
-    }
-  )}`;
+  const unitOfSpeechFilename = getUnitOfSpeechFilename({
+    source,
+    partOfSpeech,
+    language,
+  });
 
   if (!existsSync(unitOfSpeechFilename)) {
     return {
@@ -97,16 +121,17 @@ const fallbackTargetLanguages: Partial<Record<GoogleLanguage, GoogleLanguage>> =
     en: 'en-GB',
   };
 
-const getTranslations = (payload: {
+type TranslationsPayload = {
   sourceLanguage: GoogleLanguage;
   targetLanguage: GoogleLanguage;
   source: string;
   partOfSpeech: string;
-}): Result<string[]> => {
-  const translationsFilename = [
-    payload.targetLanguage,
-    fallbackTargetLanguages[payload.targetLanguage],
-  ]
+};
+
+const findTranslationsFilename = (
+  payload: TranslationsPayload
+): string | undefined =>
+  [payload.targetLanguage, fallbackTargetLanguages[payload.targetLanguage]]
     .filter((targetLanguage) => targetLanguage !== undefined)
     .map(
       (targetLanguage) =>
@@ -116,6 +141,9 @@ const getTranslations = (payload: {
         })}`
     )
     .find(existsSync);
+
+const getTranslations = (payload: TranslationsPayload): Result<string[]> => {
+  const translationsFilename = findTranslationsFilename(payload);
 
   if (translationsFilename === undefined) {
     return {
@@ -184,34 +212,50 @@ const getAnalysisItem = ({
   };
 };
 
-type MissingTranslation = {
+type UnitOfSpeech = {
   source: string;
   partOfSpeech: string;
 };
 
-// German units of speech that could not be turned into analysis items,
+// German units of speech lacking a translations file or an analysis file,
 // keyed by `source|partOfSpeech` to keep them unique.
-const missingTranslations = new Map<string, MissingTranslation>();
+const missingTranslations = new Map<string, UnitOfSpeech>();
+const missingUnitsOfSpeech = new Map<string, UnitOfSpeech>();
 
 const getAnalysisItemOrRecordMissing = (
   translation: Translation,
-  { source, partOfSpeech }: MissingTranslation
+  unitOfSpeech: UnitOfSpeech
 ): AnalysisItem | undefined => {
-  const itemResult = getAnalysisItem({
+  const { source, partOfSpeech } = unitOfSpeech;
+  const payload = {
     source,
     partOfSpeech,
     sourceLanguage: translation.targetLanguage,
     targetLanguage: translation.sourceLanguage,
-  });
+  };
+  const key = `${source}|${partOfSpeech}`;
+
+  if (findTranslationsFilename(payload) === undefined) {
+    missingTranslations.set(key, unitOfSpeech);
+  }
+
+  if (
+    !existsSync(
+      getUnitOfSpeechFilename({
+        ...unitOfSpeech,
+        language: payload.sourceLanguage,
+      })
+    )
+  ) {
+    missingUnitsOfSpeech.set(key, unitOfSpeech);
+  }
+
+  const itemResult = getAnalysisItem(payload);
 
   if (!itemResult.success) {
     console.log(
       `Unable to get analysis item for ${source} (${partOfSpeech}): ${itemResult.reason}`
     );
-    missingTranslations.set(`${source}|${partOfSpeech}`, {
-      source,
-      partOfSpeech,
-    });
     return undefined;
   }
 
@@ -358,19 +402,39 @@ console.log(
 
 writeFileSync(outputFile, JSON.stringify(wordResults, null, 2));
 
+const sortUnitsOfSpeech = (units: Map<string, UnitOfSpeech>): UnitOfSpeech[] =>
+  [...units.values()].sort(
+    (a, b) =>
+      a.source.localeCompare(b.source) ||
+      a.partOfSpeech.localeCompare(b.partOfSpeech)
+  );
+
 writeFileSync(
   missingTranslationsFile,
-  JSON.stringify(
-    [...missingTranslations.values()].sort(
-      (a, b) =>
-        a.source.localeCompare(b.source) ||
-        a.partOfSpeech.localeCompare(b.partOfSpeech)
-    ),
-    null,
-    2
-  ) + '\n'
+  JSON.stringify(sortUnitsOfSpeech(missingTranslations), null, 2) + '\n'
 );
 
 console.log(
   `Saved ${missingTranslations.size} German units of speech without translations to ${missingTranslationsFile}`
+);
+
+mkdirSync(dirname(missingUnitsOfSpeechBatchFile), { recursive: true });
+
+writeFileSync(
+  missingUnitsOfSpeechBatchFile,
+  sortUnitsOfSpeech(missingUnitsOfSpeech)
+    .map(({ source, partOfSpeech }) =>
+      JSON.stringify(
+        getGeminiAnalyzeBatchItem({
+          source,
+          partOfSpeech,
+          sourceLanguage: 'de',
+        })
+      )
+    )
+    .join('\n')
+);
+
+console.log(
+  `Saved ${missingUnitsOfSpeech.size} missing German units of speech as a Gemini batch to ${missingUnitsOfSpeechBatchFile}`
 );
