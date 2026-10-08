@@ -7,9 +7,12 @@ export const config = {
   jevApiKey: 'must be provided',
   awsRegion: 'us-east-1',
   unitsOfSpeechBucket: 'vocably-prod-units-of-speech',
+  claudeApiKey: 'must be provided',
 };
 
-type AnalyzerConfig = typeof config;
+type AnalyzerConfig = Omit<typeof config, 'claudeApiKey'> & {
+  claudeApiKey?: string;
+};
 
 export const configureAnalyzer = (newConfig: AnalyzerConfig) => {
   Object.assign(config, newConfig);

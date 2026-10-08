@@ -28,6 +28,11 @@ export {
   getGeminiTranslationBatchItem,
   handleGeminiTranslationResponse,
 } from './translateUnitOfSpeechGemini';
+export {
+  getClaudeTranslationBatchItem,
+  getClaudeTranslationBatchItemKey,
+  handleClaudeTranslationResponse,
+} from './translateUnitOfSpeechClaude';
 export { validateSource } from './validateSource';
 export {
   getPartsOfSpeechGeminiParameters,

@@ -8,5 +8,6 @@ export const configureTestAnalyzer = () => {
     jevApiKey: process.env.JEV_API_KEY ?? '',
     awsRegion: process.env.AWS_REGION ?? '',
     unitsOfSpeechBucket: process.env.UNITS_OF_SPEECH_BUCKET ?? '',
+    claudeApiKey: process.env.CLAUDE_API_KEY ?? '',
   });
 };
