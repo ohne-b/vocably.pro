@@ -22,12 +22,12 @@ export { explainSentence } from './explainSentence';
 export { mineUnitsOfSpeech } from './mineUnitsOfSpeech';
 export * from './generateUnitsOfSpeech';
 export { isVerb } from './isVerb';
+export { getUnitOfSpeechTranslationFileName } from './translateUnitOfSpeech';
+export { getExpectedNumberOfTranslations } from './translateUnitOfSpeechAi';
 export {
-  getExpectedNumberOfTranslations,
   getGeminiTranslationBatchItem,
   handleGeminiTranslationResponse,
-  getUnitOfSpeechTranslationFileName,
-} from './translateUnitOfSpeech';
+} from './translateUnitOfSpeechGemini';
 export { validateSource } from './validateSource';
 export {
   getPartsOfSpeechGeminiParameters,
