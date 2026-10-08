@@ -34,6 +34,26 @@ export const getUnitOfSpeechTranslationFileName = (
     .replace(/\//g, '-')}/${payload.targetLanguage.toLowerCase()}.txt`;
 };
 
+// Translations are usually saved one per line, but sometimes as a JSON array.
+const parseTranslationsFile = (contents: string): string[] => {
+  if (contents.trimStart().startsWith('[')) {
+    try {
+      const parsed = JSON.parse(contents);
+
+      if (Array.isArray(parsed)) {
+        return parsed
+          .filter((item): item is string => typeof item === 'string')
+          .map((item) => item.trim())
+          .filter(Boolean);
+      }
+    } catch {
+      // Not JSON, fall back to newline-separated translations.
+    }
+  }
+
+  return contents.split('\n').filter((s) => !!s);
+};
+
 export const translateUnitOfSpeech = async (
   payload: Payload
 ): Promise<Result<string[]>> => {
@@ -48,7 +68,7 @@ export const translateUnitOfSpeech = async (
   );
 
   if (s3FetchResult.success && s3FetchResult.value !== null) {
-    const translations = s3FetchResult.value.split('\n').filter((s) => !!s);
+    const translations = parseTranslationsFile(s3FetchResult.value);
 
     return {
       success: true,

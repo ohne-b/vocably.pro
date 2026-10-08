@@ -147,13 +147,15 @@ const findTranslationsFilename = (
 
 // Translations are usually saved one per line, but sometimes as a JSON array.
 const parseTranslationsFile = (contents: string): string[] => {
-  const parseResult = parseJson(contents);
+  if (contents.trimStart().startsWith('[')) {
+    const parseResult = parseJson(contents);
 
-  if (parseResult.success && isArray(parseResult.value)) {
-    return parseResult.value
-      .filter((item): item is string => typeof item === 'string')
-      .map((item) => item.trim())
-      .filter(Boolean);
+    if (parseResult.success && isArray(parseResult.value)) {
+      return parseResult.value
+        .filter((item): item is string => typeof item === 'string')
+        .map((item) => item.trim())
+        .filter(Boolean);
+    }
   }
 
   return contents.split('\n').filter(Boolean);
