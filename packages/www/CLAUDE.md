@@ -7,3 +7,9 @@
 - Styles shared by several pages go into a partial in `src/partials/` (e.g. `ise-styles.handlebars`) and are included with `{{> partial-name }}`.
 - Use the CSS variables declared on `:root` in `src/styles/_global.scss` (sourced from `@vocably/styles/_variables.scss`) instead of SASS variables, e.g. `var(--v-color-primary)`, `rgba(var(--v-color-primary-rgb), 0.1)`, `var(--v-headings-font-family)`. Add a new variable there if one is missing.
 - Bootstrap mixins aren't available in `<style>` blocks; use plain media queries (`sm` = 576px, `md` = 768px, `lg` = 992px).
+
+## Validating changes
+
+- Every change in `packages/www` must be validated in the browser on http://localhost:8050 before reporting it done.
+- The dev server is started with `npm start` from `packages/www` (webpack dev server on port 8050). Check whether it's already running first; start it in the background if not.
+- Open the affected page(s), check that the change renders as intended (desktop and ~400px mobile width when layout is touched), and check the console for errors.
