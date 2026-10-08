@@ -8,7 +8,6 @@ import {
 import { track } from './analytics';
 import { searchConfig } from './constants';
 
-document.body.classList.add('vocably-extension-disabled');
 defineCustomElements();
 
 const grammarFixer = document.createElement(

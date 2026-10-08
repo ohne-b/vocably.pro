@@ -1,7 +1,6 @@
 import { GoogleLanguage, isGoogleLanguage } from '@vocably/model';
 import { api } from './api';
 import { isSelection } from './isSelection';
-import location = chrome.contentSettings.location;
 
 const getNodeLanguage = (
   node: Node | null | undefined

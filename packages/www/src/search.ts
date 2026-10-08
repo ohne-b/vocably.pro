@@ -65,7 +65,6 @@ posthog.init('phc_zSkRhQ7tE4RDFRdxIVXzWwJ66ACL9QAHnyrRpRknyHj', {
 
 posthog.identify();
 
-document.body.classList.add('vocably-extension-disabled');
 defineCustomElements();
 
 // Force reload page on browser back

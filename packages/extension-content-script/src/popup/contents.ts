@@ -228,7 +228,9 @@ export const setContents = async ({
         ? existingLanguagesResult.value
         : [];
       const existingTargetLanguages = await api.listTargetLanguages();
-      if (extensionPlatform.paymentLink === 'web') {
+      if (contentScriptConfiguration.paymentLink !== undefined) {
+        translation.paymentLink = contentScriptConfiguration.paymentLink;
+      } else if (extensionPlatform.paymentLink === 'web') {
         translation.paymentLink = contentScriptConfiguration.webPaymentLink;
       } else if (isString(extensionPlatform.paymentLink)) {
         translation.paymentLink = extensionPlatform.paymentLink;

@@ -275,7 +275,8 @@ export const registerContentScript = async (
     showOnDbClick({ isTouchscreen: false })
   );
 
-  browserEnv.runtime?.onMessage?.addListener((request) => {
+  // A web page that embeds the content script has no extension runtime.
+  browserEnv?.runtime?.onMessage?.addListener((request) => {
     if (request && request.action === 'contextMenuTranslateClicked') {
       showPopup({ isTouchscreen: false });
     }

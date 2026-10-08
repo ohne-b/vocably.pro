@@ -7,6 +7,7 @@ import { track } from './analytics';
 import './bootstrap.scss';
 import './styles.scss';
 import { searchConfig } from './constants';
+import { getPreferredTargetLanguage } from './preferredLanguages';
 import { words } from './search/words';
 import { isLoggedIn, onSignedIn } from './user';
 
@@ -203,29 +204,6 @@ const getSourceLanguage = () => {
   );
 };
 
-const getTargetLanguage = () => {
-  const localStorageTargetLanguage = localStorage.getItem(
-    searchConfig.targetLanguageLocalStorageKey
-  );
-  if (localStorageTargetLanguage) {
-    return localStorageTargetLanguage;
-  }
-
-  const navigatorLanguage = navigator.languages.find((language) =>
-    isGoogleLanguage(language)
-  );
-  if (navigatorLanguage) {
-    return navigatorLanguage;
-  }
-
-  const anotherNavigatorLanguage = navigator.language.split('-')[0];
-  if (isGoogleLanguage(anotherNavigatorLanguage)) {
-    return anotherNavigatorLanguage;
-  }
-
-  return 'en';
-};
-
 document
   .querySelectorAll('#searchForm')
   .forEach((searchForm: HTMLFormElement) => {
@@ -237,7 +215,7 @@ document
     ) as HTMLSelectElement;
 
     sourceLanguageSelect.value = getSourceLanguage();
-    let targetLanguage = getTargetLanguage();
+    let targetLanguage: string = getPreferredTargetLanguage();
     if (targetLanguage === 'en-GB' && sourceLanguageSelect.value === 'en') {
       targetLanguage = 'en';
     }
@@ -390,3 +368,16 @@ initializePaddle({
       });
   }
 });
+
+// Selecting any word on the website opens the extension's popup. Its code is
+// only fetched once the page has settled, as a chunk of its own.
+const loadContentScript = () =>
+  import('./contentScript')
+    .then(({ registerWebsiteContentScript }) => registerWebsiteContentScript())
+    .catch((e) => console.error('Unable to load the content script', e));
+
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(loadContentScript);
+} else {
+  setTimeout(loadContentScript, 1000);
+}
