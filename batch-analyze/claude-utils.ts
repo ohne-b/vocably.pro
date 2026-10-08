@@ -1,10 +1,15 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { type getClaudeTranslationBatchItem } from '@vocably/analyze';
+import {
+  type getClaudeAnalyzeBatchItem,
+  type getClaudeTranslationBatchItem,
+} from '@vocably/analyze';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 export const languagesDir = './../../vocably-languages';
 export const claudePayloadsDir = './data/claude-payloads';
 export const claudeBatchPrefix = 'claude-';
+export const claudeTranslateBatchPrefix = `${claudeBatchPrefix}translate-`;
+export const claudeAnalyzeBatchPrefix = `${claudeBatchPrefix}analyze-`;
 
 const claudeJobsFile = './claude-jobs.jsonl';
 
@@ -19,6 +24,12 @@ export type TranslateUnitOfSpeechPayload = Parameters<
 >[0];
 
 export type ClaudePayloads = Record<string, TranslateUnitOfSpeechPayload>;
+
+export type AnalyzeUnitOfSpeechPayload = Parameters<
+  typeof getClaudeAnalyzeBatchItem
+>[0];
+
+export type ClaudeAnalyzePayloads = Record<string, AnalyzeUnitOfSpeechPayload>;
 
 export const createClaudeClient = () =>
   new Anthropic({

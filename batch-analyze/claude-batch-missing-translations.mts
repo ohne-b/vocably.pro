@@ -8,9 +8,9 @@ import {
 import { config } from 'dotenv-flow';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import {
-  claudeBatchPrefix,
   claudePayloadsDir,
   type ClaudePayloads,
+  claudeTranslateBatchPrefix,
   languagesDir,
   type TranslateUnitOfSpeechPayload,
 } from './claude-utils.js';
@@ -95,7 +95,7 @@ for (const { source, partOfSpeech } of missingTranslations) {
   rows.push(item);
 }
 
-const name = `${claudeBatchPrefix}translate-${sourceLanguage}-${targetLanguage}-${Date.now()}`;
+const name = `${claudeTranslateBatchPrefix}${sourceLanguage}-${targetLanguage}-${Date.now()}`;
 
 mkdirSync('./data/batches', { recursive: true });
 mkdirSync(claudePayloadsDir, { recursive: true });

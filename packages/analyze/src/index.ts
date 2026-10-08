@@ -13,6 +13,11 @@ export {
   handleGeminiAnalyzeResponse,
 } from './unitOfSpeechAnalyzeGemini';
 export {
+  getClaudeAnalyzeBatchItem,
+  getClaudeAnalyzeBatchItemKey,
+  handleClaudeAnalyzeResponse,
+} from './unitOfSpeechAnalyzeClaude';
+export {
   getGeminiTranslateBatchItem,
   getGeminiTranslateGenerateContentParameters,
   handleGeminiTranslateResponse,

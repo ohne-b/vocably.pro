@@ -23,7 +23,8 @@ import {
   aiAnalysisToItem,
   isAiAnalysis,
   AiAnalysis,
-  getGeminiAnalyzeBatchItem,
+  getClaudeAnalyzeBatchItem,
+  getClaudeAnalyzeBatchItemKey,
 } from '@vocably/analyze';
 import { parseJson } from '@vocably/api';
 import { isArray } from 'lodash-es';
@@ -35,9 +36,11 @@ const languagesFolderPathPrefix = '../../vocably-languages';
 const outputFile = '../packages/www/seo/search-data-prod/de-en.json';
 const missingTranslationsFile =
   '../batch-analyze/data/missing-translations.json';
-// Picked up by batch-analyze/send-batch.mts.
-const missingUnitsOfSpeechBatchFile =
-  '../batch-analyze/data/batches/analyze-missing-units-of-speech-de.jsonl';
+// Picked up by batch-analyze/claude-send-batch.mts. The payloads file maps
+// batch custom_ids back to units of speech when handling the results.
+const missingUnitsOfSpeechBatchName = `claude-analyze-missing-units-of-speech-de-${Date.now()}`;
+const missingUnitsOfSpeechBatchFile = `../batch-analyze/data/batches/${missingUnitsOfSpeechBatchName}.jsonl`;
+const missingUnitsOfSpeechPayloadsFile = `../batch-analyze/data/claude-payloads/${missingUnitsOfSpeechBatchName}.json`;
 
 const areAnalysisItemsEqual =
   (a: AnalysisItem) =>
@@ -418,23 +421,32 @@ console.log(
   `Saved ${missingTranslations.size} German units of speech without translations to ${missingTranslationsFile}`
 );
 
+const missingUnitsOfSpeechPayloads = Object.fromEntries(
+  sortUnitsOfSpeech(missingUnitsOfSpeech).map(({ source, partOfSpeech }) => {
+    const payload = {
+      source,
+      partOfSpeech,
+      sourceLanguage: 'de' as const,
+    };
+    return [getClaudeAnalyzeBatchItemKey(payload), payload];
+  })
+);
+
 mkdirSync(dirname(missingUnitsOfSpeechBatchFile), { recursive: true });
+mkdirSync(dirname(missingUnitsOfSpeechPayloadsFile), { recursive: true });
 
 writeFileSync(
   missingUnitsOfSpeechBatchFile,
-  sortUnitsOfSpeech(missingUnitsOfSpeech)
-    .map(({ source, partOfSpeech }) =>
-      JSON.stringify(
-        getGeminiAnalyzeBatchItem({
-          source,
-          partOfSpeech,
-          sourceLanguage: 'de',
-        })
-      )
-    )
+  Object.values(missingUnitsOfSpeechPayloads)
+    .map((payload) => JSON.stringify(getClaudeAnalyzeBatchItem(payload)))
     .join('\n')
 );
 
+writeFileSync(
+  missingUnitsOfSpeechPayloadsFile,
+  JSON.stringify(missingUnitsOfSpeechPayloads)
+);
+
 console.log(
-  `Saved ${missingUnitsOfSpeech.size} missing German units of speech as a Gemini batch to ${missingUnitsOfSpeechBatchFile}`
+  `Saved ${missingUnitsOfSpeech.size} missing German units of speech as a Claude batch to ${missingUnitsOfSpeechBatchFile}`
 );
