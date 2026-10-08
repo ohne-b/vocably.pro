@@ -168,6 +168,22 @@ describe('aiReverseTranslate', () => {
     expect(result.value.every((e) => /^[a-z ]+$/.test(e.target))).toEqual(true);
   });
 
+  it('1 follows the direction of translation', async () => {
+    const result = await translateWithGemini({
+      sourceLanguage: 'en',
+      targetLanguage: 'de',
+      source: 'creative',
+    });
+
+    if (result.success === false) {
+      throw 'Unexpected result';
+    }
+
+    console.log(inspect(result.value));
+
+    expect(result.value.every((e) => /^[a-z ]+$/.test(e.target))).toEqual(true);
+  });
+
   it('cached', async () => {
     const result = await aiFetchPossibleTranslationsCached({
       source: 'cover',

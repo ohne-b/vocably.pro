@@ -1,8 +1,6 @@
 #!/usr/bin/env -S npx vite-node
 
-import { listFiles } from './utils.js';
-import { readFileSync } from 'fs';
-import { existsSync, writeFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import {
   AnalysisItem,
   GoogleLanguage,
@@ -22,6 +20,14 @@ import {
 import { parseJson } from '@vocably/api';
 import { isArray } from 'lodash-es';
 
+const englishWordsFile = './seo/en-de.json';
+const reverseTranslationsFolder =
+  '../../vocably-reverse-translations/data/de/en';
+const languagesFolderPathPrefix = '../../vocably-languages';
+const outputFile = '../packages/www/seo/search-data-prod/de-en.json';
+const missingTranslationsFile =
+  '../batch-analyze/data/missing-translations.json';
+
 const areAnalysisItemsEqual =
   (a: AnalysisItem) =>
   (b: AnalysisItem): boolean => {
@@ -30,42 +36,6 @@ const areAnalysisItemsEqual =
       a.partOfSpeech === b.partOfSpeech
     );
   };
-
-const sortByTranslation =
-  (translation: string) => (a: AnalysisItem, b: AnalysisItem) => {
-    if (a.translation.indexOf(translation) === -1) {
-      return 1;
-    }
-
-    if (b.translation.indexOf(translation) === -1) {
-      return -1;
-    }
-
-    return (
-      a.translation.indexOf(translation) - b.translation.indexOf(translation)
-    );
-  };
-
-const reverseTranslationsFolderGlobalPrefix =
-  '../../vocably-reverse-translations/data';
-
-const reverseTranslationLocalPrefix = `${reverseTranslationsFolderGlobalPrefix}/de/en`;
-
-const reverseTranslationsFiles: Record<string, string> = Object.fromEntries(
-  (await listFiles(`${reverseTranslationLocalPrefix}/**/*.json`)).map((f) => [
-    f
-      .replace(`${reverseTranslationLocalPrefix}/`, '')
-      .split('/')[0]
-      .replace('.json', ''),
-    f,
-  ])
-);
-
-const languagesFolderPathPrefix = '../../vocably-languages';
-
-const files = await listFiles(
-  `${languagesFolderPathPrefix}/de/translations/**/en.txt`
-);
 
 const getAiAnalysis = ({
   source,
@@ -85,7 +55,6 @@ const getAiAnalysis = ({
   )}`;
 
   if (!existsSync(unitOfSpeechFilename)) {
-    console.log(`Unit of speech file ${unitOfSpeechFilename} does not exist`);
     return {
       success: false,
       reason: 'Unit of speech file does not exist',
@@ -96,9 +65,6 @@ const getAiAnalysis = ({
   const rawAnalysis = JSON.parse(readFileSync(unitOfSpeechFilename, 'utf-8'));
 
   if (!isAiAnalysis(rawAnalysis)) {
-    console.log(
-      `Unit of speech file ${unitOfSpeechFilename} is not an AI analysis`
-    );
     return {
       success: false,
       reason: `Unit of speech file ${unitOfSpeechFilename} is not an AI analysis`,
@@ -106,12 +72,13 @@ const getAiAnalysis = ({
     };
   }
 
-  const aiAnalysis = sanitizeAiAnalyseResult('de', partOfSpeech, rawAnalysis);
+  const aiAnalysis = sanitizeAiAnalyseResult(
+    language,
+    partOfSpeech,
+    rawAnalysis
+  );
 
   if (aiAnalysis.exists === false) {
-    console.log(
-      `AI says this unit of speech does not exist ${source} ${partOfSpeech}`
-    );
     return {
       success: false,
       reason: `AI says this unit of speech does not exist ${source} ${partOfSpeech}`,
@@ -124,61 +91,11 @@ const getAiAnalysis = ({
   };
 };
 
-type VeryUsefulData = {
-  analysisItem: AnalysisItem;
-  aiAnalysis: AiAnalysis;
-};
-const words: Record<string, VeryUsefulData[]> = {};
-
-console.log('Found', files.length, 'files');
-
-for (const englishFile of files) {
-  const translations = readFileSync(englishFile)
-    .toString()
-    .split('\n')
-    .filter(Boolean);
-  const word = englishFile.split('/').at(-3) as string;
-  const partOfSpeech = englishFile.split('/').at(-2) as string;
-
-  if (partOfSpeech === 'proper noun') {
-    console.log(`Skipping proper noun ${word}`);
-    continue;
-  }
-
-  const aiAnalysisResult = getAiAnalysis({
-    source: word,
-    partOfSpeech,
-    language: 'de',
-  });
-
-  if (!aiAnalysisResult.success) {
-    continue;
-  }
-
-  const analysisItem = aiAnalysisToItem({
-    aiAnalysis: aiAnalysisResult.value,
-    sourceLanguage: 'de',
-    translations,
-    partOfSpeech,
-  });
-
-  for (let translation of translations.slice(0, 2)) {
-    if (!words[translation]) {
-      words[translation] = [];
-    }
-
-    if (
-      !words[translation].some(({ analysisItem: itemToCheck }) =>
-        areAnalysisItemsEqual(itemToCheck)(analysisItem)
-      )
-    ) {
-      words[translation].push({
-        analysisItem,
-        aiAnalysis: aiAnalysisResult.value,
-      });
-    }
-  }
-}
+// Some units of speech only have British English translations.
+const fallbackTargetLanguages: Partial<Record<GoogleLanguage, GoogleLanguage>> =
+  {
+    en: 'en-GB',
+  };
 
 const getTranslations = (payload: {
   sourceLanguage: GoogleLanguage;
@@ -186,13 +103,24 @@ const getTranslations = (payload: {
   source: string;
   partOfSpeech: string;
 }): Result<string[]> => {
-  const translationsFilename = `${languagesFolderPathPrefix}/${getUnitOfSpeechTranslationFileName(payload)}`;
+  const translationsFilename = [
+    payload.targetLanguage,
+    fallbackTargetLanguages[payload.targetLanguage],
+  ]
+    .filter((targetLanguage) => targetLanguage !== undefined)
+    .map(
+      (targetLanguage) =>
+        `${languagesFolderPathPrefix}/${getUnitOfSpeechTranslationFileName({
+          ...payload,
+          targetLanguage,
+        })}`
+    )
+    .find(existsSync);
 
-  if (!existsSync(translationsFilename)) {
-    console.error(`Translations file ${translationsFilename} does not exist`);
+  if (translationsFilename === undefined) {
     return {
       success: false,
-      reason: `Translations file ${translationsFilename} does not exist`,
+      reason: `Translations file for ${payload.source} (${payload.partOfSpeech}) does not exist`,
     };
   }
 
@@ -213,74 +141,200 @@ const getTranslations = (payload: {
   };
 };
 
-for (const word of Object.keys(words)) {
-  const items = words[word];
-  const enrichedItems: VeryUsefulData[] = [];
-  items.sort((a, b) => {
-    return sortByTranslation(word)(a.analysisItem, b.analysisItem);
+const getAnalysisItem = ({
+  source,
+  partOfSpeech,
+  sourceLanguage,
+  targetLanguage,
+}: {
+  source: string;
+  partOfSpeech: string;
+  sourceLanguage: GoogleLanguage;
+  targetLanguage: GoogleLanguage;
+}): Result<AnalysisItem> => {
+  const translationsResult = getTranslations({
+    source,
+    partOfSpeech,
+    sourceLanguage,
+    targetLanguage,
   });
 
-  for (let { analysisItem, aiAnalysis } of items) {
-    enrichedItems.push({
-      analysisItem,
-      aiAnalysis,
-    });
-    if (
-      !aiAnalysis.lemma ||
-      !aiAnalysis.lemmaPos ||
-      aiAnalysis.source === aiAnalysis.lemma
-    ) {
-      continue;
-    }
-
-    const lemmaAiAnalysisResult = getAiAnalysis({
-      source: aiAnalysis.lemma,
-      partOfSpeech: aiAnalysis.lemmaPos,
-      language: 'de',
-    });
-
-    if (!lemmaAiAnalysisResult.success) {
-      continue;
-    }
-
-    const translationsResult = getTranslations({
-      sourceLanguage: 'de',
-      targetLanguage: 'en',
-      source: aiAnalysis.lemma,
-      partOfSpeech: aiAnalysis.lemmaPos,
-    });
-
-    if (!translationsResult.success) {
-      continue;
-    }
-
-    const lemmaAnalysisItem = aiAnalysisToItem({
-      aiAnalysis: lemmaAiAnalysisResult.value,
-      sourceLanguage: 'de',
-      translations: translationsResult.value,
-      partOfSpeech: aiAnalysis.lemmaPos,
-    });
-
-    if (
-      enrichedItems.some(({ analysisItem: itemToCheck }) =>
-        areAnalysisItemsEqual(itemToCheck)(lemmaAnalysisItem)
-      )
-    ) {
-      continue;
-    }
-
-    enrichedItems.push({
-      aiAnalysis: lemmaAiAnalysisResult.value,
-      analysisItem: lemmaAnalysisItem,
-    });
+  if (!translationsResult.success) {
+    return translationsResult;
   }
 
-  words[word] = enrichedItems;
-}
+  const aiAnalysisResult = getAiAnalysis({
+    source,
+    partOfSpeech,
+    language: sourceLanguage,
+  });
+
+  if (!aiAnalysisResult.success) {
+    return aiAnalysisResult;
+  }
+
+  return {
+    success: true,
+    value: aiAnalysisToItem({
+      aiAnalysis: aiAnalysisResult.value,
+      sourceLanguage,
+      translations: translationsResult.value,
+      partOfSpeech,
+    }),
+  };
+};
+
+type MissingTranslation = {
+  source: string;
+  partOfSpeech: string;
+};
+
+// German units of speech that could not be turned into analysis items,
+// keyed by `source|partOfSpeech` to keep them unique.
+const missingTranslations = new Map<string, MissingTranslation>();
+
+const getAnalysisItemOrRecordMissing = (
+  translation: Translation,
+  { source, partOfSpeech }: MissingTranslation
+): AnalysisItem | undefined => {
+  const itemResult = getAnalysisItem({
+    source,
+    partOfSpeech,
+    sourceLanguage: translation.targetLanguage,
+    targetLanguage: translation.sourceLanguage,
+  });
+
+  if (!itemResult.success) {
+    console.log(
+      `Unable to get analysis item for ${source} (${partOfSpeech}): ${itemResult.reason}`
+    );
+    missingTranslations.set(`${source}|${partOfSpeech}`, {
+      source,
+      partOfSpeech,
+    });
+    return undefined;
+  }
+
+  return itemResult.value;
+};
+
+// A reverse translation points from an English word to a German unit of
+// speech. Its lemma, when different, becomes an additional item.
+const translationToAnalysisItems = (
+  translation: Translation
+): AnalysisItem[] => {
+  const items: AnalysisItem[] = [];
+
+  const item = getAnalysisItemOrRecordMissing(translation, {
+    source: translation.target,
+    partOfSpeech: translation.partOfSpeech ?? '',
+  });
+
+  if (item) {
+    items.push(item);
+  }
+
+  if (
+    !translation.lemma ||
+    !translation.lemmaPos ||
+    translation.target === translation.lemma
+  ) {
+    return items;
+  }
+
+  const lemmaItem = getAnalysisItemOrRecordMissing(translation, {
+    source: translation.lemma,
+    partOfSpeech: translation.lemmaPos,
+  });
+
+  if (lemmaItem) {
+    items.push(lemmaItem);
+  }
+
+  return items;
+};
+
+type ValidTranslations = [Translation, ...Translation[]];
+const isValidTranslations = (data: any): data is ValidTranslations => {
+  return isArray(data) && data.length > 0 && data.every(isTranslation);
+};
+
+// Reverse translations are cached either as `<word>.json` or, when the
+// input type is known, as `<word>/<input type>.json`.
+const getReverseTranslationFiles = (word: string): string[] => {
+  const name = word.toLowerCase().replace(/\//g, '-');
+  const files: string[] = [];
+
+  const plainFile = `${reverseTranslationsFolder}/${name}.json`;
+  if (existsSync(plainFile)) {
+    files.push(plainFile);
+  }
+
+  const folder = `${reverseTranslationsFolder}/${name}`;
+  if (existsSync(folder)) {
+    for (const dirent of readdirSync(folder, { withFileTypes: true })) {
+      if (dirent.isFile() && dirent.name.endsWith('.json')) {
+        files.push(`${folder}/${dirent.name}`);
+      }
+    }
+  }
+
+  return files;
+};
+
+const getReverseTranslations = (word: string): Translation[] => {
+  const translations: Translation[] = [];
+
+  for (const file of getReverseTranslationFiles(word)) {
+    const parseResult = parseJson(readFileSync(file, 'utf-8'));
+
+    if (!parseResult.success) {
+      console.error(`Unable to parse ${file}`, parseResult);
+      continue;
+    }
+
+    if (!isValidTranslations(parseResult.value)) {
+      console.error(`Non-valid translations ${file}`);
+      continue;
+    }
+
+    translations.push(...parseResult.value);
+  }
+
+  return translations;
+};
+
+const englishWords: string[] = JSON.parse(
+  readFileSync(englishWordsFile, 'utf-8')
+);
+
+console.log('Found', englishWords.length, 'English words');
 
 const wordResults: Record<string, TranslationCards> = {};
+let missingReverseTranslations = 0;
 
-for (const [word, analysisItems] of Object.entries(words)) {
+for (const word of englishWords) {
+  const translations = getReverseTranslations(word);
+
+  if (translations.length === 0) {
+    missingReverseTranslations++;
+    continue;
+  }
+
+  const items: AnalysisItem[] = [];
+
+  for (const translation of translations) {
+    for (const item of translationToAnalysisItems(translation)) {
+      if (!items.some(areAnalysisItemsEqual(item))) {
+        items.push(item);
+      }
+    }
+  }
+
+  if (items.length === 0) {
+    continue;
+  }
+
   wordResults[word] = {
     source: word,
     sourceLanguage: 'de',
@@ -291,156 +345,32 @@ for (const [word, analysisItems] of Object.entries(words)) {
       tags: [],
       language: 'de',
     },
-    items: analysisItems.map(({ analysisItem }) => analysisItem),
+    items,
     detectedInputType: 'word',
     extraItems: [],
     explanation: '',
   };
 }
 
-type ValidTranslations = [Translation, ...Translation[]];
-const isValidTranslations = (data: any): data is ValidTranslations => {
-  return isArray(data) && data.length > 0 && data.every(isTranslation);
-};
+console.log(
+  `Built ${Object.keys(wordResults).length} words; ${missingReverseTranslations} words have no reverse translations`
+);
 
-const translationToAnalysisItemsResult = (
-  translation: Translation
-): Result<AnalysisItem[]> => {
-  const translationsResult = getTranslations({
-    source: translation.target,
-    partOfSpeech: translation.partOfSpeech ?? '',
-    sourceLanguage: translation.targetLanguage,
-    targetLanguage: translation.sourceLanguage,
-  });
-
-  if (!translationsResult.success) {
-    console.log(
-      `Unable to get translations for ${translation.source} ${translation.partOfSpeech} ${translation.targetLanguage} ${translation.sourceLanguage} ${translationsResult.reason}`
-    );
-    return translationsResult;
-  }
-
-  const aiAnalysisResult = getAiAnalysis({
-    source: translation.target,
-    language: translation.targetLanguage,
-    partOfSpeech: translation.partOfSpeech ?? '',
-  });
-
-  if (!aiAnalysisResult.success) {
-    console.log(
-      `Unable to get AI analysis for ${translation.target} ${translation.partOfSpeech} ${translation.targetLanguage} ${translation.sourceLanguage} ${aiAnalysisResult.reason}`
-    );
-
-    return aiAnalysisResult;
-  }
-
-  const items: AnalysisItem[] = [];
-
-  items.push(
-    aiAnalysisToItem({
-      aiAnalysis: aiAnalysisResult.value,
-      sourceLanguage: translation.targetLanguage,
-      translations: translationsResult.value,
-      partOfSpeech: translation.partOfSpeech ?? '',
-    })
-  );
-
-  if (
-    !translation.lemma ||
-    !translation.lemmaPos ||
-    translation.target === translation.lemma
-  ) {
-    return {
-      success: true,
-      value: items,
-    };
-  }
-
-  const lemmaTranslationsResult = getTranslations({
-    source: translation.lemma,
-    partOfSpeech: translation.lemmaPos,
-    sourceLanguage: translation.targetLanguage,
-    targetLanguage: translation.sourceLanguage,
-  });
-
-  if (!lemmaTranslationsResult.success) {
-    return {
-      success: true,
-      value: items,
-    };
-  }
-
-  const lemmaAiAnalysisResult = getAiAnalysis({
-    source: translation.lemma,
-    partOfSpeech: translation.lemmaPos,
-    language: translation.targetLanguage,
-  });
-
-  if (!lemmaAiAnalysisResult.success) {
-    return {
-      success: true,
-      value: items,
-    };
-  }
-
-  items.push(
-    aiAnalysisToItem({
-      aiAnalysis: lemmaAiAnalysisResult.value,
-      sourceLanguage: translation.targetLanguage,
-      translations: lemmaTranslationsResult.value,
-      partOfSpeech: translation.lemmaPos,
-    })
-  );
-
-  return {
-    success: true,
-    value: items,
-  };
-};
-
-console.log('Refining words from reverse analysis...');
-
-for (const [word, translationCards] of Object.entries(wordResults)) {
-  if (!reverseTranslationsFiles[word]) {
-    continue;
-  }
-
-  const reverseTranslationsResult = parseJson(
-    readFileSync(reverseTranslationsFiles[word], 'utf-8')
-  );
-
-  if (!reverseTranslationsResult.success) {
-    console.error(
-      `Unable to parse ${reverseTranslationsFiles[word]}`,
-      reverseTranslationsResult
-    );
-    continue;
-  }
-
-  if (!isValidTranslations(reverseTranslationsResult.value)) {
-    console.error(
-      `Non-valid translations ${reverseTranslationsFiles[word]}`,
-      reverseTranslationsResult
-    );
-    continue;
-  }
-
-  const items: AnalysisItem[] = [];
-  for (const translation of reverseTranslationsResult.value) {
-    const analysisItemsResult = translationToAnalysisItemsResult(translation);
-
-    if (!analysisItemsResult.success) {
-      continue;
-    }
-
-    items.push(...analysisItemsResult.value);
-  }
-  if (items.length >= translationCards.items.length || items.length >= 3) {
-    translationCards.items = items;
-  }
-}
+writeFileSync(outputFile, JSON.stringify(wordResults, null, 2));
 
 writeFileSync(
-  '../packages/www/seo/search-data-prod/de-en.json',
-  JSON.stringify(wordResults, null, 2)
+  missingTranslationsFile,
+  JSON.stringify(
+    [...missingTranslations.values()].sort(
+      (a, b) =>
+        a.source.localeCompare(b.source) ||
+        a.partOfSpeech.localeCompare(b.partOfSpeech)
+    ),
+    null,
+    2
+  ) + '\n'
+);
+
+console.log(
+  `Saved ${missingTranslations.size} German units of speech without translations to ${missingTranslationsFile}`
 );
