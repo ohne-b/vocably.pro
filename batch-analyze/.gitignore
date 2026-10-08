@@ -11,4 +11,4 @@ original-metadata.json
 allowed-sandbox-emails.json
 words-*.*
 *.jsonl
-
+data/claude-payloads/*
