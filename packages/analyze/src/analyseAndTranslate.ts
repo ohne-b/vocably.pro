@@ -8,7 +8,7 @@ import {
 } from '@vocably/model';
 import { sanitizeTranscript } from '@vocably/sulna';
 import { addArticle } from './addArticle';
-import { aiAnalyse, AiAnalysis } from './aiUnitOfSpeechAnalyse';
+import { aiAnalyse, AiAnalysis } from './unitOfSpeechAnalyse';
 import { translateUnitOfSpeech } from './translateUnitOfSpeech';
 
 export type AnalyseAndTranslatePayload = {

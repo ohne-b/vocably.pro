@@ -5,7 +5,7 @@ import {
   geminiAnalyse,
   getAnalyseCacheFileName,
   gptAnalyse,
-} from './aiUnitOfSpeechAnalyse';
+} from './unitOfSpeechAnalyse';
 import { configureTestAnalyzer } from './test/configureTestAnalyzer';
 
 configureTestAnalyzer();

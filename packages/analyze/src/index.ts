@@ -7,7 +7,7 @@ export {
   sanitizeAiAnalyseResult,
   isAiAnalysis,
   AiAnalysis,
-} from './aiUnitOfSpeechAnalyse';
+} from './unitOfSpeechAnalyse';
 export {
   getGeminiTranslateBatchItem,
   getGeminiTranslateGenerateContentParameters,

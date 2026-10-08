@@ -1,7 +1,7 @@
 import { GoogleLanguage } from '@vocably/model';
 import { trimArticle } from '@vocably/sulna';
 import { isFunction } from 'lodash-es';
-import { AiAnalysis } from './aiUnitOfSpeechAnalyse';
+import { AiAnalysis } from './unitOfSpeechAnalyse';
 import { vowels } from './vowels';
 
 type ArticleRules = {
