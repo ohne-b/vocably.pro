@@ -1,31 +1,9 @@
 {{#> layout
-  title='Download the App for iOS and Android'
-  metaDescription='Get the Vocably app on iPhone, iPad and Android. Look up words while you read, save them as flashcards and use the language in real life to reach fluency (CEFR B2).'
-  ogDescription='Get the Vocably app on iPhone, iPad and Android. Look up words while you read, save them as flashcards and use the language in real life to reach fluency.'
-  url='/app.html'
+  title='Install Mobile App'
+  url='/qr.html'
   disableAnalytics=true
   noCta=true
 }}
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MobileApplication",
-      "name": "Vocably",
-      "url": "https://vocably.pro/app.html",
-      "description": "Language-learning app that combines a contextual dictionary with spaced-repetition flashcards.",
-      "applicationCategory": "EducationalApplication",
-      "operatingSystem": "iOS, Android",
-      "installUrl": [
-        "https://apps.apple.com/app/vocably-pro-language-cards/id1641258757",
-        "https://play.google.com/store/apps/details?id=com.vocablypro"
-      ],
-      "sameAs": [
-        "https://apps.apple.com/app/vocably-pro-language-cards/id1641258757",
-        "https://play.google.com/store/apps/details?id=com.vocablypro"
-      ],
-      "isPartOf": { "@id": "https://vocably.pro" }
-    }
-  </script>
   {{#> text-container }}
     <style>
       .app-install {
@@ -53,16 +31,11 @@
         text-align: center;
       }
 
-      .app-install-title {
-        max-width: 860px;
-        margin: 3rem auto 0;
-        text-align: center;
-      }
-
-      .app-install-text {
-        max-width: 640px;
-        margin: 0 auto 3rem;
-        font-size: 1.125rem;
+      .app-install__title {
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
       }
 
       .app-install__main .progress {
@@ -125,10 +98,6 @@
           margin: 1.5rem auto;
         }
 
-        .app-install-title {
-          margin-top: 1.5rem;
-        }
-
         .app-install__main,
         .app-install__qr {
           flex-basis: 100%;
@@ -142,32 +111,23 @@
       }
     </style>
 
-    <h1 class="app-install-title" id="automatically-download-mobile-app" data-redirect>Download the app</h1>
-
     <div class="app-install">
       <div class="app-install__main">
+        <p class="h3 app-install__title" id="automatically-download-mobile-app" data-redirect>Download the app.</p>
         <div class="progress" id="mobile-app-progress">
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
         </div>
         <div class="app-install__stores d-none" id="mobile-app-links">
-          <a id="mobile-app-ios-link" href="https://apps.apple.com/app/vocably-pro-language-cards/id1641258757" target="_blank"><img src="assets/download-on-app-store.svg" alt="Download Vocably on the App Store" /></a>
-          <a id="mobile-app-android-link" href="https://play.google.com/store/apps/details?id=com.vocablypro" target="_blank"><img src="assets/get-it-on-google-play.svg" alt="Get Vocably on Google Play" /></a>
+          <a id="mobile-app-ios-link" href="https://apps.apple.com/app/vocably-pro-language-cards/id1641258757" target="_blank"><img src="assets/download-on-app-store.svg" alt="Download on App Store" /></a>
+          <a id="mobile-app-android-link" href="https://play.google.com/store/apps/details?id=com.vocablypro" target="_blank"><img src="assets/get-it-on-google-play.svg" alt="Get it on Google Play" /></a>
         </div>
       </div>
       <div class="app-install__qr hide-android hide-ios">
         <div>
           Scan this QR code to install the app
         </div>
-        <img src="assets/qr-code.png" alt="QR code to install the Vocably app" />
+        <img src="assets/qr-code.png" alt="Vocably App QR Code" />
       </div>
-    </div>
-
-    <div class="app-install-text">
-      <p>The best language-learning app is the one that actually makes you fluent.</p>
-      <p>Officially, fluency starts at CEFR level B2.</p>
-      <p>Most apps take learners from zero to A2, and a few get them as far as B1. B1 is a solid level, but it's not yet the confidence of a real language user.</p>
-      <p>The surest way to reach B2 is to start using the language in real life.</p>
-      <p>That's what Vocably is built for: it's focused entirely on using the language, not just studying it.</p>
     </div>
   {{/text-container}}
 {{/layout}}

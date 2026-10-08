@@ -67,7 +67,7 @@ const getGitLastModifiedDate = memoize(
 
 const exclude = [
   'index.handlebars',
-  'app.handlebars',
+  'qr.handlebars',
   'console.handlebars',
   '404.handlebars',
 ];

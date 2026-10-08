@@ -141,15 +141,21 @@ document.querySelectorAll('.show-android').forEach((el) => {
   }
 });
 
-if (document.getElementById('automatically-download-mobile-app')) {
+const downloadMobileApp = document.getElementById(
+  'automatically-download-mobile-app'
+);
+
+if (downloadMobileApp) {
   const progress = document.getElementById('mobile-app-progress');
   const links = document.getElementById('mobile-app-links');
 
   if (isAndroid) {
     document.getElementById('mobile-app-ios-link').classList.add('d-none');
   } else if (isIos) {
-    window.location.href =
-      'https://apps.apple.com/app/vocably-pro-language-cards/id1641258757';
+    if (downloadMobileApp.dataset.redirect !== undefined) {
+      window.location.href =
+        'https://apps.apple.com/app/vocably-pro-language-cards/id1641258757';
+    }
     document.getElementById('mobile-app-android-link').classList.add('d-none');
   }
 
