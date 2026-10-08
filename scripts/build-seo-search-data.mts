@@ -145,6 +145,20 @@ const findTranslationsFilename = (
     )
     .find(existsSync);
 
+// Translations are usually saved one per line, but sometimes as a JSON array.
+const parseTranslationsFile = (contents: string): string[] => {
+  const parseResult = parseJson(contents);
+
+  if (parseResult.success && isArray(parseResult.value)) {
+    return parseResult.value
+      .filter((item): item is string => typeof item === 'string')
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+
+  return contents.split('\n').filter(Boolean);
+};
+
 const getTranslations = (payload: TranslationsPayload): Result<string[]> => {
   const translationsFilename = findTranslationsFilename(payload);
 
@@ -155,9 +169,9 @@ const getTranslations = (payload: TranslationsPayload): Result<string[]> => {
     };
   }
 
-  const translations = readFileSync(translationsFilename, 'utf-8')
-    .split('\n')
-    .filter(Boolean);
+  const translations = parseTranslationsFile(
+    readFileSync(translationsFilename, 'utf-8')
+  );
 
   if (translations.length === 0) {
     return {
