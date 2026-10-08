@@ -1,13 +1,17 @@
 export {
   getAnalyseCacheFileName,
-  getGeminiAnalyzeBatchItem,
-  getGptAnalyseChatGptBody,
-  getGptAnalyseResult,
-  handleGeminiAnalyzeResponse,
   sanitizeAiAnalyseResult,
   isAiAnalysis,
   AiAnalysis,
 } from './unitOfSpeechAnalyse';
+export {
+  getGptAnalyseChatGptBody,
+  getGptAnalyseResult,
+} from './unitOfSpeechAnalyzeChatGpt';
+export {
+  getGeminiAnalyzeBatchItem,
+  handleGeminiAnalyzeResponse,
+} from './unitOfSpeechAnalyzeGemini';
 export {
   getGeminiTranslateBatchItem,
   getGeminiTranslateGenerateContentParameters,

@@ -1,44 +1,21 @@
-import {
-  createUserContent,
-  GenerateContentParameters,
-  GoogleGenAI,
-  HarmBlockThreshold,
-  HarmCategory,
-} from '@google/genai';
 import { parseJson } from '@vocably/api';
-import {
-  chatGptRequest,
-  GPT_4O,
-  nodeFetchS3File,
-  nodePutS3File,
-} from '@vocably/lambda-shared';
-import {
-  GoogleLanguage,
-  isTense,
-  languageList,
-  Result,
-  resultify,
-  Tense,
-} from '@vocably/model';
+import { nodeFetchS3File, nodePutS3File } from '@vocably/lambda-shared';
+import { GoogleLanguage, isTense, Result, Tense } from '@vocably/model';
 import { isSafeObject, sanitizeTranscript } from '@vocably/sulna';
 import { isArray, isString, omit } from 'lodash-es';
-import { ChatModel } from 'openai/resources';
-import { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
 import { config } from './config';
 import { fallback } from './fallback';
-import { getTranscriptionName } from './getTranscriptionName';
 import { isVerb } from './isVerb';
 import {
-  caseInsensitiveLanguages,
   genderLanguages,
   numberlessLanguages,
   pluralsWithArticles,
 } from './languageSettings';
 import { removeAuxiliaryWords } from './removeAuxiliaryWords';
 import { sanitizePartOfSpeech } from './sanitizePartOfSpeech';
-import { secureSource } from './secureSource';
-import { timeout } from '@vocably/sulna';
 import { transformSource } from './transformSource';
+import { gptAnalyse } from './unitOfSpeechAnalyzeChatGpt';
+import { geminiAnalyse } from './unitOfSpeechAnalyzeGemini';
 import { validateSource } from './validateSource';
 
 export type AiAnalysis = {
@@ -77,11 +54,13 @@ export const isAiAnalysis = (result: any): result is AiAnalysis => {
   );
 };
 
-type InternalAiAnalysis = Omit<AiAnalysis, 'source'> & {
+export type InternalAiAnalysis = Omit<AiAnalysis, 'source'> & {
   headword: string;
 };
 
-const isInternalAiAnalysis = (result: any): result is InternalAiAnalysis => {
+export const isInternalAiAnalysis = (
+  result: any
+): result is InternalAiAnalysis => {
   if (!isSafeObject(result)) {
     return false;
   }
@@ -99,7 +78,7 @@ const isInternalAiAnalysis = (result: any): result is InternalAiAnalysis => {
   );
 };
 
-const convertInternalToExternal = (
+export const convertInternalToExternal = (
   internal: InternalAiAnalysis
 ): AiAnalysis => {
   return {
@@ -108,33 +87,18 @@ const convertInternalToExternal = (
   };
 };
 
-type AiAnalysePayload = {
+export type AiAnalysePayload = {
   source: string;
   partOfSpeech: string;
   sourceLanguage: GoogleLanguage;
 };
 
-type InflectionKey =
+export type InflectionKey =
   | 'pastTenses'
   | 'tense'
   | 'pluralForm'
   | 'isIrregular'
   | 'presentTenses';
-
-type JsonSchemaProperty = {
-  type: 'string' | 'boolean' | 'array' | 'object';
-  description?: string;
-  enum?: string[];
-  items?: JsonSchemaProperty;
-};
-
-const inflectionSchemas: Record<InflectionKey, JsonSchemaProperty> = {
-  tense: { type: 'string', enum: ['present', 'past', 'future'] },
-  pastTenses: { type: 'string' },
-  presentTenses: { type: 'string' },
-  isIrregular: { type: 'boolean' },
-  pluralForm: { type: 'string' },
-};
 
 const pastTensePrompts: Partial<Record<GoogleLanguage, string>> = {
   'pt-PT': 'past simple and past perfect tense with necessary auxiliary verbs',
@@ -289,384 +253,6 @@ export const sanitizeAiAnalyseResult = (
 
   return output;
 };
-
-// ChatGPT
-type GptAnalyseChatGptBody = {
-  messages: Array<ChatCompletionMessageParam>;
-  model: ChatModel;
-};
-
-export const getGptAnalyseChatGptBody = ({
-  source,
-  partOfSpeech,
-  sourceLanguage,
-}: AiAnalysePayload): GptAnalyseChatGptBody => {
-  const isTranscriptionNeeded = source.length <= 20;
-  const languageName = languageList[sourceLanguage];
-
-  const genders = genderLanguages[sourceLanguage] ?? [];
-
-  const transcriptionType = getTranscriptionName(sourceLanguage);
-
-  const inflections = getInflectionsPrompt({
-    source,
-    partOfSpeech,
-    sourceLanguage,
-  });
-
-  const prompt = [
-    `You are a smart language dictionary.`,
-    `User provides a word in ${languageName} and its part of speech.`,
-    `Only respond in JSON format with an object containing the following properties:`,
-    isTranscriptionNeeded ? `transcript - ${transcriptionType}` : ``,
-    `headword - word provided by user. Capitalize only when appropriate.`,
-    `definitions - list of definitions in ${languageName}.${
-      isVerb(partOfSpeech) ? ` Consider tense of the provided word.` : ''
-    }`,
-    `examples - list of extremely concise examples in ${languageName} with the headword used as a ${partOfSpeech}.`,
-    `lemma - lemma or infinitive`,
-    `lemmaPos - part of speech of the lemma in English`,
-    `synonyms - short list of ${partOfSpeech} synonyms`,
-    `number - plural or singular English only`,
-    `exists - does the ${partOfSpeech} exist in ${languageName}? true or false`,
-    ...Object.entries(inflections).map(([key, value]) => `${key} - ${value}`),
-    genders.length > 0 ? `gender - ${genders.join(', ')}, or other` : ``,
-  ]
-    .filter((s) => !!s)
-    .join('\n');
-
-  return {
-    messages: [
-      { role: 'system', content: prompt },
-      { role: 'user', content: source },
-      { role: 'user', content: partOfSpeech },
-    ],
-    model: GPT_4O,
-  };
-};
-
-type GptAnalyseResultPayload = {
-  sourceLanguage: GoogleLanguage;
-  partOfSpeech: string;
-  response: any;
-};
-
-export const getGptAnalyseResult = ({
-  sourceLanguage,
-  partOfSpeech,
-  response,
-}: GptAnalyseResultPayload): Result<AiAnalysis> => {
-  if (!isInternalAiAnalysis(response)) {
-    return {
-      success: false,
-      reason: 'The GPT request responded with the malformed response',
-      extra: { response },
-    };
-  }
-
-  return {
-    success: true,
-    value: sanitizeAiAnalyseResult(
-      sourceLanguage,
-      partOfSpeech,
-      convertInternalToExternal(response)
-    ),
-  };
-};
-
-export const gptAnalyse = async ({
-  source,
-  partOfSpeech,
-  sourceLanguage,
-}: AiAnalysePayload): Promise<Result<AiAnalysis>> => {
-  const responseResult = await chatGptRequest({
-    ...getGptAnalyseChatGptBody({ source, partOfSpeech, sourceLanguage }),
-    timeoutMs: 6000,
-  });
-
-  if (!responseResult.success) {
-    return responseResult;
-  }
-
-  return getGptAnalyseResult({
-    sourceLanguage,
-    partOfSpeech,
-    response: responseResult.value,
-  });
-};
-
-// End Of ChatGPT
-
-// Gemini
-
-const getGeminiGenerateContentParameters = ({
-  source,
-  partOfSpeech,
-  sourceLanguage,
-}: AiAnalysePayload): GenerateContentParameters => {
-  const isTranscriptionNeeded = source.length <= 20;
-  const languageName = languageList[sourceLanguage];
-
-  const genders = genderLanguages[sourceLanguage] ?? [];
-
-  const transcriptionType = getTranscriptionName(sourceLanguage);
-
-  const securedSource = secureSource(source);
-
-  const isCaseSensitive = !caseInsensitiveLanguages.includes(sourceLanguage);
-
-  const inflections = getInflectionsPrompt({
-    source,
-    partOfSpeech,
-    sourceLanguage,
-  });
-
-  const inflectionProperties: Partial<
-    Record<InflectionKey, JsonSchemaProperty>
-  > = Object.fromEntries(
-    Object.entries(inflections).map(([key, description]) => [
-      key,
-      { ...inflectionSchemas[key as InflectionKey], description },
-    ])
-  );
-
-  return {
-    model: 'gemini-2.5-flash',
-    contents: createUserContent([source]),
-    config: {
-      safetySettings: [
-        {
-          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-        {
-          category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-          threshold: HarmBlockThreshold.BLOCK_NONE,
-        },
-      ],
-      systemInstruction: [
-        `You are a language dictionary.`,
-        `User provides a ${partOfSpeech} in ${languageName}.${
-          isCaseSensitive
-            ? ' The provided word can be in any case (e.g., uppercase, lowercase, or mixed case).'
-            : ''
-        }`,
-        `Treat the input strictly as a ${partOfSpeech}`,
-      ].filter((s) => s.length > 0),
-      thinkingConfig: {
-        thinkingBudget: 0, // Disables thinking
-      },
-      temperature: 0,
-      responseMimeType: 'application/json',
-      responseJsonSchema: {
-        type: 'object',
-        properties: {
-          ...(isTranscriptionNeeded
-            ? {
-                transcript: {
-                  type: 'string',
-                  description: transcriptionType,
-                },
-              }
-            : {}),
-          headword: {
-            type: 'string',
-            description: `${partOfSpeech} provided by user.${
-              isCaseSensitive
-                ? ' Convert to lowercase, unless it is a word that strictly requires capitalization, then capitalize it.'
-                : ''
-            }`,
-          },
-          exists: {
-            type: 'boolean',
-            description: `does the ${partOfSpeech} "${securedSource}" exist in ${languageName}?`,
-          },
-          definitions: {
-            type: 'array',
-            description: `list of concise definitions of the ${partOfSpeech} "${securedSource}". Should be in ${languageName}.${
-              isVerb(partOfSpeech)
-                ? ` Consider tense of the provided ${partOfSpeech}.`
-                : ''
-            }`,
-            items: { type: 'string' },
-          },
-          examples: {
-            type: 'array',
-            description: `list of extremely concise examples with "${securedSource}" used as ${partOfSpeech}. Omit translations.${
-              isCaseSensitive && partOfSpeech.includes('noun')
-                ? ' Uppercase when appropriate.'
-                : ''
-            }`,
-            items: { type: 'string' },
-          },
-          lemma: {
-            type: 'string',
-            description: `lemma or infinitive of the provided ${partOfSpeech}`,
-          },
-          lemmaPos: {
-            type: 'string',
-            description: `part of speech of the lemma in English`,
-          },
-          synonyms: {
-            type: 'array',
-            description: `short list of ${partOfSpeech}s`,
-            items: { type: 'string' },
-          },
-          number: {
-            type: 'string',
-            description: `plural or singular English only`,
-            enum: ['singular', 'plural'],
-          },
-          ...inflectionProperties,
-          ...(genders.length > 0
-            ? {
-                gender: {
-                  type: 'string',
-                  description: `gender of the provided word "${securedSource}"`,
-                  enum: [...genders, 'other'],
-                },
-              }
-            : {}),
-        },
-        required: [
-          ...(isTranscriptionNeeded ? ['transcript'] : []),
-          'headword',
-          'exists',
-          'definitions',
-          'examples',
-          'lemma',
-          'lemmaPos',
-          'synonyms',
-          'number',
-          // pluralForm stays optional so that the model can omit it for the
-          // words which have no plural form.
-          ...Object.keys(inflections).filter((key) => key !== 'pluralForm'),
-          ...(genders.length > 0 ? ['gender'] : []),
-        ],
-      },
-    },
-  };
-};
-
-export const getGeminiAnalyzeBatchItem = (payload: AiAnalysePayload) => {
-  const params = getGeminiGenerateContentParameters(payload);
-
-  if (!isArray(params?.config?.systemInstruction)) {
-    throw new Error('Gemini system instruction is empty');
-  }
-
-  const systemInstructionText =
-    params?.config?.systemInstruction.join('\n') ?? '';
-
-  delete params?.config?.systemInstruction;
-  delete params?.config?.safetySettings;
-
-  return {
-    key: JSON.stringify(payload),
-    request: {
-      model: `models/${params.model}`,
-      contents: params.contents,
-      generation_config: {
-        ...params.config,
-      },
-      system_instruction: {
-        parts: [
-          {
-            text: systemInstructionText,
-          },
-        ],
-      },
-    },
-  };
-};
-
-export const handleGeminiAnalyzeResponse = (
-  text: string,
-  { sourceLanguage, partOfSpeech }: AiAnalysePayload
-): Result<AiAnalysis> => {
-  const parseResult = parseJson(text);
-  if (parseResult.success === false) {
-    return parseResult;
-  }
-
-  if (!isInternalAiAnalysis(parseResult.value)) {
-    return {
-      success: false,
-      reason: 'The Gemini request responded with the malformed response',
-      extra: parseResult.value,
-    };
-  }
-
-  return {
-    success: true,
-    value: sanitizeAiAnalyseResult(
-      sourceLanguage,
-      partOfSpeech,
-      convertInternalToExternal(parseResult.value)
-    ),
-  };
-};
-
-export const geminiAnalyse = async (
-  payload: AiAnalysePayload
-): Promise<Result<AiAnalysis>> => {
-  const genAI = new GoogleGenAI({
-    apiKey: config.geminiApiKey,
-  });
-
-  const abortController = new AbortController();
-  const abortSignal = abortController.signal;
-  const params = getGeminiGenerateContentParameters(payload);
-  params.config = {
-    ...params.config,
-    abortSignal,
-  };
-
-  const result = await resultify(
-    timeout(genAI.models.generateContent(params), abortController, 4000),
-    {
-      reason: 'Unable to perform Gemini analyse.',
-      extra: { payload },
-    }
-  );
-
-  if (result.success === false) {
-    return result;
-  }
-
-  if (
-    result.value.promptFeedback &&
-    result.value.promptFeedback.blockReason === 'PROHIBITED_CONTENT'
-  ) {
-    return {
-      success: false,
-      errorCode: 'PROHIBITED_CONTENT',
-      reason:
-        'The Gemini request responded with the prohibited content response',
-      extra: result.value,
-    };
-  }
-
-  if (!result.value.text) {
-    return {
-      success: false,
-      reason: 'The Gemini request responded with the empty response',
-      extra: result.value,
-    };
-  }
-
-  return handleGeminiAnalyzeResponse(result.value.text, payload);
-};
-
-// End of Gemini
 
 export const getAnalyseCacheFileName = ({
   sourceLanguage,
