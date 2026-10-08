@@ -5,180 +5,168 @@
   <style>
     /* Long-form essay layout for language-learning-is-hard.html. */
 
-    .ise-eyebrow {
-      display: inline-flex;
+    .llh {
+      max-width: 40rem;
+      margin: 0 auto;
+      padding-top: 2rem;
+      font-size: 1.2rem;
+      line-height: 1.75;
+      color: var(--v-color-emphasize);
+
+      & p {
+        margin-bottom: 1.4rem;
+      }
+
+      & p a {
+        color: inherit;
+        text-decoration-color: rgba(var(--v-color-primary-rgb), 0.4);
+        text-underline-offset: 0.2em;
+
+        &:hover {
+          text-decoration-color: var(--v-color-primary);
+        }
+      }
+    }
+
+    .llh-kicker {
+      display: flex;
       align-items: center;
-      gap: 0.4rem;
-      margin-bottom: 1rem;
-      padding: 0.35rem 0.9rem;
-      border-radius: 2rem;
-      background: rgba(var(--v-color-primary-rgb), 0.08);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
       color: var(--v-color-primary);
       font-size: 0.8rem;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-    }
 
-    .llh {
-      max-width: 42rem;
-      margin: 0 auto;
-      padding-top: 1.5rem;
-      font-size: 1.25rem;
-      line-height: 1.7;
-
-      & p {
-        margin-bottom: 1.25rem;
+      &::before {
+        content: '';
+        width: 2rem;
+        height: 2px;
+        background: currentColor;
       }
-    }
-
-    .llh-header {
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--v-color-border-muted);
     }
 
     .llh-title {
-      font-size: clamp(2rem, 5vw, 3rem);
+      text-wrap: balance;
+      margin: 0 0 1.75rem;
+      font-size: clamp(2.25rem, 6vw, 3.25rem);
       font-weight: 600;
-      line-height: 1.15;
-      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
     }
 
     .llh-intro {
+      margin-bottom: 0;
       font-size: 1.4rem;
       line-height: 1.6;
-      color: var(--v-color-emphasize);
+      color: var(--v-color-body);
     }
 
-    .llh-section {
-      margin-top: 3.5rem;
+    .llh-point {
+      margin-top: 4.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--v-color-border-muted);
     }
 
-    .llh-callout {
-      position: relative;
-      margin: 0 0 2rem;
-      padding: 1.75rem 2rem 1.75rem 5.25rem;
-      border-radius: 1.25rem;
-      background: rgba(var(--v-color-primary-rgb), 0.05);
+    .llh-point-number {
+      display: block;
+      margin-bottom: 0.75rem;
+      color: var(--v-color-primary);
+      font-family: var(--v-headings-font-family);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.05em;
+    }
 
-      & p {
-        margin: 0;
+    .llh-point-title {
+      text-wrap: balance;
+      margin: 0 0 1.5rem;
+      font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .llh-figures {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0.5rem 0 2rem;
+      border-top: 1px solid var(--v-color-border-muted);
+      border-bottom: 1px solid var(--v-color-border-muted);
+
+      & > div {
+        padding: 1.5rem 0;
+
+        & + div {
+          padding-left: 2rem;
+          border-left: 1px solid var(--v-color-border-muted);
+        }
+      }
+
+      & dt {
         font-family: var(--v-headings-font-family);
-        font-size: clamp(1.3rem, 3vw, 1.6rem);
+        font-size: clamp(1.75rem, 5vw, 2.4rem);
         font-weight: 600;
-        line-height: 1.35;
-        letter-spacing: -0.5px;
-        color: var(--v-color-emphasize);
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        font-variant-numeric: tabular-nums;
+        color: var(--v-color-primary);
+      }
+
+      & dd {
+        margin: 0.4rem 0 0;
+        font-size: 1rem;
+        line-height: 1.4;
+        color: var(--v-color-body);
       }
     }
 
-    .llh-callout-number {
-      position: absolute;
-      top: 1.75rem;
-      left: 1.75rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.5rem;
-      height: 2.5rem;
-      border-radius: 0.75rem;
-      background: var(--v-color-primary);
-      color: #fff;
-      font-family: var(--v-headings-font-family);
-      font-size: 0.9rem;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    .llh-stats,
     .llh-habits {
       display: grid;
-      gap: 0.75rem;
-      margin: 0 0 1.75rem;
+      grid-template-columns: 1fr;
+      column-gap: 2rem;
+      margin: 0.5rem 0 2rem;
       padding: 0;
       list-style: none;
 
+      @media (width >= 576px) {
+        grid-template-columns: 1fr 1fr;
+      }
+
       & li {
         display: flex;
-        align-items: center;
-        gap: 0.9rem;
-        border: 1px solid var(--v-color-border-muted);
-        background: var(--v-color-body-bg);
-        color: var(--v-color-emphasize);
+        align-items: baseline;
+        gap: 0.75rem;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid var(--v-color-border-muted);
+        font-size: 1.05rem;
+        line-height: 1.45;
       }
 
       & i {
         flex-shrink: 0;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 0.75rem;
-        background: rgba(var(--v-color-primary-rgb), 0.1);
         color: var(--v-color-primary);
-      }
-    }
-
-    .llh-stats {
-      grid-template-columns: 1fr;
-
-      @media (width >= 576px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      & li {
-        padding: 1.25rem;
-        border-radius: 1.25rem;
-        box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.04);
-        font-size: 1.1rem;
-        font-weight: 400;
-        line-height: 1.4;
-      }
-
-      & i {
-        width: 2.75rem;
-        height: 2.75rem;
-        font-size: 1.3rem;
-      }
-    }
-
-    .llh-habits {
-      grid-template-columns: 1fr;
-
-      @media (width >= 576px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      & li {
-        padding: 0.75rem 1rem;
-        border-radius: 1rem;
-        font-size: 1.05rem;
-        line-height: 1.35;
-      }
-
-      & i {
-        width: 2.25rem;
-        height: 2.25rem;
-        font-size: 1.05rem;
+        font-size: 1rem;
       }
     }
 
     .llh-closing {
-      margin-top: 4rem;
-      padding: 2.5rem 2rem;
-      border-radius: 1.5rem;
-      background: rgba(var(--v-color-primary-rgb), 0.05);
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--v-color-border-muted);
       text-align: center;
 
       & > p {
-        max-width: 30rem;
+        max-width: 32rem;
         margin: 0 auto 2rem;
+        text-wrap: balance;
         font-family: var(--v-headings-font-family);
-        font-size: clamp(1.3rem, 3vw, 1.6rem);
+        font-size: clamp(1.35rem, 3.5vw, 1.75rem);
         font-weight: 600;
-        line-height: 1.35;
-        letter-spacing: -0.5px;
-        color: var(--v-color-emphasize);
+        line-height: 1.3;
+        letter-spacing: -0.02em;
       }
     }
 
@@ -189,6 +177,7 @@
 
     @media (width < 576px) {
       .llh {
+        padding-top: 1rem;
         font-size: 1.1rem;
       }
 
@@ -196,73 +185,71 @@
         font-size: 1.2rem;
       }
 
-      .llh-callout {
-        padding: 1.25rem 1.25rem 1.25rem 4.25rem;
+      .llh-point {
+        margin-top: 3.5rem;
       }
 
-      .llh-callout-number {
-        top: 1.25rem;
-        left: 1.25rem;
-        width: 2.25rem;
-        height: 2.25rem;
-      }
+      .llh-figures {
+        grid-template-columns: 1fr;
 
-      .llh-closing {
-        padding: 2rem 1.25rem;
+        & > div + div {
+          padding-left: 0;
+          border-left: 0;
+          border-top: 1px solid var(--v-color-border-muted);
+        }
       }
     }
   </style>
 
   {{#> text-container }}
     <article class="llh">
-      <header class="llh-header">
-        <span class="ise-eyebrow"><i class="bi bi-journal-text" aria-hidden="true"></i> Active language usage</span>
+      <header>
+        <p class="llh-kicker">Active language usage</p>
         <h1 class="llh-title">Language Learning Is Hard and Will Always Be Hard</h1>
+        <p class="llh-intro">Deep down, we already know it. That's why we're so surprised when someone we've known for years suddenly starts speaking a foreign language. It almost never happens.</p>
       </header>
 
-      <p class="llh-intro">Deep down, we already know it. That's why we're so surprised when someone we've known for years suddenly starts speaking a foreign language. It almost never happens.</p>
+      <section class="llh-point">
+        <span class="llh-point-number" aria-hidden="true">01</span>
+        <h2 class="llh-point-title">Language learning requires thousands of hours of practice and thousands of words to learn.</h2>
 
-      <section class="llh-section">
-        <blockquote class="llh-callout">
-          <span class="llh-callout-number" aria-hidden="true">01</span>
-          <p>Language learning requires thousands of hours of practice and thousands of words to learn.</p>
-        </blockquote>
+        <p>To reach fluency (B2 in <a href="https://en.wikipedia.org/wiki/Common_European_Framework_of_Reference_for_Languages" target="_blank">CEFR</a> terms), a person must:</p>
 
-        <p>To reach fluency (B2 in <a href="https://en.wikipedia.org/wiki/Common_European_Framework_of_Reference_for_Languages" class="link-secondary" target="_blank">CEFR</a> terms), a person must:</p>
-
-        <ul class="llh-stats">
-          <li><i class="bi bi-hourglass-split" aria-hidden="true"></i><span>Study and practice for 8,00 to 2,000 hours</span></li>
-          <li><i class="bi bi-book" aria-hidden="true"></i><span>Learn 6,000 to 8,000 words</span></li>
-        </ul>
+        <dl class="llh-figures">
+          <div>
+            <dt>800&ndash;2,000</dt>
+            <dd>hours of study and practice</dd>
+          </div>
+          <div>
+            <dt>6,000&ndash;8,000</dt>
+            <dd>words learned</dd>
+          </div>
+        </dl>
 
         <p>Thousands of hours of practice and thousands of words are no joke. It takes years &ndash; that's why so many people give up, and why so few are fluent in three or more languages.</p>
       </section>
 
-      <section class="llh-section">
-        <blockquote class="llh-callout">
-          <span class="llh-callout-number" aria-hidden="true">02</span>
-          <p>Successful language learners are active language users.</p>
-        </blockquote>
+      <section class="llh-point">
+        <span class="llh-point-number" aria-hidden="true">02</span>
+        <h2 class="llh-point-title">Successful language learners are active language users.</h2>
 
         <p>Those who understand the enormous scope of language learning don't rely on apps and courses &ndash; they weave the foreign language into their lives.</p>
 
         <ul class="llh-habits">
-          <li><i class="bi bi-book-half" aria-hidden="true"></i>They read books</li>
+          <li><i class="bi bi-book" aria-hidden="true"></i>They read books</li>
           <li><i class="bi bi-newspaper" aria-hidden="true"></i>They consume news</li>
-          <li><i class="bi bi-youtube" aria-hidden="true"></i>They watch YouTube</li>
+          <li><i class="bi bi-play-btn" aria-hidden="true"></i>They watch YouTube</li>
           <li><i class="bi bi-headphones" aria-hidden="true"></i>They listen to podcasts</li>
           <li><i class="bi bi-lightbulb" aria-hidden="true"></i>They think in the foreign language</li>
-          <li><i class="bi bi-chat-dots" aria-hidden="true"></i>They jump on every opportunity to use it</li>
+          <li><i class="bi bi-chat" aria-hidden="true"></i>They jump on every opportunity to use it</li>
         </ul>
 
         <p>They start as soon as they reach a stable A2 level. It's hard, but they persevere and eventually become fluent.</p>
       </section>
 
-      <section class="llh-section">
-        <blockquote class="llh-callout">
-          <span class="llh-callout-number" aria-hidden="true">03</span>
-          <p>Becoming fluent in a foreign language improves your life.</p>
-        </blockquote>
+      <section class="llh-point">
+        <span class="llh-point-number" aria-hidden="true">03</span>
+        <h2 class="llh-point-title">Becoming fluent in a foreign language improves your life.</h2>
 
         <p>Pursuing fluency in a foreign language tangibly improves people's lives. They become more articulate. They find better jobs, better friends, and better partners. They move to better countries.</p>
       </section>
