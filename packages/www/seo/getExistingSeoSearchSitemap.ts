@@ -5,15 +5,22 @@ export type SitemapEntry = {
   lastmod: string;
   priority: string;
   hash: string;
+  renderHash: string;
 };
 
 export const getExistingSeoSearchSitemap = async (
+  baseUrl: string,
   sourceLanguage: string,
   targetLanguage: string
 ): Promise<Array<SitemapEntry>> => {
-  const url = `https://vocably.pro/${sourceLanguage}-${targetLanguage}/sitemap.xml`;
+  const url = `${baseUrl}/${sourceLanguage}-${targetLanguage}/sitemap.xml`;
 
   const response = await fetch(url);
+
+  // The sitemap doesn't exist before the first deploy of a language pair.
+  if (response.status === 404) {
+    return [];
+  }
 
   if (!response.ok) {
     throw new Error(
@@ -39,5 +46,6 @@ export const getExistingSeoSearchSitemap = async (
     lastmod: entry.lastmod || '',
     priority: entry.priority || '',
     hash: entry.hash || '',
+    renderHash: entry.renderhash || '',
   }));
 };

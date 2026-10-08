@@ -10,6 +10,7 @@ import {
   readdirSync,
   readFileSync,
   statSync,
+  utimesSync,
   writeFileSync as nativeWriteFileSync,
 } from 'node:fs';
 import {
@@ -25,6 +26,11 @@ import { createHash } from 'node:crypto';
 import { cardToLocationHash } from '@vocably/model-operations';
 
 const globalVersion = 3;
+
+// "aws s3 sync" re-uploads a file when its local mtime is newer than the S3
+// object. Pages whose HTML didn't change since the last deploy get this old
+// mtime so the sync skips them instead of re-uploading every page each build.
+const unchangedPageMtime = new Date('2000-01-01T00:00:00Z');
 
 type ContentOptions = {
   word: string;
@@ -67,6 +73,7 @@ type Options = {
   templateHtml: string;
   searchDataFolder: string;
   basePath: string;
+  deployedBaseUrl: string;
   searchPageFileName: string;
 };
 
@@ -98,6 +105,7 @@ export const buildStaticSearchPages = async ({
   templateHtml,
   searchDataFolder,
   basePath,
+  deployedBaseUrl,
   searchPageFileName,
 }: Options): Promise<StaticPage[]> => {
   const dataFiles = getAllFilesSync(searchDataFolder);
@@ -133,6 +141,7 @@ export const buildStaticSearchPages = async ({
   }
 
   const result: StaticPage[] = [];
+  const buildId = sha256(templateHtml).slice(0, 8);
 
   for (const dataFileName of dataFiles) {
     const [sourceLanguage, targetLanguage] = dataFileName
@@ -149,6 +158,7 @@ export const buildStaticSearchPages = async ({
     }
 
     const existingSitemap = await getExistingSeoSearchSitemap(
+      deployedBaseUrl,
       sourceLanguage,
       targetLanguage
     );
@@ -166,7 +176,15 @@ export const buildStaticSearchPages = async ({
     const files: Array<{
       relativePath: string;
       hash: string;
+      renderHash: string;
     }> = [];
+
+    const deployedRenderHashes = new Map(
+      existingSitemap.map((entry) => [
+        entry.loc.replace(/^https?:\/\/[^/]+\//, ''),
+        entry.renderHash,
+      ])
+    );
 
     for (const [word, translationCards] of words) {
       const contentOptions: ContentOptions = {
@@ -252,10 +270,21 @@ ${JSON.stringify({
           ),
         {
           title: buildTitle(contentOptions),
+          // Stencil generates a random build id per render otherwise, which
+          // would make every page look changed on every build.
+          buildId,
         }
       );
 
+      const renderHash = sha256(rendered.html);
       writeFileSync(`./seo/cache/${htmlFilename}`, rendered.html);
+      if (deployedRenderHashes.get(htmlFilename) === renderHash) {
+        utimesSync(
+          `./seo/cache/${htmlFilename}`,
+          unchangedPageMtime,
+          unchangedPageMtime
+        );
+      }
       files.push({
         relativePath: htmlFilename,
         hash: sha256(
@@ -265,6 +294,7 @@ ${JSON.stringify({
             globalVersion,
           })
         ),
+        renderHash,
       });
       result.push({
         fileName: htmlFilename,
@@ -273,10 +303,11 @@ ${JSON.stringify({
     }
 
     const sitemap = generateSeoSearchSitemap({
-      pages: files.map(({ relativePath, hash }) => ({
+      pages: files.map(({ relativePath, hash, renderHash }) => ({
         loc: `https://vocably.pro/${relativePath}`,
         priority: '0.5',
-        hash: hash,
+        hash,
+        renderHash,
       })),
       existingSitemap,
     });
@@ -294,7 +325,11 @@ ${JSON.stringify({
     });
   }
 
-  cpSync('./seo/cache', './dist', { recursive: true, force: true });
+  cpSync('./seo/cache', './dist', {
+    recursive: true,
+    force: true,
+    preserveTimestamps: true,
+  });
 
   return result;
 };

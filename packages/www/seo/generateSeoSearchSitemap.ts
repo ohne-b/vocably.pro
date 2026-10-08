@@ -6,6 +6,7 @@ type Params = {
     loc: string;
     priority: string;
     hash: string;
+    renderHash: string;
   }>;
 };
 
@@ -13,6 +14,10 @@ export const generateSeoSearchSitemap = ({
   pages,
   existingSitemap,
 }: Params): string => {
+  const existingEntries = new Map(
+    existingSitemap.map((entry) => [entry.loc, entry])
+  );
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -21,7 +26,7 @@ export const generateSeoSearchSitemap = ({
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 ${pages
   .map((page) => {
-    const existingEntry = findExistingEntry(existingSitemap, page.loc);
+    const existingEntry = existingEntries.get(page.loc);
 
     return {
       ...page,
@@ -34,12 +39,13 @@ ${pages
     };
   })
   .map(
-    ({ loc, priority, lastmod, hash }) => `
+    ({ loc, priority, lastmod, hash, renderHash }) => `
 <url>
   <loc>${loc}</loc>
   <lastmod>${lastmod}</lastmod>
   <priority>${priority}</priority>
   <hash>${hash}</hash>
+  <renderhash>${renderHash}</renderhash>
 </url>
 `
   )
@@ -47,10 +53,3 @@ ${pages
 </urlset>
 `;
 };
-
-function findExistingEntry(
-  existingSitemap: SitemapEntry[],
-  loc: string
-): SitemapEntry | undefined {
-  return existingSitemap.find((entry) => entry.loc === loc);
-}

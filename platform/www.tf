@@ -295,7 +295,13 @@ resource "null_resource" "www_upload" {
     #
     # apple-app-site-association has no extension, so it has to be re-uploaded
     # with an explicit content type for Apple to accept it.
+    #
+    # Unchanged SEO pages carry an old mtime (see seo/buildStaticSearchPages.ts),
+    # so the sync skips them. The raised concurrency speeds up the deploys where
+    # every page does change, e.g. a new bundle hash.
     command = <<EOT
+aws configure set default.s3.max_concurrent_requests 64
+
 aws s3 sync ${local.www_dist} s3://${aws_s3_bucket.www.id} --delete \
   --exclude "*" --include "*.js" --include "*.css" --include "*.js.map" \
   --cache-control "public, max-age=31536000, immutable"

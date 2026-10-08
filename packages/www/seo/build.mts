@@ -12,6 +12,7 @@ const { environment } = createRequire(import.meta.url)('../environment.js');
 await buildStaticSearchPages({
   searchDataFolder: `./seo/${environment.searchSeoDataFolder}`,
   basePath: 'https://vocably.pro',
+  deployedBaseUrl: environment.baseUrl,
   templateHtml: readFileSync('./dist/search.html', 'utf-8'),
   searchPageFileName: 'search.html',
 });

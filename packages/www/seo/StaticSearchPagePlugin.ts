@@ -6,6 +6,7 @@ type Options = {
   searchDataFolder: string;
   searchPageFilename: string;
   basePath: string;
+  deployedBaseUrl: string;
   disabled: boolean;
 };
 
@@ -33,6 +34,7 @@ export class StaticSearchPagePlugin {
             templateHtml: data.html,
             searchDataFolder: this.options.searchDataFolder,
             basePath: this.options.basePath,
+            deployedBaseUrl: this.options.deployedBaseUrl,
             searchPageFileName: this.options.searchPageFilename,
           });
 
