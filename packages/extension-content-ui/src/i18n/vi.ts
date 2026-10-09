@@ -2,7 +2,8 @@ export const vi = {
   // close button
   'close_button.label': 'Đóng',
   // sign-in
-  'sign_in.title.default': 'Học từ này',
+  'sign_in.title.lookups': 'Học những từ bạn đã tra',
+  'sign_in.title.translations': 'Học những bản dịch của bạn',
   'sign_in.title.source': 'Học {source}',
   'sign_in.button': 'Đăng nhập hoặc tạo tài khoản',
   'sign_in.benefit.sync': 'Đồng bộ trên mọi thiết bị',

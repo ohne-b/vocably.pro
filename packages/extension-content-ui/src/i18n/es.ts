@@ -2,7 +2,8 @@ export const es = {
   // close button
   'close_button.label': 'Cerrar',
   // sign-in
-  'sign_in.title.default': 'Aprende esta palabra',
+  'sign_in.title.lookups': 'Aprende tus búsquedas',
+  'sign_in.title.translations': 'Aprende tus traducciones',
   'sign_in.title.source': 'Aprende {source}',
   'sign_in.button': 'Iniciar sesión o crear una cuenta',
   'sign_in.benefit.sync': 'Sincroniza entre dispositivos',

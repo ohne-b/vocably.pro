@@ -8,6 +8,7 @@ import {
   Host,
   Prop,
 } from '@stencil/core';
+import { GoogleLanguage } from '@vocably/model';
 import { subscribeToLocale, t } from '../../i18n';
 
 type Benefit = {
@@ -82,6 +83,8 @@ export class VocablySignIn {
   @Element() el: HTMLElement;
   @Event() confirm: EventEmitter;
   @Prop() source: string | undefined;
+  @Prop() sourceLanguage: GoogleLanguage = 'en';
+  @Prop() targetLanguage: GoogleLanguage = 'en';
 
   private unsubLocale: (() => void) | undefined;
 
@@ -97,7 +100,9 @@ export class VocablySignIn {
     const source = this.source?.trim();
 
     if (!source || source.length > maxSourceLength) {
-      return t('sign_in.title.default');
+      return this.sourceLanguage === this.targetLanguage
+        ? t('sign_in.title.lookups')
+        : t('sign_in.title.translations');
     }
 
     return interpolate(t('sign_in.title.source'), {

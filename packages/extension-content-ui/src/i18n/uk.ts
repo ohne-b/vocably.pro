@@ -2,8 +2,9 @@ export const uk = {
   // close button
   'close_button.label': 'Закрити',
   // sign-in
-  'sign_in.title.default': 'Вивчайте це слово',
-  'sign_in.title.source': 'Вивчайте {source}',
+  'sign_in.title.lookups': 'Вивчити свої запити',
+  'sign_in.title.translations': 'Вивчити свої переклади',
+  'sign_in.title.source': 'Вивчити {source}',
   'sign_in.button': 'Увійти або створити акаунт',
   'sign_in.benefit.sync': 'Синхронізація між пристроями',
   'sign_in.benefit.study': 'Вчіть картки на телефоні або в браузері',
