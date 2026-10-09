@@ -2,6 +2,9 @@ export const pt = {
   // close button
   'close_button.label': 'Fechar',
   // sign-in
+  'sign_in.title': 'Guarde cada palavra',
+  'sign_in.description':
+    'Entre para montar seu baralho e memorizar palavras novas com repetição espaçada.',
   'sign_in.button': 'Entrar ou criar uma conta',
   'sign_in.benefit.sync': 'Sincronize entre dispositivos',
   'sign_in.benefit.study': 'Estude seus cartões no celular ou no navegador',

@@ -55,27 +55,40 @@ export class VocablySignIn {
   render() {
     return (
       <Host data-test="sign-in">
-        <ul class="benefits" style={{ padding: '0 32px' }}>
-          {benefits.map((benefit) => (
-            <li class="benefit" key={benefit.key}>
-              <svg
-                class="benefit-icon"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-              >
-                <path d={benefit.icon} />
-              </svg>
-              <span class="benefit-text">{t(benefit.key)}</span>
-            </li>
-          ))}
-        </ul>
-        <div class="p">
+        <div class="container">
+          <div class="header">
+            <div class="title">{t('sign_in.title')}</div>
+            <div class="description">{t('sign_in.description')}</div>
+          </div>
+          <ul class="benefits">
+            {benefits.map((benefit) => (
+              <li class="benefit" key={benefit.key}>
+                <span class="benefit-icon-tile">
+                  <svg
+                    class="benefit-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d={benefit.icon} />
+                  </svg>
+                </span>
+                <span class="benefit-text">{t(benefit.key)}</span>
+              </li>
+            ))}
+          </ul>
           <button
             class="button"
             data-test="sign-in-button"
             onClick={() => this.confirm.emit()}
           >
-            {t('sign_in.button')}
+            <span>{t('sign_in.button')}</span>
+            <svg
+              class="button-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+            </svg>
           </button>
         </div>
       </Host>

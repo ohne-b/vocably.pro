@@ -2,6 +2,9 @@ export const en = {
   // close button
   'close_button.label': 'Close',
   // sign-in
+  'sign_in.title': 'Keep every word you save',
+  'sign_in.description':
+    'Sign in to build your deck and remember new words with spaced repetition.',
   'sign_in.button': 'Sign in or Create an account',
   'sign_in.benefit.sync': 'Sync across devices',
   'sign_in.benefit.study': 'Study your cards on mobile or in a browser',

@@ -2,6 +2,9 @@ export const es = {
   // close button
   'close_button.label': 'Cerrar',
   // sign-in
+  'sign_in.title': 'Guarda cada palabra',
+  'sign_in.description':
+    'Inicia sesión para crear tu mazo y recordar palabras nuevas con repetición espaciada.',
   'sign_in.button': 'Iniciar sesión o crear una cuenta',
   'sign_in.benefit.sync': 'Sincroniza entre dispositivos',
   'sign_in.benefit.study': 'Estudia tus tarjetas en el móvil o en el navegador',

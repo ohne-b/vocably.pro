@@ -2,6 +2,9 @@ export const uk = {
   // close button
   'close_button.label': 'Закрити',
   // sign-in
+  'sign_in.title': 'Зберігайте кожне слово',
+  'sign_in.description':
+    "Увійдіть, щоб зібрати свою колоду й запам'ятовувати нові слова з інтервальним повторенням.",
   'sign_in.button': 'Увійти або створити акаунт',
   'sign_in.benefit.sync': 'Синхронізація між пристроями',
   'sign_in.benefit.study': 'Вчіть картки на телефоні або в браузері',
