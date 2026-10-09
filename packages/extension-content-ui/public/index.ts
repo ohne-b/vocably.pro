@@ -22,16 +22,37 @@ document.querySelectorAll('h1').forEach((h1) => {
   link.textContent = text;
   h1.textContent = '';
   h1.appendChild(link);
-
-  const observer = new MutationObserver(() => {
-    requestAnimationFrame(() => {
-      if (window.location.hash !== '#' + h1.id) return;
-      h1.scrollIntoView({ block: 'start' });
-    });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
 });
+
+// Components render asynchronously (often inside shadow DOM), shifting the
+// layout after the browser's initial anchor jump. Keep the hash target pinned
+// to the top until the user scrolls on their own.
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+let followHash = true;
+
+const scrollToHash = () => {
+  if (!followHash || !window.location.hash) return;
+  const target = document.getElementById(
+    decodeURIComponent(window.location.hash.slice(1))
+  );
+  target?.scrollIntoView({ block: 'start' });
+};
+
+['wheel', 'touchmove', 'keydown', 'mousedown'].forEach((event) =>
+  window.addEventListener(event, () => (followHash = false), { passive: true })
+);
+
+window.addEventListener('hashchange', () => {
+  followHash = true;
+  scrollToHash();
+});
+
+new ResizeObserver(() => requestAnimationFrame(scrollToHash)).observe(
+  document.body
+);
 
 const simpletonTranslationResult: Result<TranslationCards> = {
   success: true,
