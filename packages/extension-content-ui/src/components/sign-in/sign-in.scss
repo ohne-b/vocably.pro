@@ -34,11 +34,6 @@
   letter-spacing: -0.01em;
 }
 
-.description {
-  font-size: 14px;
-  line-height: 1.45;
-}
-
 .benefits {
   list-style: none;
   margin: 0;
@@ -113,4 +108,73 @@
 
 .button:hover .button-arrow {
   transform: translateX(2px);
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+}
+
+.platforms-label {
+  color: $v-light-color-body;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.platforms-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.platform {
+  position: relative;
+  display: inline-flex;
+  outline: none;
+
+  // Tooltip with the platform name
+  &::after {
+    content: attr(data-name);
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    z-index: 1;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -2px);
+    transition:
+      opacity 150ms,
+      transform 150ms;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.platform-icon {
+  width: 18px;
+  height: 18px;
+  fill: $v-light-color-body;
+  opacity: 0.75;
+  transition: opacity 150ms;
+}
+
+.platform:hover .platform-icon,
+.platform:focus-visible .platform-icon {
+  opacity: 1;
 }

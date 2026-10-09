@@ -2,13 +2,13 @@ export const vi = {
   // close button
   'close_button.label': 'Đóng',
   // sign-in
-  'sign_in.title': 'Lưu lại mọi từ bạn học',
-  'sign_in.description':
-    'Đăng nhập để tạo bộ thẻ và ghi nhớ từ mới bằng phương pháp lặp lại ngắt quãng.',
+  'sign_in.title.looked_up': 'Học mọi từ bạn tra cứu',
+  'sign_in.title.translated': 'Học mọi từ bạn dịch',
   'sign_in.button': 'Đăng nhập hoặc tạo tài khoản',
   'sign_in.benefit.sync': 'Đồng bộ trên mọi thiết bị',
   'sign_in.benefit.study': 'Học thẻ trên điện thoại hoặc trong trình duyệt',
   'sign_in.benefit.export': 'Xuất thẻ của bạn dưới dạng CSV',
+  'sign_in.platforms': 'Có trên',
   // subscribe
   'subscribe.trial_message': 'Yêu cầu dùng thử miễn phí 7 ngày để tiếp tục.',
   'subscribe.message': 'Vui lòng đăng ký để tiếp tục.',

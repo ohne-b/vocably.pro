@@ -2,13 +2,13 @@ export const tr = {
   // close button
   'close_button.label': 'Kapat',
   // sign-in
-  'sign_in.title': 'Kaydettiğin her kelime seninle',
-  'sign_in.description':
-    'Desteni oluşturmak ve yeni kelimeleri aralıklı tekrarla akılda tutmak için giriş yap.',
+  'sign_in.title.looked_up': 'Aradığın her kelimeyi öğren',
+  'sign_in.title.translated': 'Çevirdiğin her kelimeyi öğren',
   'sign_in.button': 'Giriş yap veya hesap oluştur',
   'sign_in.benefit.sync': 'Cihazlar arasında senkronizasyon',
   'sign_in.benefit.study': 'Kartlarını telefonda veya tarayıcıda çalış',
   'sign_in.benefit.export': 'Kartlarını CSV olarak dışa aktar',
+  'sign_in.platforms': 'Şuralarda kullanılabilir',
   // subscribe
   'subscribe.trial_message':
     'Devam etmek için 7 günlük ücretsiz deneme talep edin.',

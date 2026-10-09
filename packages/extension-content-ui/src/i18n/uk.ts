@@ -2,13 +2,13 @@ export const uk = {
   // close button
   'close_button.label': 'Закрити',
   // sign-in
-  'sign_in.title': 'Зберігайте кожне слово',
-  'sign_in.description':
-    "Увійдіть, щоб зібрати свою колоду й запам'ятовувати нові слова з інтервальним повторенням.",
+  'sign_in.title.looked_up': 'Вивчайте кожне знайдене слово',
+  'sign_in.title.translated': 'Вивчайте кожне перекладене слово',
   'sign_in.button': 'Увійти або створити акаунт',
   'sign_in.benefit.sync': 'Синхронізація між пристроями',
   'sign_in.benefit.study': 'Вчіть картки на телефоні або в браузері',
   'sign_in.benefit.export': 'Експорт карток у CSV',
+  'sign_in.platforms': 'Доступно на',
   // subscribe
   'subscribe.trial_message':
     'Запитайте 7-денний безкоштовний пробний період, щоб продовжити.',

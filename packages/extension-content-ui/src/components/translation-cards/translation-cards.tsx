@@ -611,7 +611,12 @@ export class VocablyTranslationCards {
                           this.hideSignIn();
                         }}
                       />
-                      <vocably-sign-in></vocably-sign-in>
+                      <vocably-sign-in
+                        sourceLanguage={this.translationCards.sourceLanguage}
+                        translationLanguage={
+                          this.translationCards.targetLanguage
+                        }
+                      ></vocably-sign-in>
                     </div>
                   </div>
                 )}

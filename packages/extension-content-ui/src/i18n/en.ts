@@ -2,13 +2,13 @@ export const en = {
   // close button
   'close_button.label': 'Close',
   // sign-in
-  'sign_in.title': 'Keep every word you save',
-  'sign_in.description':
-    'Sign in to build your deck and remember new words with spaced repetition.',
+  'sign_in.title.looked_up': 'Learn every looked up word',
+  'sign_in.title.translated': 'Learn every translated word',
   'sign_in.button': 'Sign in or Create an account',
   'sign_in.benefit.sync': 'Sync across devices',
   'sign_in.benefit.study': 'Study your cards on mobile or in a browser',
   'sign_in.benefit.export': 'Export your cards as CSV',
+  'sign_in.platforms': 'Available on',
   // subscribe
   'subscribe.trial_message': 'Request a 7 day free trial to proceed.',
   'subscribe.message': 'Please subscribe to proceed.',

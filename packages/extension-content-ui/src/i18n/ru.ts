@@ -2,13 +2,13 @@ export const ru = {
   // close button
   'close_button.label': 'Закрыть',
   // sign-in
-  'sign_in.title': 'Сохраняйте каждое слово',
-  'sign_in.description':
-    'Войдите, чтобы собрать свою колоду и запоминать новые слова с интервальным повторением.',
+  'sign_in.title.looked_up': 'Учите каждое найденное слово',
+  'sign_in.title.translated': 'Учите каждое переведённое слово',
   'sign_in.button': 'Войти или создать аккаунт',
   'sign_in.benefit.sync': 'Синхронизация между устройствами',
   'sign_in.benefit.study': 'Учите карточки на телефоне или в браузере',
   'sign_in.benefit.export': 'Экспорт карточек в CSV',
+  'sign_in.platforms': 'Доступно на',
   // subscribe
   'subscribe.trial_message':
     'Запросите бесплатный пробный период на 7 дней, чтобы продолжить.',
