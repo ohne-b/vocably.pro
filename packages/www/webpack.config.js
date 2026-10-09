@@ -6,6 +6,7 @@ const { environment } = require('./environment');
 const glob = require('glob');
 const { templateOptions } = require('./template-options');
 const { StaticSearchPagePlugin } = require('./seo/StaticSearchPagePlugin');
+const { indexNowKey } = require('./seo/indexNow');
 
 const pagesDir = `./src/pages`;
 const handlebarsExtension = `handlebars`;
@@ -115,6 +116,11 @@ module.exports = (env) => {
       }),
       new CopyPlugin({
         patterns: [{ from: 'src/robots.txt', to: 'robots.txt' }],
+      }),
+      new CopyPlugin({
+        patterns: [
+          { from: `src/${indexNowKey}.txt`, to: `${indexNowKey}.txt` },
+        ],
       }),
       // Lets iOS offer passwords saved for vocably.pro in the mobile app.
       new CopyPlugin({

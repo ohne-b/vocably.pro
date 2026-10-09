@@ -14,6 +14,7 @@
     "serve": "webpack serve --env development --open",
     "watch": "webpack --watch --env development",
     "start": "npm-run-all --parallel watchSeo watch serve",
+    "indexnow": "npx vite-node ./seo/submitIndexNow.mts",
     "test": "echo '@vocably/www has no tests.'",
     "www": "npm start"
   },

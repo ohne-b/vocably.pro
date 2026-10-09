@@ -299,6 +299,10 @@ resource "null_resource" "www_upload" {
     # Unchanged SEO pages carry an old mtime (see seo/buildStaticSearchPages.ts),
     # so the sync skips them. The raised concurrency speeds up the deploys where
     # every page does change, e.g. a new bundle hash.
+    #
+    # Production then pings IndexNow with the URLs whose sitemap lastmod changed
+    # (collected by the build in seo/indexnow-urls.json). It waits for the
+    # invalidation first so crawlers don't fetch the stale edge copies.
     command = <<EOT
 aws configure set default.s3.max_concurrent_requests 64
 
@@ -315,7 +319,12 @@ aws s3 sync ${local.www_dist} s3://${aws_s3_bucket.www.id} --delete \
 
 aws s3 cp ${local.www_dist}/.well-known/apple-app-site-association s3://${aws_s3_bucket.www.id}/.well-known/apple-app-site-association --content-type application/json --cache-control "public, max-age=0, must-revalidate"
 
-aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.www.id} --paths '/*'
+INVALIDATION_ID=$(aws cloudfront create-invalidation --distribution-id ${aws_cloudfront_distribution.www.id} --paths '/*' --query Invalidation.Id --output text)
+%{if terraform.workspace == "prod"~}
+
+aws cloudfront wait invalidation-completed --distribution-id ${aws_cloudfront_distribution.www.id} --id $INVALIDATION_ID
+(cd ${local.www_root} && npm run indexnow)
+%{endif~}
 EOT
   }
 }

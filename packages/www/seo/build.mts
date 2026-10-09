@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { buildMainSitemap } from './buildMainSitemap';
 import { buildSitemapIndex } from './buildSitemapIndex';
+import { collectIndexNowUrls } from './indexNow';
 
 const { environment } = createRequire(import.meta.url)('../environment.js');
 
@@ -19,3 +20,4 @@ await buildStaticSearchPages({
 
 buildMainSitemap();
 await buildSitemapIndex();
+await collectIndexNowUrls(environment.baseUrl);

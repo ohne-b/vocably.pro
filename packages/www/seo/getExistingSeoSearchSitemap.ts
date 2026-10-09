@@ -8,16 +8,19 @@ export type SitemapEntry = {
   renderHash: string;
 };
 
-export const getExistingSeoSearchSitemap = async (
+export const getExistingSeoSearchSitemap = (
   baseUrl: string,
   sourceLanguage: string,
   targetLanguage: string
-): Promise<Array<SitemapEntry>> => {
-  const url = `${baseUrl}/${sourceLanguage}-${targetLanguage}/sitemap.xml`;
+): Promise<Array<SitemapEntry>> =>
+  fetchSitemap(`${baseUrl}/${sourceLanguage}-${targetLanguage}/sitemap.xml`);
 
+export const fetchSitemap = async (
+  url: string
+): Promise<Array<SitemapEntry>> => {
   const response = await fetch(url);
 
-  // The sitemap doesn't exist before the first deploy of a language pair.
+  // The sitemap doesn't exist before its first deploy.
   if (response.status === 404) {
     return [];
   }
@@ -28,8 +31,10 @@ export const getExistingSeoSearchSitemap = async (
     );
   }
 
-  const xmlText = await response.text();
+  return parseSitemap(await response.text());
+};
 
+export const parseSitemap = (xmlText: string): Array<SitemapEntry> => {
   const parser = new XMLParser();
   const parsed = parser.parse(xmlText);
 
