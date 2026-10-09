@@ -612,10 +612,7 @@ export class VocablyTranslationCards {
                         }}
                       />
                       <vocably-sign-in
-                        sourceLanguage={this.translationCards.sourceLanguage}
-                        translationLanguage={
-                          this.translationCards.targetLanguage
-                        }
+                        source={card.data.source}
                       ></vocably-sign-in>
                     </div>
                   </div>

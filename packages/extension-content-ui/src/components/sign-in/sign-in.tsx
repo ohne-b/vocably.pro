@@ -8,7 +8,6 @@ import {
   Host,
   Prop,
 } from '@stencil/core';
-import { GoogleLanguage } from '@vocably/model';
 import { subscribeToLocale, t } from '../../i18n';
 
 type Benefit = {
@@ -64,6 +63,16 @@ const platforms: Platform[] = [
   },
 ];
 
+// Longer sources (phrases, sentences) fall back to the generic title
+const maxSourceLength = 30;
+
+// Replaces {placeholders} in a translated string with JSX nodes
+const interpolate = (template: string, params: Record<string, any>) =>
+  template.split(/(\{\w+\})/).map((part) => {
+    const match = part.match(/^\{(\w+)\}$/);
+    return match && match[1] in params ? params[match[1]] : part;
+  });
+
 @Component({
   tag: 'vocably-sign-in',
   styleUrl: 'sign-in.scss',
@@ -72,8 +81,7 @@ const platforms: Platform[] = [
 export class VocablySignIn {
   @Element() el: HTMLElement;
   @Event() confirm: EventEmitter;
-  @Prop() sourceLanguage: GoogleLanguage = 'en';
-  @Prop() translationLanguage: GoogleLanguage = 'en';
+  @Prop() source: string | undefined;
 
   private unsubLocale: (() => void) | undefined;
 
@@ -85,41 +93,47 @@ export class VocablySignIn {
     this.unsubLocale?.();
   }
 
+  private renderTitle() {
+    const source = this.source?.trim();
+
+    if (!source || source.length > maxSourceLength) {
+      return t('sign_in.title.default');
+    }
+
+    return interpolate(t('sign_in.title.source'), {
+      source: <span class="source">{source}</span>,
+    });
+  }
+
   render() {
     return (
       <Host data-test="sign-in">
         <div class="container">
-          <div class="header">
-            <div class="title">
-              {t(
-                this.sourceLanguage === this.translationLanguage
-                  ? 'sign_in.title.looked_up'
-                  : 'sign_in.title.translated'
-              )}
-            </div>
-            <div class="platforms">
-              <span class="platforms-label">{t('sign_in.platforms')}</span>
-              <ul class="platforms-list">
-                {platforms.map((platform) => (
-                  <li
-                    class="platform"
-                    key={platform.name}
-                    data-name={platform.name}
-                    tabIndex={0}
-                    aria-label={platform.name}
+          <div class="platforms">
+            <span class="platforms-label">{t('sign_in.platforms')}</span>
+            <ul class="platforms-list">
+              {platforms.map((platform) => (
+                <li
+                  class="platform"
+                  key={platform.name}
+                  data-name={platform.name}
+                  tabIndex={0}
+                  aria-label={platform.name}
+                >
+                  <svg
+                    class="platform-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
-                    <svg
-                      class="platform-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path d={platform.icon} />
-                    </svg>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    <path d={platform.icon} />
+                  </svg>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="header">
+            <div class="title">{this.renderTitle()}</div>
           </div>
           <ul class="benefits">
             {benefits.map((benefit) => (

@@ -2,8 +2,8 @@ export const es = {
   // close button
   'close_button.label': 'Cerrar',
   // sign-in
-  'sign_in.title.looked_up': 'Aprende cada palabra que buscas',
-  'sign_in.title.translated': 'Aprende cada palabra que traduces',
+  'sign_in.title.default': 'Aprende esta palabra',
+  'sign_in.title.source': 'Aprende {source}',
   'sign_in.button': 'Iniciar sesión o crear una cuenta',
   'sign_in.benefit.sync': 'Sincroniza entre dispositivos',
   'sign_in.benefit.study': 'Estudia tus tarjetas en el móvil o en el navegador',

@@ -2,8 +2,8 @@ export const tr = {
   // close button
   'close_button.label': 'Kapat',
   // sign-in
-  'sign_in.title.looked_up': 'Aradığın her kelimeyi öğren',
-  'sign_in.title.translated': 'Çevirdiğin her kelimeyi öğren',
+  'sign_in.title.default': 'Bu kelimeyi öğren',
+  'sign_in.title.source': '{source} kelimesini öğren',
   'sign_in.button': 'Giriş yap veya hesap oluştur',
   'sign_in.benefit.sync': 'Cihazlar arasında senkronizasyon',
   'sign_in.benefit.study': 'Kartlarını telefonda veya tarayıcıda çalış',

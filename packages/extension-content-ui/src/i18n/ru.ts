@@ -2,8 +2,8 @@ export const ru = {
   // close button
   'close_button.label': 'Закрыть',
   // sign-in
-  'sign_in.title.looked_up': 'Учите каждое найденное слово',
-  'sign_in.title.translated': 'Учите каждое переведённое слово',
+  'sign_in.title.default': 'Учите это слово',
+  'sign_in.title.source': 'Учите {source}',
   'sign_in.button': 'Войти или создать аккаунт',
   'sign_in.benefit.sync': 'Синхронизация между устройствами',
   'sign_in.benefit.study': 'Учите карточки на телефоне или в браузере',

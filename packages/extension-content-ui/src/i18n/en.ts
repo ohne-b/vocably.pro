@@ -2,8 +2,8 @@ export const en = {
   // close button
   'close_button.label': 'Close',
   // sign-in
-  'sign_in.title.looked_up': 'Learn every looked up word',
-  'sign_in.title.translated': 'Learn every translated word',
+  'sign_in.title.default': 'Learn this word',
+  'sign_in.title.source': 'Learn {source}',
   'sign_in.button': 'Sign in or Create an account',
   'sign_in.benefit.sync': 'Sync across devices',
   'sign_in.benefit.study': 'Study your cards on mobile or in a browser',
