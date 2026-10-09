@@ -9,6 +9,7 @@ import {
   applyMaxZIndex,
   applyTransform,
   Position,
+  promoteToTopLayer,
   setHorizontalDisplacement,
   setupTransform,
 } from './styling';
@@ -67,6 +68,7 @@ const hide = (button: HTMLElement) => {
 
 const show = (button: HTMLElement) => {
   button.style.display = 'block';
+  promoteToTopLayer(button);
 };
 
 export const createButton = async (

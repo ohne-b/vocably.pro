@@ -63,8 +63,28 @@ export class VocablyOverlay {
     this.el.remove();
   }
 
+  // Some websites (e.g. Google Play Books) render their own popups in the
+  // browser's top layer, which sits above any z-index. Promoting the overlay
+  // to the top layer as well puts it above everything opened before it.
+  private promoteToTopLayer() {
+    const el = this.el as HTMLElement & { showPopover?: () => void };
+
+    if (typeof el.showPopover !== 'function') {
+      return;
+    }
+
+    try {
+      el.setAttribute('popover', 'manual');
+      el.showPopover();
+    } catch (e) {
+      el.removeAttribute('popover');
+    }
+  }
+
   componentDidLoad() {
     overlayStack = [...overlayStack, this];
+
+    this.promoteToTopLayer();
 
     if (!this.backdrop || !this.overlay) {
       throw new Error(`Can't find overlay with backdrop element`);

@@ -62,7 +62,10 @@ export const applyTransform = (element: HTMLElement, position: Position) => {
         .split(',')
         .map((t) => t.trim())
         .filter((t) => !t.startsWith('transform'));
-      element.style.transition = [...prev, `transform ${animationDuration}ms`].join(', ');
+      element.style.transition = [
+        ...prev,
+        `transform ${animationDuration}ms`,
+      ].join(', ');
     } else {
       element.style.transition = `transform ${animationDuration}ms`;
     }
@@ -90,4 +93,23 @@ export const setHorizontalDisplacement = (
 
 export const applyMaxZIndex = (element: HTMLElement) => {
   element.style.zIndex = '2147483647';
+};
+
+// Some websites (e.g. Google Play Books) render their own popups in the
+// browser's top layer, which sits above any z-index. Showing the element as a
+// popover moves it to the top of the top layer.
+export const promoteToTopLayer = (element: HTMLElement) => {
+  if (typeof element.showPopover !== 'function') {
+    return;
+  }
+
+  try {
+    element.setAttribute('popover', 'manual');
+    if (element.matches(':popover-open')) {
+      element.hidePopover();
+    }
+    element.showPopover();
+  } catch (e) {
+    element.removeAttribute('popover');
+  }
 };

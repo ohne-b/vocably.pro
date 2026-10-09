@@ -10,6 +10,16 @@
   margin-bottom: 0 !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+
+  // Neutralize the user-agent popover styles (see promoteToTopLayer)
+  inset: auto;
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  overflow: visible;
 }
 
 .button {
